@@ -1,0 +1,245 @@
+# Drill Tracker — état SRS vivant
+
+Fichier d'état (PAS append-only). Mis à jour après chaque drill. Règles : voir CLAUDE.md section SRS.
+Dernière mise à jour : 2026-07-08 (L74 : drill formation て, 2 erreurs identifiées).
+
+## 🔴 Rouge (re-test : prochaine session) — PRIORITÉ : Tâche B (N4)
+
+### KATAKANA — chantier FERMÉ L100 (2026-08-15, test final 15/16)
+Les 46 couverts en 4 boucles de 15 min. Deux principes acquis : « monte ↗ / descend ↘ » (シ/ツ, ン/ソ) et « barre en plus » (ク→タ, マ→ア, ス→ヌ).
+- ⚠️ SEUL RESTANT : **ン (2 traits, monte) vs ノ (1 trait, descend)** — unique erreur du test final, critère = compter les traits
+- Vocabulaire découvert au passage : スーツケース = valise (lu juste, sens inconnu)
+
+### Phrases longues (L96) — mécanique acquise, à consolider
+- Empilement [QUAND][AVEC QUI][OÙ][QUOI][VERBE] — 4/4 construction
+- Découpe par les particules (ciseaux) — 3/4 · ⚠️ たい sauté en fin de phrase longue (いきたい lu いきます)
+- で (action/moyen) vs に (destination/existence) — expliqué, à re-tester
+- のむ / ねむい — confusion sonore à surveiller
+
+### Bloc oral du jour (L87/L93, 2026-08-14) — reconsolidé 2x+, à re-tester en interleaving avant tout neuf
+- 〜てる (ex : のんでる, たべてる) — 3/3 x2
+- 〜てもいい (ex : とってもいい, のんでもいい) — 5/5
+- 〜たい (ex : たべたい, のみたい) — 4/4
+- 〜たら, y compris piège faux-る (座る/帰る/とる vs たべる) — 3/3 après isolement
+- なんだ / って — vus, 2/2 spontané, pas re-testés isolément
+- くらい／ぐらい (environ) — NOUVEAU L94, 4/4 au premier passage, à re-tester
+- ⚠️ Vigilance : confusion たい/たら en enchaînement rapide (2 glissements L94, pas une erreur de mécanisme)
+
+### Ratés du test resto L86 (2026-07-20) — re-tester en priorité
+- ひとりです / ふたりです — compteur PERSONNES (り), pas objets (つ) — raté
+- おもちかえりで — à emporter (UN mot : mochikaeri) — découpage raté
+- 〜ぬきで — sans 〜 (ordre : [mot] + ぬきで) — ordre inversé
+- おかいけい、おねがいします — l'addition — NON SU malgré L47, trou réel
+- 一五〇〇円 = 1500 — lecture chiffres kanji multi-positions — raté
+- きゅうせん (9000) — lecture 九 en composé — approximatif
+- 〜がはいっていますか — ça contient 〜 (が obligatoire) — が oublié
+
+### Formation て — erreurs du drill (L74, 2026-07-08, priorité absolue avant reprise Street1)
+- 取る（とる）— る précédé de consonne → **totte** (pas tote, même règle que motsu→motte) — toru = prendre (objet/photo)
+- 行く（いく）— exception classique du groupe く : **itte** (pas ite comme kaku→kaite) — iku = aller
+
+### 16 verbes — vocabulaire entré via drills て/ない/ません (L76, 2026-07-08)
+- する — faire · 寝る（ねる）— dormir · 持つ（もつ）— tenir/porter · 知る（しる）— savoir/connaître · 取る（とる）— prendre · 飲む（のむ）— boire · 行く（いく）— aller · 食べる（たべる）— manger
+- 買う（かう）— acheter · 書く（かく）— écrire · 泳ぐ（およぐ）— nager · 話す（はなす）— parler · 待つ（まつ）— attendre · 死ぬ（しぬ）— mourir · 遊ぶ（あそぶ）— jouer/s'amuser · 来る（くる）— venir
+
+### Curriculum N2 — Jour 2 CORRIGÉ (L65, 18 kanji N4 purs, thème travail/business)
+- 会（かい・あう）— rencontrer → 会社
+- 住（じゅう・すむ）— habiter → 住む
+- 使（し・つかう）— utiliser → 使う
+- 作（さく・つくる）— fabriquer → 作る
+- 仕（し）— servir → 仕事
+- 主（しゅ・ぬし）— maître → 持ち主
+- 方（ほう・かた）— méthode → 使い方
+- 業（ぎょう）— métier → 作業
+- 者（しゃ）— personne (qui fait) → 医者
+- 場（じょう・ば）— lieu → 仕事場
+- 員（いん）— membre → 会社員
+- 開（かい・ひらく）— ouvrir → 開く
+- 目（もく・め）— œil → 目
+- 動（どう・うごく）— bouger → 自動
+- 通（つう・かよう）— se rendre → 通う
+- 理（り）— raison → 無理
+- 度（ど）— degré/fois → 今度
+- 代（だい）— remplacer/époque → 時代
+
+### Curriculum N2 — Jour 1, kanji BIEN PLACÉS (L63, 4 kanji N4 confirmés)
+- 計（けい・はかる）— compter/mesurer → 時計
+- 持（じ・もつ）— tenir → 気持ち
+- 心（しん・こころ）— cœur → 安心
+- 考（こう・かんがえる）— penser → 考える
+
+### Curriculum N2 — Jour 1, kanji DIFFÉRÉS (L65 : N3, acquis au compteur mais priorité basse — piste C, pas de drill actif tant que la piste N4 n'est pas bien avancée)
+- 認 論 議 決 活 流 済 消 打 投 指 払 感 想 (détail complet : Japanese1.md L63 ou Kanji-N2-Curriculum/Pool_N3_differe.md)
+
+### Kanji-racines menu — L60 (fiches 131-137, effet de levier sur 64 mots)
+- 牛（うし・ギュウ） — bœuf → 牛丼, 牛肉, 牛乳
+- 豚（ぶた・トン） — porc → 豚骨（déjà su）, とんかつ
+- 鶏（にわとり・ケイ） — poulet → 焼き鳥, 親子丼
+- 魚（さかな・ギョ） — poisson → 刺身, 魚市場
+- 鍋（なべ） — marmite → もつ鍋, 鍋料理
+- 巻（ま(く)・カン） — rouler → 巻き寿司, 春巻き
+- 刺（さ(す)・シ） — piquer/cru → 刺身, 名刺
+
+### Kanji 80/20 — L59 (fiches 126-130, formes + menu fixe)
+- 物（もの・ブツ） — chose → 食べ物, 買い物, 荷物
+- 形（かたち・ケイ） — forme → 人形, 三角形
+- 角（かど・カク） — angle/coin → 四角, 三角
+- 丸（まる・ガン） — rond → 丸い, 丸の内
+- 定（てい・ジョウ） — fixe/décidé → 定食, 予定
+
+### Kanji terrain — L58 (fiche 125, repéré sur Google Maps)
+- 文（ふみ・ブン/モン） — écrit/culture → symbole école sur cartes JP, lien 注文（もん）
+
+### Réagir sans s'engager — L57 (+3, suite des 32 avancées)
+- そっか — ah ok, je vois ○
+- まあね — ouais bon, on va dire (évasif) ○
+- なんだろう — comment dire… / c'est quoi déjà
+
+### Entendu dans la journée — L56 (kana-first ; sûrs only, 8 incertains en attente)
+- たしか — si je me souviens bien · ぜんぶきこえて — j'entends tout
+- そんなかんじで — dans ce genre, comme ça · そのまま — tel quel
+- わかんないけど — j'sais pas mais · ていうかさ — enfin, ou plutôt
+- しゃべりかた — façon de parler · 〜とか — ...et compagnie · うんどう — le sport
+- ふざけないで — déconne pas, arrête · やすんで — repose-toi
+- しってるよ — je sais déjà · ぜんぜんだいじょうぶ — aucun souci
+- たのしむ／たのしみ — s'amuser / j'ai hâte · からさ — parce que, tu vois
+- べつのせかい — un autre monde · ヨーロッパ — Europe · します — faire
+- ⚠ à confirmer (contexte) : sayaku · atsu · so de yu ne · tekasanai · tadashi · shihai · bareru/dansu · yakuite
+
+### Poli vs impoli — L54 refonte (kana-first, paires miroir ; 2 briques 礼/品)
+- ていねい ↔ しつれい (soigné ↔ impoli) ▸ — しつれい à produire
+- じょうひん ↔ げひん (distingué ↔ vulgaire) [briques 礼/品]
+- れいぎただしい ↔ れいぎしらず (bien élevé ↔ mal élevé)
+- マナーがいい ↔ マナーがわるい
+- ことばづかいがいい ↔ ことばづかいがわるい (bon ↔ mauvais langage)
+- きちんとしてる ↔ ぶっきらぼう (carré ↔ sec/bourru)
+- そだちがいい ↔ なまいき (bien éduqué ↔ effronté ○)
+- やさしい ↔ ぶれい (prévenant ↔ grossier ; ぶれい = reconnaissance seule, fort) ▸
+
+### Quotidien avancé — L54 refonte (kana-first ; entendu en rue + nouveautés)
+- さすが — comme prévu, bien joué · さすがに — quand même, là c'est trop
+- なかなか — plutôt, pas mal · ちゃんと — comme il faut
+- けっこう — assez / refus poli (double sens)
+- しっくりこない — ça ne colle pas, ça sonne faux
+- ぜんぜんちがう — rien à voir · それは — « ça, c'est… » (réaction)
+- なんて — des trucs comme… / non mais…!
+- べつに — pas spécialement / bof ○ · なんとなく — comme ça, sans raison
+- しょうがない — tant pis · けっきょく — au final
+- そこまで — à ce point-là · それだったら — dans ce cas
+- どういういみ／そういういみで — ça veut dire quoi / dans ce sens
+- かも／そうかも — peut-être · なるべく — autant que possible
+- ようやく — enfin (après l'attente) · どうしよう — qu'est-ce que je fais
+- casual à reconnaître : まじで · やばい · ガチで · それな · えらいね
+- À CONFIRMER (contexte) : erone→えらいね/あのね · ketsu matsu→けっきょく/結末
+
+### Quotidien — L53 (vraies nouveautés ; révision des bases G2/G3/G4 connue par ailleurs)
+- もう一杯（いっぱい） — encore un (le même) ≠ 別の／違う — un autre (différent)
+- 同じのを — le même · おかわり — un rab (resservir) ≠ もう一度 — encore une fois (action)
+- 大盛り（おおもり）／少なめで／多めで — grande portion / un peu moins / un peu plus
+- 微妙（びみょう） — moyen, mitigé ○
+- 最高（さいこう） — le top
+- どうでもいい — peu importe ○
+- さっき — tout à l'heure ○ · そろそろ — il est bientôt temps de ○
+- かしこまりました — bien entendu (staff→toi, reconnaissance) ◆
+- 失礼します（しつれい） — je me permets / je vous laisse ◆
+
+### Kanji logement — L51 (fiches 120-124, ancrés réel, furigana)
+- 家（いえ・カ） — maison → 家賃（やちん）loyer
+- 室（シツ） — pièce → 個室（こしつ）, 化粧室（けしょうしつ）
+- 費（ヒ） — frais → 光熱費（こうねつひ）, 共益費（きょうえきひ）
+- 約（ヤク） — engagement → 予約（よやく）, 契約（けいやく）
+- 部（ブ） — partie → 部屋（へや）, 共用部（きょうようぶ）
+
+### Survie 80/20 — L48 (motifs, demande, manger/boire)
+- 茶 — チャ／サ — thé (お茶, 喫茶店, fiche 117)
+- 押 — お(す)／オウ — pousser (porte, fiche 118)
+- 引 — ひ(く)／イン — tirer (porte, 割引, fiche 119)
+- 別の（べつの） — un autre / un différent (≠ もう一つ = un de plus, le même)
+- 違う（ちがう） — différent
+- お水（おみず）／お冷（おひや） — eau (café / resto)
+- いただけますか — pourrais-je avoir ? (≠ いただきます = avant de manger)
+- 〜んです — moule explicatif / adoucisseur (ん = の)
+- 〜てもいいですか — puis-je ? (permission)
+- 〜は可能ですか（かのう） — est-ce possible ? (formel)
+- も — aussi (お水もいただけますか)
+- 営業中／準備中 — ouvert / fermé (reconnaissance)
+
+### Survie 80/20 — L49 (déplacer, pépins, registre détendu)
+- 〜はどこですか + まっすぐ／みぎ／ひだり — chemin (demander + comprendre)
+- 電車が来る（くる）／参ります（まいります） — le train arrive (casual / annonce)
+- 道に迷う（みちにまよう） — se perdre
+- 気分が悪い／痛い（いたい） + んです — état (malaise / douleur)
+- 割引（わりびき） — réduction
+- aizuchi : そうなんだ／そうそう／へえ — relances d'écoute
+- めっちゃ — super/trop (détendu) · めっちゃウケる／笑った — trop drôle
+- やっと — enfin (après attente/effort)
+- それにしても — n'empêche / cela dit
+- だから — du coup / c'est pour ça (insiste) ≠ だって — oui mais (se défend)
+- そういうこと（さ） — voilà, c'est ça
+- ね／よ／さ — particules de fin (accord / info / pose détendue)
+- 無料（むりょう）／化粧室（けしょうしつ） — gratuit / toilettes (reconnaissance)
+
+### Kanji de rue (L46, fiches 109-116, jamais drillés — reconnaissance JP→sens en priorité)
+- 止 — と(まる)/シ — arrêter (止まれ, 禁止)
+- 危 — あぶ(ない)/キ — danger (危険)
+- 険 — ケン — escarpé/risque (危険)
+- 禁 — キン — interdiction (禁止, 禁煙)
+- 注 — そそ(ぐ)/チュウ — verser/attention (注意)
+- 意 — イ — intention/sens (注意)
+- 手 — て/シュ — main (お手洗い)
+- 洗 — あら(う)/セン — laver (お手洗い)
+
+### Vocab kissaten (L47)
+- モーニング — formule petit-déjeuner
+- ブレンド — café maison (mélange)
+- おかわり — rab, 2e tasse
+- 席 せき — place / siège
+- 禁煙 / 喫煙 きんえん/きつえん — non-fumeur / fumeur
+- お会計 おかいけい — l'addition
+- 満席 まんせき — complet (plus de place)
+
+### Vocab
+- しゅうかん — habitude
+- こまる — être embêté / en difficulté
+- のどがかわく — avoir soif (≠ おなかがすく faim)
+- けが — blessure
+- あまり〜ない — pas tellement
+- ちゃいろ — marron (ちゃ thé + いろ)
+- いそがしい — occupé (≠ いそぐ se dépêcher)
+- でかける — sortir (quitter chez soi)
+
+### Kanji (ratés drill L36 + jamais drillés)
+- 分 — ブン/フン · わ(ける) — minute/diviser
+- 元 — ゲン · もと — origine (元気)
+- 駅 — エキ — gare
+- 来 — ライ · く(る) — venir (≠ 木)
+- 道 — ドウ · みち — chemin
+- 天 — テン — ciel
+- 港 — コウ · みなと — port (氵 reconnu ✅)
+
+### Nouveaux (entrée auto — kanji 077-091, recopiés 4/06)
+- 立 休 毎 午 半 万 雨 白 力 自 体 思 言 聞 帰
+
+### Nouveaux (kanji 062-076, recopiés 1/06, jamais drillés)
+- 先 生 名 高 安 新 古 友 多 少 長 店 読 書 話
+
+## 🟠 Orange (re-test : +2 jours — échéance 6/06)
+
+- はらう (payer) ≠ ならう (apprendre) — paire sonore
+- おとうと — petit frère (allongement)
+- かたみち — aller simple (↔ おうふく)
+- 口 車 海 — kanjis réussis L36, à confirmer
+
+## 🟢 Vert (re-test : +5 jours — échéance 9/06)
+
+- はし — pont (はしをわたる)
+- かりる ↔ かす — emprunter/prêter
+- ことし — cette année (≠ きょねん, らいねん)
+- やっぱり — c'est une évidence
+- しゅっぱつする — partir (transport)
+
+## ✅ Acquis récents (sortis du tracker, re-test méga-test uniquement)
+
+- Grammaire N5 38/38 (validée en production)
+- Aimants à が : ある/いる/ほしい/すき/きらい/わかる/じょうず/へた
+- ~たら, ~でしょう, ~ようとおもう, ~から/とき/ほうがいい (production 1er coup)
