@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>010 — 水 (eau)</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; max-width: 980px; margin: 2rem auto; padding: 0 1.5rem; color: #1a1a1a; line-height: 1.55; }
+  header { border-bottom: 2px solid #1a1a1a; padding-bottom: 0.8rem; margin-bottom: 1.4rem; }
+  h1 { margin: 0; font-size: 2.2rem; font-weight: 600; }
+  .meta { color: #555; font-size: 0.95rem; margin-top: 0.4rem; }
+  .meta span { margin-right: 1.2rem; }
+  .strokes { background: #fafafa; border: 1px solid #e8e8e8; padding: 1rem; border-radius: 8px; text-align: center; margin-bottom: 1.4rem; }
+  .strokes svg { max-width: 100%; height: auto; }
+  h2 { font-size: 1.15rem; font-weight: 600; margin-top: 1.6rem; margin-bottom: 0.5rem; color: #2a2a2a; }
+  .mnemo { background: #fff8e6; padding: 0.9rem 1.1rem; border-left: 3px solid #d4a017; border-radius: 4px; }
+  table { width: 100%; border-collapse: collapse; margin-top: 0.4rem; }
+  td { padding: 0.4rem 0.6rem; border-bottom: 1px solid #eee; }
+  td:first-child { font-weight: 500; width: 35%; }
+  .phrase { background: #f0f4ff; padding: 0.9rem 1.1rem; border-left: 3px solid #4a6fa5; border-radius: 4px; font-size: 1.05rem; }
+</style>
+</head>
+<body>
+<header>
+  <h1>010 — 水 · eau</h1>
+  <div class="meta">
+    <span><strong>ON :</strong> スイ</span>
+    <span><strong>KUN :</strong> みず</span>
+    <span><strong>4 traits</strong></span>
+    <span><strong>Radical :</strong> 水 (eau qui coule)</span>
+  </div>
+</header>
+
+<div class="strokes">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 476 143" width="476" height="143">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="8" y="13" font-family="sans-serif" font-size="12" fill="#444" font-weight="bold">水  (4 strokes)</text>
+<g transform="translate(8,26)"><rect x="0" y="0" width="109" height="109" fill="none" stroke="#eeeeee" stroke-width="1"/><path d="M17.5,45.75c1.75,0.62,3.73,0.43,5.25,0C25.88,44.88,36.09,41,38.59,40s4.47,1.24,3.75,3.5C39,54,28.25,69,19,74.75" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M81.22,27.5c-0.22,1.25-0.72,2.25-1.52,2.97c-5.64,5.1-12.45,9.78-22.45,13.78" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M57,46c8.82,10.73,19.23,21.46,28.42,27.42c2.16,1.4,4.52,3,7.08,3.58" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M52.77,15.08c1.08,1.08,1.67,2.49,1.76,5.52c0.4,14.55-0.26,62.16-0.26,67.12c0,9.78-7.52,0.03-9.02-1.22" stroke="#000000" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="41.75" y="11.38" font-family="sans-serif" font-size="9" font-weight="bold" fill="#cc0033">1↓</text></g>
+<g transform="translate(125,26)"><rect x="0" y="0" width="109" height="109" fill="none" stroke="#eeeeee" stroke-width="1"/><path d="M81.22,27.5c-0.22,1.25-0.72,2.25-1.52,2.97c-5.64,5.1-12.45,9.78-22.45,13.78" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M57,46c8.82,10.73,19.23,21.46,28.42,27.42c2.16,1.4,4.52,3,7.08,3.58" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M52.77,15.08c1.08,1.08,1.67,2.49,1.76,5.52c0.4,14.55-0.26,62.16-0.26,67.12c0,9.78-7.52,0.03-9.02-1.22" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M17.5,45.75c1.75,0.62,3.73,0.43,5.25,0C25.88,44.88,36.09,41,38.59,40s4.47,1.24,3.75,3.5C39,54,28.25,69,19,74.75" stroke="#000000" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="8.25" y="43.28" font-family="sans-serif" font-size="9" font-weight="bold" fill="#cc0033">2→</text></g>
+<g transform="translate(242,26)"><rect x="0" y="0" width="109" height="109" fill="none" stroke="#eeeeee" stroke-width="1"/><path d="M57,46c8.82,10.73,19.23,21.46,28.42,27.42c2.16,1.4,4.52,3,7.08,3.58" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M52.77,15.08c1.08,1.08,1.67,2.49,1.76,5.52c0.4,14.55-0.26,62.16-0.26,67.12c0,9.78-7.52,0.03-9.02-1.22" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M17.5,45.75c1.75,0.62,3.73,0.43,5.25,0C25.88,44.88,36.09,41,38.59,40s4.47,1.24,3.75,3.5C39,54,28.25,69,19,74.75" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M81.22,27.5c-0.22,1.25-0.72,2.25-1.52,2.97c-5.64,5.1-12.45,9.78-22.45,13.78" stroke="#000000" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="81.75" y="20.28" font-family="sans-serif" font-size="9" font-weight="bold" fill="#cc0033">3↓</text></g>
+<g transform="translate(359,26)"><rect x="0" y="0" width="109" height="109" fill="none" stroke="#eeeeee" stroke-width="1"/><path d="M52.77,15.08c1.08,1.08,1.67,2.49,1.76,5.52c0.4,14.55-0.26,62.16-0.26,67.12c0,9.78-7.52,0.03-9.02-1.22" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M17.5,45.75c1.75,0.62,3.73,0.43,5.25,0C25.88,44.88,36.09,41,38.59,40s4.47,1.24,3.75,3.5C39,54,28.25,69,19,74.75" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M81.22,27.5c-0.22,1.25-0.72,2.25-1.52,2.97c-5.64,5.1-12.45,9.78-22.45,13.78" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M57,46c8.82,10.73,19.23,21.46,28.42,27.42c2.16,1.4,4.52,3,7.08,3.58" stroke="#000000" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="62.00" y="47.03" font-family="sans-serif" font-size="9" font-weight="bold" fill="#cc0033">4→</text></g>
+</svg>
+</div>
+
+<h2>Mnémo</h2>
+<div class="mnemo">
+  Un trait central avec deux filets qui s'échappent de chaque côté — l'<strong>eau</strong> qui s'écoule d'une source.
+</div>
+
+<h2>Exemples</h2>
+<table>
+  <tr><td>水 (みず)</td><td>eau</td></tr>
+  <tr><td>水よう日 (すいようび)</td><td>mercredi</td></tr>
+  <tr><td>水着 (みずぎ)</td><td>maillot de bain</td></tr>
+  <tr><td>水道 (すいどう)</td><td>eau courante</td></tr>
+</table>
+
+<h2>Phrase</h2>
+<div class="phrase">みずをのみたいです — <em>Je voudrais boire de l'eau.</em></div>
+</body>
+</html>

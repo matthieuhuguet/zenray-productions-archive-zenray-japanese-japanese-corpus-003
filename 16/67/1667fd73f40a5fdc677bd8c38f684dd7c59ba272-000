@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>068 — 古 (vieux)</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; max-width: 980px; margin: 2rem auto; padding: 0 1.5rem; color: #1a1a1a; line-height: 1.55; }
+  header { border-bottom: 2px solid #1a1a1a; padding-bottom: 0.8rem; margin-bottom: 1.4rem; }
+  h1 { margin: 0; font-size: 2.2rem; font-weight: 600; }
+  .meta { color: #555; font-size: 0.95rem; margin-top: 0.4rem; }
+  .meta span { margin-right: 1.2rem; }
+  .strokes { background: #fafafa; border: 1px solid #e8e8e8; padding: 1rem; border-radius: 8px; text-align: center; margin-bottom: 1.4rem; }
+  .strokes svg { max-width: 100%; height: auto; }
+  h2 { font-size: 1.15rem; font-weight: 600; margin-top: 1.6rem; margin-bottom: 0.5rem; color: #2a2a2a; }
+  .mnemo { background: #fff8e6; padding: 0.9rem 1.1rem; border-left: 3px solid #d4a017; border-radius: 4px; }
+  table { width: 100%; border-collapse: collapse; margin-top: 0.4rem; }
+  td { padding: 0.4rem 0.6rem; border-bottom: 1px solid #eee; }
+  td:first-child { font-weight: 500; width: 35%; }
+  .phrase { background: #f0f4ff; padding: 0.9rem 1.1rem; border-left: 3px solid #4a6fa5; border-radius: 4px; font-size: 1.05rem; }
+</style>
+</head>
+<body>
+<header>
+  <h1>068 — 古 · vieux</h1>
+  <div class="meta">
+    <span><strong>ON :</strong> コ</span>
+    <span><strong>KUN :</strong> ふる-い</span>
+    <span><strong>5 traits</strong></span>
+    <span><strong>Radical :</strong> 十 (dix) + 口 (bouche)</span>
+  </div>
+</header>
+
+<div class="strokes">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 593 143" width="593" height="143">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="8" y="13" font-family="sans-serif" font-size="12" fill="#444" font-weight="bold">古  (5 strokes)</text>
+<g transform="translate(8,26)"><rect x="0" y="0" width="109" height="109" fill="none" stroke="#eeeeee" stroke-width="1"/><path d="M52.41,12.5c1.42,1.42,2.13,3.25,2.13,5.06c0,17.05-0.14,39.31-0.14,48.94" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M31,67.77c1.12,1.12,2,2.73,2.24,4.48c0.61,4.43,1.87,12.12,3.22,20.93c0.2,1.31,0.39,2.59,0.57,3.83" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M33.77,69.3c11.97-1.17,36.4-3.39,42.99-3.81c3.74-0.24,5.11,1.39,4.26,4.71c-1.18,4.63-3.81,13.6-5.23,20.06" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M37.88,94.42c7.81-0.36,23.99-1.88,35.14-2.65c1.87-0.13,3.61-0.24,5.18-0.32" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M11.25,43.25c2.75,0.62,5.54,0.83,9.53,0.5c23.85-2,49.47-4.12,67.35-4.75c4.02-0.14,6.87,0,9.12,0.5" stroke="#000000" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1.75" y="36.63" font-family="sans-serif" font-size="9" font-weight="bold" fill="#cc0033">1→</text></g>
+<g transform="translate(125,26)"><rect x="0" y="0" width="109" height="109" fill="none" stroke="#eeeeee" stroke-width="1"/><path d="M31,67.77c1.12,1.12,2,2.73,2.24,4.48c0.61,4.43,1.87,12.12,3.22,20.93c0.2,1.31,0.39,2.59,0.57,3.83" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M33.77,69.3c11.97-1.17,36.4-3.39,42.99-3.81c3.74-0.24,5.11,1.39,4.26,4.71c-1.18,4.63-3.81,13.6-5.23,20.06" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M37.88,94.42c7.81-0.36,23.99-1.88,35.14-2.65c1.87-0.13,3.61-0.24,5.18-0.32" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M11.25,43.25c2.75,0.62,5.54,0.83,9.53,0.5c23.85-2,49.47-4.12,67.35-4.75c4.02-0.14,6.87,0,9.12,0.5" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M52.41,12.5c1.42,1.42,2.13,3.25,2.13,5.06c0,17.05-0.14,39.31-0.14,48.94" stroke="#000000" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="45.25" y="3.63" font-family="sans-serif" font-size="9" font-weight="bold" fill="#cc0033">2↓</text></g>
+<g transform="translate(242,26)"><rect x="0" y="0" width="109" height="109" fill="none" stroke="#eeeeee" stroke-width="1"/><path d="M33.77,69.3c11.97-1.17,36.4-3.39,42.99-3.81c3.74-0.24,5.11,1.39,4.26,4.71c-1.18,4.63-3.81,13.6-5.23,20.06" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M37.88,94.42c7.81-0.36,23.99-1.88,35.14-2.65c1.87-0.13,3.61-0.24,5.18-0.32" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M11.25,43.25c2.75,0.62,5.54,0.83,9.53,0.5c23.85-2,49.47-4.12,67.35-4.75c4.02-0.14,6.87,0,9.12,0.5" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M52.41,12.5c1.42,1.42,2.13,3.25,2.13,5.06c0,17.05-0.14,39.31-0.14,48.94" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M31,67.77c1.12,1.12,2,2.73,2.24,4.48c0.61,4.43,1.87,12.12,3.22,20.93c0.2,1.31,0.39,2.59,0.57,3.83" stroke="#000000" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="21.25" y="71.13" font-family="sans-serif" font-size="9" font-weight="bold" fill="#cc0033">3↓</text></g>
+<g transform="translate(359,26)"><rect x="0" y="0" width="109" height="109" fill="none" stroke="#eeeeee" stroke-width="1"/><path d="M37.88,94.42c7.81-0.36,23.99-1.88,35.14-2.65c1.87-0.13,3.61-0.24,5.18-0.32" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M11.25,43.25c2.75,0.62,5.54,0.83,9.53,0.5c23.85-2,49.47-4.12,67.35-4.75c4.02-0.14,6.87,0,9.12,0.5" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M52.41,12.5c1.42,1.42,2.13,3.25,2.13,5.06c0,17.05-0.14,39.31-0.14,48.94" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M31,67.77c1.12,1.12,2,2.73,2.24,4.48c0.61,4.43,1.87,12.12,3.22,20.93c0.2,1.31,0.39,2.59,0.57,3.83" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M33.77,69.3c11.97-1.17,36.4-3.39,42.99-3.81c3.74-0.24,5.11,1.39,4.26,4.71c-1.18,4.63-3.81,13.6-5.23,20.06" stroke="#000000" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="34.75" y="60.63" font-family="sans-serif" font-size="9" font-weight="bold" fill="#cc0033">4→</text></g>
+<g transform="translate(476,26)"><rect x="0" y="0" width="109" height="109" fill="none" stroke="#eeeeee" stroke-width="1"/><path d="M11.25,43.25c2.75,0.62,5.54,0.83,9.53,0.5c23.85-2,49.47-4.12,67.35-4.75c4.02-0.14,6.87,0,9.12,0.5" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M52.41,12.5c1.42,1.42,2.13,3.25,2.13,5.06c0,17.05-0.14,39.31-0.14,48.94" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M31,67.77c1.12,1.12,2,2.73,2.24,4.48c0.61,4.43,1.87,12.12,3.22,20.93c0.2,1.31,0.39,2.59,0.57,3.83" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M33.77,69.3c11.97-1.17,36.4-3.39,42.99-3.81c3.74-0.24,5.11,1.39,4.26,4.71c-1.18,4.63-3.81,13.6-5.23,20.06" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M37.88,94.42c7.81-0.36,23.99-1.88,35.14-2.65c1.87-0.13,3.61-0.24,5.18-0.32" stroke="#000000" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="40.75" y="86.13" font-family="sans-serif" font-size="9" font-weight="bold" fill="#cc0033">5→</text></g>
+</svg>
+</div>
+
+<h2>Mnémo</h2>
+<div class="mnemo">
+  <strong>Dix (十)</strong> générations de <strong>bouches (口)</strong> ont raconté cette histoire = c'est très vieux. L'histoire passe de bouche en bouche depuis dix générations. Ancienne paire avec 新しい : nouveau ↔ 古い.
+</div>
+
+<h2>Combo découverte</h2>
+<p>Ancrer ensemble : <strong>新しい (あたらしい)</strong> = nouveau · <strong>古い (ふるい)</strong> = vieux. Deux adjectifs, un seul effort de mémoire. Dans les marchés antiques japonais (<strong>古道具 こどうぐ</strong> = vieilleries), 古 est partout.</p>
+
+<h2>Exemples</h2>
+<table>
+  <tr><td>古い (ふるい)</td><td>vieux (adjectif)</td></tr>
+  <tr><td>古典 (こてん)</td><td>classique, littérature ancienne</td></tr>
+  <tr><td>中古 (ちゅうこ)</td><td>d'occasion, de seconde main</td></tr>
+  <tr><td>古着 (ふるぎ)</td><td>vêtements d'occasion (très courant à Tokyo)</td></tr>
+</table>
+
+<h2>Phrase</h2>
+<div class="phrase">この寺は とても <strong>古い</strong>です — <em>ce temple est très vieux</em></div>
+</body>
+</html>

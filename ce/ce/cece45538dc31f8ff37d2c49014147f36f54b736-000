@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>041 — 中 (milieu / dedans)</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; max-width: 980px; margin: 2rem auto; padding: 0 1.5rem; color: #1a1a1a; line-height: 1.55; }
+  header { border-bottom: 2px solid #1a1a1a; padding-bottom: 0.8rem; margin-bottom: 1.4rem; }
+  h1 { margin: 0; font-size: 2.2rem; font-weight: 600; }
+  .meta { color: #555; font-size: 0.95rem; margin-top: 0.4rem; }
+  .meta span { margin-right: 1.2rem; }
+  .strokes { background: #fafafa; border: 1px solid #e8e8e8; padding: 1rem; border-radius: 8px; text-align: center; margin-bottom: 1.4rem; }
+  .strokes svg { max-width: 100%; height: auto; }
+  h2 { font-size: 1.15rem; font-weight: 600; margin-top: 1.6rem; margin-bottom: 0.5rem; color: #2a2a2a; }
+  .mnemo { background: #fff8e6; padding: 0.9rem 1.1rem; border-left: 3px solid #d4a017; border-radius: 4px; }
+  table { width: 100%; border-collapse: collapse; margin-top: 0.4rem; }
+  td { padding: 0.4rem 0.6rem; border-bottom: 1px solid #eee; }
+  td:first-child { font-weight: 500; width: 35%; }
+  .phrase { background: #f0f4ff; padding: 0.9rem 1.1rem; border-left: 3px solid #4a6fa5; border-radius: 4px; font-size: 1.05rem; }
+</style>
+</head>
+<body>
+<header>
+  <h1>041 — 中 · milieu / dedans</h1>
+  <div class="meta">
+    <span><strong>ON :</strong> チュウ</span>
+    <span><strong>KUN :</strong> なか</span>
+    <span><strong>4 traits</strong></span>
+    <span><strong>Radical :</strong> 囗 (carré) + 丨 (trait central)</span>
+  </div>
+</header>
+
+<div class="strokes">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 476 143" width="476" height="143">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="8" y="13" font-family="sans-serif" font-size="12" fill="#444" font-weight="bold">中  (4 strokes)</text>
+<g transform="translate(8,26)"><rect x="0" y="0" width="109" height="109" fill="none" stroke="#eeeeee" stroke-width="1"/><path d="M23.33,39.51C37.12,37.62,70.88,34,84,33.24c4.38-0.25,6,1.14,5.12,4.42c-1.53,5.7-5.61,20.18-6.12,22.09" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M27.74,64.84C40.12,63.62,61.86,62.2,79,60.77c2.36-0.2,5.75-0.27,7.25-0.27" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M52.5,11.5c1.44,1.44,2.25,3.5,2.25,5.06c0,0.9,0.06,56.6-0.15,76.69c-0.03,3.3-0.07,5.6-0.1,6.5" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M19.89,36.87c1,1,1.74,2.25,2.01,3.65c1.13,5.71,2.58,13.06,4.17,22.97c0.27,1.68,0.55,4.43,0.83,6.26" stroke="#000000" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="12.50" y="41.13" font-family="sans-serif" font-size="9" font-weight="bold" fill="#cc0033">1↓</text></g>
+<g transform="translate(125,26)"><rect x="0" y="0" width="109" height="109" fill="none" stroke="#eeeeee" stroke-width="1"/><path d="M27.74,64.84C40.12,63.62,61.86,62.2,79,60.77c2.36-0.2,5.75-0.27,7.25-0.27" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M52.5,11.5c1.44,1.44,2.25,3.5,2.25,5.06c0,0.9,0.06,56.6-0.15,76.69c-0.03,3.3-0.07,5.6-0.1,6.5" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M19.89,36.87c1,1,1.74,2.25,2.01,3.65c1.13,5.71,2.58,13.06,4.17,22.97c0.27,1.68,0.55,4.43,0.83,6.26" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M23.33,39.51C37.12,37.62,70.88,34,84,33.24c4.38-0.25,6,1.14,5.12,4.42c-1.53,5.7-5.61,20.18-6.12,22.09" stroke="#000000" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="22.50" y="31.50" font-family="sans-serif" font-size="9" font-weight="bold" fill="#cc0033">2→</text></g>
+<g transform="translate(242,26)"><rect x="0" y="0" width="109" height="109" fill="none" stroke="#eeeeee" stroke-width="1"/><path d="M52.5,11.5c1.44,1.44,2.25,3.5,2.25,5.06c0,0.9,0.06,56.6-0.15,76.69c-0.03,3.3-0.07,5.6-0.1,6.5" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M19.89,36.87c1,1,1.74,2.25,2.01,3.65c1.13,5.71,2.58,13.06,4.17,22.97c0.27,1.68,0.55,4.43,0.83,6.26" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M23.33,39.51C37.12,37.62,70.88,34,84,33.24c4.38-0.25,6,1.14,5.12,4.42c-1.53,5.7-5.61,20.18-6.12,22.09" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M27.74,64.84C40.12,63.62,61.86,62.2,79,60.77c2.36-0.2,5.75-0.27,7.25-0.27" stroke="#000000" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="28.50" y="56.75" font-family="sans-serif" font-size="9" font-weight="bold" fill="#cc0033">3→</text></g>
+<g transform="translate(359,26)"><rect x="0" y="0" width="109" height="109" fill="none" stroke="#eeeeee" stroke-width="1"/><path d="M19.89,36.87c1,1,1.74,2.25,2.01,3.65c1.13,5.71,2.58,13.06,4.17,22.97c0.27,1.68,0.55,4.43,0.83,6.26" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M23.33,39.51C37.12,37.62,70.88,34,84,33.24c4.38-0.25,6,1.14,5.12,4.42c-1.53,5.7-5.61,20.18-6.12,22.09" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M27.74,64.84C40.12,63.62,61.86,62.2,79,60.77c2.36-0.2,5.75-0.27,7.25-0.27" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M52.5,11.5c1.44,1.44,2.25,3.5,2.25,5.06c0,0.9,0.06,56.6-0.15,76.69c-0.03,3.3-0.07,5.6-0.1,6.5" stroke="#000000" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="41.50" y="8.50" font-family="sans-serif" font-size="9" font-weight="bold" fill="#cc0033">4↓</text></g>
+</svg>
+</div>
+
+<h2>Mnémo</h2>
+<div class="mnemo">
+  Un trait <strong>vertical</strong> qui traverse parfaitement le <strong>centre</strong> d'un carré — exactement au milieu.
+</div>
+
+<h2>Exemples</h2>
+<table>
+  <tr><td>中 (なか)</td><td>intérieur / milieu</td></tr>
+  <tr><td>中国 (ちゅうごく)</td><td>Chine</td></tr>
+  <tr><td>中学校 (ちゅうがっこう)</td><td>collège</td></tr>
+  <tr><td>集中 (しゅうちゅう)</td><td>concentration</td></tr>
+</table>
+
+<h2>Phrase</h2>
+<div class="phrase">かばんのなかにパスポートがあります — <em>Le passeport est dans le sac.</em></div>
+</body>
+</html>

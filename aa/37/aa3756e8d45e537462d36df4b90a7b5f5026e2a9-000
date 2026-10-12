@@ -1,0 +1,27 @@
+{
+  "name": "Oral 01 : les trous reels du DrillTracker",
+  "source": "DrillTracker.md, ratés du test resto L86, pièges forme て L74, potentiel L109, conversation L110",
+  "note": "Cible orale. Matthieu n'a que le français sous les yeux, il répond à voix haute.",
+  "items": [
+    { "fr": "Je suis seul (au restaurant, une personne).", "ja": "一人です" },
+    { "fr": "C'est à emporter.", "ja": "お持ち帰りで" },
+    { "fr": "L'addition, s'il vous plaît.", "ja": "お会計、お願いします" },
+    { "fr": "Sans wasabi, s'il vous plaît.", "ja": "わさび抜きでお願いします" },
+    { "fr": "Est-ce que ça contient du porc ?", "ja": "豚肉が入っていますか" },
+    { "fr": "Je peux parler un peu japonais.", "ja": "日本語が少し話せます" },
+    { "fr": "Est-ce qu'on peut payer par carte ?", "ja": "カードで払えますか" },
+    { "fr": "Tu peux venir demain ?", "ja": "明日、来られる" },
+    { "fr": "Je ne peux pas manger de viande.", "ja": "肉が食べられません" },
+    { "fr": "Prends une photo, s'il te plaît.", "ja": "写真を撮ってください" },
+    { "fr": "Je vais à la gare puis je rentre.", "ja": "駅に行って、帰ります" },
+    { "fr": "En fait, j'aime beaucoup l'ambiance de ce café.", "ja": "実は、このカフェの雰囲気がすごく好きです" },
+    { "fr": "Tout à fait, la vue est magnifique.", "ja": "確かに、景色がきれいですね" },
+    { "fr": "On y va ensemble ?", "ja": "一緒に行きませんか" },
+    { "fr": "Merci, ça m'aide vraiment.", "ja": "ありがとう、本当に助かります" },
+    { "fr": "Qu'est-ce que vous recommandez ?", "ja": "おすすめは何ですか" },
+    { "fr": "Plus lentement, s'il vous plaît.", "ja": "ゆっくりお願いします" },
+    { "fr": "Je viens de France.", "ja": "フランスから来ました" },
+    { "fr": "C'est la première fois que je viens ici.", "ja": "ここは初めてです" },
+    { "fr": "Je vis au Japon depuis trois mois.", "ja": "三ヶ月、日本に住んでいます" }
+  ]
+}

@@ -1,0 +1,12 @@
+# ⚠️ Dossier de TRAVAIL interne — pas des leçons
+
+Ce dossier contient les **pools de kanji à séquencer** (audit brut, listes N4/N3 restantes). Ce n'est PAS du contenu à lire ou étudier — jamais présenté à Matthieu comme une leçon (règle L64, `Japanese/CLAUDE.md`).
+
+Le préfixe `_` place ce dossier en tête de liste et signale « interne ». Les leçons lisibles (fiches HTML mobiles) sont dans **`../` (`Japanese/Lessons/KanjiN2/`)**, le dossier parent.
+
+## Fichiers
+
+- `Pool_N4_restant.md` — kanji N4 non encore séquencés (piste prioritaire, Tâche B)
+- `Pool_N3_differe.md` — kanji N3 différés (Tâche C, démarre après N4)
+
+Détail de l'architecture à 3 tâches (consolidation / N4 / N3) : `Japanese/CLAUDE.md`, section SYSTÈME KANJI N2.

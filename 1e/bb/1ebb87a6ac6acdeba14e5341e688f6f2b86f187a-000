@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>066 — 安 (pas cher / tranquille)</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; max-width: 980px; margin: 2rem auto; padding: 0 1.5rem; color: #1a1a1a; line-height: 1.55; }
+  header { border-bottom: 2px solid #1a1a1a; padding-bottom: 0.8rem; margin-bottom: 1.4rem; }
+  h1 { margin: 0; font-size: 2.2rem; font-weight: 600; }
+  .meta { color: #555; font-size: 0.95rem; margin-top: 0.4rem; }
+  .meta span { margin-right: 1.2rem; }
+  .strokes { background: #fafafa; border: 1px solid #e8e8e8; padding: 1rem; border-radius: 8px; text-align: center; margin-bottom: 1.4rem; }
+  .strokes svg { max-width: 100%; height: auto; }
+  h2 { font-size: 1.15rem; font-weight: 600; margin-top: 1.6rem; margin-bottom: 0.5rem; color: #2a2a2a; }
+  .mnemo { background: #fff8e6; padding: 0.9rem 1.1rem; border-left: 3px solid #d4a017; border-radius: 4px; }
+  table { width: 100%; border-collapse: collapse; margin-top: 0.4rem; }
+  td { padding: 0.4rem 0.6rem; border-bottom: 1px solid #eee; }
+  td:first-child { font-weight: 500; width: 35%; }
+  .phrase { background: #f0f4ff; padding: 0.9rem 1.1rem; border-left: 3px solid #4a6fa5; border-radius: 4px; font-size: 1.05rem; }
+</style>
+</head>
+<body>
+<header>
+  <h1>066 — 安 · pas cher / tranquille</h1>
+  <div class="meta">
+    <span><strong>ON :</strong> アン</span>
+    <span><strong>KUN :</strong> やす-い</span>
+    <span><strong>6 traits</strong></span>
+    <span><strong>Radical :</strong> 宀 (toit) + 女 (femme)</span>
+  </div>
+</header>
+
+<div class="strokes">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 710 143" width="710" height="143">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="8" y="13" font-family="sans-serif" font-size="12" fill="#444" font-weight="bold">安  (6 strokes)</text>
+<g transform="translate(8,26)"><rect x="0" y="0" width="109" height="109" fill="none" stroke="#eeeeee" stroke-width="1"/><path d="M26.67,28.85c0,3.6-3.32,13.5-4.83,15.9" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M27.53,30.96c12.72-1.58,40.97-4.21,54.14-4.86c9.82-0.48,1.45,6.65-2.17,9.9" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M49.87,36.87c0.51,1.45,0.52,3.55,0,5.32c-2.74,9.22-7.03,20.09-13.85,30.42c-1.43,2.17-0.76,2.95,1.26,3.14c8.23,0.75,21.61,4.5,33.74,11.77c4.36,2.61,8.24,5.98,10.24,9.48" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M70,50c0.38,1.48,0.22,3.46-0.26,5.13c-3.88,13.52-17.45,34.6-43.24,42.49" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M15.13,60.22c2.85,0.74,6.22,0.42,9.12,0.2c11.33-0.85,40.73-4.55,64.72-4.64c2.27-0.01,6.19,0.33,8.03,0.96" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M53.06,13.73c0.92,0.92,1.63,2.6,1.6,3.75c-0.09,3.62-0.09,7.03-0.09,10.33" stroke="#000000" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="42.50" y="10.50" font-family="sans-serif" font-size="9" font-weight="bold" fill="#cc0033">1↓</text></g>
+<g transform="translate(125,26)"><rect x="0" y="0" width="109" height="109" fill="none" stroke="#eeeeee" stroke-width="1"/><path d="M27.53,30.96c12.72-1.58,40.97-4.21,54.14-4.86c9.82-0.48,1.45,6.65-2.17,9.9" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M49.87,36.87c0.51,1.45,0.52,3.55,0,5.32c-2.74,9.22-7.03,20.09-13.85,30.42c-1.43,2.17-0.76,2.95,1.26,3.14c8.23,0.75,21.61,4.5,33.74,11.77c4.36,2.61,8.24,5.98,10.24,9.48" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M70,50c0.38,1.48,0.22,3.46-0.26,5.13c-3.88,13.52-17.45,34.6-43.24,42.49" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M15.13,60.22c2.85,0.74,6.22,0.42,9.12,0.2c11.33-0.85,40.73-4.55,64.72-4.64c2.27-0.01,6.19,0.33,8.03,0.96" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M53.06,13.73c0.92,0.92,1.63,2.6,1.6,3.75c-0.09,3.62-0.09,7.03-0.09,10.33" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M26.67,28.85c0,3.6-3.32,13.5-4.83,15.9" stroke="#000000" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="16.75" y="30.63" font-family="sans-serif" font-size="9" font-weight="bold" fill="#cc0033">2↓</text></g>
+<g transform="translate(242,26)"><rect x="0" y="0" width="109" height="109" fill="none" stroke="#eeeeee" stroke-width="1"/><path d="M49.87,36.87c0.51,1.45,0.52,3.55,0,5.32c-2.74,9.22-7.03,20.09-13.85,30.42c-1.43,2.17-0.76,2.95,1.26,3.14c8.23,0.75,21.61,4.5,33.74,11.77c4.36,2.61,8.24,5.98,10.24,9.48" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M70,50c0.38,1.48,0.22,3.46-0.26,5.13c-3.88,13.52-17.45,34.6-43.24,42.49" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M15.13,60.22c2.85,0.74,6.22,0.42,9.12,0.2c11.33-0.85,40.73-4.55,64.72-4.64c2.27-0.01,6.19,0.33,8.03,0.96" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M53.06,13.73c0.92,0.92,1.63,2.6,1.6,3.75c-0.09,3.62-0.09,7.03-0.09,10.33" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M26.67,28.85c0,3.6-3.32,13.5-4.83,15.9" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M27.53,30.96c12.72-1.58,40.97-4.21,54.14-4.86c9.82-0.48,1.45,6.65-2.17,9.9" stroke="#000000" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="28.50" y="23.50" font-family="sans-serif" font-size="9" font-weight="bold" fill="#cc0033">3→</text></g>
+<g transform="translate(359,26)"><rect x="0" y="0" width="109" height="109" fill="none" stroke="#eeeeee" stroke-width="1"/><path d="M70,50c0.38,1.48,0.22,3.46-0.26,5.13c-3.88,13.52-17.45,34.6-43.24,42.49" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M15.13,60.22c2.85,0.74,6.22,0.42,9.12,0.2c11.33-0.85,40.73-4.55,64.72-4.64c2.27-0.01,6.19,0.33,8.03,0.96" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M53.06,13.73c0.92,0.92,1.63,2.6,1.6,3.75c-0.09,3.62-0.09,7.03-0.09,10.33" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M26.67,28.85c0,3.6-3.32,13.5-4.83,15.9" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M27.53,30.96c12.72-1.58,40.97-4.21,54.14-4.86c9.82-0.48,1.45,6.65-2.17,9.9" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M49.87,36.87c0.51,1.45,0.52,3.55,0,5.32c-2.74,9.22-7.03,20.09-13.85,30.42c-1.43,2.17-0.76,2.95,1.26,3.14c8.23,0.75,21.61,4.5,33.74,11.77c4.36,2.61,8.24,5.98,10.24,9.48" stroke="#000000" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="40.50" y="35.13" font-family="sans-serif" font-size="9" font-weight="bold" fill="#cc0033">4↓</text></g>
+<g transform="translate(476,26)"><rect x="0" y="0" width="109" height="109" fill="none" stroke="#eeeeee" stroke-width="1"/><path d="M15.13,60.22c2.85,0.74,6.22,0.42,9.12,0.2c11.33-0.85,40.73-4.55,64.72-4.64c2.27-0.01,6.19,0.33,8.03,0.96" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M53.06,13.73c0.92,0.92,1.63,2.6,1.6,3.75c-0.09,3.62-0.09,7.03-0.09,10.33" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M26.67,28.85c0,3.6-3.32,13.5-4.83,15.9" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M27.53,30.96c12.72-1.58,40.97-4.21,54.14-4.86c9.82-0.48,1.45,6.65-2.17,9.9" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M49.87,36.87c0.51,1.45,0.52,3.55,0,5.32c-2.74,9.22-7.03,20.09-13.85,30.42c-1.43,2.17-0.76,2.95,1.26,3.14c8.23,0.75,21.61,4.5,33.74,11.77c4.36,2.61,8.24,5.98,10.24,9.48" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M70,50c0.38,1.48,0.22,3.46-0.26,5.13c-3.88,13.52-17.45,34.6-43.24,42.49" stroke="#000000" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="62.50" y="41.50" font-family="sans-serif" font-size="9" font-weight="bold" fill="#cc0033">5↓</text></g>
+<g transform="translate(593,26)"><rect x="0" y="0" width="109" height="109" fill="none" stroke="#eeeeee" stroke-width="1"/><path d="M53.06,13.73c0.92,0.92,1.63,2.6,1.6,3.75c-0.09,3.62-0.09,7.03-0.09,10.33" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M26.67,28.85c0,3.6-3.32,13.5-4.83,15.9" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M27.53,30.96c12.72-1.58,40.97-4.21,54.14-4.86c9.82-0.48,1.45,6.65-2.17,9.9" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M49.87,36.87c0.51,1.45,0.52,3.55,0,5.32c-2.74,9.22-7.03,20.09-13.85,30.42c-1.43,2.17-0.76,2.95,1.26,3.14c8.23,0.75,21.61,4.5,33.74,11.77c4.36,2.61,8.24,5.98,10.24,9.48" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M70,50c0.38,1.48,0.22,3.46-0.26,5.13c-3.88,13.52-17.45,34.6-43.24,42.49" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M15.13,60.22c2.85,0.74,6.22,0.42,9.12,0.2c11.33-0.85,40.73-4.55,64.72-4.64c2.27-0.01,6.19,0.33,8.03,0.96" stroke="#000000" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="5.50" y="57.50" font-family="sans-serif" font-size="9" font-weight="bold" fill="#cc0033">6→</text></g>
+</svg>
+</div>
+
+<h2>Mnémo</h2>
+<div class="mnemo">
+  Une <strong>femme (女)</strong> protégée sous un <strong>toit (宀)</strong> = maison paisible, sécurité, calme. Ce qui est tranquille est accessible, sans risque — d'où "pas cher". L'opposé de 高い (cher), c'est 安い (やすい).
+</div>
+
+<h2>Combo découverte</h2>
+<p>Paire à ancrer ensemble : <strong>高い (たかい)</strong> ↔ <strong>安い (やすい)</strong>. Cher / pas cher. Dans tout magasin à Tokyo, ce sont les deux adjectifs qui sortent en premier. Les retenir en paire = un seul effort pour deux.</p>
+
+<h2>Exemples</h2>
+<table>
+  <tr><td>安い (やすい)</td><td>pas cher / bon marché</td></tr>
+  <tr><td>安全 (あんぜん)</td><td>sûr, en sécurité</td></tr>
+  <tr><td>安心 (あんしん)</td><td>tranquillité d'esprit, rassurance</td></tr>
+  <tr><td>不安 (ふあん)</td><td>anxiété, inquiétude</td></tr>
+</table>
+
+<h2>Phrase</h2>
+<div class="phrase">このホテルは <strong>安い</strong>ですよ — <em>cet hôtel est bon marché, vous savez</em></div>
+</body>
+</html>

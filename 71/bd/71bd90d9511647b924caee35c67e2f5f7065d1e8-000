@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>129 — 丸 (rond, cercle)</title>
+<style>body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;max-width:980px;margin:2rem auto;padding:0 1.5rem;color:#1a1a1a;line-height:1.55}header{border-bottom:2px solid #1a1a1a;padding-bottom:.8rem;margin-bottom:1.4rem}h1{margin:0;font-size:2.2rem;font-weight:600}.meta{color:#555;font-size:.95rem;margin-top:.4rem}.meta span{margin-right:1.2rem}.strokes{background:#fafafa;border:1px solid #e8e8e8;padding:1rem;border-radius:8px;text-align:center;margin-bottom:1.4rem}.strokes svg{max-width:100%;height:auto}h2{font-size:1.15rem;font-weight:600;margin-top:1.6rem;margin-bottom:.5rem;color:#2a2a2a}.mnemo{background:#fff8e6;padding:.9rem 1.1rem;border-left:3px solid #d4a017;border-radius:4px}table{width:100%;border-collapse:collapse;margin-top:.4rem}td{padding:.4rem .6rem;border-bottom:1px solid #eee}td:first-child{font-weight:500;width:35%}.phrase{background:#f0f4ff;padding:.9rem 1.1rem;border-left:3px solid #4a6fa5;border-radius:4px;font-size:1.05rem}</style></head>
+<body><header><h1>129 — 丸 · rond, cercle</h1><div class="meta"><span><strong>ON :</strong> ガン</span><span><strong>KUN :</strong> まる</span><span><strong>3 traits</strong></span><span><strong>Radical :</strong> 丸 (pictogramme : une forme repliée sur elle-même)</span></div></header>
+<div class="strokes"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 710 143" width="710" height="143">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="8" y="13" font-family="sans-serif" font-size="12" fill="#444" font-weight="bold">丸  (3 strokes)</text>
+<g transform="translate(8,26)"><rect x="0" y="0" width="109" height="109" fill="none" stroke="#eeeeee" stroke-width="1"/>
+<path d="M20.5,43.75c2.88,0.12,4.55-0.06,7.04-0.75c7.21-2,31.46-9,36.49-10.75c2.28-0.79,4.84,0.95,4.1,3.75c-1.09,4.12-4.39,24-5.14,35.5c-0.77,11.82,0.75,18.45,15.72,18.45c14.53,0,15.26-1.45,15.26-11.7" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M30.75,57.5C39.5,60.25,47,68,50.06,72.72" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M44.38,17.38c1.32,1.32,1.5,2.86,1.52,4.63c0.4,39.04-9.39,57.25-28.52,68.25" stroke="#000000" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="35.50" y="16.50" font-family="sans-serif" font-size="9" font-weight="bold" fill="#cc0033">1↓</text></g>
+<g transform="translate(125,26)"><rect x="0" y="0" width="109" height="109" fill="none" stroke="#eeeeee" stroke-width="1"/>
+<path d="M30.75,57.5C39.5,60.25,47,68,50.06,72.72" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M44.38,17.38c1.32,1.32,1.5,2.86,1.52,4.63c0.4,39.04-9.39,57.25-28.52,68.25" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M20.5,43.75c2.88,0.12,4.55-0.06,7.04-0.75c7.21-2,31.46-9,36.49-10.75c2.28-0.79,4.84,0.95,4.1,3.75c-1.09,4.12-4.39,24-5.14,35.5c-0.77,11.82,0.75,18.45,15.72,18.45c14.53,0,15.26-1.45,15.26-11.7" stroke="#000000" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="12.50" y="45.13" font-family="sans-serif" font-size="9" font-weight="bold" fill="#cc0033">2↘</text></g>
+<g transform="translate(242,26)"><rect x="0" y="0" width="109" height="109" fill="none" stroke="#eeeeee" stroke-width="1"/>
+<path d="M44.38,17.38c1.32,1.32,1.5,2.86,1.52,4.63c0.4,39.04-9.39,57.25-28.52,68.25" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M20.5,43.75c2.88,0.12,4.55-0.06,7.04-0.75c7.21-2,31.46-9,36.49-10.75c2.28-0.79,4.84,0.95,4.1,3.75c-1.09,4.12-4.39,24-5.14,35.5c-0.77,11.82,0.75,18.45,15.72,18.45c14.53,0,15.26-1.45,15.26-11.7" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M30.75,57.5C39.5,60.25,47,68,50.06,72.72" stroke="#000000" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="22.50" y="58.50" font-family="sans-serif" font-size="9" font-weight="bold" fill="#cc0033">3↘</text></g>
+</svg></div>
+<h2>Mnémo (histoire de composants)</h2><div class="mnemo">Quelque chose de replié sur soi-même, sans coin ni angle = ROND. Tu croiseras ce kanji dans 丸の内（まるのうち）, le quartier rond près de la gare de Tokyo.</div>
+<h2>Exemples</h2><table><tr><td>丸い — まるい</td><td>rond (adjectif)</td></tr><tr><td>丸ごと — まるごと</td><td>entièrement, en entier</td></tr><tr><td>丸の内 — まるのうち</td><td>quartier de Tokyo (près de la gare)</td></tr></table>
+<h2>Phrase</h2><div class="phrase">丸いテーブルがあります。 — <em>Il y a une table ronde.</em></div></body></html>

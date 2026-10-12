@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>103 — 煮 (mijoter, cuire dans l'eau)</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; max-width: 980px; margin: 2rem auto; padding: 0 1.5rem; color: #1a1a1a; line-height: 1.55; }
+  header { border-bottom: 2px solid #1a1a1a; padding-bottom: 0.8rem; margin-bottom: 1.4rem; }
+  h1 { margin: 0; font-size: 2.2rem; font-weight: 600; }
+  .meta { color: #555; font-size: 0.95rem; margin-top: 0.4rem; }
+  .meta span { margin-right: 1.2rem; }
+  .strokes { background: #fafafa; border: 1px solid #e8e8e8; padding: 1rem; border-radius: 8px; text-align: center; margin-bottom: 1.4rem; }
+  .strokes svg { max-width: 100%; height: auto; }
+  h2 { font-size: 1.15rem; font-weight: 600; margin-top: 1.6rem; margin-bottom: 0.5rem; color: #2a2a2a; }
+  .mnemo { background: #fff8e6; padding: 0.9rem 1.1rem; border-left: 3px solid #d4a017; border-radius: 4px; }
+  table { width: 100%; border-collapse: collapse; margin-top: 0.4rem; }
+  td { padding: 0.4rem 0.6rem; border-bottom: 1px solid #eee; }
+  td:first-child { font-weight: 500; width: 35%; }
+  .phrase { background: #f0f4ff; padding: 0.9rem 1.1rem; border-left: 3px solid #4a6fa5; border-radius: 4px; font-size: 1.05rem; }
+</style>
+</head>
+<body>
+<header>
+  <h1>103 — 煮 · mijoter, cuire dans l'eau</h1>
+  <div class="meta">
+    <span><strong>ON :</strong> シャ</span>
+    <span><strong>KUN :</strong> に(る)</span>
+    <span><strong>12 traits</strong></span>
+    <span><strong>Radical :</strong> 灬 (feu/braises, en bas)</span>
+  </div>
+</header>
+
+<div class="strokes">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 710 260" width="710" height="260">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="8" y="13" font-family="sans-serif" font-size="12" fill="#444" font-weight="bold">煮  (12 strokes)</text>
+<g transform="translate(8,26)"><rect x="0" y="0" width="109" height="109" fill="none" stroke="#eeeeee" stroke-width="1"/><path d="M52.95,9.62c0.72,0.72,1.15,2.26,1.15,3.66c0,8.34-0.1,18.76-0.1,21.6" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M15.57,38.6c3.12,0.83,6.48,0.88,9.67,0.46c13.76-1.81,38.63-4.19,56.38-5.45c3.74-0.27,7.51-0.19,11.18,0.78" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M80.49,13.67c0.17,1.09-0.05,2.66-1.08,4.12C65.38,37.62,49,47.88,17.97,61.23" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M41.41,51.13c0.43,0.64,0.86,1.46,0.86,2.31c0,0.51,0.01,11.56,0.01,19.94c0,1.85,0,3.53,0,4.89" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M42.98,50.99c5.49-0.64,21.11-2.26,26.9-2.79c3.16-0.29,4.84,0.41,4.83,3.8c-0.01,4.01-0.05,12.94-0.07,18.88c-0.01,2.72-0.02,4.8-0.02,5.5" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M43.66,62.75c5.59-0.62,24.34-2.12,30.24-2.28" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M43.51,75.36c6.67-0.46,21.82-1.93,30.13-2.32" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M23.12,83.62c0,5.39-5.25,13.34-6.62,14.88" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M39.77,82.58c2.47,2.71,4.82,10.17,5.44,14.38" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M60.87,82.08c3.33,2.36,8.6,9.71,9.43,13.38" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M82,82.88c4.43,2.62,11.45,10.77,12.56,14.84" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M33.97,21.87c2.28,0.38,4.58,0.19,6.53,0.03c7.44-0.61,17.67-1.76,24.75-2.15c1.73-0.09,3.48-0.24,5.18,0.19" stroke="#000000" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="25.50" y="18.50" font-family="sans-serif" font-size="9" font-weight="bold" fill="#cc0033">1→</text></g>
+<g transform="translate(125,26)"><rect x="0" y="0" width="109" height="109" fill="none" stroke="#eeeeee" stroke-width="1"/><path d="M15.57,38.6c3.12,0.83,6.48,0.88,9.67,0.46c13.76-1.81,38.63-4.19,56.38-5.45c3.74-0.27,7.51-0.19,11.18,0.78" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M80.49,13.67c0.17,1.09-0.05,2.66-1.08,4.12C65.38,37.62,49,47.88,17.97,61.23" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M41.41,51.13c0.43,0.64,0.86,1.46,0.86,2.31c0,0.51,0.01,11.56,0.01,19.94c0,1.85,0,3.53,0,4.89" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M42.98,50.99c5.49-0.64,21.11-2.26,26.9-2.79c3.16-0.29,4.84,0.41,4.83,3.8c-0.01,4.01-0.05,12.94-0.07,18.88c-0.01,2.72-0.02,4.8-0.02,5.5" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M43.66,62.75c5.59-0.62,24.34-2.12,30.24-2.28" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M43.51,75.36c6.67-0.46,21.82-1.93,30.13-2.32" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M23.12,83.62c0,5.39-5.25,13.34-6.62,14.88" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M39.77,82.58c2.47,2.71,4.82,10.17,5.44,14.38" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M60.87,82.08c3.33,2.36,8.6,9.71,9.43,13.38" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M82,82.88c4.43,2.62,11.45,10.77,12.56,14.84" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M33.97,21.87c2.28,0.38,4.58,0.19,6.53,0.03c7.44-0.61,17.67-1.76,24.75-2.15c1.73-0.09,3.48-0.24,5.18,0.19" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M52.95,9.62c0.72,0.72,1.15,2.26,1.15,3.66c0,8.34-0.1,18.76-0.1,21.6" stroke="#000000" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="40.50" y="5.50" font-family="sans-serif" font-size="9" font-weight="bold" fill="#cc0033">2↓</text></g>
+<g transform="translate(242,26)"><rect x="0" y="0" width="109" height="109" fill="none" stroke="#eeeeee" stroke-width="1"/><path d="M80.49,13.67c0.17,1.09-0.05,2.66-1.08,4.12C65.38,37.62,49,47.88,17.97,61.23" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M41.41,51.13c0.43,0.64,0.86,1.46,0.86,2.31c0,0.51,0.01,11.56,0.01,19.94c0,1.85,0,3.53,0,4.89" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M42.98,50.99c5.49-0.64,21.11-2.26,26.9-2.79c3.16-0.29,4.84,0.41,4.83,3.8c-0.01,4.01-0.05,12.94-0.07,18.88c-0.01,2.72-0.02,4.8-0.02,5.5" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M43.66,62.75c5.59-0.62,24.34-2.12,30.24-2.28" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M43.51,75.36c6.67-0.46,21.82-1.93,30.13-2.32" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M23.12,83.62c0,5.39-5.25,13.34-6.62,14.88" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M39.77,82.58c2.47,2.71,4.82,10.17,5.44,14.38" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M60.87,82.08c3.33,2.36,8.6,9.71,9.43,13.38" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M82,82.88c4.43,2.62,11.45,10.77,12.56,14.84" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M33.97,21.87c2.28,0.38,4.58,0.19,6.53,0.03c7.44-0.61,17.67-1.76,24.75-2.15c1.73-0.09,3.48-0.24,5.18,0.19" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M52.95,9.62c0.72,0.72,1.15,2.26,1.15,3.66c0,8.34-0.1,18.76-0.1,21.6" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M15.57,38.6c3.12,0.83,6.48,0.88,9.67,0.46c13.76-1.81,38.63-4.19,56.38-5.45c3.74-0.27,7.51-0.19,11.18,0.78" stroke="#000000" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="6.50" y="35.13" font-family="sans-serif" font-size="9" font-weight="bold" fill="#cc0033">3→</text></g>
+<g transform="translate(359,26)"><rect x="0" y="0" width="109" height="109" fill="none" stroke="#eeeeee" stroke-width="1"/><path d="M41.41,51.13c0.43,0.64,0.86,1.46,0.86,2.31c0,0.51,0.01,11.56,0.01,19.94c0,1.85,0,3.53,0,4.89" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M42.98,50.99c5.49-0.64,21.11-2.26,26.9-2.79c3.16-0.29,4.84,0.41,4.83,3.8c-0.01,4.01-0.05,12.94-0.07,18.88c-0.01,2.72-0.02,4.8-0.02,5.5" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M43.66,62.75c5.59-0.62,24.34-2.12,30.24-2.28" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M43.51,75.36c6.67-0.46,21.82-1.93,30.13-2.32" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M23.12,83.62c0,5.39-5.25,13.34-6.62,14.88" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M39.77,82.58c2.47,2.71,4.82,10.17,5.44,14.38" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M60.87,82.08c3.33,2.36,8.6,9.71,9.43,13.38" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M82,82.88c4.43,2.62,11.45,10.77,12.56,14.84" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M33.97,21.87c2.28,0.38,4.58,0.19,6.53,0.03c7.44-0.61,17.67-1.76,24.75-2.15c1.73-0.09,3.48-0.24,5.18,0.19" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M52.95,9.62c0.72,0.72,1.15,2.26,1.15,3.66c0,8.34-0.1,18.76-0.1,21.6" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M15.57,38.6c3.12,0.83,6.48,0.88,9.67,0.46c13.76-1.81,38.63-4.19,56.38-5.45c3.74-0.27,7.51-0.19,11.18,0.78" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M80.49,13.67c0.17,1.09-0.05,2.66-1.08,4.12C65.38,37.62,49,47.88,17.97,61.23" stroke="#000000" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="69.50" y="8.13" font-family="sans-serif" font-size="9" font-weight="bold" fill="#cc0033">4↓</text></g>
+<g transform="translate(476,26)"><rect x="0" y="0" width="109" height="109" fill="none" stroke="#eeeeee" stroke-width="1"/><path d="M42.98,50.99c5.49-0.64,21.11-2.26,26.9-2.79c3.16-0.29,4.84,0.41,4.83,3.8c-0.01,4.01-0.05,12.94-0.07,18.88c-0.01,2.72-0.02,4.8-0.02,5.5" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M43.66,62.75c5.59-0.62,24.34-2.12,30.24-2.28" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M43.51,75.36c6.67-0.46,21.82-1.93,30.13-2.32" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M23.12,83.62c0,5.39-5.25,13.34-6.62,14.88" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M39.77,82.58c2.47,2.71,4.82,10.17,5.44,14.38" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M60.87,82.08c3.33,2.36,8.6,9.71,9.43,13.38" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M82,82.88c4.43,2.62,11.45,10.77,12.56,14.84" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M33.97,21.87c2.28,0.38,4.58,0.19,6.53,0.03c7.44-0.61,17.67-1.76,24.75-2.15c1.73-0.09,3.48-0.24,5.18,0.19" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M52.95,9.62c0.72,0.72,1.15,2.26,1.15,3.66c0,8.34-0.1,18.76-0.1,21.6" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M15.57,38.6c3.12,0.83,6.48,0.88,9.67,0.46c13.76-1.81,38.63-4.19,56.38-5.45c3.74-0.27,7.51-0.19,11.18,0.78" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M80.49,13.67c0.17,1.09-0.05,2.66-1.08,4.12C65.38,37.62,49,47.88,17.97,61.23" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M41.41,51.13c0.43,0.64,0.86,1.46,0.86,2.31c0,0.51,0.01,11.56,0.01,19.94c0,1.85,0,3.53,0,4.89" stroke="#000000" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="32.50" y="59.50" font-family="sans-serif" font-size="9" font-weight="bold" fill="#cc0033">5↓</text></g>
+<g transform="translate(593,26)"><rect x="0" y="0" width="109" height="109" fill="none" stroke="#eeeeee" stroke-width="1"/><path d="M43.66,62.75c5.59-0.62,24.34-2.12,30.24-2.28" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M43.51,75.36c6.67-0.46,21.82-1.93,30.13-2.32" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M23.12,83.62c0,5.39-5.25,13.34-6.62,14.88" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M39.77,82.58c2.47,2.71,4.82,10.17,5.44,14.38" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M60.87,82.08c3.33,2.36,8.6,9.71,9.43,13.38" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M82,82.88c4.43,2.62,11.45,10.77,12.56,14.84" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M33.97,21.87c2.28,0.38,4.58,0.19,6.53,0.03c7.44-0.61,17.67-1.76,24.75-2.15c1.73-0.09,3.48-0.24,5.18,0.19" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M52.95,9.62c0.72,0.72,1.15,2.26,1.15,3.66c0,8.34-0.1,18.76-0.1,21.6" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M15.57,38.6c3.12,0.83,6.48,0.88,9.67,0.46c13.76-1.81,38.63-4.19,56.38-5.45c3.74-0.27,7.51-0.19,11.18,0.78" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M80.49,13.67c0.17,1.09-0.05,2.66-1.08,4.12C65.38,37.62,49,47.88,17.97,61.23" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M41.41,51.13c0.43,0.64,0.86,1.46,0.86,2.31c0,0.51,0.01,11.56,0.01,19.94c0,1.85,0,3.53,0,4.89" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M42.98,50.99c5.49-0.64,21.11-2.26,26.9-2.79c3.16-0.29,4.84,0.41,4.83,3.8c-0.01,4.01-0.05,12.94-0.07,18.88c-0.01,2.72-0.02,4.8-0.02,5.5" stroke="#000000" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="58.50" y="42.63" font-family="sans-serif" font-size="9" font-weight="bold" fill="#cc0033">6→</text></g>
+<g transform="translate(8,143)"><rect x="0" y="0" width="109" height="109" fill="none" stroke="#eeeeee" stroke-width="1"/><path d="M43.51,75.36c6.67-0.46,21.82-1.93,30.13-2.32" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M23.12,83.62c0,5.39-5.25,13.34-6.62,14.88" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M39.77,82.58c2.47,2.71,4.82,10.17,5.44,14.38" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M60.87,82.08c3.33,2.36,8.6,9.71,9.43,13.38" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M82,82.88c4.43,2.62,11.45,10.77,12.56,14.84" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M33.97,21.87c2.28,0.38,4.58,0.19,6.53,0.03c7.44-0.61,17.67-1.76,24.75-2.15c1.73-0.09,3.48-0.24,5.18,0.19" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M52.95,9.62c0.72,0.72,1.15,2.26,1.15,3.66c0,8.34-0.1,18.76-0.1,21.6" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M15.57,38.6c3.12,0.83,6.48,0.88,9.67,0.46c13.76-1.81,38.63-4.19,56.38-5.45c3.74-0.27,7.51-0.19,11.18,0.78" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M80.49,13.67c0.17,1.09-0.05,2.66-1.08,4.12C65.38,37.62,49,47.88,17.97,61.23" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M41.41,51.13c0.43,0.64,0.86,1.46,0.86,2.31c0,0.51,0.01,11.56,0.01,19.94c0,1.85,0,3.53,0,4.89" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M42.98,50.99c5.49-0.64,21.11-2.26,26.9-2.79c3.16-0.29,4.84,0.41,4.83,3.8c-0.01,4.01-0.05,12.94-0.07,18.88c-0.01,2.72-0.02,4.8-0.02,5.5" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M43.66,62.75c5.59-0.62,24.34-2.12,30.24-2.28" stroke="#000000" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="44.50" y="56.05" font-family="sans-serif" font-size="9" font-weight="bold" fill="#cc0033">7→</text></g>
+<g transform="translate(125,143)"><rect x="0" y="0" width="109" height="109" fill="none" stroke="#eeeeee" stroke-width="1"/><path d="M23.12,83.62c0,5.39-5.25,13.34-6.62,14.88" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M39.77,82.58c2.47,2.71,4.82,10.17,5.44,14.38" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M60.87,82.08c3.33,2.36,8.6,9.71,9.43,13.38" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M82,82.88c4.43,2.62,11.45,10.77,12.56,14.84" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M33.97,21.87c2.28,0.38,4.58,0.19,6.53,0.03c7.44-0.61,17.67-1.76,24.75-2.15c1.73-0.09,3.48-0.24,5.18,0.19" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M52.95,9.62c0.72,0.72,1.15,2.26,1.15,3.66c0,8.34-0.1,18.76-0.1,21.6" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M15.57,38.6c3.12,0.83,6.48,0.88,9.67,0.46c13.76-1.81,38.63-4.19,56.38-5.45c3.74-0.27,7.51-0.19,11.18,0.78" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M80.49,13.67c0.17,1.09-0.05,2.66-1.08,4.12C65.38,37.62,49,47.88,17.97,61.23" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M41.41,51.13c0.43,0.64,0.86,1.46,0.86,2.31c0,0.51,0.01,11.56,0.01,19.94c0,1.85,0,3.53,0,4.89" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M42.98,50.99c5.49-0.64,21.11-2.26,26.9-2.79c3.16-0.29,4.84,0.41,4.83,3.8c-0.01,4.01-0.05,12.94-0.07,18.88c-0.01,2.72-0.02,4.8-0.02,5.5" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M43.66,62.75c5.59-0.62,24.34-2.12,30.24-2.28" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M43.51,75.36c6.67-0.46,21.82-1.93,30.13-2.32" stroke="#000000" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="44.46" y="67.50" font-family="sans-serif" font-size="9" font-weight="bold" fill="#cc0033">8→</text></g>
+<g transform="translate(242,143)"><rect x="0" y="0" width="109" height="109" fill="none" stroke="#eeeeee" stroke-width="1"/><path d="M39.77,82.58c2.47,2.71,4.82,10.17,5.44,14.38" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M60.87,82.08c3.33,2.36,8.6,9.71,9.43,13.38" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M82,82.88c4.43,2.62,11.45,10.77,12.56,14.84" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M33.97,21.87c2.28,0.38,4.58,0.19,6.53,0.03c7.44-0.61,17.67-1.76,24.75-2.15c1.73-0.09,3.48-0.24,5.18,0.19" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M52.95,9.62c0.72,0.72,1.15,2.26,1.15,3.66c0,8.34-0.1,18.76-0.1,21.6" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M15.57,38.6c3.12,0.83,6.48,0.88,9.67,0.46c13.76-1.81,38.63-4.19,56.38-5.45c3.74-0.27,7.51-0.19,11.18,0.78" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M80.49,13.67c0.17,1.09-0.05,2.66-1.08,4.12C65.38,37.62,49,47.88,17.97,61.23" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M41.41,51.13c0.43,0.64,0.86,1.46,0.86,2.31c0,0.51,0.01,11.56,0.01,19.94c0,1.85,0,3.53,0,4.89" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M42.98,50.99c5.49-0.64,21.11-2.26,26.9-2.79c3.16-0.29,4.84,0.41,4.83,3.8c-0.01,4.01-0.05,12.94-0.07,18.88c-0.01,2.72-0.02,4.8-0.02,5.5" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M43.66,62.75c5.59-0.62,24.34-2.12,30.24-2.28" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M43.51,75.36c6.67-0.46,21.82-1.93,30.13-2.32" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M23.12,83.62c0,5.39-5.25,13.34-6.62,14.88" stroke="#000000" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="15.50" y="79.50" font-family="sans-serif" font-size="9" font-weight="bold" fill="#cc0033">9↓</text></g>
+<g transform="translate(359,143)"><rect x="0" y="0" width="109" height="109" fill="none" stroke="#eeeeee" stroke-width="1"/><path d="M60.87,82.08c3.33,2.36,8.6,9.71,9.43,13.38" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M82,82.88c4.43,2.62,11.45,10.77,12.56,14.84" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M33.97,21.87c2.28,0.38,4.58,0.19,6.53,0.03c7.44-0.61,17.67-1.76,24.75-2.15c1.73-0.09,3.48-0.24,5.18,0.19" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M52.95,9.62c0.72,0.72,1.15,2.26,1.15,3.66c0,8.34-0.1,18.76-0.1,21.6" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M15.57,38.6c3.12,0.83,6.48,0.88,9.67,0.46c13.76-1.81,38.63-4.19,56.38-5.45c3.74-0.27,7.51-0.19,11.18,0.78" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M80.49,13.67c0.17,1.09-0.05,2.66-1.08,4.12C65.38,37.62,49,47.88,17.97,61.23" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M41.41,51.13c0.43,0.64,0.86,1.46,0.86,2.31c0,0.51,0.01,11.56,0.01,19.94c0,1.85,0,3.53,0,4.89" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M42.98,50.99c5.49-0.64,21.11-2.26,26.9-2.79c3.16-0.29,4.84,0.41,4.83,3.8c-0.01,4.01-0.05,12.94-0.07,18.88c-0.01,2.72-0.02,4.8-0.02,5.5" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M43.66,62.75c5.59-0.62,24.34-2.12,30.24-2.28" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M43.51,75.36c6.67-0.46,21.82-1.93,30.13-2.32" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M23.12,83.62c0,5.39-5.25,13.34-6.62,14.88" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M39.77,82.58c2.47,2.71,4.82,10.17,5.44,14.38" stroke="#000000" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="27.25" y="82.50" font-family="sans-serif" font-size="9" font-weight="bold" fill="#cc0033">10↓</text></g>
+<g transform="translate(476,143)"><rect x="0" y="0" width="109" height="109" fill="none" stroke="#eeeeee" stroke-width="1"/><path d="M82,82.88c4.43,2.62,11.45,10.77,12.56,14.84" stroke="#d6d6d6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M33.97,21.87c2.28,0.38,4.58,0.19,6.53,0.03c7.44-0.61,17.67-1.76,24.75-2.15c1.73-0.09,3.48-0.24,5.18,0.19" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M52.95,9.62c0.72,0.72,1.15,2.26,1.15,3.66c0,8.34-0.1,18.76-0.1,21.6" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M15.57,38.6c3.12,0.83,6.48,0.88,9.67,0.46c13.76-1.81,38.63-4.19,56.38-5.45c3.74-0.27,7.51-0.19,11.18,0.78" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M80.49,13.67c0.17,1.09-0.05,2.66-1.08,4.12C65.38,37.62,49,47.88,17.97,61.23" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M41.41,51.13c0.43,0.64,0.86,1.46,0.86,2.31c0,0.51,0.01,11.56,0.01,19.94c0,1.85,0,3.53,0,4.89" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M42.98,50.99c5.49-0.64,21.11-2.26,26.9-2.79c3.16-0.29,4.84,0.41,4.83,3.8c-0.01,4.01-0.05,12.94-0.07,18.88c-0.01,2.72-0.02,4.8-0.02,5.5" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M43.66,62.75c5.59-0.62,24.34-2.12,30.24-2.28" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M43.51,75.36c6.67-0.46,21.82-1.93,30.13-2.32" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M23.12,83.62c0,5.39-5.25,13.34-6.62,14.88" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M39.77,82.58c2.47,2.71,4.82,10.17,5.44,14.38" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M60.87,82.08c3.33,2.36,8.6,9.71,9.43,13.38" stroke="#000000" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="49.50" y="82.50" font-family="sans-serif" font-size="9" font-weight="bold" fill="#cc0033">11↓</text></g>
+<g transform="translate(593,143)"><rect x="0" y="0" width="109" height="109" fill="none" stroke="#eeeeee" stroke-width="1"/><path d="M33.97,21.87c2.28,0.38,4.58,0.19,6.53,0.03c7.44-0.61,17.67-1.76,24.75-2.15c1.73-0.09,3.48-0.24,5.18,0.19" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M52.95,9.62c0.72,0.72,1.15,2.26,1.15,3.66c0,8.34-0.1,18.76-0.1,21.6" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M15.57,38.6c3.12,0.83,6.48,0.88,9.67,0.46c13.76-1.81,38.63-4.19,56.38-5.45c3.74-0.27,7.51-0.19,11.18,0.78" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M80.49,13.67c0.17,1.09-0.05,2.66-1.08,4.12C65.38,37.62,49,47.88,17.97,61.23" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M41.41,51.13c0.43,0.64,0.86,1.46,0.86,2.31c0,0.51,0.01,11.56,0.01,19.94c0,1.85,0,3.53,0,4.89" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M42.98,50.99c5.49-0.64,21.11-2.26,26.9-2.79c3.16-0.29,4.84,0.41,4.83,3.8c-0.01,4.01-0.05,12.94-0.07,18.88c-0.01,2.72-0.02,4.8-0.02,5.5" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M43.66,62.75c5.59-0.62,24.34-2.12,30.24-2.28" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M43.51,75.36c6.67-0.46,21.82-1.93,30.13-2.32" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M23.12,83.62c0,5.39-5.25,13.34-6.62,14.88" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M39.77,82.58c2.47,2.71,4.82,10.17,5.44,14.38" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M60.87,82.08c3.33,2.36,8.6,9.71,9.43,13.38" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M82,82.88c4.43,2.62,11.45,10.77,12.56,14.84" stroke="#000000" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="68.50" y="81.63" font-family="sans-serif" font-size="9" font-weight="bold" fill="#cc0033">12↓</text></g>
+</svg>
+</div>
+
+<h2>Mnémo</h2>
+<div class="mnemo">En <strong>bas, les 4 points 灬</strong> = les braises sous la marmite. Le feu n'est pas sur le côté (flamme vive) mais <strong>dessous</strong> : il chauffe doucement, longtemps, la marmite posée par-dessus. Feu en dessous → <strong>mijoté</strong>.</div>
+
+<h2>Exemples</h2>
+<table>
+<tr><td>煮物 — にもの</td><td>plat mijoté</td></tr><tr><td>肉じゃが — にくじゃが</td><td>bœuf-pommes de terre mijotés</td></tr><tr><td>煮魚 — にざかな</td><td>poisson mijoté</td></tr>
+</table>
+
+<h2>Phrase</h2>
+<div class="phrase">今日の煮物は何ですか。 — <em>Quel est le plat mijoté du jour ?</em></div>
+</body>
+</html>

@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>STREET 3 — Parler jeune 20-30 ans</title>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;max-width:720px;margin:0 auto;padding:0 1.1rem 3rem;color:#1a1a1a;line-height:1.5;background:#fff}
+header{border-bottom:2px solid #1a1a1a;padding:1.4rem 0 .9rem;margin-bottom:1.1rem;position:sticky;top:0;background:#fff}
+h1{margin:0;font-size:1.5rem;font-weight:700;line-height:1.25}
+.subtitle{color:#555;font-size:.92rem;margin-top:.35rem}
+.legend{display:flex;gap:.9rem;flex-wrap:wrap;margin-top:.6rem;font-size:.82rem;color:#555}
+.legend span{white-space:nowrap}
+
+.roots{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.6rem;margin-bottom:1.6rem}
+.root{background:#fff8e6;border-left:3px solid #d4a017;border-radius:6px;padding:.55rem .7rem}
+.root .kanji{font-size:1.5rem;font-weight:700;line-height:1.1}
+.root .reading{font-size:.78rem;color:#7a6212;margin-top:.1rem}
+.root .meaning{font-size:.85rem;margin-top:.2rem}
+.root .unlocks{font-size:.76rem;color:#8a6d00;margin-top:.35rem}
+.root a{color:#4a6fa5;text-decoration:none}
+.root a:hover{text-decoration:underline}
+
+details.group{background:#fafafa;border:1px solid #e8e8e8;border-radius:8px;margin-bottom:.7rem;overflow:hidden}
+details.group summary{list-style:none;cursor:pointer;padding:.75rem .9rem;font-weight:700;font-size:.98rem;background:#f0f0f0;border-bottom:1px solid #e8e8e8;display:flex;justify-content:space-between;align-items:center}
+details.group summary::-webkit-details-marker{display:none}
+details.group summary::after{content:"▸";font-weight:400;color:#888;transition:transform .15s}
+details.group[open] summary::after{transform:rotate(90deg)}
+.group-body{padding:.2rem .9rem .5rem}
+
+.item{display:flex;flex-wrap:wrap;align-items:baseline;gap:.35rem .55rem;padding:.55rem 0;border-bottom:1px solid #eee}
+.item:last-child{border-bottom:none}
+.item .jp{font-size:1.05rem;font-weight:600;white-space:normal}
+.item .kana{font-size:.85rem;color:#666}
+.item .meaning{flex-basis:100%;font-size:.92rem;color:#333;margin-top:.05rem}
+.item .romaji{font-size:.78rem;color:#999;font-style:italic}
+.item .lit{flex-basis:100%;font-size:.78rem;color:#888}
+.item .dial{flex-basis:100%;font-size:.84rem;color:#444;background:#f5f7fa;border-left:2px solid #c5d3e8;border-radius:4px;padding:.3rem .55rem;margin-top:.15rem;white-space:pre-line}
+.item .manual{flex-basis:100%;font-size:.78rem;color:#1a4d8a}
+.item .poli{flex-basis:100%;font-size:.84rem;color:#0a6b4a;background:#eafaf3;border-left:2px solid #2f9e52;border-radius:4px;padding:.3rem .55rem;margin-top:.15rem}
+.item .reg{font-size:.72rem;padding:.05rem .4rem;border-radius:999px;background:#eee;color:#555;font-weight:600}
+.reg-casual{background:#ffe9d6;color:#8a4b00}
+.reg-neutre{background:#e6f0ff;color:#1a4d8a}
+.reg-formel{background:#eee6ff;color:#4a1a8a}
+.note{font-size:.78rem;color:#888;font-style:italic}
+
+.protocol{background:#eaf6ec;border-left:3px solid #2f9e52;border-radius:6px;padding:.75rem .9rem;margin-bottom:1.1rem;font-size:.88rem}
+.protocol strong{display:block;margin-bottom:.35rem;font-size:.92rem}
+.protocol ol{margin:0;padding-left:1.15rem}
+.protocol li{margin-bottom:.3rem}
+
+footer{margin-top:1.8rem;padding-top:1rem;border-top:1px solid #eee;font-size:.78rem;color:#999;text-align:center}
+
+/* Fusion kanji-stroke-order-html : cartes kanji avec tracé KanjiVG inliné */
+details.kcard{background:#fff;border:1px solid #e8e8e8;border-radius:8px;margin-bottom:.6rem;overflow:hidden}
+details.kcard summary{list-style:none;cursor:pointer;padding:.6rem .8rem;display:flex;align-items:baseline;gap:.5rem;flex-wrap:wrap}
+details.kcard summary::-webkit-details-marker{display:none}
+details.kcard summary .kanji{font-size:1.4rem;font-weight:700;line-height:1}
+details.kcard summary .vocab{font-size:.95rem;color:#333}
+details.kcard summary .vocab .kana{color:#666;font-size:.85rem}
+details.kcard summary .meaning{flex-basis:100%;font-size:.85rem;color:#555}
+details.kcard summary::after{content:"▸";margin-left:auto;color:#888;transition:transform .15s}
+details.kcard[open] summary::after{transform:rotate(90deg)}
+.kcard-body{padding:.2rem .8rem .9rem}
+.kcard-meta{color:#555;font-size:.88rem;margin-bottom:.5rem}
+.kcard-meta span{margin-right:1rem}
+.kcard-strokes{background:#fafafa;border:1px solid #e8e8e8;padding:.6rem;border-radius:6px;text-align:center;margin-bottom:.7rem}
+.kcard-strokes svg{max-width:100%;height:auto}
+.kcard-mnemo{background:#fff8e6;padding:.6rem .75rem;border-left:3px solid #d4a017;border-radius:4px;font-size:.9rem}
+
+@media print{
+  header{position:static}
+  details.group,details.kcard{border:none;background:none}
+  details.group summary::after,details.kcard summary::after{content:""}
+  .item{break-inside:avoid}
+}
+</style></head>
+<body>
+<header><h1>STREET 3 — Parler jeune 20-30 ans</h1><div class="subtitle">Intensificateurs, jugements, types sociaux, réseaux, humour. Daté vs vivant 2026 · 192 expressions · exposition consignée, pas acquis</div><div class="legend"><span>○ casual · ◇ neutre · ◆ formel · ♂/♀ genré · ⚠️ attention registre</span></div></header>
+
+
+<details class="group" open><summary>B1 G1 — Intensificateurs (comment les jeunes disent « très ») <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">やばい</span><span class="romaji">yabai</span><span class="reg reg-casual">○ casual</span><span class="meaning">LE mot caméléon : dingue, génial, catastrophique, délicieux, en retard… le contexte décide</span><span class="lit">litt. : à l'origine « dangereux » (argot de voleurs)</span><span class="poli">poli : すごいです／大変です（文脈による）</span><span class="dial">A: この店（みせ）のチーズケーキやばい。
+B: いい意味（いみ）で？
+A: いい意味（いみ）で。</span></div>
+<div class="item"><span class="jp">やば／やばっ</span><span class="romaji">yaba</span><span class="reg reg-casual">○ casual</span><span class="meaning">version réflexe de やばい (surprise instantanée)</span><span class="poli">poli : 大変です</span><span class="dial">A: もう23時（にじゅうさんじ）だよ。
+B: やばっ、終電（しゅうでん）！</span></div>
+<div class="item"><span class="jp">めっちゃ</span><span class="romaji">meccha</span><span class="reg reg-casual">○ casual</span><span class="meaning">super / trop (l'intensif par défaut des 20-30 ans) <span class="note">revu (L49) ; origine Kansai, national aujourd'hui</span></span><span class="poli">poli : とても</span><span class="dial">A: 外（そと）どう？
+B: めっちゃ寒（さむ）い。</span></div>
+<div class="item"><span class="jp">超（ちょう）</span><span class="romaji">chou</span><span class="reg reg-casual">○ casual</span><span class="meaning">hyper- (préfixe, un cran plus daté que めっちゃ mais vivant) <span class="note">Kanto historique</span></span><span class="poli">poli : とても</span><span class="dial">A: 映画（えいが）どうだった？
+B: 超（ちょう）よかった。</span></div>
+<div class="item"><span class="jp">ガチ</span><span class="romaji">gachi</span><span class="reg reg-casual">○ casual</span><span class="meaning">pour de vrai / sérieusement (opposé de « pour rire »)</span><span class="lit">litt. : de ガチンコ, combat réel de sumo</span><span class="poli">poli : 本当に</span><span class="dial">A: 冗談（じょうだん）でしょ？
+B: ガチ。</span></div>
+<div class="item"><span class="jp">ガチで</span><span class="romaji">gachi de</span><span class="reg reg-casual">○ casual</span><span class="meaning">franchement / véritablement (adverbe)</span><span class="poli">poli : 本当に</span><span class="dial">A: ガチでうまいから食（た）べてみて。
+B: そこまで言（い）う？</span></div>
+<div class="item"><span class="jp">鬼（おに）〜</span><span class="romaji">oni-</span><span class="reg reg-casual">○ casual</span><span class="meaning">monstrueusement… (préfixe jeune : 鬼むずい = hyper dur) <span class="note">jeune</span></span><span class="lit">litt. : « démon » en préfixe</span><span class="poli">poli : 非常に〜</span><span class="dial">A: テストどうだった？
+B: 鬼（おに）むずかった。</span></div>
+<div class="item"><span class="jp">クソ〜</span><span class="romaji">kuso-</span><span class="reg reg-casual">○ casual</span><span class="meaning">vachement… (vulgaire léger : クソうまい = « putain que c'est bon ») <span class="note">⚠️ vulgaire-léger, entre amis proches uniquement</span></span><span class="poli">poli : pas d'équivalent — vulgaire ; en poli on utilise とても/非常に à la place</span><span class="dial">A: このラーメンどう？
+B: クソうまい。</span></div>
+<div class="item"><span class="jp">激（げき）〜</span><span class="romaji">geki-</span><span class="reg reg-casual">○ casual</span><span class="meaning">ultra- (激安 = ultra pas cher, 激辛 = ultra épicé)</span><span class="poli">poli : とても／非常に〜</span><span class="dial">A: この麻婆豆腐（マーボーどうふ）、激辛（げきから）だって。
+B: 挑戦（ちょうせん）する。</span></div>
+<div class="item"><span class="jp">爆（ばく）〜</span><span class="romaji">baku-</span><span class="reg reg-casual">○ casual</span><span class="meaning">explosivement… (爆笑 = fou rire, 爆睡 = dormir comme une masse)</span><span class="poli">poli : 非常に〜（爆笑・爆睡自体は標準語だが、接頭辞として自由に使うのはやや casual）</span><span class="dial">A: 昨日（きのう）何（なに）してた？
+B: 12時間（じゅうにじかん）爆睡（ばくすい）。</span></div>
+<div class="item"><span class="jp">死（し）ぬほど</span><span class="romaji">shinu hodo</span><span class="reg reg-casual">○ casual</span><span class="meaning">à en mourir (hyperbole standard)</span><span class="poli">poli : 非常に</span><span class="dial">A: 死（し）ぬほど眠（ねむ）い。
+B: 寝（ね）ろ（笑）</span></div>
+<div class="item"><span class="jp">普通（ふつう）に</span><span class="romaji">futsuu ni</span><span class="reg reg-casual">○ casual</span><span class="meaning">franchement / en vrai (paradoxe : « normalement » = « vraiment » : 普通にうまい = franchement bon) <span class="note">jeune, très fréquent, déroutant au début</span></span><span class="poli">poli : 本当に</span><span class="dial">A: コンビニのスイーツでしょ？
+B: 普通（ふつう）においしいよ。</span></div>
+<div class="item"><span class="jp">地味（じみ）に</span><span class="romaji">jimi ni</span><span class="reg reg-casual">○ casual</span><span class="meaning">l'air de rien, … (une gêne ou qualité discrète mais réelle)</span><span class="poli">poli : 実は</span><span class="dial">A: 靴下（くつした）濡（ぬ）れた。
+B: それ地味（じみ）にきついね。</span></div>
+<div class="item"><span class="jp">意外（いがい）と</span><span class="romaji">igai to</span><span class="reg reg-casual">○ casual</span><span class="meaning">étonnamment / plus que prévu</span><span class="poli">poli : identique (déjà neutre)</span><span class="dial">A: この安（やす）いワインどう？
+B: 意外（いがい）といける。</span></div>
+<div class="item"><span class="jp">割（わり）と</span><span class="romaji">wari to</span><span class="reg reg-casual">○ casual</span><span class="meaning">plutôt / assez (nuance le jugement)</span><span class="poli">poli : identique (déjà neutre)</span><span class="dial">A: 駅（えき）から遠（とお）い？
+B: 割（わり）と近（ちか）いよ。</span></div>
+<div class="item"><span class="jp">〜すぎる</span><span class="romaji">-sugiru</span><span class="reg reg-casual">○ casual</span><span class="meaning">trop… (usage jeune : compliment hyperbolique, かわいすぎる)</span><span class="poli">poli : identique (grammaire standard, le sens hyperbolique reste identique en poli)</span><span class="dial">A: この子犬（こいぬ）見（み）て。
+B: かわいすぎる。</span></div></div></details>
+<details class="group" open><summary>B1 G2 — Dire que c'est bien (positif jeune) <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">最高（さいこう）</span><span class="romaji">saikou</span><span class="reg reg-casual">○ casual</span><span class="meaning">génial / le top</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 温泉（おんせん）どうだった？
+B: 最高（さいこう）だった。</span></div>
+<div class="item"><span class="jp">神（かみ）</span><span class="romaji">kami</span><span class="reg reg-casual">○ casual</span><span class="meaning">divin (nom-adjectif : 神アプリ, 神回, 対応が神) <span class="note">jeune</span></span><span class="poli">poli : 素晴らしいです（この用法は若者言葉）</span><span class="dial">A: 店員（てんいん）さん、傘（かさ）くれた。
+B: 神（かみ）じゃん。</span></div>
+<div class="item"><span class="jp">ウケる</span><span class="romaji">ukeru</span><span class="reg reg-casual">○ casual</span><span class="meaning">trop drôle / j'suis mort (rire) <span class="note">revu (L49 めっちゃウケる)</span></span><span class="poli">poli : 面白いです</span><span class="dial">A: 駅（えき）で転（ころ）んだ。
+B: ウケる（笑）</span></div>
+<div class="item"><span class="jp">エモい</span><span class="romaji">emoi</span><span class="reg reg-casual">○ casual</span><span class="meaning">qui touche en plein cœur, nostalgique-beau <span class="note">jeune</span></span><span class="lit">litt. : de « emotional »</span><span class="poli">poli : 感動的です</span><span class="dial">A: 夕日（ゆうひ）の写真（しゃしん）見（み）て。
+B: エモい…</span></div>
+<div class="item"><span class="jp">尊（とうと）い</span><span class="romaji">toutoi</span><span class="reg reg-casual">○ casual</span><span class="meaning">précieux, adorable au point d'être sacré (culture otaku → général) <span class="note">jeune, teinte otaku</span></span><span class="poli">poli : 素晴らしいです（otaku特有のニュアンスは丁寧語にならない）</span><span class="dial">A: 猫（ねこ）が子猫（こねこ）抱（だ）いてる。
+B: 尊（とうと）い…</span></div>
+<div class="item"><span class="jp">刺（さ）さる</span><span class="romaji">sasaru</span><span class="reg reg-casual">○ casual</span><span class="meaning">ça me parle / ça me touche direct</span><span class="lit">litt. : « ça se plante (en moi) »</span><span class="poli">poli : 心に響きます</span><span class="dial">A: この歌詞（かし）、刺（さ）さる。
+B: わかる。</span></div>
+<div class="item"><span class="jp">ツボ</span><span class="romaji">tsubo</span><span class="reg reg-casual">○ casual</span><span class="meaning">exactement mon humour / mon point faible de rire</span><span class="lit">litt. : « le point d'acupuncture »</span><span class="poli">poli : とても面白いです</span><span class="dial">A: なんでまだ笑（わら）ってるの（笑）
+B: ツボに入（はい）った（笑）</span></div>
+<div class="item"><span class="jp">センスいい</span><span class="romaji">sensu ii</span><span class="reg reg-casual">○ casual</span><span class="meaning">bon goût (vêtements, choix, humour)</span><span class="poli">poli : センスがいいです</span><span class="dial">A: この店（みせ）選（えら）んだのマチュー？
+B: そう。
+A: センスいいね。</span></div>
+<div class="item"><span class="jp">かっけー</span><span class="romaji">kakkee</span><span class="reg reg-casual">○ casual</span><span class="meaning">trop classe (かっこいい écrasé) <span class="note">♂ surtout</span></span><span class="manual">forme manuel : かっこいいです</span><span class="poli">poli : かっこいいです</span><span class="dial">A: 新（あたら）しいバイク見（み）て。
+B: かっけー。</span></div>
+<div class="item"><span class="jp">おしゃれ</span><span class="romaji">oshare</span><span class="reg reg-casual">○ casual</span><span class="meaning">stylé (personne, lieu, objet)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: このカフェ、おしゃれだね。
+B: インスタで見（み）つけた。</span></div>
+<div class="item"><span class="jp">イケてる</span><span class="romaji">iketeru</span><span class="reg reg-casual">○ casual</span><span class="meaning">cool, qui assure <span class="note">légèrement vieillissant mais compris</span></span><span class="poli">poli : 素敵です</span><span class="dial">A: この服（ふく）どう？
+B: イケてるじゃん。</span></div>
+<div class="item"><span class="jp">天才（てんさい）！</span><span class="romaji">tensai!</span><span class="reg reg-casual">○ casual</span><span class="meaning">t'es un génie ! (compliment express)</span><span class="poli">poli : 天才ですね</span><span class="dial">A: 先（さき）に予約（よやく）しといたよ。
+B: 天才（てんさい）！</span></div>
+<div class="item"><span class="jp">さすが</span><span class="romaji">sasuga</span><span class="reg reg-casual">○ casual</span><span class="meaning">évidemment, venant de toi / t'es le meilleur (compliment de confirmation)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 道（みち）、覚（おぼ）えてたよ。
+B: さすが。</span></div>
+<div class="item"><span class="jp">優勝（ゆうしょう）</span><span class="romaji">yuushou</span><span class="reg reg-casual">○ casual</span><span class="meaning">« victoire » = le bonheur parfait, là maintenant (argot : ビール＋風呂（ふろ）＝優勝) <span class="note">jeune</span></span><span class="poli">poli : 最高です（この用法自体が若者言葉）</span><span class="dial">A: サウナのあとのビール。
+B: それはもう優勝（ゆうしょう）。</span></div>
+<div class="item"><span class="jp">アリ</span><span class="romaji">ari</span><span class="reg reg-casual">○ casual</span><span class="meaning">ça se fait / je valide (opposé : ナシ)</span><span class="lit">litt. : あり／なし = existe / existe pas</span><span class="poli">poli : いいと思います</span><span class="dial">A: ピザにはちみつって、アリ？
+B: 全然（ぜんぜん）アリ。</span></div>
+<div class="item"><span class="jp">いい感（かん）じ</span><span class="romaji">ii kanji</span><span class="reg reg-casual">○ casual</span><span class="meaning">nickel / ça le fait</span><span class="poli">poli : いい感じです</span><span class="dial">A: 髪（かみ）切（き）った。
+B: いい感（かん）じじゃん。</span></div></div></details>
+<details class="group" open><summary>B1 G3 — Dire que c'est nul (négatif jeune) <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">ダルい／だるい</span><span class="romaji">darui</span><span class="reg reg-casual">○ casual</span><span class="meaning">la flemme / relou / fatigué</span><span class="poli">poli : 面倒です</span><span class="dial">A: 明日（あした）朝（あさ）7時（しちじ）集合（しゅうごう）。
+B: だる…</span></div>
+<div class="item"><span class="jp">キツい</span><span class="romaji">kitsui</span><span class="reg reg-casual">○ casual</span><span class="meaning">dur, éprouvant (physique ou mental)</span><span class="poli">poli : つらいです</span><span class="dial">A: 夜勤（やきん）どう？
+B: 正直（しょうじき）キツい。</span></div>
+<div class="item"><span class="jp">しんどい</span><span class="romaji">shindoi</span><span class="reg reg-casual">○ casual</span><span class="meaning">épuisant, dur à vivre (aussi : ému à en souffrir, usage otaku) <span class="note">Kansai à l'origine, national</span></span><span class="poli">poli : つらいです</span><span class="dial">A: 大丈夫（だいじょうぶ）？
+B: 今週（こんしゅう）しんどかった…</span></div>
+<div class="item"><span class="jp">萎（な）える</span><span class="romaji">naeru</span><span class="reg reg-casual">○ casual</span><span class="meaning">ça me démotive / ça casse l'ambiance <span class="note">jeune</span></span><span class="lit">litt. : « se faner »</span><span class="poli">poli : がっかりします</span><span class="dial">A: 雨（あめ）でBBQ中止（ちゅうし）。
+B: 萎（な）える〜。</span></div>
+<div class="item"><span class="jp">ドン引（び）き</span><span class="romaji">donbiki</span><span class="reg reg-casual">○ casual</span><span class="meaning">malaise total / grosse gêne (recul devant un comportement)</span><span class="poli">poli : 驚きました</span><span class="dial">A: 元カノの話（はなし）ずっとしてた。
+B: それはドン引（び）き。</span></div>
+<div class="item"><span class="jp">ダサい</span><span class="romaji">dasai</span><span class="reg reg-casual">○ casual</span><span class="meaning">ringard, pas classe <span class="note">⚠️ blessant</span></span><span class="poli">poli : pas d'équivalent poli direct — jugement négatif franc, on ne le dit simplement pas à un inconnu</span><span class="dial">A: この靴（くつ）どう？
+B: ごめん、ちょっとダサい（笑）</span></div>
+<div class="item"><span class="jp">痛（いた）い</span><span class="romaji">itai</span><span class="reg reg-casual">○ casual</span><span class="meaning">gênant, cringe (quelqu'un qui se croit cool) <span class="note">⚠️ moqueur</span></span><span class="lit">litt. : « douloureux » à regarder</span><span class="poli">poli : pas d'équivalent — sens argotique, absent du registre poli</span><span class="dial">A: 40歳（よんじゅっさい）で若者言葉（わかものことば）使（つか）いまくるの、どう？
+B: ちょっと痛（いた）いかも。</span></div>
+<div class="item"><span class="jp">寒（さむ）い</span><span class="romaji">samui</span><span class="reg reg-casual">○ casual</span><span class="meaning">nul (une blague qui tombe à plat)</span><span class="lit">litt. : la blague « jette un froid »</span><span class="poli">poli : pas d'équivalent — sens argotique, absent du registre poli</span><span class="dial">A: 布団（ふとん）が吹（ふ）っ飛（と）んだ！
+B: 寒（さむ）っ。</span></div>
+<div class="item"><span class="jp">最悪（さいあく）</span><span class="romaji">saiaku</span><span class="reg reg-casual">○ casual</span><span class="meaning">l'horreur / pire journée</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 財布（さいふ）も鍵（かぎ）もない。
+B: 最悪（さいあく）じゃん…</span></div>
+<div class="item"><span class="jp">ありえない</span><span class="romaji">arienai</span><span class="reg reg-casual">○ casual</span><span class="meaning">inadmissible / j'hallucine</span><span class="lit">litt. : « ça ne peut pas exister »</span><span class="poli">poli : 信じられません</span><span class="dial">A: 2時間（にじかん）待（ま）たされた。
+B: ありえない。</span></div>
+<div class="item"><span class="jp">無理（むり）</span><span class="romaji">muri</span><span class="reg reg-casual">○ casual</span><span class="meaning">j'peux pas (refus, dégoût, ou même « trop mignon j'en peux plus ») <span class="note">revu ; sens jeune élargi</span></span><span class="poli">poli : 難しいです</span><span class="dial">A: ゴキブリ出（で）た。
+B: 無理無理無理（むりむりむり）。</span></div>
+<div class="item"><span class="jp">うっさい</span><span class="romaji">ussai</span><span class="reg reg-casual">○ casual</span><span class="meaning">tais-toi / relou (うるさい écrasé) <span class="note">⚠️ brusque, taquin entre proches</span></span><span class="manual">forme manuel : うるさいです</span><span class="poli">poli : うるさいです</span><span class="dial">A: また寝坊（ねぼう）？（笑）
+B: うっさい（笑）</span></div>
+<div class="item"><span class="jp">きしょい</span><span class="romaji">kishoi</span><span class="reg reg-casual">○ casual</span><span class="meaning">dégueu / malaisant (plus fort que きもい) <span class="note">⚠️ blessant, jeune</span></span><span class="poli">poli : pas d'équivalent — trop familier et blessant, à éviter en poli</span><span class="dial">A: 変（へん）なDM来（き）た。
+B: きしょ。</span></div>
+<div class="item"><span class="jp">詰（つ）んだ</span><span class="romaji">tsunda</span><span class="reg reg-casual">○ casual</span><span class="meaning">c'est mort, game over (du shôgi : échec et mat) <span class="note">jeune, gaming</span></span><span class="poli">poli : もう手遅れです</span><span class="dial">A: 財布（さいふ）忘（わす）れて終電（しゅうでん）逃（のが）した。
+B: それは詰（つ）んだ。</span></div>
+<div class="item"><span class="jp">メンタルやられる</span><span class="romaji">mentaru yarareru</span><span class="reg reg-casual">○ casual</span><span class="meaning">ça me détruit le moral</span><span class="poli">poli : 精神的につらいです</span><span class="dial">A: 満員電車（まんいんでんしゃ）毎日（まいにち）はメンタルやられる。
+B: ほんとそれ。</span></div>
+<div class="item"><span class="jp">病（や）む</span><span class="romaji">yamu</span><span class="reg reg-casual">○ casual</span><span class="meaning">déprimer / broyer du noir <span class="note">jeune ; sérieux selon contexte</span></span><span class="lit">litt. : « tomber malade » mentalement</span><span class="poli">poli : 落ち込みます</span><span class="dial">A: 最近（さいきん）ちょっと病（や）んでる。
+B: 大丈夫（だいじょうぶ）？話（はなし）聞（き）くよ。</span></div></div></details>
+<details class="group" open><summary>B1 G4 — Le mitigé (l'art du jugement flou) <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">微妙（びみょう）</span><span class="romaji">bimyou</span><span class="reg reg-casual">○ casual</span><span class="meaning">bof / pas terrible sans être nul (LE non-jugement japonais)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 映画（えいが）どうだった？
+B: うーん、微妙（びみょう）。</span></div>
+<div class="item"><span class="jp">まあまあ</span><span class="romaji">maamaa</span><span class="reg reg-casual">○ casual</span><span class="meaning">correct, sans plus</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: テストできた？
+B: まあまあかな。</span></div>
+<div class="item"><span class="jp">ぼちぼち</span><span class="romaji">bochibochi</span><span class="reg reg-casual">○ casual</span><span class="meaning">ça va tranquillement / petit à petit <span class="note">teinte Kansai, compris partout</span></span><span class="poli">poli : まあまあです</span><span class="dial">A: 仕事（しごと）どう？
+B: ぼちぼちです。</span></div>
+<div class="item"><span class="jp">そこそこ</span><span class="romaji">sokosoko</span><span class="reg reg-casual">○ casual</span><span class="meaning">raisonnablement bien / pas mal du tout</span><span class="poli">poli : それなりに</span><span class="dial">A: あの店（みせ）高（たか）い？
+B: そこそこするね。</span></div>
+<div class="item"><span class="jp">悪（わる）くない</span><span class="romaji">warukunai</span><span class="reg reg-casual">○ casual</span><span class="meaning">pas mal (compliment discret)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 自分（じぶん）で作（つく）ったカレー、どう？
+B: 悪（わる）くない。</span></div>
+<div class="item"><span class="jp">惜（お）しい</span><span class="romaji">oshii</span><span class="reg reg-casual">○ casual</span><span class="meaning">presque ! / dommage, pas loin</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 「こんばんわ」…あってる？
+B: 惜（お）しい！「こんばんは」。</span></div>
+<div class="item"><span class="jp">もったいない</span><span class="romaji">mottainai</span><span class="reg reg-casual">○ casual</span><span class="meaning">quel gâchis / ça mérite mieux</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 半分（はんぶん）残（のこ）しちゃった。
+B: もったいない！</span></div>
+<div class="item"><span class="jp">人（ひと）による</span><span class="romaji">hito ni yoru</span><span class="reg reg-casual">○ casual</span><span class="meaning">ça dépend des gens</span><span class="poli">poli : 人によります</span><span class="dial">A: 納豆（なっとう）っておいしいの？
+B: 人（ひと）によるかな（笑）</span></div>
+<div class="item"><span class="jp">場合（ばあい）による</span><span class="romaji">baai ni yoru</span><span class="reg reg-casual">○ casual</span><span class="meaning">ça dépend des cas</span><span class="poli">poli : 場合によります</span><span class="dial">A: 遅刻（ちこく）ってあり？
+B: 場合（ばあい）による。</span></div>
+<div class="item"><span class="jp">好（この）みが分（わ）かれる</span><span class="romaji">konomi ga wakareru</span><span class="reg reg-casual">○ casual</span><span class="meaning">ça divise / question de goût</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: パクチーどう？
+B: あれは好（この）みが分（わ）かれるね。</span></div>
+<div class="item"><span class="jp">どっちでもいい</span><span class="romaji">docchi demo ii</span><span class="reg reg-casual">○ casual</span><span class="meaning">peu importe / les deux me vont <span class="note">⚠️ ton : peut sonner désinvolte</span></span><span class="poli">poli : どちらでも構いません</span><span class="dial">A: うどんorそば？
+B: どっちでもいいよ、任（まか）せる。</span></div>
+<div class="item"><span class="jp">なんとも言（い）えない</span><span class="romaji">nan tomo ienai</span><span class="reg reg-casual">○ casual</span><span class="meaning">difficile à dire / indescriptible</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: この味（あじ）どう？
+B: なんとも言（い）えない…初（はじ）めての味（あじ）。</span></div>
+<div class="item"><span class="jp">気分（きぶん）による</span><span class="romaji">kibun ni yoru</span><span class="reg reg-casual">○ casual</span><span class="meaning">ça dépend de mon humeur</span><span class="poli">poli : 気分によります</span><span class="dial">A: 甘党（あまとう）？辛党（からとう）？
+B: 気分（きぶん）による（笑）</span></div>
+<div class="item"><span class="jp">五分五分（ごぶごぶ）</span><span class="romaji">gobu gobu</span><span class="reg reg-casual">○ casual</span><span class="meaning">50-50 / ça peut aller dans les deux sens</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 明日（あした）晴（は）れるかな。
+B: 五分五分（ごぶごぶ）じゃない？</span></div>
+<div class="item"><span class="jp">紙一重（かみひとえ）</span><span class="romaji">kami hitoe</span><span class="reg reg-casual">○ casual</span><span class="meaning">à un cheveu près (génie et folie, bon et mauvais)</span><span class="lit">litt. : « l'épaisseur d'une feuille »</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: あのアイデア、天才（てんさい）？
+B: 天才（てんさい）とバカは紙一重（かみひとえ）（笑）</span></div>
+<div class="item"><span class="jp">ピンとこない</span><span class="romaji">pin to konai</span><span class="reg reg-casual">○ casual</span><span class="meaning">ça ne me parle pas / je ne visualise pas</span><span class="poli">poli : ピンときません</span><span class="dial">A: この企画（きかく）どう？
+B: 正直（しょうじき）、ピンとこない。</span></div></div></details>
+<details class="group" open><summary>B2 G5 — Types sociaux (le casting des 20-30 ans) <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">陽（よう）キャ</span><span class="romaji">youkya</span><span class="reg reg-casual">○ casual</span><span class="meaning">extraverti, sociable, l'énergie du groupe <span class="note">jeune</span></span><span class="lit">litt. : 陽気（ようき）なキャラ contracté</span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: あの人（ひと）、誰（だれ）とでも話（はな）すね。
+B: ザ・陽（よう）キャだね。</span></div>
+<div class="item"><span class="jp">陰（いん）キャ</span><span class="romaji">inkya</span><span class="reg reg-casual">○ casual</span><span class="meaning">introverti, discret (auto-dérision ok, sur autrui ⚠️) <span class="note">⚠️ moqueur si dit des autres</span></span><span class="lit">litt. : 陰気（いんき）なキャラ</span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: パーティー苦手（にがて）？
+B: うん、根（ね）は陰（いん）キャなんで（笑）</span></div>
+<div class="item"><span class="jp">ぼっち</span><span class="romaji">bocchi</span><span class="reg reg-casual">○ casual</span><span class="meaning">tout seul (一人ぼっち) : ぼっち飯 = manger seul <span class="note">auto-dérision fréquente</span></span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: 昼（ひる）誰（だれ）と食（た）べた？
+B: ぼっち飯（めし）（笑）</span></div>
+<div class="item"><span class="jp">コミュ力（りょく）</span><span class="romaji">komyuryoku</span><span class="reg reg-casual">○ casual</span><span class="meaning">aisance sociale (compétence valorisée n°1)</span><span class="lit">litt. : コミュニケーション能力 contracté</span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: 彼（かれ）、初対面（しょたいめん）で全員（ぜんいん）と仲良（なかよ）くなってた。
+B: コミュ力（りょく）おばけだ。</span></div>
+<div class="item"><span class="jp">コミュ障（しょう）</span><span class="romaji">komyushou</span><span class="reg reg-casual">○ casual</span><span class="meaning">pas doué socialement (auto-dérision surtout) <span class="note">⚠️ sur soi ok, sur autrui blessant</span></span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: 電話（でんわ）苦手（にがて）…
+B: コミュ障（しょう）あるある（笑）</span></div>
+<div class="item"><span class="jp">オタク</span><span class="romaji">otaku</span><span class="reg reg-casual">○ casual</span><span class="meaning">passionné à fond (anime, jeux, mais aussi train, café…) : plus péjoratif du tout entre jeunes</span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: ガンダム詳（くわ）しいね。
+B: オタクなんで（笑）</span></div>
+<div class="item"><span class="jp">ガチ勢（ぜい）</span><span class="romaji">gachizei</span><span class="reg reg-casual">○ casual</span><span class="meaning">les hardcore, ceux qui font sérieusement <span class="note">gaming → général</span></span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: ジム週（しゅう）6？
+B: うん。
+A: ガチ勢（ぜい）じゃん。</span></div>
+<div class="item"><span class="jp">エンジョイ勢（ぜい）</span><span class="romaji">enjoizei</span><span class="reg reg-casual">○ casual</span><span class="meaning">ceux qui font pour le fun, sans se prendre la tête</span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: 大会（たいかい）出（で）るの？
+B: いや、エンジョイ勢（ぜい）なんで。</span></div>
+<div class="item"><span class="jp">推（お）し</span><span class="romaji">oshi</span><span class="reg reg-casual">○ casual</span><span class="meaning">son idole / son favori (idol, perso, marque… tout se 推す)</span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: 推（お）しは誰（だれ）？
+B: 言（い）ったら長（なが）くなるよ（笑）</span></div>
+<div class="item"><span class="jp">推（お）し活（かつ）</span><span class="romaji">oshikatsu</span><span class="reg reg-casual">○ casual</span><span class="meaning">les activités autour de son 推し (concerts, goodies…) <span class="note">jeune</span></span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: 週末（しゅうまつ）は？
+B: 推（お）し活（かつ）。ライブ2本（にほん）。</span></div>
+<div class="item"><span class="jp">沼（ぬま）</span><span class="romaji">numa</span><span class="reg reg-casual">○ casual</span><span class="meaning">le marécage = passion dont on ne sort plus (沼にハマる, カメラ沼) <span class="note">jeune</span></span><span class="poli">poli : identique (métaphore, pas d'axe de politesse)</span><span class="dial">A: レンズ3本目（さんぼんめ）？
+B: カメラ沼（ぬま）にハマった…</span></div>
+<div class="item"><span class="jp">天然（てんねん）</span><span class="romaji">tennen</span><span class="reg reg-casual">○ casual</span><span class="meaning">lunaire, à côté de la plaque sans le faire exprès (plutôt affectueux)</span><span class="lit">litt. : « naturel » = pas calculé</span><span class="poli">poli : identique (déjà utilisé même en poli, ton affectueux)</span><span class="dial">A: 傘（かさ）2本（にほん）持（も）ってきた…
+B: 天然（てんねん）だな〜（笑）</span></div>
+<div class="item"><span class="jp">いじられキャラ</span><span class="romaji">ijirare kyara</span><span class="reg reg-casual">○ casual</span><span class="meaning">celui qu'on taquine gentiment (rôle social codifié)</span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: また僕（ぼく）の話（はなし）？（笑）
+B: いじられキャラだから（笑）</span></div>
+<div class="item"><span class="jp">ムードメーカー</span><span class="romaji">muudo meekaa</span><span class="reg reg-casual">○ casual</span><span class="meaning">celui qui met l'ambiance</span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: ユウタがいると場（ば）が明（あか）るいね。
+B: ムードメーカーだからね。</span></div>
+<div class="item"><span class="jp">しっかりしてる</span><span class="romaji">shikkari shiteru</span><span class="reg reg-casual">○ casual</span><span class="meaning">fiable, posé, mature (grand compliment)</span><span class="poli">poli : しっかりしています</span><span class="dial">A: 彼女（かのじょ）、25歳（にじゅうごさい）で店長（てんちょう）だって。
+B: しっかりしてるね。</span></div>
+<div class="item"><span class="jp">メンヘラ</span><span class="romaji">menhera</span><span class="reg reg-casual">○ casual</span><span class="meaning">instable affectivement, possessif-dramatique <span class="note">⚠️ très péjoratif, jamais en face</span></span><span class="lit">litt. : de « mental health »</span><span class="poli">poli : pas d'équivalent — terme très péjoratif, à éviter même en registre neutre</span><span class="dial">A: 元カレ、1日（いちにち）100件（ひゃっけん）LINE来（き）てた。
+B: それはメンヘラ…</span></div></div></details>
+<details class="group" open><summary>B2 G6 — Réseaux sociaux (le vocabulaire LINE/Insta/X) <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">バズる</span><span class="romaji">bazuru</span><span class="reg reg-casual">○ casual</span><span class="meaning">faire le buzz, devenir viral</span><span class="poli">poli : バズります</span><span class="dial">A: この動画（どうが）100万（ひゃくまん）回（かい）再生（さいせい）。
+B: バズってるじゃん。</span></div>
+<div class="item"><span class="jp">映（ば）える</span><span class="romaji">baeru</span><span class="reg reg-casual">○ casual</span><span class="meaning">être photogénique / rendre bien en photo</span><span class="lit">litt. : de インスタ映え, raccourci moderne</span><span class="poli">poli : 映えます</span><span class="dial">A: このパフェ、映（ば）えるね。
+B: 食（た）べる前（まえ）に撮（と）ろ。</span></div>
+<div class="item"><span class="jp">盛（も）れる</span><span class="romaji">moreru</span><span class="reg reg-casual">○ casual</span><span class="meaning">être avantagé par la photo/le filtre (盛る = embellir) <span class="note">jeune</span></span><span class="poli">poli : 盛れます</span><span class="dial">A: このアプリ、盛（も）れるよ。
+B: どれどれ。</span></div>
+<div class="item"><span class="jp">自撮（じど）り</span><span class="romaji">jidori</span><span class="reg reg-casual">○ casual</span><span class="meaning">selfie</span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: 自撮（じど）りする？
+B: うん、寄（よ）って寄（よ）って。</span></div>
+<div class="item"><span class="jp">スクショ</span><span class="romaji">sukusho</span><span class="reg reg-casual">○ casual</span><span class="meaning">capture d'écran</span><span class="poli">poli : スクリーンショット（省略しない完全形）</span><span class="dial">A: その店（みせ）の場所（ばしょ）は？
+B: スクショ送（おく）る。</span></div>
+<div class="item"><span class="jp">既読（きどく）</span><span class="romaji">kidoku</span><span class="reg reg-casual">○ casual</span><span class="meaning">« lu » sur LINE (l'unité de mesure de l'attente) <span class="note">revu (M2)</span></span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 既読（きどく）ついた？
+B: ついたけど返事（へんじ）ない…</span></div>
+<div class="item"><span class="jp">未読（みどく）スルー</span><span class="romaji">midoku suruu</span><span class="reg reg-casual">○ casual</span><span class="meaning">ignorer sans même ouvrir (pire que le vu)</span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: 既読（きどく）スルーと未読（みどく）スルー、どっちがマシ？
+B: 究極（きゅうきょく）の選択（せんたく）だ…</span></div>
+<div class="item"><span class="jp">リプ</span><span class="romaji">ripu</span><span class="reg reg-casual">○ casual</span><span class="meaning">réponse (reply, sur X/Insta)</span><span class="poli">poli : 返信（省略しない完全形）</span><span class="dial">A: 変（へん）なリプ来（き）た。
+B: 無視（むし）でいいよ。</span></div>
+<div class="item"><span class="jp">DM（ディーエム）</span><span class="romaji">dii emu</span><span class="reg reg-casual">○ casual</span><span class="meaning">message privé</span><span class="poli">poli : identique (déjà largement utilisé)</span><span class="dial">A: 詳細（しょうさい）はDM（ディーエム）で送（おく）るね。
+B: 了解（りょうかい）。</span></div>
+<div class="item"><span class="jp">フォロバ</span><span class="romaji">foroba</span><span class="reg reg-casual">○ casual</span><span class="meaning">follow back <span class="note">jeune</span></span><span class="poli">poli : フォローを返すこと（省略しない完全形）</span><span class="dial">A: フォローしたよ。
+B: フォロバした！</span></div>
+<div class="item"><span class="jp">いいね</span><span class="romaji">iine</span><span class="reg reg-casual">○ casual</span><span class="meaning">le like (verbe : いいねする)</span><span class="poli">poli : identique (déjà largement utilisé)</span><span class="dial">A: 投稿（とうこう）見（み）た？
+B: いいねしといた。</span></div>
+<div class="item"><span class="jp">ストーリー</span><span class="romaji">sutoorii</span><span class="reg reg-casual">○ casual</span><span class="meaning">story Instagram (ストーリーズ)</span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: 昨日（きのう）のストーリー見（み）たよ、楽（たの）しそうだった。
+B: 見（み）てくれたんだ（笑）</span></div>
+<div class="item"><span class="jp">タグ付（づ）け</span><span class="romaji">tagu zuke</span><span class="reg reg-casual">○ casual</span><span class="meaning">taguer quelqu'un</span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: 写真（しゃしん）あげていい？
+B: いいよ、タグ付（づ）けして。</span></div>
+<div class="item"><span class="jp">炎上（えんじょう）</span><span class="romaji">enjou</span><span class="reg reg-casual">○ casual</span><span class="meaning">se faire lyncher en ligne / bad buzz</span><span class="lit">litt. : « prendre feu »</span><span class="poli">poli : identique (largement utilisé même dans les médias)</span><span class="dial">A: あの芸人（げいにん）、また炎上（えんじょう）してる。
+B: 何（なに）やったの今度（こんど）。</span></div>
+<div class="item"><span class="jp">垢（あか）</span><span class="romaji">aka</span><span class="reg reg-casual">○ casual</span><span class="meaning">compte (アカウント contracté ; 裏垢 = compte secret) <span class="note">jeune, net</span></span><span class="poli">poli : アカウント（省略しない完全形）</span><span class="dial">A: これ、本垢（ほんあか）？
+B: いや、趣味（しゅみ）垢（あか）。</span></div>
+<div class="item"><span class="jp">課金（かきん）</span><span class="romaji">kakin</span><span class="reg reg-casual">○ casual</span><span class="meaning">payer dans un jeu/app (par extension : investir dans sa passion)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: このガチャに1万（いちまん）課金（かきん）した。
+B: 沼（ぬま）だ…</span></div></div></details>
+<details class="group" open><summary>B2 G7 — Argent et conso (parler cash comme un jeune) <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">コスパ</span><span class="romaji">kosupa</span><span class="reg reg-casual">○ casual</span><span class="meaning">rapport qualité-prix (コスパいい/悪い)</span><span class="lit">litt. : cost performance</span><span class="poli">poli : コストパフォーマンス（省略しない完全形）</span><span class="dial">A: この定食（ていしょく）800円（はっぴゃくえん）でこの量（りょう）。
+B: コスパ最強（さいきょう）だね。</span></div>
+<div class="item"><span class="jp">タイパ</span><span class="romaji">taipa</span><span class="reg reg-casual">○ casual</span><span class="meaning">rapport temps-bénéfice (la génération du visionnage en x2) <span class="note">jeune, récent</span></span><span class="lit">litt. : time performance</span><span class="poli">poli : タイムパフォーマンス（省略しない完全形）</span><span class="dial">A: 映画（えいが）を倍速（ばいそく）で見（み）るの？
+B: タイパ重視（じゅうし）なんで。</span></div>
+<div class="item"><span class="jp">金欠（きんけつ）</span><span class="romaji">kinketsu</span><span class="reg reg-casual">○ casual</span><span class="meaning">fauché</span><span class="poli">poli : お金がありません</span><span class="dial">A: 飲（の）み行（い）く？
+B: ごめん、今月（こんげつ）金欠（きんけつ）で…</span></div>
+<div class="item"><span class="jp">ポチる</span><span class="romaji">pochiru</span><span class="reg reg-casual">○ casual</span><span class="meaning">acheter en un clic (le bruit du bouton : ポチッ) <span class="note">jeune</span></span><span class="poli">poli : 購入します</span><span class="dial">A: また何（なに）か届（とど）いてるよ。
+B: 夜中（よなか）にポチっちゃった…</span></div>
+<div class="item"><span class="jp">衝動買（しょうどうが）い</span><span class="romaji">shoudougai</span><span class="reg reg-casual">○ casual</span><span class="meaning">achat impulsif</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: このジャケット、衝動買（しょうどうが）いした。
+B: でも似合（にあ）ってるからセーフ。</span></div>
+<div class="item"><span class="jp">爆買（ばくが）い</span><span class="romaji">bakugai</span><span class="reg reg-casual">○ casual</span><span class="meaning">acheter en masse, dévaliser</span><span class="poli">poli : identique (terme désormais courant même en poli)</span><span class="dial">A: 免税店（めんぜいてん）で爆買（ばくが）いした。
+B: スーツケース入（はい）る？</span></div>
+<div class="item"><span class="jp">激安（げきやす）</span><span class="romaji">gekiyasu</span><span class="reg reg-casual">○ casual</span><span class="meaning">ultra pas cher</span><span class="poli">poli : とても安い</span><span class="dial">A: この店（みせ）、全品（ぜんぴん）300円（さんびゃくえん）。
+B: 激安（げきやす）じゃん。</span></div>
+<div class="item"><span class="jp">ぼったくり</span><span class="romaji">bottakuri</span><span class="reg reg-casual">○ casual</span><span class="meaning">arnaque (prix abusif : bars à éviter) <span class="note">⚠️ mot important à Tokyo (Kabukicho)</span></span><span class="poli">poli : 不当な料金</span><span class="dial">A: ビール1杯（いっぱい）5000円（ごせんえん）だった。
+B: それ、ぼったくりだよ。</span></div>
+<div class="item"><span class="jp">高見（たかみ）え</span><span class="romaji">takamie</span><span class="reg reg-casual">○ casual</span><span class="meaning">qui a l'air cher (sans l'être) <span class="note">jeune, mode</span></span><span class="poli">poli : identique (terme mode, neutre)</span><span class="dial">A: そのコート、いくら？
+B: 4000円（よんせんえん）。
+A: 高見（たかみ）えするね！</span></div>
+<div class="item"><span class="jp">プチプラ</span><span class="romaji">puchipura</span><span class="reg reg-casual">○ casual</span><span class="meaning">petit prix (cosmétique, mode) <span class="note">plutôt ♀</span></span><span class="lit">litt. : petit + price</span><span class="poli">poli : 手頃な価格（省略しない完全形）</span><span class="dial">A: この化粧水（けしょうすい）いいよ。プチプラだし。
+B: メモした。</span></div>
+<div class="item"><span class="jp">割引（わりびき）</span><span class="romaji">waribiki</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">réduction (半額 = moitié prix : le graal du konbini le soir) <span class="note">revu (L49)</span></span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 半額（はんがく）シール付（つ）いてる！
+B: 買（か）いだ。</span></div>
+<div class="item"><span class="jp">節約（せつやく）</span><span class="romaji">setsuyaku</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">faire des économies</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 最近（さいきん）自炊（じすい）してる。
+B: 節約（せつやく）？えらい。</span></div>
+<div class="item"><span class="jp">贅沢（ぜいたく）</span><span class="romaji">zeitaku</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">luxe / se faire plaisir (ちょっと贅沢 = petit plaisir assumé)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 今日（きょう）はうなぎ。
+B: 贅沢（ぜいたく）だね〜。</span></div>
+<div class="item"><span class="jp">ご褒美（ほうび）</span><span class="romaji">gohoubi</span><span class="reg reg-casual">○ casual</span><span class="meaning">récompense qu'on s'offre (自分へのご褒美 : institution nationale)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: ケーキ2個目（にこめ）？
+B: 今週（こんしゅう）頑張（がんば）った自分（じぶん）へのご褒美（ほうび）。</span></div>
+<div class="item"><span class="jp">無駄遣（むだづか）い</span><span class="romaji">mudazukai</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">dépense inutile, gaspillage</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: ガチャガチャ10回（じゅっかい）やった。
+B: 無駄遣（むだづか）い（笑）</span></div>
+<div class="item"><span class="jp">割（わ）り勘（かん）</span><span class="romaji">warikan</span><span class="reg reg-casual">○ casual</span><span class="meaning">partager l'addition (la norme entre amis au Japon)</span><span class="poli">poli : identique (terme standard aujourd'hui)</span><span class="dial">A: 会計（かいけい）どうする？
+B: 割（わ）り勘（かん）でいいよ。</span></div></div></details>
+<details class="group" open><summary>B2 G8 — Le quotidien qui traîne (temps, flemme, rythme) <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">寝落（ねお）ち</span><span class="romaji">neochi</span><span class="reg reg-casual">○ casual</span><span class="meaning">s'endormir sans le vouloir (devant un film, en appel)</span><span class="poli">poli : 寝てしまいました</span><span class="dial">A: 昨日（きのう）の映画（えいが）どうだった？
+B: ごめん、途中（とちゅう）で寝落（ねお）ちした。</span></div>
+<div class="item"><span class="jp">二度寝（にどね）</span><span class="romaji">nidone</span><span class="reg reg-casual">○ casual</span><span class="meaning">se rendormir après le réveil (le plaisir national)</span><span class="poli">poli : identique (terme courant, neutre)</span><span class="dial">A: 日曜（にちよう）の楽（たの）しみは？
+B: 二度寝（にどね）。</span></div>
+<div class="item"><span class="jp">夜更（よふ）かし</span><span class="romaji">yofukashi</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">veiller tard</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 眠（ねむ）そうだね。
+B: つい夜更（よふ）かししちゃって。</span></div>
+<div class="item"><span class="jp">サボる</span><span class="romaji">saboru</span><span class="reg reg-casual">○ casual</span><span class="meaning">sécher / glander (du français « sabotage » !)</span><span class="poli">poli : 休みます／怠けてしまいました</span><span class="dial">A: ジム行（い）った？
+B: 今日（きょう）はサボった（笑）</span></div>
+<div class="item"><span class="jp">バタバタ</span><span class="romaji">batabata</span><span class="reg reg-casual">○ casual</span><span class="meaning">débordé, dans le rush</span><span class="poli">poli : 忙しくしております</span><span class="dial">A: 最近（さいきん）どう？
+B: 引（ひ）っ越（こ）しでバタバタしてる。</span></div>
+<div class="item"><span class="jp">ギリギリ</span><span class="romaji">girigiri</span><span class="reg reg-casual">○ casual</span><span class="meaning">à la limite / de justesse</span><span class="poli">poli : identique (déjà largement utilisé)</span><span class="dial">A: 間（ま）に合（あ）った？
+B: ギリギリセーフ。</span></div>
+<div class="item"><span class="jp">ダラダラ</span><span class="romaji">daradara</span><span class="reg reg-casual">○ casual</span><span class="meaning">traîner sans rien faire</span><span class="poli">poli : のんびりしております</span><span class="dial">A: 休（やす）み何（なに）した？
+B: 家（いえ）でダラダラしてた。</span></div>
+<div class="item"><span class="jp">ゴロゴロ</span><span class="romaji">gorogoro</span><span class="reg reg-casual">○ casual</span><span class="meaning">se vautrer, rouler dans le canapé</span><span class="poli">poli : くつろいでおります</span><span class="dial">A: 理想（りそう）の休日（きゅうじつ）は？
+B: 猫（ねこ）とゴロゴロ。</span></div>
+<div class="item"><span class="jp">まったり</span><span class="romaji">mattari</span><span class="reg reg-casual">○ casual</span><span class="meaning">chiller, tranquille posé</span><span class="poli">poli : ゆっくり</span><span class="dial">A: 今日（きょう）はどうする？
+B: カフェでまったりしよ。</span></div>
+<div class="item"><span class="jp">のんびり</span><span class="romaji">nonbiri</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">tranquillement, sans se presser</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 旅行（りょこう）の予定（よてい）は？
+B: 予定（よてい）なしでのんびり。</span></div>
+<div class="item"><span class="jp">秒（びょう）で</span><span class="romaji">byou de</span><span class="reg reg-casual">○ casual</span><span class="meaning">en une seconde / direct (hyperbole jeune) <span class="note">jeune</span></span><span class="poli">poli : すぐに</span><span class="dial">A: 返事（へんじ）早（はや）っ。
+B: 秒（びょう）で既読（きどく）つけるタイプ（笑）</span></div>
+<div class="item"><span class="jp">速攻（そっこう）</span><span class="romaji">sokkou</span><span class="reg reg-casual">○ casual</span><span class="meaning">direct, illico</span><span class="poli">poli : すぐに</span><span class="dial">A: 仕事（しごと）終（お）わったら？
+B: 速攻（そっこう）帰（かえ）る。</span></div>
+<div class="item"><span class="jp">一瞬（いっしゅん）</span><span class="romaji">isshun</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">un instant / deux secondes (一瞬いい？ = t'as deux secondes ?)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 一瞬（いっしゅん）いい？
+B: どうした？</span></div>
+<div class="item"><span class="jp">気（き）づいたら</span><span class="romaji">kizuitara</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">sans m'en rendre compte, … (le temps qui file)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 気（き）づいたら朝（あさ）4時（よじ）だった。
+B: あるある（笑）</span></div>
+<div class="item"><span class="jp">あっという間（ま）</span><span class="romaji">atto iu ma</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">en un clin d'œil</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: もう7月（しちがつ）だって。
+B: 一年（いちねん）あっという間（ま）だね。</span></div>
+<div class="item"><span class="jp">そろそろ</span><span class="romaji">sorosoro</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">il serait temps de… (le signal doux) <span class="note">revu (M2)</span></span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: そろそろ寝（ね）るわ。
+B: おやすみ〜。</span></div></div></details>
+<details class="group" open><summary>B3 G9 — Fins de phrase et tics des 20-30 ans <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">〜じゃね？</span><span class="romaji">-ja ne?</span><span class="reg reg-casual">○ casual</span><span class="meaning">c'est pas… ? (version ♂ relâchée de じゃない？) <span class="note">♂, très casual</span></span><span class="manual">forme manuel : 〜ではないでしょうか</span><span class="poli">poli : ではないでしょうか</span><span class="dial">A: これで足（た）りる？
+B: 足（た）りるんじゃね？</span></div>
+<div class="item"><span class="jp">〜すぎん？</span><span class="romaji">-sugin?</span><span class="reg reg-casual">○ casual</span><span class="meaning">c'est pas trop… ?! (étonnement jeune) <span class="note">très jeune</span></span><span class="lit">litt. : 〜すぎない？ contracté</span><span class="poli">poli : すぎませんか</span><span class="dial">A: このバーガー、2500円（にせんごひゃくえん）。
+B: 高（たか）すぎん？</span></div>
+<div class="item"><span class="jp">知（し）らんけど</span><span class="romaji">shiran kedo</span><span class="reg reg-casual">○ casual</span><span class="meaning">…enfin j'en sais rien hein (désengage ce qu'on vient d'affirmer, humour Kansai devenu national) <span class="note">Kansai → national, ironique</span></span><span class="poli">poli : pas d'équivalent — ironie décontractée, on ne dirait simplement pas cette dénégation en poli</span><span class="dial">A: 明日（あした）晴（は）れるって。
+B: 誰情報（だれじょうほう）？
+A: 知（し）らんけど（笑）</span></div>
+<div class="item"><span class="jp">なんなら</span><span class="romaji">nannara</span><span class="reg reg-casual">○ casual</span><span class="meaning">et même, à la limite… (surenchère) <span class="note">jeune, usage élargi récent</span></span><span class="poli">poli : むしろ</span><span class="dial">A: 駅（えき）まで歩（ある）くの？
+B: なんなら走（はし）る。</span></div>
+<div class="item"><span class="jp">〜わ</span><span class="romaji">-wa</span><span class="reg reg-casual">○ casual</span><span class="meaning">…tiens / …moi (constat pour soi, unisexe à Tokyo aujourd'hui) <span class="note">descendant = unisexe ; montant = ♀ classique</span></span><span class="poli">poli : pas d'équivalent — la particule disparaît simplement en poli</span><span class="dial">A: 先（さき）帰（かえ）るわ。
+B: おつ〜。</span></div>
+<div class="item"><span class="jp">〜もん</span><span class="romaji">-mon</span><span class="reg reg-casual">○ casual</span><span class="meaning">…parce que voilà (justification enfantine assumée) <span class="note">plutôt ♀/enfantin, taquin</span></span><span class="poli">poli : ので（子供っぽい語調は消える）</span><span class="dial">A: なんで食（た）べないの？
+B: だってお腹（なか）いっぱいなんだもん。</span></div>
+<div class="item"><span class="jp">〜ぞ</span><span class="romaji">-zo</span><span class="reg reg-casual">○ casual</span><span class="meaning">…je te préviens (affirmation musclée) <span class="note">♂</span></span><span class="poli">poli : pas d'équivalent — la particule disparaît simplement en poli</span><span class="dial">A: 行（い）くぞ。
+B: おう。</span></div>
+<div class="item"><span class="jp">てゆーか／つーか</span><span class="romaji">te yuu ka / tsuu ka</span><span class="reg reg-casual">○ casual</span><span class="meaning">non mais en fait (recentre la conversation) <span class="note">つーか = ♂ relâché</span></span><span class="lit">litt. : というか très écrasé</span><span class="manual">forme manuel : 〜というか</span><span class="poli">poli : というか</span><span class="dial">A: つーか、もう12時（じゅうにじ）だよ。
+B: やば、帰（かえ）ろ。</span></div>
+<div class="item"><span class="jp">ワンチャン</span><span class="romaji">wanchan</span><span class="reg reg-casual">○ casual</span><span class="meaning">p't-être bien / y'a moyen (one chance) <span class="note">très jeune</span></span><span class="poli">poli : もしかしたら</span><span class="dial">A: 終電（しゅうでん）間（ま）に合（あ）う？
+B: 走（はし）ればワンチャンある。</span></div>
+<div class="item"><span class="jp">〜まである</span><span class="romaji">-made aru</span><span class="reg reg-casual">○ casual</span><span class="meaning">on peut même aller jusqu'à dire que… (surenchère jeune) <span class="note">très jeune</span></span><span class="poli">poli : pas d'équivalent — surenchère très jeune, à reformuler entièrement en poli</span><span class="dial">A: この店（みせ）、週（しゅう）3で来（き）てる。
+B: もう住（す）んでるまである（笑）</span></div>
+<div class="item"><span class="jp">〜しか勝（か）たん</span><span class="romaji">-shika katan</span><span class="reg reg-casual">○ casual</span><span class="meaning">y'a rien au-dessus / c'est la seule vérité <span class="note">⚠️ très jeune, peut dater vite</span></span><span class="lit">litt. : « seul X gagne »</span><span class="poli">poli : 一番です</span><span class="dial">A: 仕事（しごと）終（お）わりのラーメン。
+B: それしか勝（か）たん。</span></div>
+<div class="item"><span class="jp">〜な気（き）がする</span><span class="romaji">-na ki ga suru</span><span class="reg reg-casual">○ casual</span><span class="meaning">j'ai l'impression que…</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 雨（あめ）降（ふ）りそうな気（き）がする。
+B: 傘（かさ）持（も）ってこ。</span></div>
+<div class="item"><span class="jp">〜説（せつ）</span><span class="romaji">-setsu</span><span class="reg reg-casual">○ casual</span><span class="meaning">théorie : « hypothèse que… » (humour TV → quotidien) <span class="note">jeune, humour</span></span><span class="poli">poli : identique (usage humoristique, reste identique même adouci)</span><span class="dial">A: マチュー、実（じつ）は日本人（にほんじん）説（せつ）。
+B: （笑）納豆（なっとう）好（す）きなだけです。</span></div>
+<div class="item"><span class="jp">〜案件（あんけん）</span><span class="romaji">-anken</span><span class="reg reg-casual">○ casual</span><span class="meaning">« dossier » : ça mérite le signalement (humour) <span class="note">jeune, net</span></span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: 3時間（さんじかん）待（ま）ちだって。
+B: それは帰（かえ）る案件（あんけん）。</span></div>
+<div class="item"><span class="jp">〜の民（たみ）</span><span class="romaji">-no tami</span><span class="reg reg-casual">○ casual</span><span class="meaning">le peuple des… (tribu humoristique : 夜型の民 = le peuple des couche-tard) <span class="note">net, jeune</span></span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: 朝（あさ）4時（よじ）まで起（お）きてた。
+B: 夜型（よるがた）の民（たみ）だ…</span></div>
+<div class="item"><span class="jp">〜がち</span><span class="romaji">-gachi</span><span class="reg reg-casual">○ casual</span><span class="meaning">tendance à… (usage jeune : constat de groupe amusé) <span class="note">revu (M1)</span></span><span class="poli">poli : がちです</span><span class="dial">A: 日曜（にちよう）は何（なに)もしないで終（お）わりがち。
+B: それな。</span></div></div></details>
+<details class="group" open><summary>B3 G10 — Réactions venues du net (passées à l'oral) <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">草（くさ）</span><span class="romaji">kusa</span><span class="reg reg-casual">○ casual</span><span class="meaning">mdr (le « www » du net = herbe 草 ; se DIT même à l'oral) <span class="note">net → oral jeune</span></span><span class="lit">litt. : w w w ressemble à de l'herbe qui pousse</span><span class="poli">poli : 面白いです</span><span class="dial">A: 先生（せんせい）がZoomで猫（ねこ）フィルターのまま授業（じゅぎょう）した。
+B: 草（くさ）。</span></div>
+<div class="item"><span class="jp">じわる</span><span class="romaji">jiwaru</span><span class="reg reg-casual">○ casual</span><span class="meaning">drôle à retardement, plus j'y pense plus je ris <span class="note">jeune</span></span><span class="lit">litt. : じわじわ来る contracté</span><span class="poli">poli : だんだん面白くなってきます</span><span class="dial">A: さっきの写真（しゃしん）、まだ笑（わら）ってる。
+B: じわるよね（笑）</span></div>
+<div class="item"><span class="jp">泣（な）ける</span><span class="romaji">nakeru</span><span class="reg reg-casual">○ casual</span><span class="meaning">ça fait pleurer (dans le bon sens)</span><span class="poli">poli : identique (déjà largement compris/utilisé)</span><span class="dial">A: この映画（えいが）どう？
+B: 泣（な）ける。ハンカチ必須（ひっす）。</span></div>
+<div class="item"><span class="jp">ほっこり</span><span class="romaji">hokkori</span><span class="reg reg-casual">○ casual</span><span class="meaning">réconfortant, qui réchauffe le cœur</span><span class="poli">poli : 温かい気持ちになります</span><span class="dial">A: 犬（いぬ）と赤（あか）ちゃんの動画（どうが）見（み）た？
+B: ほっこりした〜。</span></div>
+<div class="item"><span class="jp">キュンとする</span><span class="romaji">kyun to suru</span><span class="reg reg-casual">○ casual</span><span class="meaning">avoir un pincement au cœur (mignon/romantique) <span class="note">plutôt ♀ ; 胸キュン idem</span></span><span class="poli">poli : 胸が高鳴ります</span><span class="dial">A: 彼（かれ）が子供（こども）に優（やさ）しくしてた。
+B: それはキュンとする。</span></div>
+<div class="item"><span class="jp">テンション上（あ）がる</span><span class="romaji">tenshon agaru</span><span class="reg reg-casual">○ casual</span><span class="meaning">être surexcité, à bloc</span><span class="lit">litt. : テンション = niveau d'énergie (faux anglicisme)</span><span class="poli">poli : 気分が高まります</span><span class="dial">A: フェスのチケット取（と）れた！
+B: テンション上（あ）がるね！</span></div>
+<div class="item"><span class="jp">テンション低（ひく）い</span><span class="romaji">tenshon hikui</span><span class="reg reg-casual">○ casual</span><span class="meaning">mou, pas d'énergie aujourd'hui</span><span class="poli">poli : 元気がありません</span><span class="dial">A: 今日（きょう）テンション低（ひく）くない？
+B: 寝不足（ねぶそく）でさ…</span></div>
+<div class="item"><span class="jp">ノリがいい</span><span class="romaji">nori ga ii</span><span class="reg reg-casual">○ casual</span><span class="meaning">bon public, partant pour tout (qualité sociale clé)</span><span class="lit">litt. : ノリ = le groove, l'élan du groupe</span><span class="poli">poli : 場を盛り上げるのが上手です</span><span class="dial">A: 彼（かれ）、初対面（しょたいめん）でカラオケ熱唱（ねっしょう）してた。
+B: ノリいいね（笑）</span></div>
+<div class="item"><span class="jp">ノリで</span><span class="romaji">nori de</span><span class="reg reg-casual">○ casual</span><span class="meaning">sur un coup de tête / dans l'élan</span><span class="poli">poli : 勢いで</span><span class="dial">A: なんで富士山（ふじさん）登（のぼ）ったの？
+B: ノリで（笑）</span></div>
+<div class="item"><span class="jp">ドヤ顔（がお）</span><span class="romaji">doyagao</span><span class="reg reg-casual">○ casual</span><span class="meaning">tête de fierté exagérée (« alors, impressionné ? »)</span><span class="lit">litt. : どうだ！+ 顔</span><span class="poli">poli : 得意げな顔</span><span class="dial">A: 見（み）て、このドヤ顔（がお）（笑）
+B: 自信（じしん）満々（まんまん）じゃん。</span></div>
+<div class="item"><span class="jp">鳥肌（とりはだ）</span><span class="romaji">torihada</span><span class="reg reg-casual">○ casual</span><span class="meaning">chair de poule (émotion forte)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 生（なま）で聴（き）くと鳥肌（とりはだ）立（た）つよ。
+B: わかる、CDと全然（ぜんぜん）違（ちが）う。</span></div>
+<div class="item"><span class="jp">感動（かんどう）した</span><span class="romaji">kandou shita</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">ça m'a bouleversé</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: ライブどうだった？
+B: 泣（な）くほど感動（かんどう）した。</span></div>
+<div class="item"><span class="jp">震（ふる）える</span><span class="romaji">furueru</span><span class="reg reg-casual">○ casual</span><span class="meaning">j'en tremble (hyperbole d'émotion, net) <span class="note">jeune</span></span><span class="poli">poli : 感激しました</span><span class="dial">A: 推（お）しが目（め）の前（まえ）に来（き）た。
+B: それは震（ふる）える。</span></div>
+<div class="item"><span class="jp">尊（とうと）すぎて無理（むり）</span><span class="romaji">toutosugite muri</span><span class="reg reg-casual">○ casual</span><span class="meaning">trop adorable, j'en peux plus (combo jeune typique) <span class="note">très jeune, otaku</span></span><span class="poli">poli : 素晴らしいです（otaku特有の組み合わせは丁寧語にならない）</span><span class="dial">A: 推（お）しの新写真（しんしゃしん）見（み）た？
+B: 尊（とうと）すぎて無理（むり）。</span></div>
+<div class="item"><span class="jp">語彙力（ごいりょく）がない</span><span class="romaji">goiryoku ga nai</span><span class="reg reg-casual">○ casual</span><span class="meaning">« j'ai plus de mots » (quand c'est trop bien pour décrire, auto-dérision net) <span class="note">jeune, net</span></span><span class="poli">poli : うまく言葉にできません</span><span class="dial">A: どうだった？
+B: やばい、すごい、最高（さいこう）…語彙力（ごいりょく）がない（笑）</span></div>
+<div class="item"><span class="jp">元気（げんき）もらった</span><span class="romaji">genki moratta</span><span class="reg reg-casual">○ casual</span><span class="meaning">ça m'a redonné la pêche</span><span class="poli">poli : 元気をいただきました</span><span class="dial">A: ライブ行（い）ってきた。
+B: 顔（かお）見（み）ればわかる、元気（げんき）もらったでしょ。</span></div></div></details>
+<details class="group" open><summary>B3 G11 — Daté ou vivant ? (le tri 2026) <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">ナウい</span><span class="romaji">naui</span><span class="reg reg-casual">○ casual</span><span class="meaning">« in » … dans les années 80. MORT, utilisé seulement en blague rétro <span class="note">⚠️ daté-humour volontaire</span></span><span class="poli">poli : identique (mot mort, aucune version polie pertinente)</span><span class="dial">A: この服（ふく）、ナウいでしょ（笑）
+B: おじいちゃんか（笑）</span></div>
+<div class="item"><span class="jp">KY（ケーワイ）</span><span class="romaji">kee wai</span><span class="reg reg-casual">○ casual</span><span class="meaning">qui ne lit pas l'ambiance (空気読めない). Années 2007, vieillissant : dis plutôt 空気（くうき）読（よ）めない en entier <span class="note">⚠️ daté</span></span><span class="poli">poli : 空気が読めません（省略しない完全形）</span><span class="dial">A: 彼（かれ）、葬式（そうしき）の話（はなし）で笑（わら）ってた。
+B: 空気（くうき）読（よ）めないね…</span></div>
+<div class="item"><span class="jp">リア充（じゅう）</span><span class="romaji">riajuu</span><span class="reg reg-casual">○ casual</span><span class="meaning">qqn qui a une « vraie vie » épanouie (couple, amis). Vieillissant mais compris <span class="note">vieillissant</span></span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: 彼女（かのじょ）とキャンプ行（い）ってきた。
+B: リア充（じゅう）め（笑）</span></div>
+<div class="item"><span class="jp">マジ卍（まんじ）</span><span class="romaji">maji manji</span><span class="reg reg-casual">○ casual</span><span class="meaning">intensif fourre-tout de 2017. MORT, ne l'utilise pas <span class="note">⚠️ mort, effet boomer garanti</span></span><span class="poli">poli : identique (mot mort, aucune version polie pertinente)</span><span class="dial">A: マジ卍（まんじ）！
+B: それもう誰（だれ）も言（い）ってない（笑）</span></div>
+<div class="item"><span class="jp">ぴえん</span><span class="romaji">pien</span><span class="reg reg-casual">○ casual</span><span class="meaning">snif (mignon-triste, 2019-2021). Daté, remplacé par 泣（な）ける/つらい <span class="note">⚠️ daté</span></span><span class="poli">poli : 悲しいです</span><span class="dial">A: ぴえんって今（いま）も言（い）う？
+B: もう聞（き）かないね。</span></div>
+<div class="item"><span class="jp">インスタ映（ば）え</span><span class="romaji">insuta bae</span><span class="reg reg-casual">○ casual</span><span class="meaning">photogénique pour Insta (2017). La forme courte 映（ば）える a gagné <span class="note">l'ancien mot ; dis 映える</span></span><span class="poli">poli : identique (déjà éclipsé par 映える, pas d'axe de politesse)</span><span class="dial">A: インスタ映（ば）えって言（い）ったら？
+B: ちょっと前（まえ）の言葉（ことば）っぽい。今（いま）は「映（ば）える」。</span></div>
+<div class="item"><span class="jp">ワロタ</span><span class="romaji">warota</span><span class="reg reg-casual">○ casual</span><span class="meaning">mdr (net, 2ch). Vieilli sur les réseaux, remplacé par 草 <span class="note">net, vieillissant</span></span><span class="poli">poli : 面白かったです</span><span class="dial">A: ワロタってまだ使（つか）う？
+B: 草（くさ）の方（ほう）が多（おお）いかな。</span></div>
+<div class="item"><span class="jp">あーね</span><span class="romaji">aane</span><span class="reg reg-casual">○ casual</span><span class="meaning">ah ok (ああ、なるほどね contracté). Encore vivant chez les moins de 25 ans <span class="note">jeune, un peu désinvolte</span></span><span class="poli">poli : ああ、そうなんですね</span><span class="dial">A: 遅（おく）れたの、電車（でんしゃ）のせい。
+B: あーね。</span></div>
+<div class="item"><span class="jp">ウェーイ系（けい）</span><span class="romaji">weei kei</span><span class="reg reg-casual">○ casual</span><span class="meaning">les fêtards bruyants type cercle étudiant (péjoratif-moqueur) <span class="note">⚠️ moqueur</span></span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: 隣（となり）の席（せき）、うるさ。
+B: ウェーイ系（けい）だね…</span></div>
+<div class="item"><span class="jp">チャラい</span><span class="romaji">charai</span><span class="reg reg-casual">○ casual</span><span class="meaning">frimeur-dragueur, pas sérieux (toujours vivant) <span class="note">⚠️ jugement</span></span><span class="poli">poli : pas d'équivalent poli direct — jugement, on ne le dit pas à la personne concernée</span><span class="dial">A: あの人（ひと）どう？
+B: ちょっとチャラいかな…</span></div>
+<div class="item"><span class="jp">イケメン</span><span class="romaji">ikemen</span><span class="reg reg-casual">○ casual</span><span class="meaning">beau gosse (toujours 100% vivant)</span><span class="poli">poli : identique (déjà largement utilisé)</span><span class="dial">A: 新（あたら）しい店員（てんいん）さん見（み）た？
+B: イケメンだった。</span></div>
+<div class="item"><span class="jp">ドンマイ</span><span class="romaji">donmai</span><span class="reg reg-casual">○ casual</span><span class="meaning">t'inquiète, c'est rien (don't mind). Vieillissant mais encore utilisé au sport <span class="note">vieillissant-sympathique</span></span><span class="poli">poli : 気にしないでください</span><span class="dial">A: シュート外（はず）した…
+B: ドンマイドンマイ！</span></div>
+<div class="item"><span class="jp">り／りょ</span><span class="romaji">ri / ryo</span><span class="reg reg-casual">○ casual</span><span class="meaning">ok (了解 réduit à une lettre, texto). À l'écrit seulement <span class="note">très jeune, texto uniquement</span></span><span class="poli">poli : りょうかいしました（省略しない完全形）</span><span class="dial">A: 【LINE】明日（あした）19時（じゅうくじ）ね。
+B: 【LINE】り。</span></div>
+<div class="item"><span class="jp">おけ</span><span class="romaji">oke</span><span class="reg reg-casual">○ casual</span><span class="meaning">ok (texto, très courant) <span class="note">texto/oral jeune</span></span><span class="poli">poli : わかりました</span><span class="dial">A: 先（さき）に店（みせ）入（はい）ってて。
+B: おけ。</span></div>
+<div class="item"><span class="jp">写メ</span><span class="romaji">shame</span><span class="reg reg-casual">○ casual</span><span class="meaning">photo de téléphone (2003). Daté : dis 写真（しゃしん） <span class="note">⚠️ daté</span></span><span class="poli">poli : しゃしん（省略しない完全形）</span><span class="dial">A: 写メ送（おく）って。
+B: 写メって言（い）うの、久（ひさ）しぶりに聞（き）いた（笑）</span></div>
+<div class="item"><span class="jp">ガラケー</span><span class="romaji">garakee</span><span class="reg reg-casual">○ casual</span><span class="meaning">téléphone à clapet d'avant les smartphones (mot vivant pour l'objet rétro)</span><span class="lit">litt. : ガラパゴス + 携帯（けいたい）</span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: おばあちゃん、まだガラケー。
+B: 逆（ぎゃく）にかっこいい。</span></div></div></details>
+<details class="group" open><summary>B3 G12 — Humour : boke, tsukkomi et l'art de la vanne <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">ボケ</span><span class="romaji">boke</span><span class="reg reg-casual">○ casual</span><span class="meaning">la partie « absurde » d'une vanne (celui qui dit la bêtise)</span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: 富士山（ふじさん）って歩（ある）いて10分（じゅっぷん)？
+B: ボケなのか本気（ほんき)なのか（笑）</span></div>
+<div class="item"><span class="jp">ツッコミ</span><span class="romaji">tsukkomi</span><span class="reg reg-casual">○ casual</span><span class="meaning">la correction comique (celui qui reprend la bêtise au tac)</span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: いいツッコミだね（笑）
+B: 関西人（かんさいじん）なんで。</span></div>
+<div class="item"><span class="jp">なんでやねん</span><span class="romaji">nande ya nen</span><span class="reg reg-casual">○ casual</span><span class="meaning">mais bien sûr ! / n'importe quoi ! (LE tsukkomi Kansai, utilisable en blague partout) <span class="note">Kansai, humour</span></span><span class="poli">poli : pas d'équivalent — humour régional casual, ne se polit pas</span><span class="dial">A: 東京（とうきょう）タワーはパリの真似（まね）らしいよ。エッフェル塔（とう）が真似（まね）したの。
+B: なんでやねん（笑）</span></div>
+<div class="item"><span class="jp">いや、〜かい！</span><span class="romaji">iya, ~ kai!</span><span class="reg reg-casual">○ casual</span><span class="meaning">pattern tsukkomi : « attends, c'est … ou quoi ?! » <span class="note">humour</span></span><span class="poli">poli : pas d'équivalent — pattern humoristique casual</span><span class="dial">A: 昼（ひる）ごはん、ケーキ3個（さんこ）。
+B: いや、デザートかい！</span></div>
+<div class="item"><span class="jp">おい！</span><span class="romaji">oi!</span><span class="reg reg-casual">○ casual</span><span class="meaning">hé ho ! (protestation comique) <span class="note">♂ surtout</span></span><span class="poli">poli : pas d'équivalent — interjection de protestation comique, disparaît en poli</span><span class="dial">A: マチューの分（ぶん）も食（た）べといた。
+B: おい！（笑）</span></div>
+<div class="item"><span class="jp">さすがに</span><span class="romaji">sasuga ni</span><span class="reg reg-casual">○ casual</span><span class="meaning">là quand même / faut pas exagérer</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 5杯目（ごはいめ）いく？
+B: さすがにやめとく（笑）</span></div>
+<div class="item"><span class="jp">どんだけ〜</span><span class="romaji">dondake~</span><span class="reg reg-casual">○ casual</span><span class="meaning">à quel point t'es… ?! (étonnement comique, un peu daté mais compris) <span class="note">vieillissant</span></span><span class="poli">poli : pas d'équivalent — exclamation comique casual</span><span class="dial">A: ラーメン週（しゅう）7。
+B: どんだけ好（す）きなの（笑）</span></div>
+<div class="item"><span class="jp">逆（ぎゃく）にすごい</span><span class="romaji">gyaku ni sugoi</span><span class="reg reg-casual">○ casual</span><span class="meaning">c'est tellement raté que ça en devient fort</span><span class="poli">poli : それは逆にすごいですね</span><span class="dial">A: 3回連続（さんかいれんぞく）で傘（かさ）忘（わす）れた。
+B: 逆（ぎゃく）にすごい（笑）</span></div>
+<div class="item"><span class="jp">それはそう</span><span class="romaji">sore wa sou</span><span class="reg reg-casual">○ casual</span><span class="meaning">ça, c'est vrai (concession sèche et drôle) <span class="note">jeune, net</span></span><span class="poli">poli : それはそうですね</span><span class="dial">A: 寝（ね)れば治（なお）るよ。
+B: それはそう。</span></div>
+<div class="item"><span class="jp">わかりみが深（ふか）い</span><span class="romaji">wakarimi ga fukai</span><span class="reg reg-casual">○ casual</span><span class="meaning">je ressens tellement ça (grammaire volontairement cassée, humour net) <span class="note">⚠️ net-jeune, à doser</span></span><span class="poli">poli : とてもよく分かります（意図的に崩した文法は丁寧語にならない）</span><span class="dial">A: 月曜（げつよう）の朝（あさ）はつらい。
+B: わかりみが深（ふか）い。</span></div>
+<div class="item"><span class="jp">しゃーない</span><span class="romaji">shaanai</span><span class="reg reg-casual">○ casual</span><span class="meaning">on n'y peut rien, tant pis (しょうがない version Kansai/relâchée)</span><span class="manual">forme manuel : しょうがないです</span><span class="poli">poli : しょうがないです</span><span class="dial">A: 雨（あめ）で中止（ちゅうし）だって。
+B: しゃーない、また今度（こんど）。</span></div>
+<div class="item"><span class="jp">ええやん</span><span class="romaji">ee yan</span><span class="reg reg-casual">○ casual</span><span class="meaning">c'est bien, ça ! (Kansai, sympathique partout) <span class="note">Kansai</span></span><span class="poli">poli : いいですね</span><span class="dial">A: この服（ふく）、古着（ふるぎ）で500円（ごひゃくえん）。
+B: ええやん。</span></div>
+<div class="item"><span class="jp">ほんまそれ</span><span class="romaji">honma sore</span><span class="reg reg-casual">○ casual</span><span class="meaning">tellement (それな version Kansai) <span class="note">Kansai</span></span><span class="poli">poli : 本当にそうですね</span><span class="dial">A: 家賃（やちん）高（たか）すぎ。
+B: ほんまそれ。</span></div>
+<div class="item"><span class="jp">ノリツッコミ</span><span class="romaji">nori tsukkomi</span><span class="reg reg-casual">○ casual</span><span class="meaning">suivre la vanne puis la casser (« ah ouais ?… mais non ! ») : le niveau expert de l'humour japonais</span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: 明日（あした）から本気出（ほんきだ）す。
+B: おお、いつから？…って毎週（まいしゅう）言（い）ってるじゃん！</span></div>
+<div class="item"><span class="jp">オチ</span><span class="romaji">ochi</span><span class="reg reg-casual">○ casual</span><span class="meaning">la chute (d'une histoire) : une histoire sans オチ se fait taquiner</span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: …で、家（いえ）帰（かえ）った。
+B: オチは？（笑）</span></div>
+<div class="item"><span class="jp">うまいこと言（い）うね</span><span class="romaji">umai koto iu ne</span><span class="reg reg-casual">○ casual</span><span class="meaning">bien trouvé ! (valide un jeu de mots)</span><span class="poli">poli : うまいことをおっしゃいますね</span><span class="dial">A: 布団（ふとん）が吹（ふ）っ飛（と）んだ。
+B: うまいこと言（い）うね…とは言（い）ってない（笑）</span></div></div></details>
+<details class="group"><summary>TEST M3 — 10 phrases FR → JP (réponses cachées, tape pour ouvrir) <span style="color:#999;font-weight:400">10</span></summary><div class="group-body"><div class="item"><span class="jp">① Franchement c'est bon (alors que ça n'en avait pas l'air).</span><span class="meaning">réponse : 普通（ふつう）においしい。</span></div>
+<div class="item"><span class="jp">② C'est pour de vrai ? Pour de vrai.</span><span class="meaning">réponse : ガチ？ガチ。</span></div>
+<div class="item"><span class="jp">③ Bof, sans plus (le film).</span><span class="meaning">réponse : 微妙（びみょう）だった。</span></div>
+<div class="item"><span class="jp">④ Je suis à fond dans le sauna en ce moment.</span><span class="meaning">réponse : 最近（さいきん）サウナにハマってる。</span></div>
+<div class="item"><span class="jp">⑤ Ce resto a un rapport qualité-prix imbattable.</span><span class="meaning">réponse : この店（みせ）、コスパ最強（さいきょう）。</span></div>
+<div class="item"><span class="jp">⑥ J'ai la flemme, j'ai séché la salle aujourd'hui.</span><span class="meaning">réponse : だるくて、今日（きょう）ジムサボった。</span></div>
+<div class="item"><span class="jp">⑦ Y'a moyen que j'arrive à temps si je cours.</span><span class="meaning">réponse : 走（はし）ればワンチャン間（ま）に合（あ）う。</span></div>
+<div class="item"><span class="jp">⑧ C'était tellement drôle que j'en ris encore.</span><span class="meaning">réponse : じわる。／まだ笑（わら）ってる、ツボった。</span></div>
+<div class="item"><span class="jp">⑨ On n'y peut rien, tant pis. On remet ça.</span><span class="meaning">réponse : しゃーない、また今度（こんど）。</span></div>
+<div class="item"><span class="jp">⑩ Et la chute de ton histoire ? (taquin)</span><span class="meaning">réponse : オチは？（笑）</span></div></div></details>
+<footer>Généré via lesson-card-html + kanji-stroke-order-html — Memory/Japanese</footer>
+</body></html>

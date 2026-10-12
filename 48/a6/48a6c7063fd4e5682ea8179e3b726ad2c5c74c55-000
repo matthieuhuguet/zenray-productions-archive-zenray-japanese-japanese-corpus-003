@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>STREET 4 — Sorties, bars, soirées</title>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;max-width:720px;margin:0 auto;padding:0 1.1rem 3rem;color:#1a1a1a;line-height:1.5;background:#fff}
+header{border-bottom:2px solid #1a1a1a;padding:1.4rem 0 .9rem;margin-bottom:1.1rem;position:sticky;top:0;background:#fff}
+h1{margin:0;font-size:1.5rem;font-weight:700;line-height:1.25}
+.subtitle{color:#555;font-size:.92rem;margin-top:.35rem}
+.legend{display:flex;gap:.9rem;flex-wrap:wrap;margin-top:.6rem;font-size:.82rem;color:#555}
+.legend span{white-space:nowrap}
+
+.roots{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.6rem;margin-bottom:1.6rem}
+.root{background:#fff8e6;border-left:3px solid #d4a017;border-radius:6px;padding:.55rem .7rem}
+.root .kanji{font-size:1.5rem;font-weight:700;line-height:1.1}
+.root .reading{font-size:.78rem;color:#7a6212;margin-top:.1rem}
+.root .meaning{font-size:.85rem;margin-top:.2rem}
+.root .unlocks{font-size:.76rem;color:#8a6d00;margin-top:.35rem}
+.root a{color:#4a6fa5;text-decoration:none}
+.root a:hover{text-decoration:underline}
+
+details.group{background:#fafafa;border:1px solid #e8e8e8;border-radius:8px;margin-bottom:.7rem;overflow:hidden}
+details.group summary{list-style:none;cursor:pointer;padding:.75rem .9rem;font-weight:700;font-size:.98rem;background:#f0f0f0;border-bottom:1px solid #e8e8e8;display:flex;justify-content:space-between;align-items:center}
+details.group summary::-webkit-details-marker{display:none}
+details.group summary::after{content:"▸";font-weight:400;color:#888;transition:transform .15s}
+details.group[open] summary::after{transform:rotate(90deg)}
+.group-body{padding:.2rem .9rem .5rem}
+
+.item{display:flex;flex-wrap:wrap;align-items:baseline;gap:.35rem .55rem;padding:.55rem 0;border-bottom:1px solid #eee}
+.item:last-child{border-bottom:none}
+.item .jp{font-size:1.05rem;font-weight:600;white-space:normal}
+.item .kana{font-size:.85rem;color:#666}
+.item .meaning{flex-basis:100%;font-size:.92rem;color:#333;margin-top:.05rem}
+.item .romaji{font-size:.78rem;color:#999;font-style:italic}
+.item .lit{flex-basis:100%;font-size:.78rem;color:#888}
+.item .dial{flex-basis:100%;font-size:.84rem;color:#444;background:#f5f7fa;border-left:2px solid #c5d3e8;border-radius:4px;padding:.3rem .55rem;margin-top:.15rem;white-space:pre-line}
+.item .manual{flex-basis:100%;font-size:.78rem;color:#1a4d8a}
+.item .poli{flex-basis:100%;font-size:.84rem;color:#0a6b4a;background:#eafaf3;border-left:2px solid #2f9e52;border-radius:4px;padding:.3rem .55rem;margin-top:.15rem}
+.item .reg{font-size:.72rem;padding:.05rem .4rem;border-radius:999px;background:#eee;color:#555;font-weight:600}
+.reg-casual{background:#ffe9d6;color:#8a4b00}
+.reg-neutre{background:#e6f0ff;color:#1a4d8a}
+.reg-formel{background:#eee6ff;color:#4a1a8a}
+.note{font-size:.78rem;color:#888;font-style:italic}
+
+.protocol{background:#eaf6ec;border-left:3px solid #2f9e52;border-radius:6px;padding:.75rem .9rem;margin-bottom:1.1rem;font-size:.88rem}
+.protocol strong{display:block;margin-bottom:.35rem;font-size:.92rem}
+.protocol ol{margin:0;padding-left:1.15rem}
+.protocol li{margin-bottom:.3rem}
+
+footer{margin-top:1.8rem;padding-top:1rem;border-top:1px solid #eee;font-size:.78rem;color:#999;text-align:center}
+
+/* Fusion kanji-stroke-order-html : cartes kanji avec tracé KanjiVG inliné */
+details.kcard{background:#fff;border:1px solid #e8e8e8;border-radius:8px;margin-bottom:.6rem;overflow:hidden}
+details.kcard summary{list-style:none;cursor:pointer;padding:.6rem .8rem;display:flex;align-items:baseline;gap:.5rem;flex-wrap:wrap}
+details.kcard summary::-webkit-details-marker{display:none}
+details.kcard summary .kanji{font-size:1.4rem;font-weight:700;line-height:1}
+details.kcard summary .vocab{font-size:.95rem;color:#333}
+details.kcard summary .vocab .kana{color:#666;font-size:.85rem}
+details.kcard summary .meaning{flex-basis:100%;font-size:.85rem;color:#555}
+details.kcard summary::after{content:"▸";margin-left:auto;color:#888;transition:transform .15s}
+details.kcard[open] summary::after{transform:rotate(90deg)}
+.kcard-body{padding:.2rem .8rem .9rem}
+.kcard-meta{color:#555;font-size:.88rem;margin-bottom:.5rem}
+.kcard-meta span{margin-right:1rem}
+.kcard-strokes{background:#fafafa;border:1px solid #e8e8e8;padding:.6rem;border-radius:6px;text-align:center;margin-bottom:.7rem}
+.kcard-strokes svg{max-width:100%;height:auto}
+.kcard-mnemo{background:#fff8e6;padding:.6rem .75rem;border-left:3px solid #d4a017;border-radius:4px;font-size:.9rem}
+
+@media print{
+  header{position:static}
+  details.group,details.kcard{border:none;background:none}
+  details.group summary::after,details.kcard summary::after{content:""}
+  .item{break-inside:avoid}
+}
+</style></head>
+<body>
+<header><h1>STREET 4 — Sorties, bars, soirées</h1><div class="subtitle">Izakaya, boissons, kanpai, warikan, karaoké, dire non, sécurité · 128 expressions · exposition consignée, pas acquis</div><div class="legend"><span>○ casual · ◇ neutre · ◆ formel · ♂/♀ genré · ⚠️ attention registre</span></div></header>
+
+
+<details class="group" open><summary>B1 G1 — Entrer et s'installer (izakaya, bar) <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">2人（ふたり）です</span><span class="romaji">futari desu</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">on est deux (réponse à 何名様ですか) <span class="note">revu</span></span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 何名様（なんめいさま）ですか？
+B: 2人（ふたり）です。</span></div>
+<div class="item"><span class="jp">カウンターでもいいですか？</span><span class="romaji">kauntaa demo ii desu ka?</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">le comptoir, ça vous va ? (dire oui = places plus vite + contact avec le chef)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: カウンターでもいいですか？
+B: むしろカウンターがいいです。</span></div>
+<div class="item"><span class="jp">お通（とお）し</span><span class="romaji">otooshi</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">l'amuse-bouche imposé et payant de l'izakaya (300-500¥) : pas une erreur d'addition <span class="note">culture : ça se refuse rarement</span></span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: これ、頼（たの）んでないけど…
+B: お通（とお）しだよ。席代（せきだい）みたいなもの。</span></div>
+<div class="item"><span class="jp">とりあえず生（なま）で</span><span class="romaji">toriaezu nama de</span><span class="reg reg-casual">○ casual</span><span class="meaning">une pression pour commencer (LA phrase rituelle d'ouverture de soirée)</span><span class="lit">litt. : 生 = 生ビール, bière pression</span><span class="poli">poli : とりあえずビールをお願いします</span><span class="dial">A: お飲（の）み物（もの）は？
+B: とりあえず生（なま）で。</span></div>
+<div class="item"><span class="jp">飲（の）み放題（ほうだい）</span><span class="romaji">nomihoudai</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">boissons à volonté (souvent 2h, prix fixe)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: コースは飲（の）み放題（ほうだい）付（つ）き？
+B: 2時間（にじかん）付（つ）いてます。</span></div>
+<div class="item"><span class="jp">食（た）べ放題（ほうだい）</span><span class="romaji">tabehoudai</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">buffet à volonté</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 焼肉（やきにく）食（た）べ放題（ほうだい）行（い）かない？
+B: 行（い）く。絶対（ぜったい）行（い）く。</span></div>
+<div class="item"><span class="jp">ラストオーダー</span><span class="romaji">rasuto oodaa</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">dernière commande (annoncée ~30 min avant la fermeture)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: ラストオーダーのお時間（じかん）です。
+B: じゃあハイボールもう1杯（いっぱい）。</span></div>
+<div class="item"><span class="jp">おしぼり</span><span class="romaji">oshibori</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">la serviette chaude/froide offerte à l'arrivée</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: おしぼりどうぞ。
+B: ありがとうございます。</span></div>
+<div class="item"><span class="jp">個室（こしつ）ありますか？</span><span class="romaji">koshitsu arimasu ka?</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">vous avez un salon privé ? (groupe, calme)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 個室（こしつ）ありますか？
+B: 6名（ろくめい）からになります。</span></div>
+<div class="item"><span class="jp">立（た）ち飲（の）み</span><span class="romaji">tachinomi</span><span class="reg reg-casual">○ casual</span><span class="meaning">bar debout (pas cher, contact facile : IDÉAL pour parler aux gens) <span class="note">ton meilleur terrain social</span></span><span class="poli">poli : identique (nom neutre)</span><span class="dial">A: この立（た）ち飲（の）み屋（や）、安（やす）いね。
+B: 隣（となり）の人（ひと）とも話（はな）しやすいしね。</span></div>
+<div class="item"><span class="jp">せんべろ</span><span class="romaji">senbero</span><span class="reg reg-casual">○ casual</span><span class="meaning">bar où on est pompette pour 1000¥ <span class="note">argot, très Tokyo shitamachi</span></span><span class="lit">litt. : 千円（せんえん）でべろべろ</span><span class="poli">poli : pas d'équivalent — argot spécifique ; en poli on dit simplement 安い居酒屋 (izakaya pas cher)</span><span class="dial">A: 今日（きょう）は金欠（きんけつ）。
+B: じゃあ、せんべろ行（い）こ。</span></div>
+<div class="item"><span class="jp">ハッピーアワー</span><span class="romaji">happii awaa</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">happy hour (souvent 17-19h)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 今（いま）ならハッピーアワーで生（なま）290円（にきゅうじゅうえん）。
+B: 神（かみ）。</span></div>
+<div class="item"><span class="jp">何時（なんじ）までですか？</span><span class="romaji">nanji made desu ka?</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">vous fermez à quelle heure ?</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 何時（なんじ）までですか？
+B: 23時（にじゅうさんじ）です。</span></div>
+<div class="item"><span class="jp">予約（よやく）してないんですけど、入（はい）れますか？</span><span class="romaji">yoyaku shitenain desu kedo, hairemasu ka?</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">on n'a pas réservé, il y a de la place ?</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 予約（よやく）してないんですけど、入（はい）れますか？
+B: 少々（しょうしょう）お待（ま）ちください…どうぞ！</span></div>
+<div class="item"><span class="jp">満席（まんせき）</span><span class="romaji">manseki</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">complet <span class="note">revu (L47)</span></span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: すみません、ただいま満席（まんせき）で…
+B: どのくらい待（ま）ちますか？</span></div>
+<div class="item"><span class="jp">荷物（にもつ）、ここ置（お）いていいですか？</span><span class="romaji">nimotsu, koko oite ii desu ka?</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">je peux poser mon sac ici ? (souvent un panier sous la chaise)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 荷物（にもつ）、ここ置（お）いていいですか？
+B: 足元（あしもと）にカゴがあります。</span></div></div></details>
+<details class="group" open><summary>B1 G2 — Commander les boissons (la carte réelle) <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">生（なま）ひとつ</span><span class="romaji">nama hitotsu</span><span class="reg reg-casual">○ casual</span><span class="meaning">une pression</span><span class="poli">poli : 生ビールをひとつお願いします</span><span class="dial">A: 生（なま）ひとつください。
+B: かしこまりました。</span></div>
+<div class="item"><span class="jp">ハイボール</span><span class="romaji">haibooru</span><span class="reg reg-casual">○ casual</span><span class="meaning">whisky-soda (LA boisson des 20-30 ans, légère et pas chère)</span><span class="poli">poli : identique (nom de boisson)</span><span class="dial">A: 何（なに）にする？
+B: ハイボールで。</span></div>
+<div class="item"><span class="jp">レモンサワー</span><span class="romaji">remon sawaa</span><span class="reg reg-casual">○ casual</span><span class="meaning">shochu-soda-citron (2e boisson jeune par excellence)</span><span class="poli">poli : identique (nom de boisson)</span><span class="dial">A: レモンサワー2つ（ふたつ）。
+B: はーい。</span></div>
+<div class="item"><span class="jp">酎（ちゅう）ハイ</span><span class="romaji">chuuhai</span><span class="reg reg-casual">○ casual</span><span class="meaning">shochu + soda aromatisé (grapefruit, calpis…)</span><span class="lit">litt. : 焼酎ハイボール contracté</span><span class="poli">poli : identique (nom de boisson)</span><span class="dial">A: 酎（ちゅう）ハイのグレフルある？
+B: ありますよ。</span></div>
+<div class="item"><span class="jp">梅酒（うめしゅ）</span><span class="romaji">umeshu</span><span class="reg reg-casual">○ casual</span><span class="meaning">liqueur de prune (sucré, doux : ソーダ割り = allongé au soda)</span><span class="poli">poli : identique (nom de boisson)</span><span class="dial">A: 甘（あま）いのがいいな。
+B: 梅酒（うめしゅ）ソーダとか？</span></div>
+<div class="item"><span class="jp">日本酒（にほんしゅ）、冷（ひ）やで</span><span class="romaji">nihonshu, hiya de</span><span class="reg reg-casual">○ casual</span><span class="meaning">un saké, frais (熱燗（あつかん） = chaud)</span><span class="poli">poli : 日本酒を冷やでお願いします</span><span class="dial">A: 日本酒（にほんしゅ）は冷（ひ）や？熱燗（あつかん）？
+B: 冷（ひ）やで。</span></div>
+<div class="item"><span class="jp">焼酎（しょうちゅう）、水割（みずわ）りで</span><span class="romaji">shouchuu, mizuwari de</span><span class="reg reg-casual">○ casual</span><span class="meaning">un shochu coupé à l'eau (ロック = glaçons, ソーダ割り = soda, お湯割り = eau chaude)</span><span class="poli">poli : 焼酎を水割りでお願いします</span><span class="dial">A: 芋（いも）焼酎（じょうちゅう）、どう飲（の）みます？
+B: 水割（みずわ）りで。</span></div>
+<div class="item"><span class="jp">ウーロンハイ</span><span class="romaji">uuronhai</span><span class="reg reg-casual">○ casual</span><span class="meaning">shochu-thé oolong (goût léger, passe partout)</span><span class="poli">poli : identique (nom de boisson)</span><span class="dial">A: ビール苦手（にがて）なんだよね。
+B: じゃあウーロンハイは？</span></div>
+<div class="item"><span class="jp">カシスオレンジ</span><span class="romaji">kashisu orenji</span><span class="reg reg-casual">○ casual</span><span class="meaning">cassis-orange (doux, débutant-friendly)</span><span class="poli">poli : identique (nom de boisson)</span><span class="dial">A: お酒（さけ）初心者（しょしんしゃ）です。
+B: カシオレなら飲（の）みやすいよ。</span></div>
+<div class="item"><span class="jp">ノンアル</span><span class="romaji">non aru</span><span class="reg reg-casual">○ casual</span><span class="meaning">sans alcool (ノンアルビール = bière 0%)</span><span class="poli">poli : identique (nom de boisson)</span><span class="dial">A: 今日（きょう）走（はし）るんで、ノンアルで。
+B: えらい。</span></div>
+<div class="item"><span class="jp">ウーロン茶（ちゃ）で</span><span class="romaji">uuroncha de</span><span class="reg reg-casual">○ casual</span><span class="meaning">un thé oolong (le soft du non-buveur, zéro jugement)</span><span class="poli">poli : ウーロン茶をお願いします</span><span class="dial">A: 飲（の）まないの？
+B: 今日（きょう）はウーロン茶（ちゃ）で。</span></div>
+<div class="item"><span class="jp">同（おな）じの、もう1つ（ひとつ）</span><span class="romaji">onaji no, mou hitotsu</span><span class="reg reg-casual">○ casual</span><span class="meaning">la même chose, encore une <span class="note">revu (L47/53)</span></span><span class="poli">poli : 同じものをもうひとつお願いします</span><span class="dial">A: おかわりは？
+B: 同（おな）じの、もう1つ（ひとつ）。</span></div>
+<div class="item"><span class="jp">瓶（びん）ビールで</span><span class="romaji">bin biiru de</span><span class="reg reg-casual">○ casual</span><span class="meaning">une bière en bouteille (à partager en se servant : rituel social)</span><span class="poli">poli : 瓶ビールをお願いします</span><span class="dial">A: 瓶（びん）ビールで。グラス2つ（ふたつ）。
+B: シェアだね。</span></div>
+<div class="item"><span class="jp">ピッチャーで頼（たの）もう</span><span class="romaji">picchaa de tanomou</span><span class="reg reg-casual">○ casual</span><span class="meaning">on prend un pichet (grande tablée)</span><span class="poli">poli : ピッチャーで頼みましょう</span><span class="dial">A: 全員（ぜんいん）ビール？ピッチャーで頼（たの）もう。
+B: 賛成（さんせい）。</span></div>
+<div class="item"><span class="jp">薄（うす）めでお願（ねが）いします</span><span class="romaji">usume de onegai shimasu</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">léger en alcool svp (accepté sans problème)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: ハイボール、薄（うす）めでお願（ねが）いします。
+B: かしこまりました。</span></div>
+<div class="item"><span class="jp">氷（こおり）なしで</span><span class="romaji">koori nashi de</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">sans glaçons</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: ウーロン茶（ちゃ）、氷（こおり）なしで。
+B: はい。</span></div></div></details>
+<details class="group" open><summary>B1 G3 — Trinquer et faire vivre la table <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">乾杯（かんぱい）！</span><span class="romaji">kanpai!</span><span class="reg reg-casual">○ casual</span><span class="meaning">santé ! (attendre que TOUT le monde soit servi avant la 1re gorgée) <span class="note">revu ; règle d'or : jamais boire avant le kanpai</span></span><span class="poli">poli : identique (universel, tous registres)</span><span class="dial">A: 揃（そろ）った？じゃあ、乾杯（かんぱい）！
+B: 乾杯（かんぱい）！</span></div>
+<div class="item"><span class="jp">お疲（つか）れ！</span><span class="romaji">otsukare!</span><span class="reg reg-casual">○ casual</span><span class="meaning">santé version « bien mérité » (entre collègues/amis après l'effort)</span><span class="poli">poli : お疲れ様です</span><span class="dial">A: 今週（こんしゅう）も終（お）わった！お疲（つか）れ！
+B: お疲（つか）れ〜！</span></div>
+<div class="item"><span class="jp">今日（きょう）は飲（の）むぞ〜</span><span class="romaji">kyou wa nomu zo~</span><span class="reg reg-casual">○ casual</span><span class="meaning">ce soir on ne compte pas ! (annonce d'ambiance) <span class="note">♂ en ぞ ; ♀ : 飲むよ〜</span></span><span class="poli">poli : 今日は飲みましょう</span><span class="dial">A: 今日（きょう）は飲（の）むぞ〜。
+B: 明日（あした）休（やす）みだしね！</span></div>
+<div class="item"><span class="jp">一気（いっき）はしない</span><span class="romaji">ikki wa shinai</span><span class="reg reg-casual">○ casual</span><span class="meaning">le cul-sec (一気飲み) : refuser TOUJOURS, c'est dangereux et plus personne ne l'impose <span class="note">⚠️ sécurité : refuse sans complexe</span></span><span class="poli">poli : 一気飲みはしません</span><span class="dial">A: 一気（いっき）一気（いっき）！
+B: いやいや、ゆっくり飲（の）む派（は）なんで（笑）</span></div>
+<div class="item"><span class="jp">グラス空（あ)いてるよ</span><span class="romaji">gurasu aiteru yo</span><span class="reg reg-casual">○ casual</span><span class="meaning">ton verre est vide (l'attention sociale : proposer de recommander)</span><span class="poli">poli : グラスが空いていますね</span><span class="dial">A: グラス空（あ）いてるよ、次（つぎ）どうする？
+B: じゃあレモンサワー。</span></div>
+<div class="item"><span class="jp">注（つ）ぎますよ</span><span class="romaji">tsugimasu yo</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">je vous sers (お酌 : servir les autres avant soi = points sociaux énormes)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 注（つ）ぎますよ。
+B: あ、どうもどうも。</span></div>
+<div class="item"><span class="jp">手酌（てじゃく）で大丈夫（だいじょうぶ）</span><span class="romaji">tejaku de daijoubu</span><span class="reg reg-casual">○ casual</span><span class="meaning">je me sers moi-même, t'inquiète (libère l'autre du rituel)</span><span class="poli">poli : 手酌で大丈夫です</span><span class="dial">A: 注（つ）ごうか？
+B: 手酌（てじゃく）で大丈夫（だいじょうぶ）、ありがと。</span></div>
+<div class="item"><span class="jp">次（つぎ）、何（なに）飲（の）む？</span><span class="romaji">tsugi, nani nomu?</span><span class="reg reg-casual">○ casual</span><span class="meaning">tu bois quoi après ? (relance la commande groupée)</span><span class="poli">poli : 次は何を飲みますか</span><span class="dial">A: 次（つぎ）、何（なに）飲（の）む？
+B: そろそろハイボールかな。</span></div>
+<div class="item"><span class="jp">なんか食（た）べ物（もの）頼（たの）も</span><span class="romaji">nanka tabemono tanomo</span><span class="reg reg-casual">○ casual</span><span class="meaning">on commande à manger ? (l'izakaya se mange autant qu'il se boit)</span><span class="poli">poli : 何か食べ物を頼みましょう</span><span class="dial">A: なんか食（た）べ物（もの）頼（たの）も。
+B: 唐揚（からあ）げは確定（かくてい）で。</span></div>
+<div class="item"><span class="jp">取（と）り皿（ざら）ください</span><span class="romaji">torizara kudasai</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">des petites assiettes svp (pour partager)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 取（と）り皿（ざら）2つ（ふたつ）ください。
+B: お持（も）ちします。</span></div>
+<div class="item"><span class="jp">シェアしよう</span><span class="romaji">shea shiyou</span><span class="reg reg-casual">○ casual</span><span class="meaning">on partage ? (la norme en izakaya)</span><span class="poli">poli : シェアしましょう</span><span class="dial">A: 全部（ぜんぶ）シェアしよう。
+B: その方（ほう）が色々（いろいろ）食（た）べれるしね。</span></div>
+<div class="item"><span class="jp">これ、みんなで</span><span class="romaji">kore, minna de</span><span class="reg reg-casual">○ casual</span><span class="meaning">ça, c'est pour la table</span><span class="poli">poli : これはみなさんで</span><span class="dial">A: この枝豆（えだまめ）、みんなで。
+B: ありがと〜。</span></div>
+<div class="item"><span class="jp">うまっ</span><span class="romaji">uma!</span><span class="reg reg-casual">○ casual</span><span class="meaning">oh c'est bon ! (réaction spontanée, unisexe)</span><span class="poli">poli : おいしいです</span><span class="dial">A: この砂肝（すなぎも）食（た）べてみ。
+B: うまっ。</span></div>
+<div class="item"><span class="jp">ちょっと酔（よ）ってきた</span><span class="romaji">chotto yotte kita</span><span class="reg reg-casual">○ casual</span><span class="meaning">je commence à être pompette</span><span class="poli">poli : 少し酔ってきました</span><span class="dial">A: 顔（かお）赤（あか）いよ（笑）
+B: ちょっと酔（よ）ってきたかも。</span></div>
+<div class="item"><span class="jp">楽（たの）しくなってきた</span><span class="romaji">tanoshiku natte kita</span><span class="reg reg-casual">○ casual</span><span class="meaning">ça y est, je suis lancé</span><span class="poli">poli : 楽しくなってきました</span><span class="dial">A: テンション上（あ）がってるね。
+B: 楽（たの）しくなってきた（笑）</span></div>
+<div class="item"><span class="jp">いいちこ？いや、なんでもいい（笑）</span><span class="romaji">nandemo ii</span><span class="reg reg-casual">○ casual</span><span class="meaning">peu importe la marque, ça me va (réponse détendue au choix du shochu)</span><span class="poli">poli : 何でも構いません</span><span class="dial">A: 焼酎（しょうちゅう）、銘柄（めいがら）どうする？
+B: なんでもいい（笑）任（まか）せる。</span></div></div></details>
+<details class="group" open><summary>B1 G4 — Gérer l'alcool et refuser un verre <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">もう十分（じゅうぶん）飲（の）みました（笑）</span><span class="romaji">mou juubun nomimashita</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">j'ai eu ma dose (refus souriant)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: もう1杯（いっぱい）？
+B: もう十分（じゅうぶん）飲（の）みました（笑）</span></div>
+<div class="item"><span class="jp">今日（きょう）は控（ひか）えめにしてます</span><span class="romaji">kyou wa hikaeme ni shitemasu</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">je me modère aujourd'hui</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 飲（の）まないね？
+B: 今日（きょう）は控（ひか）えめにしてます。</span></div>
+<div class="item"><span class="jp">お酒（さけ）弱（よわ）いんで</span><span class="romaji">osake yowain de</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">je tiens mal l'alcool (excuse en béton, jamais discutée)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: もう1杯（いっぱい）いこうよ。
+B: お酒（さけ）弱（よわ）いんで、これで最後（さいご）に（笑）</span></div>
+<div class="item"><span class="jp">明日（あした）があるんで</span><span class="romaji">ashita ga arun de</span><span class="reg reg-casual">○ casual</span><span class="meaning">j'ai des trucs demain (refus léger)</span><span class="poli">poli : 明日用事があるので</span><span class="dial">A: 朝（あさ）まで行（い）くぞ！
+B: 明日（あした）があるんで（笑）</span></div>
+<div class="item"><span class="jp">ここからはウーロン茶（ちゃ）にしとく</span><span class="romaji">koko kara wa uuroncha ni shitoku</span><span class="reg reg-casual">○ casual</span><span class="meaning">je passe au thé oolong à partir de maintenant (transition acceptée socialement)</span><span class="poli">poli : ここからはウーロン茶にします</span><span class="dial">A: 次（つぎ）は？
+B: ここからはウーロン茶（ちゃ）にしとく。</span></div>
+<div class="item"><span class="jp">無理（むり）しないでね</span><span class="romaji">muri shinaide ne</span><span class="reg reg-casual">○ casual</span><span class="meaning">te force pas, hein (protège l'autre)</span><span class="poli">poli : 無理なさらないでください</span><span class="dial">A: まだいける…たぶん。
+B: 無理（むり）しないでね（笑）</span></div>
+<div class="item"><span class="jp">大丈夫（だいじょうぶ）？水（みず）飲（の）む？</span><span class="romaji">daijoubu? mizu nomu?</span><span class="reg reg-casual">○ casual</span><span class="meaning">ça va ? tu veux de l'eau ? (l'ami responsable)</span><span class="poli">poli : 大丈夫ですか？お水は飲みますか</span><span class="dial">A: ちょっとくらくらする…
+B: 大丈夫（だいじょうぶ）？水（みず）飲（の）む？</span></div>
+<div class="item"><span class="jp">お水（みず）もらえますか</span><span class="romaji">omizu moraemasu ka</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">de l'eau svp (au staff : réflexe de survie) <span class="note">revu (L48)</span></span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: お水（みず）2つ（ふたつ）もらえますか。
+B: すぐお持（も）ちします。</span></div>
+<div class="item"><span class="jp">酔（よ）いつぶれる</span><span class="romaji">yoitsubureru</span><span class="reg reg-casual">○ casual</span><span class="meaning">être complètement KO d'alcool</span><span class="poli">poli : 酔って寝てしまう</span><span class="dial">A: 田中（たなか）は？
+B: 酔（よ）いつぶれてソファで寝（ね）てる。</span></div>
+<div class="item"><span class="jp">吐（は）きそう</span><span class="romaji">hakisou</span><span class="reg reg-casual">○ casual</span><span class="meaning">je vais vomir (urgence : le dire tôt) <span class="note">⚠️ urgence</span></span><span class="poli">poli : 気分が悪いです（直接的な表現を避けた言い換え）</span><span class="dial">A: 顔色（かおいろ）悪（わる）いよ。
+B: ごめん、ちょっと吐（は）きそう…</span></div>
+<div class="item"><span class="jp">二日酔（ふつかよ）い</span><span class="romaji">futsukayoi</span><span class="reg reg-casual">○ casual</span><span class="meaning">gueule de bois</span><span class="poli">poli : identique (terme courant, neutre)</span><span class="dial">A: 昨日（きのう）飲（の）みすぎた…
+B: 二日酔（ふつかよ）い？お大事（だいじ）に（笑）</span></div>
+<div class="item"><span class="jp">休肝日（きゅうかんび）</span><span class="romaji">kyuukanbi</span><span class="reg reg-casual">○ casual</span><span class="meaning">jour sans alcool (littéralement « jour de repos du foie » : concept national)</span><span class="poli">poli : identique (terme courant, neutre)</span><span class="dial">A: 今日（きょう）は飲（の）まないの？
+B: 週（しゅう）2の休肝日（きゅうかんび）なんで。</span></div>
+<div class="item"><span class="jp">体質（たいしつ）的（てき）に飲（の）めないんです</span><span class="romaji">taishitsuteki ni nomenain desu</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">physiologiquement je ne peux pas boire (refus définitif, respecté)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 1杯（いっぱい）だけでも？
+B: 体質（たいしつ）的（てき）に飲（の）めないんです。
+A: あ、ごめんごめん！</span></div>
+<div class="item"><span class="jp">ソフトドリンクありますか？</span><span class="romaji">sofuto dorinku arimasu ka?</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">vous avez des boissons sans alcool ?</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: ソフトドリンクありますか？
+B: ジンジャーエールとかありますよ。</span></div>
+<div class="item"><span class="jp">ゆっくり飲（の）む派（は）なんで</span><span class="romaji">yukkuri nomu ha nan de</span><span class="reg reg-casual">○ casual</span><span class="meaning">je suis team « je sirote » (décline le rythme sans casser l'ambiance)</span><span class="poli">poli : ゆっくり飲むタイプなので</span><span class="dial">A: ペース遅（おそ）くない？（笑）
+B: ゆっくり飲（の）む派（は）なんで。</span></div>
+<div class="item"><span class="jp">酔（よ）い覚（さ）まししてくる</span><span class="romaji">yoizamashi shite kuru</span><span class="reg reg-casual">○ casual</span><span class="meaning">je sors me dessoûler deux minutes (air frais)</span><span class="poli">poli : 少し外の空気を吸ってきます</span><span class="dial">A: ちょっと酔（よ）い覚（さ）まししてくる。
+B: ついてこうか？</span></div></div></details>
+<details class="group" open><summary>B2 G5 — Payer : 割り勘, régaler, être régalé <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">お会計（かいけい）お願（ねが）いします</span><span class="romaji">okaikei onegai shimasu</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">l'addition svp <span class="note">revu (L47)</span></span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: お会計（かいけい）お願（ねが）いします。
+B: ご一緒（いっしょ）でよろしいですか？</span></div>
+<div class="item"><span class="jp">別々（べつべつ）で</span><span class="romaji">betsubetsu de</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">chacun paie le sien (à la caisse) <span class="note">revu (L47)</span></span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: ご一緒（いっしょ）ですか？
+B: 別々（べつべつ）で。</span></div>
+<div class="item"><span class="jp">割（わ）り勘（かん）でいい？</span><span class="romaji">warikan de ii?</span><span class="reg reg-casual">○ casual</span><span class="meaning">on partage l'addition ? (norme entre amis du même âge) <span class="note">revu (M3)</span></span><span class="poli">poli : 割り勘でいいですか</span><span class="dial">A: 割（わ）り勘（かん）でいい？
+B: もちろん。1人（ひとり）2800円（にせんはっぴゃくえん）ね。</span></div>
+<div class="item"><span class="jp">ここは僕（ぼく）が出（だ）すよ</span><span class="romaji">koko wa boku ga dasu yo</span><span class="reg reg-casual">○ casual</span><span class="meaning">c'est pour moi (prendre l'addition)</span><span class="poli">poli : ここは私が出します</span><span class="dial">A: ここは僕（ぼく）が出（だ）すよ。
+B: え、いいよいいよ！
+A: いいのいいの。</span></div>
+<div class="item"><span class="jp">おごるよ</span><span class="romaji">ogoru yo</span><span class="reg reg-casual">○ casual</span><span class="meaning">je t'invite (casual)</span><span class="poli">poli : ご馳走します</span><span class="dial">A: 今日（きょう）はおごるよ。
+B: まじで？ごちそうさまです！</span></div>
+<div class="item"><span class="jp">ごちそうさまです！</span><span class="romaji">gochisousama desu!</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">merci pour le repas ! (OBLIGATOIRE quand on t'invite ; aussi taquin quand qqn paie)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 払（はら）っといたよ。
+B: ごちそうさまです！次（つぎ）は出（だ）します！</span></div>
+<div class="item"><span class="jp">ごち！</span><span class="romaji">gochi!</span><span class="reg reg-casual">○ casual</span><span class="meaning">merci pour le régal ! (version ultra-courte, entre potes) <span class="note">très casual</span></span><span class="manual">forme manuel : ごちそうさまでした</span><span class="poli">poli : ごちそうさまでした</span><span class="dial">A: ここ、出（だ）しとくわ。
+B: ごち！</span></div>
+<div class="item"><span class="jp">端数（はすう）は俺（おれ）が出（だ）す</span><span class="romaji">hasuu wa ore ga dasu</span><span class="reg reg-casual">○ casual</span><span class="meaning">je prends les décimales (arrondit le warikan à sa charge : classe) <span class="note">♂ en 俺</span></span><span class="poli">poli : 端数は私が出します</span><span class="dial">A: 1人（ひとり）2833円（にせんはっぴゃくさんじゅうさんえん）…
+B: 端数（はすう）は俺（おれ）が出（だ）す。2800でいいよ。</span></div>
+<div class="item"><span class="jp">PayPay（ペイペイ）で送（おく）るね</span><span class="romaji">peipei de okuru ne</span><span class="reg reg-casual">○ casual</span><span class="meaning">je te rembourse par PayPay (le Lydia japonais)</span><span class="poli">poli : PayPayでお送りします</span><span class="dial">A: 立（た）て替（か）えといたよ。
+B: PayPay（ペイペイ）で送（おく）るね。</span></div>
+<div class="item"><span class="jp">現金（げんきん）のみです</span><span class="romaji">genkin nomi desu</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">espèces uniquement (encore fréquent dans les izakaya)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: カードは…
+B: すみません、現金（げんきん）のみです。
+A: ATMどこですか（笑）</span></div>
+<div class="item"><span class="jp">レシートください</span><span class="romaji">reshiito kudasai</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">le ticket svp</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: レシートください。
+B: こちらです。</span></div>
+<div class="item"><span class="jp">先（さき）に出（だ）しとくね</span><span class="romaji">saki ni dashitoku ne</span><span class="reg reg-casual">○ casual</span><span class="meaning">j'avance l'argent (on réglera après)</span><span class="poli">poli : 先にお出ししておきますね</span><span class="dial">A: 細（こま）かいのない…
+B: 先（さき）に出（だ）しとくね、あとでいいよ。</span></div>
+<div class="item"><span class="jp">立（た）て替（か）える</span><span class="romaji">tatekaeru</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">avancer les frais pour quelqu'un</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: チケット代（だい）、立（た）て替（か）えといた。
+B: ありがとう、今夜（こんや）返（かえ）す。</span></div>
+<div class="item"><span class="jp">あとで精算（せいさん）しよう</span><span class="romaji">ato de seisan shiyou</span><span class="reg reg-casual">○ casual</span><span class="meaning">on fait les comptes après</span><span class="poli">poli : あとで精算しましょう</span><span class="dial">A: 誰（だれ）がいくら払（はら）った？
+B: あとで精算（せいさん）しよう。</span></div>
+<div class="item"><span class="jp">1人（ひとり）3000円（さんぜんえん）ね</span><span class="romaji">hitori sanzen'en ne</span><span class="reg reg-casual">○ casual</span><span class="meaning">3000¥ chacun (annonce du warikan)</span><span class="poli">poli : お一人3000円です</span><span class="dial">A: 1人（ひとり）3000円（さんぜんえん）ね。
+B: はい、ちょうどある。</span></div>
+<div class="item"><span class="jp">次（つぎ）は私（わたし）が出（だ）す番（ばん）</span><span class="romaji">tsugi wa watashi ga dasu ban</span><span class="reg reg-casual">○ casual</span><span class="meaning">la prochaine fois c'est ma tournée (l'équilibre à la japonaise : alterner plutôt que diviser)</span><span class="poli">poli : 次は私が出す番です</span><span class="dial">A: 今日（きょう）もごちそうさま！
+B: 次（つぎ）は私（わたし）が出（だ）す番（ばん）ね。</span></div></div></details>
+<details class="group" open><summary>B2 G6 — 2次会 et karaoké <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">2次会（にじかい）どうする？</span><span class="romaji">nijikai dou suru?</span><span class="reg reg-casual">○ casual</span><span class="meaning">on enchaîne quelque part ? (le « deuxième round » institutionnel)</span><span class="poli">poli : 2次会はどうしますか</span><span class="dial">A: 2次会（にじかい）どうする？
+B: カラオケっしょ。</span></div>
+<div class="item"><span class="jp">もう1軒（いっけん）行（い）く？</span><span class="romaji">mou ikken iku?</span><span class="reg reg-casual">○ casual</span><span class="meaning">on se fait un autre bar ?</span><span class="poli">poli : もう1軒行きますか</span><span class="dial">A: もう1軒（いっけん）行（い）く？
+B: 軽（かる）くなら。</span></div>
+<div class="item"><span class="jp">カラオケ行（い）こ</span><span class="romaji">karaoke iko</span><span class="reg reg-casual">○ casual</span><span class="meaning">on va au karaoké (le 2次会 par défaut)</span><span class="poli">poli : カラオケに行きましょう</span><span class="dial">A: カラオケ行（い）こ。
+B: 待（ま）ってました。</span></div>
+<div class="item"><span class="jp">何（なに）入（い）れる？</span><span class="romaji">nani ireru?</span><span class="reg reg-casual">○ casual</span><span class="meaning">tu mets quelle chanson ? (入れる = ajouter à la file)</span><span class="poli">poli : 何を入れますか</span><span class="dial">A: 何（なに）入（い）れる？
+B: とりあえずミセス。</span></div>
+<div class="item"><span class="jp">デンモク取（と）って</span><span class="romaji">denmoku totte</span><span class="reg reg-casual">○ casual</span><span class="meaning">passe la tablette (la télécommande du karaoké)</span><span class="poli">poli : デンモクを取ってください</span><span class="dial">A: デンモク取（と）って。
+B: ほい。次（つぎ）入（い）れて。</span></div>
+<div class="item"><span class="jp">十八番（おはこ）</span><span class="romaji">ohako</span><span class="reg reg-casual">○ casual</span><span class="meaning">SA chanson fétiche (lecture irrégulière : 十八番 = ohako) <span class="note">jukujikun à signaler</span></span><span class="poli">poli : identique (nom neutre)</span><span class="dial">A: マチューの十八番（おはこ）は？
+B: 「Lemon」です（笑）</span></div>
+<div class="item"><span class="jp">誰（だれ）の番（ばん）？</span><span class="romaji">dare no ban?</span><span class="reg reg-casual">○ casual</span><span class="meaning">c'est à qui ?</span><span class="poli">poli : どなたの番ですか</span><span class="dial">A: 誰（だれ）の番（ばん）？
+B: マチューのやつ来（き）た！マイクどうぞ。</span></div>
+<div class="item"><span class="jp">採点（さいてん）モードにする？</span><span class="romaji">saiten moodo ni suru?</span><span class="reg reg-casual">○ casual</span><span class="meaning">on met le mode notation ? (compétition amicale)</span><span class="poli">poli : 採点モードにしますか</span><span class="dial">A: 採点（さいてん）モードにする？
+B: 望（のぞ）むところだ。</span></div>
+<div class="item"><span class="jp">ラスト1曲（いっきょく）！</span><span class="romaji">rasuto ikkyoku!</span><span class="reg reg-casual">○ casual</span><span class="meaning">dernière chanson !</span><span class="poli">poli : ラスト1曲にしましょう</span><span class="dial">A: あと5分（ごふん）だって。
+B: ラスト1曲（いっきょく）！</span></div>
+<div class="item"><span class="jp">延長（えんちょう）する？</span><span class="romaji">enchou suru?</span><span class="reg reg-casual">○ casual</span><span class="meaning">on prolonge la salle ?</span><span class="poli">poli : 延長しますか</span><span class="dial">A: 延長（えんちょう）する？
+B: 30分（さんじゅっぷん）だけ。</span></div>
+<div class="item"><span class="jp">フリータイム</span><span class="romaji">furii taimu</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">forfait illimité (souvent moins cher après 23h)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 2時間（にじかん）とフリータイム、どっちが得（とく）？
+B: この時間（じかん）ならフリータイムだね。</span></div>
+<div class="item"><span class="jp">ヒトカラ</span><span class="romaji">hitokara</span><span class="reg reg-casual">○ casual</span><span class="meaning">karaoké en solo (parfaitement normal au Japon : PARFAIT pour drill oral) <span class="note">ton outil secret de shadowing</span></span><span class="lit">litt. : 一人（ひとり）カラオケ</span><span class="poli">poli : identique (nom neutre)</span><span class="dial">A: 週末（しゅうまつ）何（なに）してた？
+B: ヒトカラで日本語（にほんご）の練習（れんしゅう）（笑）</span></div>
+<div class="item"><span class="jp">締（し）めのラーメン</span><span class="romaji">shime no raamen</span><span class="reg reg-casual">○ casual</span><span class="meaning">le ramen de fin de soirée (institution nationale)</span><span class="poli">poli : identique (nom neutre)</span><span class="dial">A: 締（し）めどうする？
+B: 締（し）めはラーメンでしょ。</span></div>
+<div class="item"><span class="jp">朝（あさ）まで</span><span class="romaji">asa made</span><span class="reg reg-casual">○ casual</span><span class="meaning">jusqu'au matin (quand le dernier train est déjà loin)</span><span class="poli">poli : identique (locution neutre)</span><span class="dial">A: 終電（しゅうでん）ないよ。
+B: じゃあ朝（あさ）まで（笑）</span></div>
+<div class="item"><span class="jp">タクシー割（わ）り勘（かん）しない？</span><span class="romaji">takushii warikan shinai?</span><span class="reg reg-casual">○ casual</span><span class="meaning">on partage un taxi ?</span><span class="poli">poli : タクシーを割り勘しませんか</span><span class="dial">A: 方向（ほうこう）同（おな）じ？タクシー割（わ）り勘（かん）しない？
+B: しよしよ。</span></div>
+<div class="item"><span class="jp">解散（かいさん）！</span><span class="romaji">kaisan!</span><span class="reg reg-casual">○ casual</span><span class="meaning">on se sépare ! (fin officielle et joyeuse de la soirée)</span><span class="poli">poli : それでは解散にしましょう</span><span class="dial">A: じゃあ今日（きょう）はここで解散（かいさん）！
+B: おつかれ〜！</span></div></div></details>
+<details class="group" open><summary>B2 G7 — Dire non fermement + sécurité nocturne <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">行（い）けたら行（い）く</span><span class="romaji">iketara iku</span><span class="reg reg-casual">○ casual</span><span class="meaning">« je viens si je peux » = 80% des cas : je ne viendrai PAS (à décoder !) <span class="note">⚠️ à DÉCODER plus qu'à dire</span></span><span class="lit">litt. : le refus poli déguisé le plus célèbre du Japon</span><span class="poli">poli : identique (la formule ne change pas de forme, c'est le contexte qui la rend « polie »)</span><span class="dial">A: 明日（あした）来（く）る？
+B: 行（い）けたら行（い）く！
+A: （来（こ）ないな…）</span></div>
+<div class="item"><span class="jp">今日（きょう）はやめとく</span><span class="romaji">kyou wa yametoku</span><span class="reg reg-casual">○ casual</span><span class="meaning">je passe mon tour ce soir (refus casual assumé)</span><span class="poli">poli : 今日はやめておきます</span><span class="dial">A: 飲（の）み行（い）く？
+B: 今日（きょう）はやめとく。</span></div>
+<div class="item"><span class="jp">気持（きも）ちだけもらっとく</span><span class="romaji">kimochi dake morattoku</span><span class="reg reg-casual">○ casual</span><span class="meaning">c'est gentil, je prends l'intention (refus élégant)</span><span class="poli">poli : お気持ちだけいただきます</span><span class="dial">A: おごるから来（き）なよ。
+B: 気持（きも）ちだけもらっとく（笑）</span></div>
+<div class="item"><span class="jp">また誘（さそ）って</span><span class="romaji">mata sasotte</span><span class="reg reg-casual">○ casual</span><span class="meaning">réinvite-moi une prochaine fois (refus + porte ouverte) <span class="note">revu (M2)</span></span><span class="poli">poli : またお誘いください</span><span class="dial">A: 残念（ざんねん）！
+B: また誘（さそ）って！</span></div>
+<div class="item"><span class="jp">ほんとに無理（むり）なんで</span><span class="romaji">honto ni muri nan de</span><span class="reg reg-casual">○ casual</span><span class="meaning">non, vraiment pas possible (le 2e refus, ferme)</span><span class="poli">poli : 本当に難しいです</span><span class="dial">A: 1杯（いっぱい）だけでも！
+B: ほんとに無理（むり）なんで、すみません。</span></div>
+<div class="item"><span class="jp">結構（けっこう）です</span><span class="romaji">kekkou desu</span><span class="reg reg-formel">◆ formel</span><span class="meaning">non merci (FROID et définitif : l'arme anti-insistance) <span class="note">⚠️ sec volontairement ; pour vendeurs de rue/racoleurs</span></span><span class="poli">poli : identique (déjà la forme la plus formelle/froide)</span><span class="dial">A: お兄（にい）さん、いい店（みせ）ありますよ！
+B: 結構（けっこう）です。</span></div>
+<div class="item"><span class="jp">キャッチにはついていかない</span><span class="romaji">kyacchi ni wa tsuite ikanai</span><span class="reg reg-casual">○ casual</span><span class="meaning">ne JAMAIS suivre les rabatteurs de rue (Kabukicho, Shibuya) : règle de survie n°1 <span class="note">⚠️ règle d'or Tokyo : arnaques garanties</span></span><span class="lit">litt. : キャッチ = racoleur</span><span class="poli">poli : 客引きにはついていきません</span><span class="dial">A: 飲（の）み放題（ほうだい）2000円（にせんえん）、どう？
+B: （無視（むし）して歩（ある）く）</span></div>
+<div class="item"><span class="jp">興味（きょうみ）ないです</span><span class="romaji">kyoumi nai desu</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">ça ne m'intéresse pas (net, sans agressivité)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 今（いま）お時間（じかん）いいですか？
+B: 興味（きょうみ）ないです。</span></div>
+<div class="item"><span class="jp">急（いそ）いでるんで</span><span class="romaji">isoideru n de</span><span class="reg reg-casual">○ casual</span><span class="meaning">je suis pressé (l'esquive en mouvement)</span><span class="poli">poli : 急いでいますので</span><span class="dial">A: ちょっとちょっと、お兄（にい）さん！
+B: 急（いそ）いでるんで。</span></div>
+<div class="item"><span class="jp">やめてください</span><span class="romaji">yamete kudasai</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">arrêtez (limite posée clairement) <span class="note">⚠️ à dire fort si besoin</span></span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: （しつこく腕（うで）をつかむ）
+B: やめてください。</span></div>
+<div class="item"><span class="jp">触（さわ）らないでください</span><span class="romaji">sawaranaide kudasai</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">ne me touchez pas <span class="note">⚠️ sécurité</span></span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: まあまあ、いいから…
+B: 触（さわ）らないでください。</span></div>
+<div class="item"><span class="jp">警察（けいさつ）呼（よ）びますよ</span><span class="romaji">keisatsu yobimasu yo</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">j'appelle la police (l'ultime avertissement, très dissuasif) <span class="note">⚠️ escalade finale ; 110 = police</span></span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: （ついてくる）
+B: 警察（けいさつ）呼（よ）びますよ。</span></div>
+<div class="item"><span class="jp">一人（ひとり）で帰（かえ）れます</span><span class="romaji">hitori de kaeremasu</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">je peux rentrer seul(e), merci (décline une « escorte » insistante)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 送（おく）ってくよ。
+B: 大丈夫（だいじょうぶ）、一人（ひとり）で帰（かえ）れます。</span></div>
+<div class="item"><span class="jp">間（ま）に合（あ）ってます</span><span class="romaji">ma ni attemasu</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">j'ai déjà tout ce qu'il me faut (formule magique anti-démarchage)</span><span class="lit">litt. : « je suis déjà fourni »</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: マッサージどうですか？
+B: 間（ま）に合（あ）ってます。</span></div>
+<div class="item"><span class="jp">お酒（さけ）、入（はい）ってます？</span><span class="romaji">osake, haittemasu?</span><span class="reg reg-casual">○ casual</span><span class="meaning">vous avez bu ? (vérifier l'état de quelqu'un, taquin ou sérieux)</span><span class="poli">poli : お酒は召し上がりましたか</span><span class="dial">A: 今日（きょう）やたら喋（しゃべ）るね。お酒（さけ）入（はい）ってる？（笑）
+B: ちょっとだけ（笑）</span></div>
+<div class="item"><span class="jp">この店（みせ）、大丈夫（だいじょうぶ）そう？</span><span class="romaji">kono mise, daijoubu sou?</span><span class="reg reg-casual">○ casual</span><span class="meaning">il a l'air réglo, ce bar ? (check avant d'entrer : prix affichés = OK) <span class="note">règle : pas de prix affichés = fuir</span></span><span class="poli">poli : このお店は大丈夫そうですか</span><span class="dial">A: この店（みせ）、大丈夫（だいじょうぶ）そう？
+B: 値段（ねだん）書（か）いてあるし、大丈夫（だいじょうぶ）でしょ。</span></div></div></details>
+<details class="group" open><summary>B2 G8 — Le lendemain (l'after et ses dégâts) <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">昨日（きのう）はありがとう</span><span class="romaji">kinou wa arigatou</span><span class="reg reg-casual">○ casual</span><span class="meaning">merci pour hier (LE message du lendemain, attendu socialement) <span class="note">l'envoyer avant midi = points</span></span><span class="poli">poli : 昨日はありがとうございました</span><span class="dial">A: 【LINE】昨日（きのう）はありがとう！楽（たの）しかった！
+B: 【LINE】こちらこそ〜また行（い）こ！</span></div>
+<div class="item"><span class="jp">無事（ぶじ）帰（かえ）れた？</span><span class="romaji">buji kaereta?</span><span class="reg reg-casual">○ casual</span><span class="meaning">bien rentré ?</span><span class="poli">poli : 無事に帰れましたか</span><span class="dial">A: 無事（ぶじ）帰（かえ）れた？
+B: ギリ終電（しゅうでん）乗（の）れた！</span></div>
+<div class="item"><span class="jp">飲（の）みすぎた…</span><span class="romaji">nomisugita...</span><span class="reg reg-casual">○ casual</span><span class="meaning">j'ai trop bu…</span><span class="poli">poli : 飲みすぎました</span><span class="dial">A: 元気（げんき）？
+B: 飲（の）みすぎた…頭（あたま）痛（いた）い。</span></div>
+<div class="item"><span class="jp">記憶（きおく）がない（笑）</span><span class="romaji">kioku ga nai</span><span class="reg reg-casual">○ casual</span><span class="meaning">trou noir total (auto-dérision du lendemain)</span><span class="poli">poli : 覚えていません</span><span class="dial">A: 昨日（きのう）カラオケで熱唱（ねっしょう）してたよ。
+B: 記憶（きおく）がない（笑）</span></div>
+<div class="item"><span class="jp">二日酔（ふつかよ）いでつらい</span><span class="romaji">futsukayoi de tsurai</span><span class="reg reg-casual">○ casual</span><span class="meaning">la gueule de bois me tue</span><span class="poli">poli : 二日酔いでつらいです</span><span class="dial">A: 二日酔（ふつかよ）いでつらい…
+B: しじみの味噌汁（みそしる）飲（の）みな。</span></div>
+<div class="item"><span class="jp">迎（むか）え酒（ざけ）</span><span class="romaji">mukaezake</span><span class="reg reg-casual">○ casual</span><span class="meaning">reboire pour faire passer (la fausse bonne idée officielle) <span class="note">⚠️ à connaître, pas à pratiquer</span></span><span class="poli">poli : identique (nom neutre)</span><span class="dial">A: 迎（むか）え酒（ざけ）する？
+B: それは沼（ぬま）だからやめとく（笑）</span></div>
+<div class="item"><span class="jp">胃薬（いぐすり）ある？</span><span class="romaji">igusuri aru?</span><span class="reg reg-casual">○ casual</span><span class="meaning">t'as un truc pour l'estomac ?</span><span class="poli">poli : 胃薬はありますか</span><span class="dial">A: 胃薬（いぐすり）ある？
+B: コンビニで買（か）ってきたげる。</span></div>
+<div class="item"><span class="jp">ウコン飲（の）んどけばよかった</span><span class="romaji">ukon nondokeba yokatta</span><span class="reg reg-casual">○ casual</span><span class="meaning">j'aurais dû prendre un ukon (la boisson anti-gueule de bois du konbini, AVANT de boire) <span class="note">rituel japonais : ウコンの力</span></span><span class="poli">poli : ウコンを飲んでおけばよかったです</span><span class="dial">A: ウコン飲（の）んだ？
+B: 忘（わす）れた…飲（の）んどけばよかった。</span></div>
+<div class="item"><span class="jp">寝（ね）たら治（なお）った</span><span class="romaji">netara naotta</span><span class="reg reg-casual">○ casual</span><span class="meaning">j'ai dormi, c'est passé</span><span class="poli">poli : 寝たら治りました</span><span class="dial">A: もう平気（へいき）？
+B: 寝（ね）たら治（なお）った。若（わか）さ（笑）</span></div>
+<div class="item"><span class="jp">写真（しゃしん）送（おく）って</span><span class="romaji">shashin okutte</span><span class="reg reg-casual">○ casual</span><span class="meaning">envoie les photos (d'hier soir)</span><span class="poli">poli : 写真を送ってください</span><span class="dial">A: 昨日（きのう）の写真（しゃしん）送（おく）って。
+B: グループに上（あ）げとくね。</span></div>
+<div class="item"><span class="jp">グループに上（あ）げとく</span><span class="romaji">guruupu ni agetoku</span><span class="reg reg-casual">○ casual</span><span class="meaning">je les mets dans le groupe LINE</span><span class="poli">poli : グループに上げておきます</span><span class="dial">A: 集合写真（しゅうごうしゃしん）どこ？
+B: グループに上（あ）げとく。</span></div>
+<div class="item"><span class="jp">幹事（かんじ）ありがとう</span><span class="romaji">kanji arigatou</span><span class="reg reg-casual">○ casual</span><span class="meaning">merci d'avoir organisé (le 幹事 vit pour ce message)</span><span class="poli">poli : 幹事の方、ありがとうございました</span><span class="dial">A: 幹事（かんじ）ありがとう、いい店（みせ）だった！
+B: 喜（よろこ）んでもらえてよかった！</span></div>
+<div class="item"><span class="jp">また企画（きかく）して</span><span class="romaji">mata kikaku shite</span><span class="reg reg-casual">○ casual</span><span class="meaning">réorganise un truc bientôt</span><span class="poli">poli : また企画してください</span><span class="dial">A: また企画（きかく）して！
+B: 来月（らいげつ）、花見（はなみ）やろう。</span></div>
+<div class="item"><span class="jp">次（つぎ）は俺（おれ）が幹事（かんじ）やる</span><span class="romaji">tsugi wa ore ga kanji yaru</span><span class="reg reg-casual">○ casual</span><span class="meaning">la prochaine, c'est moi qui organise (proposer = intégration accélérée) <span class="note">♂ en 俺 ; move puissant pour créer TON groupe</span></span><span class="poli">poli : 次は私が幹事をやります</span><span class="dial">A: 次（つぎ）は俺（おれ）が幹事（かんじ）やるよ。
+B: お、頼（たの）もしい！</span></div>
+<div class="item"><span class="jp">反省（はんせい）してます（笑）</span><span class="romaji">hansei shitemasu</span><span class="reg reg-casual">○ casual</span><span class="meaning">je fais mon mea culpa (excuse rituelle et souriante du lendemain)</span><span class="poli">poli : 反省しております</span><span class="dial">A: 昨日（きのう）、うち帰（かえ）って冷蔵庫（れいぞうこ）の前（まえ）で寝（ね）てたでしょ。
+B: 反省（はんせい）してます（笑）</span></div>
+<div class="item"><span class="jp">楽（たの）しかったからオッケー</span><span class="romaji">tanoshikatta kara okkee</span><span class="reg reg-casual">○ casual</span><span class="meaning">c'était une bonne soirée, donc tout est pardonné (la conclusion type)</span><span class="poli">poli : 楽しかったので良かったです</span><span class="dial">A: 散財（さんざい）したな〜。
+B: 楽（たの）しかったからオッケー。</span></div></div></details>
+<details class="group"><summary>TEST M4 — 10 phrases FR → JP (réponses cachées, tape pour ouvrir) <span style="color:#999;font-weight:400">10</span></summary><div class="group-body"><div class="item"><span class="jp">① Une pression pour commencer !</span><span class="meaning">réponse : とりあえず生（なま）で。</span></div>
+<div class="item"><span class="jp">② C'est quoi ce plat que je n'ai pas commandé ? (→ comprendre)</span><span class="meaning">réponse : お通（とお）し（amuse-bouche payant, normal en izakaya）</span></div>
+<div class="item"><span class="jp">③ Je tiens mal l'alcool, celui-là sera mon dernier.</span><span class="meaning">réponse : お酒（さけ）弱（よわ）いんで、これで最後（さいご）にします。</span></div>
+<div class="item"><span class="jp">④ On partage l'addition ? 3000 yens chacun.</span><span class="meaning">réponse : 割（わ）り勘（かん）でいい？1人（ひとり）3000円（さんぜんえん）ね。</span></div>
+<div class="item"><span class="jp">⑤ C'est moi qui régale. → (réponse attendue de l'autre)</span><span class="meaning">réponse : おごるよ → ごちそうさまです！</span></div>
+<div class="item"><span class="jp">⑥ On enchaîne au karaoké ?</span><span class="meaning">réponse : 2次会（にじかい）、カラオケ行（い）こ。</span></div>
+<div class="item"><span class="jp">⑦ « Je viens si je peux » (et décoder ce que ça veut dire).</span><span class="meaning">réponse : 行（い）けたら行（い）く（= je ne viendrai probablement pas）</span></div>
+<div class="item"><span class="jp">⑧ Non merci. (froid, à un racoleur)</span><span class="meaning">réponse : 結構（けっこう）です。</span></div>
+<div class="item"><span class="jp">⑨ Bien rentré ? (message du lendemain)</span><span class="meaning">réponse : 無事（ぶじ）帰（かえ）れた？</span></div>
+<div class="item"><span class="jp">⑩ Merci d'avoir organisé !</span><span class="meaning">réponse : 幹事（かんじ）ありがとう！</span></div></div></details>
+<footer>Généré via lesson-card-html + kanji-stroke-order-html — Memory/Japanese</footer>
+</body></html>

@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>STREET 5 — Dating</title>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;max-width:720px;margin:0 auto;padding:0 1.1rem 3rem;color:#1a1a1a;line-height:1.5;background:#fff}
+header{border-bottom:2px solid #1a1a1a;padding:1.4rem 0 .9rem;margin-bottom:1.1rem;position:sticky;top:0;background:#fff}
+h1{margin:0;font-size:1.5rem;font-weight:700;line-height:1.25}
+.subtitle{color:#555;font-size:.92rem;margin-top:.35rem}
+.legend{display:flex;gap:.9rem;flex-wrap:wrap;margin-top:.6rem;font-size:.82rem;color:#555}
+.legend span{white-space:nowrap}
+
+.roots{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.6rem;margin-bottom:1.6rem}
+.root{background:#fff8e6;border-left:3px solid #d4a017;border-radius:6px;padding:.55rem .7rem}
+.root .kanji{font-size:1.5rem;font-weight:700;line-height:1.1}
+.root .reading{font-size:.78rem;color:#7a6212;margin-top:.1rem}
+.root .meaning{font-size:.85rem;margin-top:.2rem}
+.root .unlocks{font-size:.76rem;color:#8a6d00;margin-top:.35rem}
+.root a{color:#4a6fa5;text-decoration:none}
+.root a:hover{text-decoration:underline}
+
+details.group{background:#fafafa;border:1px solid #e8e8e8;border-radius:8px;margin-bottom:.7rem;overflow:hidden}
+details.group summary{list-style:none;cursor:pointer;padding:.75rem .9rem;font-weight:700;font-size:.98rem;background:#f0f0f0;border-bottom:1px solid #e8e8e8;display:flex;justify-content:space-between;align-items:center}
+details.group summary::-webkit-details-marker{display:none}
+details.group summary::after{content:"▸";font-weight:400;color:#888;transition:transform .15s}
+details.group[open] summary::after{transform:rotate(90deg)}
+.group-body{padding:.2rem .9rem .5rem}
+
+.item{display:flex;flex-wrap:wrap;align-items:baseline;gap:.35rem .55rem;padding:.55rem 0;border-bottom:1px solid #eee}
+.item:last-child{border-bottom:none}
+.item .jp{font-size:1.05rem;font-weight:600;white-space:normal}
+.item .kana{font-size:.85rem;color:#666}
+.item .meaning{flex-basis:100%;font-size:.92rem;color:#333;margin-top:.05rem}
+.item .romaji{font-size:.78rem;color:#999;font-style:italic}
+.item .lit{flex-basis:100%;font-size:.78rem;color:#888}
+.item .dial{flex-basis:100%;font-size:.84rem;color:#444;background:#f5f7fa;border-left:2px solid #c5d3e8;border-radius:4px;padding:.3rem .55rem;margin-top:.15rem;white-space:pre-line}
+.item .manual{flex-basis:100%;font-size:.78rem;color:#1a4d8a}
+.item .poli{flex-basis:100%;font-size:.84rem;color:#0a6b4a;background:#eafaf3;border-left:2px solid #2f9e52;border-radius:4px;padding:.3rem .55rem;margin-top:.15rem}
+.item .reg{font-size:.72rem;padding:.05rem .4rem;border-radius:999px;background:#eee;color:#555;font-weight:600}
+.reg-casual{background:#ffe9d6;color:#8a4b00}
+.reg-neutre{background:#e6f0ff;color:#1a4d8a}
+.reg-formel{background:#eee6ff;color:#4a1a8a}
+.note{font-size:.78rem;color:#888;font-style:italic}
+
+.protocol{background:#eaf6ec;border-left:3px solid #2f9e52;border-radius:6px;padding:.75rem .9rem;margin-bottom:1.1rem;font-size:.88rem}
+.protocol strong{display:block;margin-bottom:.35rem;font-size:.92rem}
+.protocol ol{margin:0;padding-left:1.15rem}
+.protocol li{margin-bottom:.3rem}
+
+footer{margin-top:1.8rem;padding-top:1rem;border-top:1px solid #eee;font-size:.78rem;color:#999;text-align:center}
+
+/* Fusion kanji-stroke-order-html : cartes kanji avec tracé KanjiVG inliné */
+details.kcard{background:#fff;border:1px solid #e8e8e8;border-radius:8px;margin-bottom:.6rem;overflow:hidden}
+details.kcard summary{list-style:none;cursor:pointer;padding:.6rem .8rem;display:flex;align-items:baseline;gap:.5rem;flex-wrap:wrap}
+details.kcard summary::-webkit-details-marker{display:none}
+details.kcard summary .kanji{font-size:1.4rem;font-weight:700;line-height:1}
+details.kcard summary .vocab{font-size:.95rem;color:#333}
+details.kcard summary .vocab .kana{color:#666;font-size:.85rem}
+details.kcard summary .meaning{flex-basis:100%;font-size:.85rem;color:#555}
+details.kcard summary::after{content:"▸";margin-left:auto;color:#888;transition:transform .15s}
+details.kcard[open] summary::after{transform:rotate(90deg)}
+.kcard-body{padding:.2rem .8rem .9rem}
+.kcard-meta{color:#555;font-size:.88rem;margin-bottom:.5rem}
+.kcard-meta span{margin-right:1rem}
+.kcard-strokes{background:#fafafa;border:1px solid #e8e8e8;padding:.6rem;border-radius:6px;text-align:center;margin-bottom:.7rem}
+.kcard-strokes svg{max-width:100%;height:auto}
+.kcard-mnemo{background:#fff8e6;padding:.6rem .75rem;border-left:3px solid #d4a017;border-radius:4px;font-size:.9rem}
+
+@media print{
+  header{position:static}
+  details.group,details.kcard{border:none;background:none}
+  details.group summary::after,details.kcard summary::after{content:""}
+  .item{break-inside:avoid}
+}
+</style></head>
+<body>
+<header><h1>STREET 5 — Dating</h1><div class="subtitle">Vocabulaire, apps, compliments, signaux, refus polis, sentiments, respect · 192 expressions · exposition consignée, pas acquis</div><div class="legend"><span>○ casual · ◇ neutre · ◆ formel · ♂/♀ genré · ⚠️ attention registre</span></div></header>
+
+
+<details class="group" open><summary>B1 G1 — Le vocabulaire de base des relations <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">彼氏（かれし）／彼女（かのじょ）</span><span class="romaji">kareshi / kanojo</span><span class="reg reg-casual">○ casual</span><span class="meaning">petit ami / petite amie (attention : 彼女 = aussi « elle »)</span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: 彼女（かのじょ）いるの？
+B: いないよ、フリー。</span></div>
+<div class="item"><span class="jp">付（つ）き合（あ）う</span><span class="romaji">tsukiau</span><span class="reg reg-casual">○ casual</span><span class="meaning">sortir ensemble (officiellement : au Japon, il y a un AVANT et un APRÈS déclaration)</span><span class="poli">poli : お付き合いします</span><span class="dial">A: あの二人（ふたり）、付（つ）き合（あ）ってるの？
+B: 先月（せんげつ）からだって。</span></div>
+<div class="item"><span class="jp">告白（こくはく）</span><span class="romaji">kokuhaku</span><span class="reg reg-casual">○ casual</span><span class="meaning">la déclaration officielle (« sors avec moi ») : rite de passage obligatoire au Japon <span class="note">culture clé : sans 告白, pas de couple officiel</span></span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: 告白（こくはく）した？
+B: まだ勇気（ゆうき）が…</span></div>
+<div class="item"><span class="jp">片思（かたおも）い</span><span class="romaji">kataomoi</span><span class="reg reg-casual">○ casual</span><span class="meaning">amour à sens unique</span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: ずっと片思（かたおも）い中（ちゅう）。
+B: 言（い）っちゃいなよ。</span></div>
+<div class="item"><span class="jp">両想（りょうおも）い</span><span class="romaji">ryouomoi</span><span class="reg reg-casual">○ casual</span><span class="meaning">sentiments réciproques</span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: 実（じつ）は向（む）こうも好（す）きだったって。
+B: 両想（りょうおも）いじゃん！</span></div>
+<div class="item"><span class="jp">元（もと）カレ／元（もと）カノ</span><span class="romaji">motokare / motokano</span><span class="reg reg-casual">○ casual</span><span class="meaning">ex (copain / copine) <span class="note">⚠️ sujet à éviter en premier date</span></span><span class="poli">poli : 元交際相手（もっと丁寧な言い方）</span><span class="dial">A: 元（もと）カノの話（はなし）はしない方（ほう）がいいよ。
+B: 了解（りょうかい）（笑）</span></div>
+<div class="item"><span class="jp">デート</span><span class="romaji">deeto</span><span class="reg reg-casual">○ casual</span><span class="meaning">rencard (le mot s'utilise sans gêne)</span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: 明日（あした）デートなんだ。
+B: どこ行（い）くの？</span></div>
+<div class="item"><span class="jp">出会（であ）い</span><span class="romaji">deai</span><span class="reg reg-casual">○ casual</span><span class="meaning">rencontre (出会いがない = « je ne rencontre personne », plainte nationale)</span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: 最近（さいきん）出会（であ）いがなくて。
+B: わかる、職場（しょくば）と家（いえ）の往復（おうふく）だもんね。</span></div>
+<div class="item"><span class="jp">合（ごう）コン</span><span class="romaji">goukon</span><span class="reg reg-casual">○ casual</span><span class="meaning">dîner de groupe organisé pour se rencontrer (3 vs 3 typiquement)</span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: 金曜（きんよう）、合（ごう）コンあるんだけど来（く）る？
+B: 人数（にんずう）合（あ）わせなら行（い）く（笑）</span></div>
+<div class="item"><span class="jp">街（まち）コン</span><span class="romaji">machikon</span><span class="reg reg-casual">○ casual</span><span class="meaning">événement de rencontre à l'échelle d'un quartier (billets par genre)</span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: 街（まち）コンって行（い）ったことある？
+B: 一回（いっかい）だけ。意外（いがい）と普通（ふつう）の人（ひと）ばかりだったよ。</span></div>
+<div class="item"><span class="jp">マッチングアプリ</span><span class="romaji">macchingu apuri</span><span class="reg reg-casual">○ casual</span><span class="meaning">app de rencontre (Pairs, with, Tinder : totalement banalisé chez les 20-30 ans)</span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: どこで知（し）り合（あ）ったの？
+B: アプリ。今（いま）はそれが普通（ふつう）だよ。</span></div>
+<div class="item"><span class="jp">いい感（かん）じ</span><span class="romaji">ii kanji</span><span class="reg reg-casual">○ casual</span><span class="meaning">« ça se passe bien entre nous » (l'étape entre rien et couple)</span><span class="poli">poli : いい感じです</span><span class="dial">A: で、彼女（かのじょ）とどうなの？
+B: いい感（かん）じだと思（おも）う。</span></div>
+<div class="item"><span class="jp">脈（みゃく）あり</span><span class="romaji">myaku ari</span><span class="reg reg-casual">○ casual</span><span class="meaning">il y a de l'espoir (littéralement « il y a un pouls »)</span><span class="poli">poli : 望みがあります</span><span class="dial">A: 毎日（まいにち）LINE返（かえ）ってくる。
+B: それは脈（みゃく）ありでしょ。</span></div>
+<div class="item"><span class="jp">脈（みゃく）なし</span><span class="romaji">myaku nashi</span><span class="reg reg-casual">○ casual</span><span class="meaning">aucune chance (électrocardiogramme plat)</span><span class="poli">poli : 望みがありません</span><span class="dial">A: 返信（へんしん）、3日（みっか）に1回（いっかい）…
+B: 脈（みゃく）なしかも…</span></div>
+<div class="item"><span class="jp">タイプ</span><span class="romaji">taipu</span><span class="reg reg-casual">○ casual</span><span class="meaning">son genre (どんな人がタイプ？ = question standard)</span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: どんな人（ひと）がタイプ？
+B: 一緒（いっしょ）にいて楽（らく）な人（ひと）。</span></div>
+<div class="item"><span class="jp">恋（こい）バナ</span><span class="romaji">koibana</span><span class="reg reg-casual">○ casual</span><span class="meaning">parler de sa vie amoureuse (恋の話 : sujet favori des soirées)</span><span class="poli">poli : 恋の話（省略しない完全形）</span><span class="dial">A: 恋（こい）バナしようよ。
+B: 私（わたし）からは何（なに）も出（で）ません（笑）</span></div></div></details>
+<details class="group" open><summary>B1 G2 — Les apps : vocabulaire et pièges <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">マッチする</span><span class="romaji">macchi suru</span><span class="reg reg-casual">○ casual</span><span class="meaning">matcher</span><span class="poli">poli : マッチします</span><span class="dial">A: 昨日（きのう）マッチした人（ひと）とメッセ続（つづ）いてる。
+B: いいじゃん。</span></div>
+<div class="item"><span class="jp">プロフ</span><span class="romaji">purofu</span><span class="reg reg-casual">○ casual</span><span class="meaning">le profil (プロフィール contracté)</span><span class="poli">poli : プロフィール（省略しない完全形）</span><span class="dial">A: プロフに何（なに）書（か）けばいい？
+B: 正直（しょうじき）が一番（いちばん）。</span></div>
+<div class="item"><span class="jp">メッセ</span><span class="romaji">messe</span><span class="reg reg-casual">○ casual</span><span class="meaning">les messages (メッセージ contracté)</span><span class="poli">poli : メッセージ（省略しない完全形）</span><span class="dial">A: メッセのやり取（と）り、何日（なんにち）続（つづ）いたら誘（さそ）っていい？
+B: 1週間（いっしゅうかん）くらいが目安（めやす）かな。</span></div>
+<div class="item"><span class="jp">写真（しゃしん）と違（ちが）う</span><span class="romaji">shashin to chigau</span><span class="reg reg-casual">○ casual</span><span class="meaning">pas comme sur les photos (写真詐欺 = « arnaque photo », se dit en privé) <span class="note">⚠️ ne jamais le dire en face</span></span><span class="poli">poli : 写真と違いますね（本人には言わない言葉）</span><span class="dial">A: 会（あ）ってどうだった？
+B: 正直（しょうじき）、写真（しゃしん）とだいぶ違（ちが）った…</span></div>
+<div class="item"><span class="jp">サクラ</span><span class="romaji">sakura</span><span class="reg reg-casual">○ casual</span><span class="meaning">faux profil payé par l'app (à flairer) <span class="note">⚠️ vigilance</span></span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: 美人（びじん）すぎて即（そく）メッセ来（き）た。
+B: それ、サクラじゃない？</span></div>
+<div class="item"><span class="jp">業者（ぎょうしゃ）</span><span class="romaji">gyousha</span><span class="reg reg-casual">○ casual</span><span class="meaning">compte commercial déguisé (crypto, réseaux pyramidaux : signalement direct) <span class="note">⚠️ «投資に興味ある？» = fuir</span></span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: すぐLINE移動（いどう）したがる人（ひと）って…
+B: 業者（ぎょうしゃ）の可能性（かのうせい）大（だい）。</span></div>
+<div class="item"><span class="jp">真剣（しんけん）に探（さが）してます</span><span class="romaji">shinken ni sagashitemasu</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">je cherche quelque chose de sérieux (phrase de profil et de conversation)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: どういう目的（もくてき）でアプリやってるの？
+B: 真剣（しんけん）に探（さが）してます。</span></div>
+<div class="item"><span class="jp">遊（あそ）び目的（もくてき）</span><span class="romaji">asobi mokuteki</span><span class="reg reg-casual">○ casual</span><span class="meaning">là juste pour s'amuser (pas sérieux : à identifier tôt) <span class="note">⚠️ vocabulaire de tri</span></span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: あの人（ひと）どう思（おも）う？
+B: 遊（あそ）び目的（もくてき）っぽいからやめとく。</span></div>
+<div class="item"><span class="jp">会（あ）ってみませんか？</span><span class="romaji">atte mimasen ka?</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">et si on se rencontrait ? (le passage app → réel)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 話（はなし）合（あ）いますね。よかったら会（あ）ってみませんか？
+B: いいですね、ぜひ。</span></div>
+<div class="item"><span class="jp">まずはカフェで</span><span class="romaji">mazu wa kafe de</span><span class="reg reg-casual">○ casual</span><span class="meaning">d'abord un café (1er date court et safe : la norme app)</span><span class="poli">poli : identique (locution neutre)</span><span class="dial">A: 初回（しょかい）は何（なに）がいい？
+B: まずはカフェで1時間（いちじかん）くらいが気楽（きらく）。</span></div>
+<div class="item"><span class="jp">実物（じつぶつ）の方（ほう）がいいね</span><span class="romaji">jitsubutsu no hou ga ii ne</span><span class="reg reg-casual">○ casual</span><span class="meaning">t'es mieux en vrai (LE compliment app-date qui marche)</span><span class="poli">poli : 実物の方がいいですね</span><span class="dial">A: 実物（じつぶつ）の方（ほう）がいいね。
+B: それ、褒（ほ）めてる？（笑）
+A: 褒（ほ）めてる褒（ほ）めてる。</span></div>
+<div class="item"><span class="jp">何（なん）て呼（よ）んだらいい？</span><span class="romaji">nante yondara ii?</span><span class="reg reg-casual">○ casual</span><span class="meaning">je t'appelle comment ? (les pseudos d'app → vrais prénoms)</span><span class="poli">poli : 何とお呼びすればいいですか</span><span class="dial">A: アプリだと「ゆう」だけど、何（なん）て呼（よ）んだらいい？
+B: ゆうかでいいよ。</span></div>
+<div class="item"><span class="jp">アプリ、もう消（け）した</span><span class="romaji">apuri, mou keshita</span><span class="reg reg-casual">○ casual</span><span class="meaning">j'ai supprimé l'app (= signal fort d'exclusivité) <span class="note">milestone de couple app-né</span></span><span class="poli">poli : アプリはもう削除しました</span><span class="dial">A: ね、アプリまだ入（はい）ってる？
+B: もう消（け）した。
+A: …私（わたし）も。</span></div>
+<div class="item"><span class="jp">危（あぶ）ない人（ひと）だったらすぐ帰（かえ）る</span><span class="romaji">abunai hito dattara sugu kaeru</span><span class="reg reg-casual">○ casual</span><span class="meaning">si la personne est louche, je pars direct (règle de sécurité 1er date) <span class="note">⚠️ lieu public, prévenir un ami</span></span><span class="poli">poli : 危ない方でしたらすぐに帰ります</span><span class="dial">A: 初対面（しょたいめん）、大丈夫（だいじょうぶ）？
+B: カフェだし、危（あぶ）なかったらすぐ帰（かえ）る。</span></div>
+<div class="item"><span class="jp">友達（ともだち）に居場所（いばしょ）共有（きょうゆう）してる</span><span class="romaji">tomodachi ni ibasho kyouyuu shiteru</span><span class="reg reg-casual">○ casual</span><span class="meaning">je partage ma position à un ami (norme de sécurité, dicible sans gêne)</span><span class="poli">poli : 友人に居場所を共有しています</span><span class="dial">A: 心配（しんぱい）だから位置（いち）共有（きょうゆう）しとくね。
+B: 賢（かしこ）い。</span></div>
+<div class="item"><span class="jp">プロフィール盛（も）ってた（笑）</span><span class="romaji">purofiiru motteta</span><span class="reg reg-casual">○ casual</span><span class="meaning">j'avais embelli mon profil (aveu auto-dérision)</span><span class="poli">poli : プロフィールを少し盛っていました</span><span class="dial">A: 身長（しんちょう）178cmって書（か）いてたよね？
+B: 盛（も）ってました（笑）175です。</span></div></div></details>
+<details class="group" open><summary>B1 G3 — Compliments : naturels vs creepy <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">笑顔（えがお）、いいね</span><span class="romaji">egao, ii ne</span><span class="reg reg-casual">○ casual</span><span class="meaning">j'aime ton sourire (sûr, chaleureux, jamais creepy)</span><span class="poli">poli : 笑顔がいいですね</span><span class="dial">A: 笑顔（えがお）いいね。
+B: え、ありがと（笑）</span></div>
+<div class="item"><span class="jp">話（はな）しやすい</span><span class="romaji">hanashiyasui</span><span class="reg reg-casual">○ casual</span><span class="meaning">c'est facile de parler avec toi (LE meilleur compliment de 1er date)</span><span class="poli">poli : 話しやすいです</span><span class="dial">A: なんか、話（はな）しやすいね。
+B: 私（わたし）も思（おも）ってた。</span></div>
+<div class="item"><span class="jp">一緒（いっしょ）にいて楽（らく）</span><span class="romaji">issho ni ite raku</span><span class="reg reg-casual">○ casual</span><span class="meaning">je suis bien avec toi, c'est naturel</span><span class="poli">poli : 一緒にいて楽です</span><span class="dial">A: 初対面（しょたいめん）なのに、一緒（いっしょ）にいて楽（らく）だね。
+B: わかる、不思議（ふしぎ）。</span></div>
+<div class="item"><span class="jp">センスいいね</span><span class="romaji">sensu ii ne</span><span class="reg reg-casual">○ casual</span><span class="meaning">beau goût (tenue, choix du lieu : safe et apprécié) <span class="note">revu (M3)</span></span><span class="poli">poli : センスがいいですね</span><span class="dial">A: この店（みせ）選（えら）んだの？センスいいね。
+B: 頑張（がんば）って探（さが）した（笑）</span></div>
+<div class="item"><span class="jp">その服（ふく）、似合（にあ）ってる</span><span class="romaji">sono fuku, niatteru</span><span class="reg reg-casual">○ casual</span><span class="meaning">ça te va bien (complimenter le CHOIX, pas le corps : la règle d'or) <span class="note">règle : vêtements ○, corps ⚠️</span></span><span class="poli">poli : その服、似合っていますね</span><span class="dial">A: その色（いろ）、似合（にあ）ってるね。
+B: ほんと？嬉（うれ）しい。</span></div>
+<div class="item"><span class="jp">声（こえ）、落（お）ち着（つ）くね</span><span class="romaji">koe, ochitsuku ne</span><span class="reg reg-casual">○ casual</span><span class="meaning">ta voix est apaisante (ok après une vraie conversation, creepy en ouverture) <span class="note">⚠️ timing : pas dans les 5 premières minutes</span></span><span class="poli">poli : 声が落ち着きますね</span><span class="dial">A: 声（こえ）、なんか落（お）ち着（つ)くね。
+B: 初（はじ）めて言（い）われた（笑）</span></div>
+<div class="item"><span class="jp">かわいいね</span><span class="romaji">kawaii ne</span><span class="reg reg-casual">○ casual</span><span class="meaning">t'es mignonne (direct : à réserver quand l'ambiance est déjà là, jamais en spam) <span class="note">⚠️ dosage : 1 fois > 10 fois</span></span><span class="poli">poli : かわいいですね</span><span class="dial">A: 今日（きょう）、かわいいね。
+B: 今日（きょう）「は」？（笑）
+A: いつも、です（笑）</span></div>
+<div class="item"><span class="jp">きれい vs かわいい</span><span class="kana">（きれい・かわいい）</span><span class="romaji">kirei vs kawaii</span><span class="reg reg-casual">○ casual</span><span class="meaning">belle (élégance) vs mignonne (charme) : les Japonaises entendent la nuance, choisis en conscience <span class="note">きれい = mature/chic ; かわいい = accessible/douce</span></span><span class="poli">poli : identique (comparaison de nuances, pas d'axe de politesse)</span><span class="dial">A: きれい系（けい）とかわいい系（けい）、どっちって言（い）われたい？
+B: 難問（なんもん）（笑）</span></div>
+<div class="item"><span class="jp">頭（あたま）の回転（かいてん）早（はや）いね</span><span class="romaji">atama no kaiten hayai ne</span><span class="reg reg-casual">○ casual</span><span class="meaning">t'as l'esprit vif (compliment d'intelligence : rare donc précieux)</span><span class="poli">poli : 頭の回転が早いですね</span><span class="dial">A: 頭（あたま）の回転（かいてん）早（はや）いね。
+B: え、そんなこと言（い）われたの初（はじ）めて。</span></div>
+<div class="item"><span class="jp">よく笑（わら）うね、いいね</span><span class="romaji">yoku warau ne, ii ne</span><span class="reg reg-casual">○ casual</span><span class="meaning">t'es toujours en train de rire, j'adore</span><span class="poli">poli : よく笑いますね、いいですね</span><span class="dial">A: よく笑（わら）うね。
+B: つられ笑（わら）いしやすいの（笑）</span></div>
+<div class="item"><span class="jp">頑張（がんば）ってるの、すごいと思（おも）う</span><span class="romaji">ganbatteru no, sugoi to omou</span><span class="reg reg-casual">○ casual</span><span class="meaning">je trouve ça admirable, ce que tu fais (valorise l'effort, pas le physique)</span><span class="poli">poli : 頑張っていらっしゃって、すごいと思います</span><span class="dial">A: 仕事（しごと）しながら資格（しかく）の勉強（べんきょう）してる。
+B: 頑張（がんば）ってるの、すごいと思（おも）う。</span></div>
+<div class="item"><span class="jp">❌ 体（からだ）のことは言（い）わない</span><span class="kana">（からだのことはいわない）</span><span class="romaji">karada no koto wa iwanai</span><span class="reg reg-casual">○ casual</span><span class="meaning">RÈGLE : zéro commentaire sur le corps (poids, poitrine, jambes) : creepy immédiat, même « en compliment » <span class="note">⚠️ règle absolue premiers dates</span></span><span class="poli">poli : n/a (règle de conduite, pas une phrase à dire)</span><span class="dial">A: スタイルいいね、とか言（い）っていい？
+B: 初対面（しょたいめん）では絶対（ぜったい）やめとけ。</span></div>
+<div class="item"><span class="jp">❌ 外国人（がいこくじん）好（す）きでしょ？は地雷（じらい）</span><span class="kana">（がいこくじんずきでしょ？）</span><span class="romaji">gaikokujin zuki desho?</span><span class="reg reg-casual">○ casual</span><span class="meaning">« t'aimes les étrangers, hein ? » = terrain miné : ne le dis jamais, et méfie-toi si on te réduit à « l'étranger » <span class="note">⚠️ dans les deux sens</span></span><span class="poli">poli : n/a (avertissement, pas une phrase à dire)</span><span class="dial">A: 外国人（がいこくじん）だから人気（にんき）でしょ？
+B: 人（ひと）によるよ（笑）（et sujet suivant）</span></div>
+<div class="item"><span class="jp">日本語（にほんご）でナンパって難易度（なんいど）高（たか）い（笑）</span><span class="romaji">nihongo de nanpa tte nan'ido takai</span><span class="reg reg-casual">○ casual</span><span class="meaning">draguer en japonais, c'est du niveau expert (l'auto-dérision qui désamorce tout)</span><span class="poli">poli : 日本語でナンパするのは難易度が高いです</span><span class="dial">A: 日本語（にほんご）でナンパって難易度（なんいど）高（たか）い（笑）
+B: 今（いま）ので成功（せいこう）してるけどね（笑）</span></div>
+<div class="item"><span class="jp">口説（くど）くつもりはないんだけど</span><span class="romaji">kudoku tsumori wa nain da kedo</span><span class="reg reg-casual">○ casual</span><span class="meaning">j'essaie pas de te draguer, mais… (annonce un compliment sans pression)</span><span class="poli">poli : 口説くつもりはないのですが</span><span class="dial">A: 口説（くど）くつもりはないんだけど、今日（きょう）ほんとに楽（たの）しい。
+B: 私（わたし）も。</span></div>
+<div class="item"><span class="jp">また会（あ）いたいって思（おも）った</span><span class="romaji">mata aitai tte omotta</span><span class="reg reg-casual">○ casual</span><span class="meaning">je me suis dit que je voulais te revoir (sincère, simple, efficace)</span><span class="poli">poli : また会いたいと思いました</span><span class="dial">A: 帰（かえ）り道（みち）、また会（あ）いたいって思（おも）った。
+B: …私（わたし）もだよ。</span></div></div></details>
+<details class="group" open><summary>B1 G4 — Proposer un date (léger, daté, concret) <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">今度（こんど）、2人（ふたり）でどう？</span><span class="romaji">kondo, futari de dou?</span><span class="reg reg-casual">○ casual</span><span class="meaning">et si on se voyait juste tous les deux ? (le passage groupe → duo)</span><span class="poli">poli : 今度、2人でどうですか</span><span class="dial">A: 今度（こんど）、2人（ふたり）でどう？
+B: いいよ（笑）何（なに）する？</span></div>
+<div class="item"><span class="jp">ご飯（はん）行（い）かない？</span><span class="romaji">gohan ikanai?</span><span class="reg reg-casual">○ casual</span><span class="meaning">on va manger un truc ? (LA proposition standard, zéro pression)</span><span class="poli">poli : ご飯に行きませんか</span><span class="dial">A: 今度（こんど）ご飯（はん）行（い）かない？
+B: 行（い）く行（い）く。</span></div>
+<div class="item"><span class="jp">おいしい〜の店（みせ）見（み）つけたんだけど</span><span class="romaji">oishii ~ no mise mitsuketan da kedo</span><span class="reg reg-casual">○ casual</span><span class="meaning">j'ai trouvé un super resto de… (prétexte concret = 2× plus de oui)</span><span class="poli">poli : おいしい〜のお店を見つけたのですが</span><span class="dial">A: おいしいタイ料理（りょうり）の店（みせ）見（み）つけたんだけど、興味（きょうみ）ある？
+B: めっちゃある。</span></div>
+<div class="item"><span class="jp">映画（えいが）、興味（きょうみ）ない？</span><span class="romaji">eiga, kyoumi nai?</span><span class="reg reg-casual">○ casual</span><span class="meaning">ça te dit un ciné ? (négation = plus doux)</span><span class="poli">poli : 映画に興味はありませんか</span><span class="dial">A: 今週末（こんしゅうまつ）公開（こうかい）のやつ、興味（きょうみ）ない？
+B: 気（き）になってたやつだ。行（い）きたい。</span></div>
+<div class="item"><span class="jp">週末（しゅうまつ）、空（あ）いてる？</span><span class="romaji">shuumatsu, aiteru?</span><span class="reg reg-casual">○ casual</span><span class="meaning">t'es libre ce week-end ?</span><span class="poli">poli : 週末は空いていますか</span><span class="dial">A: 週末（しゅうまつ）空（あ）いてる？
+B: 土曜（どよう）なら。</span></div>
+<div class="item"><span class="jp">仕事（しごと）終（お）わりにサクッと</span><span class="romaji">shigoto owari ni sakutto</span><span class="reg reg-casual">○ casual</span><span class="meaning">un truc rapide après le boulot (サクッと = vite fait, enlève la pression)</span><span class="poli">poli : お仕事の後に少しだけ</span><span class="dial">A: 平日（へいじつ）でもいいなら、仕事（しごと）終（お）わりにサクッと飲（の）む？
+B: それ気楽（きらく）でいいね。</span></div>
+<div class="item"><span class="jp">カフェ巡（めぐ）り、一緒（いっしょ）に行（い）く？</span><span class="romaji">kafe meguri, issho ni iku?</span><span class="reg reg-casual">○ casual</span><span class="meaning">tu viens faire la tournée des cafés avec moi ? (activité = conversation facile)</span><span class="poli">poli : カフェ巡りにご一緒しませんか</span><span class="dial">A: カフェ巡（めぐ）り好（す）きって言（い）ってたよね。一緒（いっしょ）に行（い）く？
+B: 覚（おぼ）えててくれたんだ。行（い）く！</span></div>
+<div class="item"><span class="jp">行（い）きたいところある？</span><span class="romaji">ikitai tokoro aru?</span><span class="reg reg-casual">○ casual</span><span class="meaning">y'a un endroit où tu veux aller ? (co-construire le plan)</span><span class="poli">poli : 行きたいところはありますか</span><span class="dial">A: 行（い）きたいところある？
+B: 実（じつ）はチームラボ行（い）ってみたくて。
+A: じゃあ決（き）まり。</span></div>
+<div class="item"><span class="jp">案内（あんない）してよ（笑）</span><span class="romaji">annai shite yo</span><span class="reg reg-casual">○ casual</span><span class="meaning">fais-moi visiter, alors (l'étranger qui retourne l'avantage : elle devient guide) <span class="note">ton meilleur angle à Tokyo</span></span><span class="poli">poli : ご案内いただけますか</span><span class="dial">A: 東京（とうきょう）、まだ全然（ぜんぜん）知（し）らなくて。案内（あんない）してよ（笑）
+B: しょうがないなあ（笑）どこ行（い）きたい？</span></div>
+<div class="item"><span class="jp">逆（ぎゃく）にフランス料理（りょうり）、作（つく）るよ</span><span class="romaji">gyaku ni furansu ryouri, tsukuru yo</span><span class="reg reg-casual">○ casual</span><span class="meaning">en échange, je te cuisine français (ta carte unique : personne d'autre ne l'a) <span class="note">à sortir après 2-3 dates, pas avant</span></span><span class="poli">poli : 逆にフランス料理を作ります</span><span class="dial">A: 案内（あんない）のお礼（れい）に、フランス料理（りょうり）作（つく）るよ。
+B: え、それはずるい（笑）</span></div>
+<div class="item"><span class="jp">日程（にってい）、合（あ）わせるよ</span><span class="romaji">nittei, awaseru yo</span><span class="reg reg-casual">○ casual</span><span class="meaning">je m'adapte à ton planning (flexibilité = considération)</span><span class="poli">poli : 日程に合わせます</span><span class="dial">A: 忙（いそが）しい時期（じき）で…
+B: 日程（にってい）、合（あ）わせるよ。落（お）ち着（つ）いたらで大丈夫（だいじょうぶ）。</span></div>
+<div class="item"><span class="jp">無理（む り）にとは言（い）わないけど</span><span class="kana">（むりにとはいわないけど）</span><span class="romaji">muri ni to wa iwanai kedo</span><span class="reg reg-casual">○ casual</span><span class="meaning">je ne veux pas te forcer, hein (retire la pression AVANT le refus)</span><span class="poli">poli : 無理にとは申しませんが</span><span class="dial">A: 無理（むり）にとは言（い）わないけど、来（き）てくれたら嬉（うれ）しい。
+B: そう言（い）われたら行（い）きたくなるじゃん。</span></div>
+<div class="item"><span class="jp">気（き）が向（む）いたら連絡（れんらく）して</span><span class="romaji">ki ga muitara renraku shite</span><span class="reg reg-casual">○ casual</span><span class="meaning">écris-moi si l'envie te prend (la porte ouverte sans deadline)</span><span class="poli">poli : 気が向いたらご連絡ください</span><span class="dial">A: 今週（こんしゅう）は難（むずか）しいかも。
+B: 気（き）が向（む）いたら連絡（れんらく）して。待（ま）ってる。</span></div>
+<div class="item"><span class="jp">楽（たの）しみにしてるね</span><span class="romaji">tanoshimi ni shiteru ne</span><span class="reg reg-casual">○ casual</span><span class="meaning">j'ai hâte (confirme sans en faire trop) <span class="note">revu (M2)</span></span><span class="poli">poli : 楽しみにしています</span><span class="dial">A: じゃあ土曜（どよう）14時（じゅうよじ）に。
+B: 楽（たの）しみにしてるね。</span></div>
+<div class="item"><span class="jp">前日（ぜんじつ）に場所（ばしょ）送（おく）るね</span><span class="romaji">zenjitsu ni basho okuru ne</span><span class="reg reg-casual">○ casual</span><span class="meaning">je t'envoie le lieu la veille (l'organisateur fiable)</span><span class="poli">poli : 前日に場所をお送りします</span><span class="dial">A: お店（みせ）どこ？
+B: 予約（よやく）したら前日（ぜんじつ）に場所（ばしょ）送（おく）るね。</span></div>
+<div class="item"><span class="jp">リスケでも大丈夫（だいじょうぶ）だよ</span><span class="romaji">risuke demo daijoubu da yo</span><span class="reg reg-casual">○ casual</span><span class="meaning">on peut décaler sans problème (リスケ = reschedule) <span class="note">jeune, business → quotidien</span></span><span class="poli">poli : リスケジュールでも大丈夫です</span><span class="dial">A: ごめん、その日（ひ）残業（ざんぎょう）かも…
+B: リスケでも大丈夫（だいじょうぶ）だよ。</span></div></div></details>
+<details class="group" open><summary>B2 G5 — Pendant le date <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">ちょっと緊張（きんちょう）してる（笑）</span><span class="romaji">chotto kinchou shiteru</span><span class="reg reg-casual">○ casual</span><span class="meaning">je suis un peu nerveux (l'avouer = désarmer, toujours bien reçu)</span><span class="poli">poli : 少し緊張しています</span><span class="dial">A: ちょっと緊張（きんちょう）してる（笑）
+B: 私（わたし）も（笑）よかった、お互（たが）いさま。</span></div>
+<div class="item"><span class="jp">何（なに）食（た）べたい気分（きぶん）？</span><span class="romaji">nani tabetai kibun?</span><span class="reg reg-casual">○ casual</span><span class="meaning">t'as envie de quoi ? (気分 = l'humeur du moment)</span><span class="poli">poli : 何を食べたい気分ですか</span><span class="dial">A: 何（なに）食（た）べたい気分（きぶん）？
+B: がっつり系（けい）かな（笑）</span></div>
+<div class="item"><span class="jp">苦手（にがて）なものある？</span><span class="romaji">nigate na mono aru?</span><span class="reg reg-casual">○ casual</span><span class="meaning">des trucs que tu n'aimes pas ? (avant de commander : prévenance)</span><span class="poli">poli : 苦手なものはありますか</span><span class="dial">A: 苦手（にがて）なものある？
+B: パクチーだけ無理（むり）。</span></div>
+<div class="item"><span class="jp">半分（はんぶん）こする？</span><span class="romaji">hanbunko suru?</span><span class="reg reg-casual">○ casual</span><span class="meaning">on partage moitié-moitié ? (mignon et pratique)</span><span class="poli">poli : 半分こしませんか</span><span class="dial">A: どっちも気（き）になる…
+B: 半分（はんぶん）こする？</span></div>
+<div class="item"><span class="jp">楽（たの）しんでる？</span><span class="romaji">tanoshinderu?</span><span class="reg reg-casual">○ casual</span><span class="meaning">tu passes un bon moment ? (check doux en milieu de date)</span><span class="poli">poli : 楽しんでいますか</span><span class="dial">A: 楽（たの）しんでる？
+B: うん、すごく。</span></div>
+<div class="item"><span class="jp">時間（じかん）、大丈夫（だいじょうぶ）？</span><span class="romaji">jikan, daijoubu?</span><span class="reg reg-casual">○ casual</span><span class="meaning">t'es ok niveau horaire ? (montre le respect du temps de l'autre)</span><span class="poli">poli : お時間は大丈夫ですか</span><span class="dial">A: 時間（じかん)、大丈夫（だいじょうぶ）？
+B: 22時（にじゅうにじ）までなら平気（へいき）。</span></div>
+<div class="item"><span class="jp">もうこんな時間（じかん）！</span><span class="romaji">mou konna jikan!</span><span class="reg reg-casual">○ casual</span><span class="meaning">déjà ?! (le compliment indirect ultime : le temps a filé)</span><span class="poli">poli : もうこんな時間ですね</span><span class="dial">A: もうこんな時間（じかん）！
+B: 話（はな）しすぎたね（笑）</span></div>
+<div class="item"><span class="jp">もう少（すこ）しだけいい？</span><span class="romaji">mou sukoshi dake ii?</span><span class="reg reg-casual">○ casual</span><span class="meaning">on reste encore un peu ? (prolonge sans forcer)</span><span class="poli">poli : もう少しだけよろしいですか</span><span class="dial">A: もう少（すこ）しだけいい？
+B: うん、私（わたし）もまだ帰（かえ）りたくない。</span></div>
+<div class="item"><span class="jp">場所（ばしょ）変（か）えない？</span><span class="romaji">basho kaenai?</span><span class="reg reg-casual">○ casual</span><span class="meaning">on bouge ailleurs ? (2e lieu = le date se passe bien)</span><span class="poli">poli : 場所を変えませんか</span><span class="dial">A: 場所（ばしょ）変（か）えない？いいバー知（し）ってる。
+B: いいね、行（い）こ。</span></div>
+<div class="item"><span class="jp">夜景（やけい）きれいなとこ知（し）ってる</span><span class="romaji">yakei kirei na toko shitteru</span><span class="reg reg-casual">○ casual</span><span class="meaning">je connais un spot avec une belle vue (la carte romantique classique)</span><span class="poli">poli : 夜景がきれいな場所を知っています</span><span class="dial">A: 夜景（やけい）きれいなとこ知（し）ってるんだけど。
+B: 見（み）たい。</span></div>
+<div class="item"><span class="jp">寒（さむ）くない？</span><span class="romaji">samukunai?</span><span class="reg reg-casual">○ casual</span><span class="meaning">t'as pas froid ? (attention concrète > grands discours)</span><span class="poli">poli : 寒くありませんか</span><span class="dial">A: 寒（さむ）くない？
+B: ちょっとだけ。
+A: 中（なか）入（はい）ろっか。</span></div>
+<div class="item"><span class="jp">駅（えき）まで送（おく）るよ</span><span class="romaji">eki made okuru yo</span><span class="reg reg-casual">○ casual</span><span class="meaning">je t'accompagne à la gare (standard et apprécié ; « chez toi » = trop, 1er date) <span class="note">gare ○, domicile ⚠️ premiers dates</span></span><span class="poli">poli : 駅までお送りします</span><span class="dial">A: 駅（えき）まで送（おく）るよ。
+B: ありがと、嬉（うれ）しい。</span></div>
+<div class="item"><span class="jp">終電（しゅうでん）、何時（なんじ）？</span><span class="romaji">shuuden, nanji?</span><span class="reg reg-casual">○ casual</span><span class="meaning">ton dernier train est à quelle heure ? (protéger son retour = respect)</span><span class="poli">poli : 終電は何時ですか</span><span class="dial">A: 終電（しゅうでん）何時（なんじ）？
+B: 0時（れいじ）過（す）ぎ。
+A: じゃああと1時間（いちじかん）あるね。</span></div>
+<div class="item"><span class="jp">今日（きょう）はありがとう</span><span class="romaji">kyou wa arigatou</span><span class="reg reg-casual">○ casual</span><span class="meaning">merci pour aujourd'hui (clôture du date, toujours)</span><span class="poli">poli : 今日はありがとうございました</span><span class="dial">A: 今日（きょう）はありがとう。
+B: こちらこそ。すごく楽（たの）しかった。</span></div>
+<div class="item"><span class="jp">帰（かえ）ったら連絡（れんらく）するね</span><span class="romaji">kaettara renraku suru ne</span><span class="reg reg-casual">○ casual</span><span class="meaning">je t'écris en rentrant (et le FAIRE : fiabilité)</span><span class="poli">poli : 帰ったらご連絡します</span><span class="dial">A: 帰（かえ）ったら連絡（れんらく）するね。
+B: 待（ま）ってる。気（き）をつけて。</span></div>
+<div class="item"><span class="jp">無事（ぶじ）着（つ）いた？</span><span class="romaji">buji tsuita?</span><span class="reg reg-casual">○ casual</span><span class="meaning">bien arrivée ? (le message post-date attendu) <span class="note">revu (M4)</span></span><span class="poli">poli : 無事に着きましたか</span><span class="dial">A: 【LINE】無事（ぶじ）着（つ）いた？
+B: 【LINE】着（つ）いたよ。今日（きょう）ほんとにありがとう。</span></div></div></details>
+<details class="group" open><summary>B2 G6 — Lire les signaux positifs (脈あり) <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">質問（しつもん）が返（かえ）ってくる</span><span class="romaji">shitsumon ga kaette kuru</span><span class="reg reg-casual">○ casual</span><span class="meaning">elle/il te pose des questions en retour = intérêt réel (signal n°1) <span class="note">signal fiable</span></span><span class="poli">poli : 質問が返ってきます</span><span class="dial">A: 昨日（きのう）の子（こ）、どうだった？
+B: 向（む）こうからも質問（しつもん）いっぱい来（き）た。
+A: 脈（みゃく）ありだね。</span></div>
+<div class="item"><span class="jp">返信（へんしん）が早（はや）い</span><span class="romaji">henshin ga hayai</span><span class="reg reg-casual">○ casual</span><span class="meaning">réponses rapides = tu comptes dans sa journée</span><span class="poli">poli : 返信が早いです</span><span class="dial">A: 秒（びょう）で返（かえ）ってくる。
+B: それはもう答（こた）え出（で）てるじゃん。</span></div>
+<div class="item"><span class="jp">笑（わら）ってくれる</span><span class="romaji">waratte kureru</span><span class="reg reg-casual">○ casual</span><span class="meaning">elle rit à tes blagues (le くれる dit tout : c'est un cadeau qu'elle te fait)</span><span class="poli">poli : 笑ってくれます</span><span class="dial">A: 俺（おれ）のダジャレで笑（わら）ってくれた。
+B: 優（やさ）しさか愛（あい）か、どっちかだな（笑）</span></div>
+<div class="item"><span class="jp">「今度（こんど）」に日付（ひづけ）がつく</span><span class="romaji">kondo ni hizuke ga tsuku</span><span class="reg reg-casual">○ casual</span><span class="meaning">son « la prochaine fois » devient une vraie date = sérieux (sinon : politesse) <span class="note">signal clé, cf. M2</span></span><span class="poli">poli : identique (observation culturelle)</span><span class="dial">A: 「また今度（こんど）」で終（お）わった…
+B: 日付（ひづけ）が出（で）たら本物（ほんもの）だよ。</span></div>
+<div class="item"><span class="jp">プライベートの話（はなし）をしてくれる</span><span class="romaji">puraibeeto no hanashi wo shite kureru</span><span class="reg reg-casual">○ casual</span><span class="meaning">elle te confie des choses personnelles = confiance</span><span class="poli">poli : プライベートの話をしてくれます</span><span class="dial">A: 家族（かぞく）の話（はなし）までしてくれた。
+B: 心（こころ）開（ひら）いてるね。</span></div>
+<div class="item"><span class="jp">距離（きょり）が近（ちか）い</span><span class="romaji">kyori ga chikai</span><span class="reg reg-casual">○ casual</span><span class="meaning">la distance physique se réduit d'elle-même (au Japon, la bulle est grande : la réduire = signal)</span><span class="poli">poli : 距離が近いです</span><span class="dial">A: 隣（となり）に座（すわ）ってきた。
+B: 日本（にほん）ではそれ、結構（けっこう）な signal だよ。</span></div>
+<div class="item"><span class="jp">「彼女（かのじょ）いるの？」って聞（き）かれた</span><span class="romaji">kanojo iru no? tte kikareta</span><span class="reg reg-casual">○ casual</span><span class="meaning">elle demande si tu es célibataire = elle sonde le terrain</span><span class="poli">poli : 「彼女はいますか」と聞かれました</span><span class="dial">A: 彼女（かのじょ）いるの？って聞（き）かれた。
+B: それ、興味（きょうみ）ある証拠（しょうこ）でしょ。</span></div>
+<div class="item"><span class="jp">予定（よてい）を聞（き）いてくる</span><span class="romaji">yotei wo kiite kuru</span><span class="reg reg-casual">○ casual</span><span class="meaning">elle demande ton planning = elle veut caser un créneau</span><span class="poli">poli : 予定を聞いてきます</span><span class="dial">A: 来週（らいしゅう）の予定（よてい）聞（き）かれた。
+B: 誘（さそ）われる前兆（ぜんちょう）じゃん。</span></div>
+<div class="item"><span class="jp">覚（おぼ）えててくれた</span><span class="romaji">oboetete kureta</span><span class="reg reg-casual">○ casual</span><span class="meaning">elle se souvient de détails que tu as dits = attention réelle</span><span class="poli">poli : 覚えていてくれました</span><span class="dial">A: 俺（おれ）の好（す）きなバンド、覚（おぼ）えててくれた。
+B: それは大事（だいじ）にされてるよ。</span></div>
+<div class="item"><span class="jp">写真（しゃしん）を撮（と）りたがる</span><span class="romaji">shashin wo toritagaru</span><span class="reg reg-casual">○ casual</span><span class="meaning">elle veut des photos de vous deux = elle archive le moment</span><span class="poli">poli : 写真を撮りたがります</span><span class="dial">A: ツーショット撮（と）ろって言（い）われた。
+B: 保存（ほぞん）したい思（おも）い出（で）ってことだよ。</span></div>
+<div class="item"><span class="jp">お土産（みやげ）くれた</span><span class="romaji">omiyage kureta</span><span class="reg reg-casual">○ casual</span><span class="meaning">elle t'a ramené un petit truc de voyage = tu étais dans ses pensées</span><span class="poli">poli : お土産をくれました</span><span class="dial">A: 旅行（りょこう）のお土産（みやげ）くれた。
+B: 旅先（たびさき）で思（おも）い出（だ）してたんだね。</span></div>
+<div class="item"><span class="jp">また会（あ）いたいって言（い）われた</span><span class="romaji">mata aitai tte iwareta</span><span class="reg reg-casual">○ casual</span><span class="meaning">« je veux te revoir » explicite = feu vert</span><span class="poli">poli : また会いたいと言われました</span><span class="dial">A: 「また会（あ）いたい」って言（い）われた。
+B: おめでとう（笑）</span></div>
+<div class="item"><span class="jp">終電（しゅうでん）を気（き）にしなくなった</span><span class="romaji">shuuden wo ki ni shinaku natta</span><span class="reg reg-casual">○ casual</span><span class="meaning">elle ne regarde plus l'heure = elle est bien, là, maintenant</span><span class="poli">poli : 終電を気にしなくなりました</span><span class="dial">A: 終電（しゅうでん）の話（はなし）、一回（いっかい）も出（で）なかった。
+B: 時間（じかん）を忘（わす）れてたんだよ。</span></div>
+<div class="item"><span class="jp">友達（ともだち）に紹介（しょうかい）された</span><span class="romaji">tomodachi ni shoukai sareta</span><span class="reg reg-casual">○ casual</span><span class="meaning">elle te présente ses amis = intégration officielle dans sa vie</span><span class="poli">poli : 友人に紹介されました</span><span class="dial">A: 親友（しんゆう）に会（あ）わせたいって。
+B: それ、審査（しんさ）だよ（笑）頑張（がんば）って。</span></div>
+<div class="item"><span class="jp">ニックネームで呼（よ）ばれ始（はじ）めた</span><span class="romaji">nikkuneemu de yobare hajimeta</span><span class="reg reg-casual">○ casual</span><span class="meaning">elle t'a trouvé un surnom = affection installée</span><span class="poli">poli : ニックネームで呼ばれ始めました</span><span class="dial">A: 急（きゅう）に「マッちゃん」って呼（よ）ばれた。
+B: 距離（きょり）縮（ちぢ）まってるじゃん。</span></div>
+<div class="item"><span class="jp">でも、確信（かくしん）は告白（こくはく）でしか得（え）られない</span><span class="romaji">demo, kakushin wa kokuhaku de shika erarenai</span><span class="reg reg-casual">○ casual</span><span class="meaning">mais la seule certitude vient de la déclaration : au Japon, les signaux remplacent JAMAIS le 告白 <span class="note">la règle du jeu japonaise</span></span><span class="poli">poli : identique (règle culturelle, observation)</span><span class="dial">A: 脈（みゃく）ありっぽいけど、どうしたら…
+B: 最後（さいご）は言葉（ことば）にするしかないよ。</span></div></div></details>
+<details class="group" open><summary>B2 G7 — Décoder les refus polis (le non japonais) <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">忙（いそが）しくて…</span><span class="romaji">isogashikute...</span><span class="reg reg-casual">○ casual</span><span class="meaning">« je suis débordée… » 1 fois = peut-être vrai ; 2 fois sans contre-proposition = non poli <span class="note">⚠️ règle des 2 fois</span></span><span class="poli">poli : identique (déjà une formule polie standard)</span><span class="dial">A: 来週（らいしゅう）は？
+B: ちょっと忙（いそが）しくて…
+A: （2回目（にかいめ）か…わかった）</span></div>
+<div class="item"><span class="jp">また今度（こんど）ね</span><span class="romaji">mata kondo ne</span><span class="reg reg-casual">○ casual</span><span class="meaning">« une prochaine fois » sans date = très probablement non <span class="note">revu (M2 : sans date = politesse)</span></span><span class="poli">poli : identique (déjà utilisée telle quelle dans tous registres)</span><span class="dial">A: じゃあいつがいい？
+B: また今度（こんど）ね〜。
+A: （日付（ひづけ）が出（で）ない＝答（こた）え）</span></div>
+<div class="item"><span class="jp">考（かんが）えとくね</span><span class="romaji">kangaetoku ne</span><span class="reg reg-casual">○ casual</span><span class="meaning">« j'y réfléchirai » = 90% non (le oui japonais est immédiat) <span class="note">⚠️ faux espoir classique</span></span><span class="poli">poli : 考えておきます</span><span class="dial">A: 映画（えいが）どう？
+B: 考（かんが）えとくね。
+A: （はい、次（つぎ）行（い）こう）</span></div>
+<div class="item"><span class="jp">友達（ともだち）でいたい</span><span class="romaji">tomodachi de itai</span><span class="reg reg-casual">○ casual</span><span class="meaning">« restons amis » = refus clair et définitif, à respecter tel quel</span><span class="poli">poli : 友達でいたいです</span><span class="dial">A: 正直（しょうじき）に言（い）うね。友達（ともだち）でいたい。
+B: わかった。言（い）ってくれてありがとう。</span></div>
+<div class="item"><span class="jp">ごめんなさい</span><span class="romaji">gomen nasai</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">en réponse à un 告白 : « désolée » SEUL = non (pas besoin d'explication au Japon)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 好（す）きです。付（つ）き合（あ）ってください。
+B: …ごめんなさい。
+A: わかった。ありがとう、聞（き）いてくれて。</span></div>
+<div class="item"><span class="jp">今（いま）は恋愛（れんあい）考（かんが）えられない</span><span class="romaji">ima wa ren'ai kangaerarenai</span><span class="reg reg-casual">○ casual</span><span class="meaning">« pas la tête à ça en ce moment » = non doux (vrai ou pas, le résultat est le même)</span><span class="poli">poli : 今は恋愛を考えられません</span><span class="dial">A: 今（いま）は恋愛（れんあい）考（かんが）えられなくて。
+B: そっか。気持（きも）ちは変（か）わらないけど、無理（むり）は言（い）わない。</span></div>
+<div class="item"><span class="jp">返信（へんしん）が遅（おそ）くなる＝答（こた）え</span><span class="romaji">henshin ga osoku naru = kotae</span><span class="reg reg-casual">○ casual</span><span class="meaning">réponses de plus en plus lentes et courtes = la réponse est là <span class="note">signal négatif fiable</span></span><span class="poli">poli : identique (observation)</span><span class="dial">A: 既読（きどく）3日（みっか）、返信（へんしん）1行（いちぎょう）…
+B: それが答（こた）えだと思（おも）う。</span></div>
+<div class="item"><span class="jp">スタンプだけ返（かえ）ってくる</span><span class="romaji">sutanpu dake kaette kuru</span><span class="reg reg-casual">○ casual</span><span class="meaning">que des stickers, plus de texte = conversation en soins palliatifs</span><span class="poli">poli : identique (observation)</span><span class="dial">A: 最近（さいきん）スタンプしか返（かえ）ってこない。
+B: フェードアウトの型（かた）だね…</span></div>
+<div class="item"><span class="jp">都合（つごう）のいい日（ひ）を出（だ）してこない</span><span class="romaji">tsugou no ii hi wo dashite konai</span><span class="reg reg-casual">○ casual</span><span class="meaning">elle ne propose jamais de créneau alternatif = pas de volonté de se voir <span class="note">l'anti-signal du 脈あり</span></span><span class="poli">poli : identique (observation)</span><span class="dial">A: 「その日（ひ）は無理（むり）」で終（お）わる。
+B: 代（か）わりの日（ひ）が出（で）ないなら、そういうこと。</span></div>
+<div class="item"><span class="jp">しつこくしない</span><span class="romaji">shitsukoku shinai</span><span class="reg reg-casual">○ casual</span><span class="meaning">RÈGLE : ne jamais insister (2 refus = on arrête ; l'insistance = creepy + honte) <span class="note">⚠️ règle absolue</span></span><span class="poli">poli : identique (règle de conduite)</span><span class="dial">A: もう1回（いっかい）誘（さそ）ってみようかな…3回目（さんかいめ）だけど。
+B: やめとけ。2回（にかい）でサインは十分（じゅうぶん）。</span></div>
+<div class="item"><span class="jp">引（ひ）き際（ぎわ）が大事（だいじ）</span><span class="romaji">hikigiwa ga daiji</span><span class="reg reg-casual">○ casual</span><span class="meaning">savoir se retirer avec élégance = la vraie classe (et parfois ce qui fait revenir)</span><span class="poli">poli : identique (règle de conduite)</span><span class="dial">A: 潔（いさぎよ）く引（ひ）いたら、逆（ぎゃく）に連絡（れんらく）来（き）た。
+B: 引（ひ）き際（ぎわ）が大事（だいじ）ってそういうこと。</span></div>
+<div class="item"><span class="jp">察（さっ）する</span><span class="romaji">sassuru</span><span class="reg reg-casual">○ casual</span><span class="meaning">deviner sans qu'on te dise (LA compétence culturelle japonaise n°1 : le non n'est jamais dit, il se lit) <span class="note">concept culturel clé</span></span><span class="poli">poli : identique (concept culturel)</span><span class="dial">A: はっきり断（ことわ）られてないんだけど…
+B: 日本（にほん）では察（さっ）するのも優（やさ）しさだよ。</span></div>
+<div class="item"><span class="jp">気（き）まずくならないようにする</span><span class="romaji">kimazuku naranai you ni suru</span><span class="reg reg-casual">○ casual</span><span class="meaning">éviter le malaise (pourquoi les Japonais ne disent pas non : préserver l'harmonie)</span><span class="poli">poli : identique (concept culturel)</span><span class="dial">A: なんではっきり言（い）わないんだろう。
+B: 気（き)まずくならないようにする文化（ぶんか）なんだよ。</span></div>
+<div class="item"><span class="jp">こっちから身（み）を引（ひ）くね</span><span class="romaji">kocchi kara mi wo hiku ne</span><span class="reg reg-casual">○ casual</span><span class="meaning">je vais m'effacer (annoncer son retrait proprement, sans drame)</span><span class="poli">poli : こちらから身を引きます</span><span class="dial">A: 忙（いそが）しそうだし、こっちから身（み）を引（ひ）くね。元気（げんき）でね。
+B: …ごめんね。ありがとう。</span></div>
+<div class="item"><span class="jp">友達（ともだち）としてなら大歓迎（だいかんげい）</span><span class="romaji">tomodachi to shite nara daikangei</span><span class="reg reg-casual">○ casual</span><span class="meaning">en amis, avec plaisir (accepter la friendzone avec grâce, sans arrière-pensée)</span><span class="poli">poli : 友達としてなら大歓迎です</span><span class="dial">A: 友達（ともだち）でいたいな。
+B: 友達（ともだち）としてなら大歓迎（だいかんげい）だよ。</span></div>
+<div class="item"><span class="jp">縁（えん）がなかったってこと</span><span class="romaji">en ga nakatta tte koto</span><span class="reg reg-casual">○ casual</span><span class="meaning">« le destin n'a pas voulu » (la formule de clôture japonaise, apaisante et digne)</span><span class="lit">litt. : 縁 = le lien du destin</span><span class="poli">poli : 縁がなかったということです</span><span class="dial">A: まあ、縁（えん）がなかったってことだね。
+B: そうそう。次（つぎ）行（い）こ、次（つぎ）。</span></div></div></details>
+<details class="group" open><summary>B2 G8 — Exprimer ses sentiments (sobre et vrai) <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">気（き）になってる</span><span class="romaji">ki ni natteru</span><span class="reg reg-casual">○ casual</span><span class="meaning">tu m'intéresses / je pense à toi (le pré-好き : doux et pas engageant)</span><span class="poli">poli : 気になっています</span><span class="dial">A: 正直（しょうじき）、気（き）になってる。
+B: …知（し）ってた（笑）</span></div>
+<div class="item"><span class="jp">好（す）きです</span><span class="romaji">suki desu</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">je t'aime bien / je t'aime (LE mot du 告白 ; 愛してる est trop lourd, quasi jamais dit) <span class="note">好き = déclaration ; 愛してる = films</span></span><span class="poli">poli : identique (déjà la forme du 告白)</span><span class="dial">A: 好（す）きです。
+B: …私（わたし）も、です。</span></div>
+<div class="item"><span class="jp">付（つ）き合（あ）ってください</span><span class="romaji">tsukiatte kudasai</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">sors avec moi, officiellement (la formule consacrée du 告白)</span><span class="poli">poli : identique (déjà la formule consacrée)</span><span class="dial">A: 好（す）きです。付（つ）き合（あ）ってください。
+B: はい。よろしくお願（ねが）いします（笑）</span></div>
+<div class="item"><span class="jp">一緒（いっしょ）にいると落（お）ち着（つ）く</span><span class="romaji">issho ni iru to ochitsuku</span><span class="reg reg-casual">○ casual</span><span class="meaning">avec toi, je suis apaisé (sentiment profond sans grandiloquence)</span><span class="poli">poli : 一緒にいると落ち着きます</span><span class="dial">A: 一緒（いっしょ）にいると落（お）ち着（つ）くんだよね。
+B: それ、最高（さいこう）の褒（ほ）め言葉（ことば）だ。</span></div>
+<div class="item"><span class="jp">会（あ）いたかった</span><span class="romaji">aitakatta</span><span class="reg reg-casual">○ casual</span><span class="meaning">tu m'as manqué (au moment des retrouvailles : simple et fort)</span><span class="poli">poli : 会いたかったです</span><span class="dial">A: 2週間（にしゅうかん）ぶり！
+B: 会（あ）いたかった。</span></div>
+<div class="item"><span class="jp">会（あ）えて嬉（うれ）しい</span><span class="romaji">aete ureshii</span><span class="reg reg-casual">○ casual</span><span class="meaning">je suis heureux de te voir</span><span class="poli">poli : 会えて嬉しいです</span><span class="dial">A: 今日（きょう）、会（あ）えて嬉（うれ）しい。
+B: 私（わたし）も。</span></div>
+<div class="item"><span class="jp">ドキドキする</span><span class="romaji">dokidoki suru</span><span class="reg reg-casual">○ casual</span><span class="meaning">mon cœur s'emballe (l'onomatopée officielle de l'amour naissant)</span><span class="poli">poli : ドキドキします</span><span class="dial">A: 隣（となり）にいるとドキドキする。
+B: …それ、言（い）う？（笑）</span></div>
+<div class="item"><span class="jp">キュンとした</span><span class="romaji">kyun to shita</span><span class="reg reg-casual">○ casual</span><span class="meaning">j'ai eu un pincement (mignon) <span class="note">revu (M3)</span></span><span class="poli">poli : キュンとしました</span><span class="dial">A: さっきの優（やさ）しさ、キュンとした。
+B: 大（おお）げさだなあ（笑）</span></div>
+<div class="item"><span class="jp">大切（たいせつ）にしたい</span><span class="romaji">taisetsu ni shitai</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">je veux prendre soin de toi/de nous (l'engagement à la japonaise)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: この関係（かんけい）、大切（たいせつ）にしたい。
+B: うん。私（わたし）も。</span></div>
+<div class="item"><span class="jp">そばにいたい</span><span class="romaji">soba ni itai</span><span class="reg reg-casual">○ casual</span><span class="meaning">je veux être près de toi</span><span class="poli">poli : そばにいたいです</span><span class="dial">A: 疲（つか）れてる時（とき）こそ、そばにいたい。
+B: …ずるい、泣（な）きそう。</span></div>
+<div class="item"><span class="jp">幸（しあわ）せ</span><span class="romaji">shiawase</span><span class="reg reg-casual">○ casual</span><span class="meaning">je suis heureux (dit simplement, dans le moment)</span><span class="poli">poli : 幸せです</span><span class="dial">A: なんか、今（いま）すごく幸（しあわ）せ。
+B: 私（わたし）もだよ。</span></div>
+<div class="item"><span class="jp">初（はじ）めての感覚（かんかく）</span><span class="romaji">hajimete no kankaku</span><span class="reg reg-casual">○ casual</span><span class="meaning">je n'ai jamais ressenti ça</span><span class="poli">poli : 初めての感覚です</span><span class="dial">A: こんなの初（はじ）めての感覚（かんかく）。
+B: 外国語（がいこくご）でそれ言（い）えるの、すごいよ。</span></div>
+<div class="item"><span class="jp">言葉（ことば）にできない</span><span class="romaji">kotoba ni dekinai</span><span class="reg reg-casual">○ casual</span><span class="meaning">les mots me manquent (et en langue étrangère, c'est doublement vrai et touchant)</span><span class="poli">poli : 言葉にできません</span><span class="dial">A: 気持（きも）ち、日本語（にほんご）だと言葉（ことば）にできない。
+B: 伝（つた）わってるよ、ちゃんと。</span></div>
+<div class="item"><span class="jp">フランス語（ご）だとこう言（い）う</span><span class="romaji">furansugo da to kou iu</span><span class="reg reg-casual">○ casual</span><span class="meaning">en français, on dit comme ça… (ta langue = ton arme romantique unique)</span><span class="poli">poli : フランス語だとこう言います</span><span class="dial">A: フランス語（ご）だと「Tu me plais」って言（い）う。
+B: 何（なん）て意味（いみ）？
+A: 「気（き）になってる」ってこと。</span></div>
+<div class="item"><span class="jp">ゆっくりでいい</span><span class="romaji">yukkuri de ii</span><span class="reg reg-casual">○ casual</span><span class="meaning">on prend notre temps (retire la pression, précieux au Japon)</span><span class="poli">poli : ゆっくりでいいです</span><span class="dial">A: まだ心（こころ）の準備（じゅんび）が…
+B: ゆっくりでいい。急（いそ）がないよ。</span></div>
+<div class="item"><span class="jp">君（きみ）のペースで</span><span class="romaji">kimi no peesu de</span><span class="reg reg-casual">○ casual</span><span class="meaning">à ton rythme</span><span class="poli">poli : あなたのペースで（君はカジュアル、あなたがより中立的）</span><span class="dial">A: 考（かんが）える時間（じかん）ほしい。
+B: 君（きみ）のペースでいいよ。</span></div></div></details>
+<details class="group" open><summary>B3 G9 — La relation qui avance <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">記念日（きねんび）</span><span class="romaji">kinenbi</span><span class="reg reg-casual">○ casual</span><span class="meaning">anniversaire de couple (au Japon on compte souvent par MOIS au début)</span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: 明日（あした）で付（つ）き合（あ）って3か月（さんかげつ）。
+B: 記念日（きねんび）じゃん、何（なに）するの？</span></div>
+<div class="item"><span class="jp">呼（よ）び方（かた）、変（か）えない？</span><span class="romaji">yobikata, kaenai?</span><span class="reg reg-casual">○ casual</span><span class="meaning">on s'appelle autrement ? (passer du -san au prénom nu : étape intime) <span class="note">呼び捨て = prénom sans suffixe = intimité</span></span><span class="poli">poli : 呼び方を変えませんか</span><span class="dial">A: 「マチューさん」じゃなくてマチューでいいよ。
+B: じゃあ私（わたし）も呼（よ）び捨（す）てで。</span></div>
+<div class="item"><span class="jp">会（あ）う頻度（ひんど）</span><span class="romaji">au hindo</span><span class="reg reg-casual">○ casual</span><span class="meaning">la fréquence des rendez-vous (négociation classique de couple japonais : semaine ou mois)</span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: 週（しゅう）1は会（あ）いたい派（は）？
+B: できれば週（しゅう）2（笑）</span></div>
+<div class="item"><span class="jp">半同棲（はんどうせい）</span><span class="romaji">handousei</span><span class="reg reg-casual">○ casual</span><span class="meaning">quasi-cohabitation (l'un dort presque toujours chez l'autre)</span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: 最近（さいきん）ずっと彼女（かのじょ）の家（いえ）。
+B: それもう半同棲（はんどうせい）じゃん。</span></div>
+<div class="item"><span class="jp">同棲（どうせい）しない？</span><span class="romaji">dousei shinai?</span><span class="reg reg-casual">○ casual</span><span class="meaning">on emménage ensemble ? (grande étape, souvent avant le mariage au Japon)</span><span class="poli">poli : 同棲しませんか</span><span class="dial">A: 更新（こうしん）の時期（じき）だし…同棲（どうせい）しない？
+B: …ほんとに？うん！</span></div>
+<div class="item"><span class="jp">親（おや）に会（あ）ってほしい</span><span class="romaji">oya ni atte hoshii</span><span class="reg reg-casual">○ casual</span><span class="meaning">je veux te présenter à mes parents (= très sérieux au Japon) <span class="note">signal d'engagement fort</span></span><span class="poli">poli : 親に会っていただきたいです</span><span class="dial">A: 今度（こんど）、親（おや）に会（あ）ってほしいんだけど。
+B: え、それって…緊張（きんちょう）する（笑）</span></div>
+<div class="item"><span class="jp">将来（しょうらい）の話（はなし）</span><span class="romaji">shourai no hanashi</span><span class="reg reg-casual">○ casual</span><span class="meaning">parler d'avenir (le sujet-test des couples sérieux)</span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: 将来（しょうらい）の話（はなし）、ちゃんとしたことないね。
+B: しよっか。大事（だいじ）だし。</span></div>
+<div class="item"><span class="jp">遠距離（えんきょり）</span><span class="romaji">enkyori</span><span class="reg reg-casual">○ casual</span><span class="meaning">relation à distance (ton sujet : France-Japon)</span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: 帰国（きこく）したら遠距離（えんきょり）になっちゃうね。
+B: だから今（いま）、ちゃんと考（かんが）えたい。</span></div>
+<div class="item"><span class="jp">ビデオ通話（つうわ）しよ</span><span class="romaji">bideo tsuuwa shiyo</span><span class="reg reg-casual">○ casual</span><span class="meaning">on s'appelle en visio (l'outil de la distance)</span><span class="poli">poli : ビデオ通話をしましょう</span><span class="dial">A: 時差（じさ）8時間（はちじかん）か…
+B: 毎週（まいしゅう）ビデオ通話（つうわ）しよ。</span></div>
+<div class="item"><span class="jp">喧嘩（けんか）しちゃった</span><span class="romaji">kenka shichatta</span><span class="reg reg-casual">○ casual</span><span class="meaning">on s'est disputés</span><span class="poli">poli : 喧嘩してしまいました</span><span class="dial">A: 元気（げんき）ない？
+B: 昨日（きのう）喧嘩（けんか）しちゃって…</span></div>
+<div class="item"><span class="jp">仲直（なかなお）りした</span><span class="romaji">nakanaori shita</span><span class="reg reg-casual">○ casual</span><span class="meaning">on s'est réconciliés</span><span class="poli">poli : 仲直りしました</span><span class="dial">A: で、どうなった？
+B: ちゃんと話（はな）して仲直（なかなお）りした。</span></div>
+<div class="item"><span class="jp">ちゃんと話（はな）そう</span><span class="romaji">chanto hanasou</span><span class="reg reg-casual">○ casual</span><span class="meaning">il faut qu'on parle vraiment (résoudre plutôt que fuir)</span><span class="poli">poli : ちゃんと話しましょう</span><span class="dial">A: 最近（さいきん）すれ違（ちが）ってる気（き）がする。
+B: うん。ちゃんと話（はな）そう。</span></div>
+<div class="item"><span class="jp">気持（きも）ちを言葉（ことば）にして</span><span class="romaji">kimochi wo kotoba ni shite</span><span class="reg reg-casual">○ casual</span><span class="meaning">dis-moi les choses avec des mots (demande classique FAITE AUX Japonais, peu verbaux en amour)</span><span class="poli">poli : 気持ちを言葉にしてください</span><span class="dial">A: 好（す）きかどうかわからなくなる時（とき）ある。
+B: ごめん。気持（きも）ち、ちゃんと言葉（ことば）にするね。</span></div>
+<div class="item"><span class="jp">束縛（そくばく）はしない</span><span class="romaji">sokubaku wa shinai</span><span class="reg reg-casual">○ casual</span><span class="meaning">je ne veux pas t'enfermer (束縛 = contrôle possessif, gros sujet des couples japonais)</span><span class="poli">poli : 束縛はしません</span><span class="dial">A: 飲（の）み会（かい）、行（い）っていい？
+B: もちろん。束縛（そくばく）はしない主義（しゅぎ）。</span></div>
+<div class="item"><span class="jp">信頼（しんらい）してる</span><span class="romaji">shinrai shiteru</span><span class="reg reg-casual">○ casual</span><span class="meaning">j'ai confiance en toi</span><span class="poli">poli : 信頼しています</span><span class="dial">A: 心配（しんぱい）じゃないの？
+B: 信頼（しんらい）してるから。</span></div>
+<div class="item"><span class="jp">これからもよろしく</span><span class="romaji">korekara mo yoroshiku</span><span class="reg reg-casual">○ casual</span><span class="meaning">continuons comme ça, ensemble (le « je t'aime » discret des couples japonais)</span><span class="poli">poli : これからもよろしくお願いします</span><span class="dial">A: 1年（いちねん）記念（きねん）だね。
+B: これからもよろしく。</span></div></div></details>
+<details class="group" open><summary>B3 G10 — Ruptures et cœurs cassés <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">別（わか）れる</span><span class="romaji">wakareru</span><span class="reg reg-casual">○ casual</span><span class="meaning">rompre</span><span class="poli">poli : 別れます</span><span class="dial">A: 二人（ふたり）、別（わか）れたって。
+B: え、うそ。仲（なか）よかったのに。</span></div>
+<div class="item"><span class="jp">振（ふ）る／振（ふ）られる</span><span class="romaji">furu / furareru</span><span class="reg reg-casual">○ casual</span><span class="meaning">larguer / se faire larguer</span><span class="poli">poli : 振ります／振られます</span><span class="dial">A: どっちから？
+B: 振（ふ）られた方（ほう）…</span></div>
+<div class="item"><span class="jp">距離（きょり）を置（お）く</span><span class="romaji">kyori wo oku</span><span class="reg reg-casual">○ casual</span><span class="meaning">faire un break (souvent l'antichambre de la rupture au Japon) <span class="note">⚠️ à décoder : rarement un vrai « break »</span></span><span class="poli">poli : 距離を置きます</span><span class="dial">A: 「距離（きょり）を置（お）きたい」って言（い）われた。
+B: それは…覚悟（かくご）しといた方（ほう）がいいかも。</span></div>
+<div class="item"><span class="jp">自然消滅（しぜんしょうめつ）</span><span class="romaji">shizen shoumetsu</span><span class="reg reg-casual">○ casual</span><span class="meaning">rupture par évaporation (plus de contact, jamais de conversation : fréquent au Japon)</span><span class="lit">litt. : « extinction naturelle »</span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: ちゃんと別（わか）れ話（ばなし）したの？
+B: いや、自然消滅（しぜんしょうめつ）ってやつ…</span></div>
+<div class="item"><span class="jp">音信不通（おんしんふつう）</span><span class="romaji">onshin futsuu</span><span class="reg reg-casual">○ casual</span><span class="meaning">plus aucune nouvelle (ghosting complet)</span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: 連絡（れんらく）は？
+B: 2週間（にしゅうかん）音信不通（おんしんふつう）。</span></div>
+<div class="item"><span class="jp">失恋（しつれん）した</span><span class="romaji">shitsuren shita</span><span class="reg reg-casual">○ casual</span><span class="meaning">j'ai le cœur brisé</span><span class="poli">poli : 失恋しました</span><span class="dial">A: 元気（げんき）出（だ）せよ。
+B: 人生初（じんせいはつ）の失恋（しつれん）が日本（にほん）でとは（笑）</span></div>
+<div class="item"><span class="jp">未練（みれん）がある</span><span class="romaji">miren ga aru</span><span class="reg reg-casual">○ casual</span><span class="meaning">je n'ai pas tourné la page</span><span class="poli">poli : 未練があります</span><span class="dial">A: まだ写真（しゃしん）消（け）してないの？
+B: 未練（みれん）があるんだよ、正直（しょうじき）。</span></div>
+<div class="item"><span class="jp">引（ひ）きずってる</span><span class="romaji">hikizutteru</span><span class="reg reg-casual">○ casual</span><span class="meaning">je traîne encore cette histoire</span><span class="poli">poli : 引きずっています</span><span class="dial">A: 半年（はんとし）経（た）ったよ？
+B: まだちょっと引（ひ）きずってる。</span></div>
+<div class="item"><span class="jp">吹（ふ）っ切（き）れた</span><span class="romaji">fukkireta</span><span class="reg reg-casual">○ casual</span><span class="meaning">j'ai tourné la page (libéré)</span><span class="poli">poli : 吹っ切れました</span><span class="dial">A: なんか明（あか）るくなったね。
+B: やっと吹（ふ）っ切（き）れた。</span></div>
+<div class="item"><span class="jp">立（た）ち直（なお）る</span><span class="romaji">tachinaoru</span><span class="reg reg-casual">○ casual</span><span class="meaning">se remettre</span><span class="poli">poli : 立ち直ります</span><span class="dial">A: どうやって立（た）ち直（なお）ったの？
+B: 筋（きん）トレと友達（ともだち）。</span></div>
+<div class="item"><span class="jp">いい経験（けいけん）だった</span><span class="romaji">ii keiken datta</span><span class="reg reg-casual">○ casual</span><span class="meaning">c'était une bonne expérience (la relecture positive)</span><span class="poli">poli : いい経験でした</span><span class="dial">A: 後悔（こうかい）してる？
+B: いや、いい経験（けいけん）だった。</span></div>
+<div class="item"><span class="jp">次（つぎ）に行（い）こう</span><span class="romaji">tsugi ni ikou</span><span class="reg reg-casual">○ casual</span><span class="meaning">passe à la suite (l'encouragement standard)</span><span class="poli">poli : 次に行きましょう</span><span class="dial">A: もう3か月（さんかげつ）へこんでる。
+B: 次（つぎ）行（い）こう、次（つぎ）！</span></div>
+<div class="item"><span class="jp">友達（ともだち）に戻（もど）った</span><span class="romaji">tomodachi ni modotta</span><span class="reg reg-casual">○ casual</span><span class="meaning">on est redevenus amis (rare mais possible)</span><span class="poli">poli : 友達に戻りました</span><span class="dial">A: 元カノと普通（ふつう）に喋（しゃべ）ってたね。
+B: 友達（ともだち）に戻（もど）ったんだ。</span></div>
+<div class="item"><span class="jp">円満（えんまん）に別（わか）れた</span><span class="romaji">enman ni wakareta</span><span class="reg reg-casual">○ casual</span><span class="meaning">on s'est quittés en bons termes</span><span class="poli">poli : 円満に別れました</span><span class="dial">A: 揉（も）めた？
+B: いや、円満（えんまん）に別（わか）れた。</span></div>
+<div class="item"><span class="jp">泣（な）いていいよ</span><span class="romaji">naite ii yo</span><span class="reg reg-casual">○ casual</span><span class="meaning">tu peux pleurer (soutenir un ami cassé)</span><span class="poli">poli : 泣いてもいいですよ</span><span class="dial">A: 大丈夫（だいじょうぶ）、俺（おれ）は平気（へいき）…
+B: 泣（な）いていいよ。飲（の）も。</span></div>
+<div class="item"><span class="jp">時間（じかん）が解決（かいけつ）する</span><span class="romaji">jikan ga kaiketsu suru</span><span class="reg reg-casual">○ casual</span><span class="meaning">le temps arrangera ça</span><span class="poli">poli : 時間が解決します</span><span class="dial">A: いつまでこんなに痛（いた）いんだろう。
+B: 時間（じかん）が解決（かいけつ）するよ。ほんとに。</span></div></div></details>
+<details class="group" open><summary>B3 G11 — Couple international : les sujets spécifiques <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">国際（こくさい）カップル</span><span class="romaji">kokusai kappuru</span><span class="reg reg-casual">○ casual</span><span class="meaning">couple international</span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: 国際（こくさい）カップルって大変（たいへん）？
+B: 大変（たいへん）さより面白（おもしろ）さが勝（か）つよ。</span></div>
+<div class="item"><span class="jp">言葉（ことば）の壁（かべ）</span><span class="romaji">kotoba no kabe</span><span class="reg reg-casual">○ casual</span><span class="meaning">la barrière de la langue</span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: 言葉（ことば）の壁（かべ）、感（かん）じる？
+B: 喧嘩（けんか）の時（とき）だけね（笑）</span></div>
+<div class="item"><span class="jp">文化（ぶんか）の違（ちが）い</span><span class="romaji">bunka no chigai</span><span class="reg reg-casual">○ casual</span><span class="meaning">les différences culturelles</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 一番（いちばん）の文化（ぶんか）の違（ちが）いは？
+B: 愛情表現（あいじょうひょうげん）の量（りょう）（笑）</span></div>
+<div class="item"><span class="jp">愛情表現（あいじょうひょうげん）</span><span class="romaji">aijou hyougen</span><span class="reg reg-casual">○ casual</span><span class="meaning">les marques d'affection (les Français en donnent 10×plus : sujet de couple garanti)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: フランス人（じん）って毎日（まいにち）「好（す）き」って言（い）うの？
+B: 毎日（まいにち）どころか毎時間（まいじかん）（笑）</span></div>
+<div class="item"><span class="jp">日本（にほん）では言（い）わない文化（ぶんか）</span><span class="romaji">nihon de wa iwanai bunka</span><span class="reg reg-casual">○ casual</span><span class="meaning">au Japon on ne DIT pas, on montre (l'amour par les actes : décoder l'implicite) <span class="note">clé de lecture indispensable</span></span><span class="poli">poli : identique (observation culturelle)</span><span class="dial">A: 彼女（かのじょ）、全然（ぜんぜん）「好（す）き」って言（い）わない…
+B: お弁当（べんとう）作（つく）ってくれてるじゃん。それが「好（す）き」だよ。</span></div>
+<div class="item"><span class="jp">いつか帰（かえ）っちゃうの？</span><span class="romaji">itsuka kaecchau no?</span><span class="reg reg-casual">○ casual</span><span class="meaning">« tu vas repartir un jour ? » (LA question qui freine : y répondre honnêtement) <span class="note">ton sujet réel : PVT, rester</span></span><span class="poli">poli : いつか帰ってしまうのですか</span><span class="dial">A: いつか帰（かえ）っちゃうの？
+B: 長（なが）くいられる方法（ほうほう）を本気（ほんき）で探（さが）してる。</span></div>
+<div class="item"><span class="jp">ビザの話（はなし）</span><span class="romaji">biza no hanashi</span><span class="reg reg-casual">○ casual</span><span class="meaning">la question du visa (parler concret = parler sérieux)</span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: 観光（かんこう）ビザって3か月（さんかげつ）だっけ。
+B: だからワーホリを考（かんが）えてる。</span></div>
+<div class="item"><span class="jp">ワーホリで戻（もど）ってくる</span><span class="romaji">waahori de modotte kuru</span><span class="reg reg-casual">○ casual</span><span class="meaning">je reviens en PVT (ton plan réel : dicible en date)</span><span class="poli">poli : ワーキングホリデーで戻ってきます（省略しない完全形）</span><span class="dial">A: 3か月（さんかげつ）で終（お）わりじゃないの？
+B: ワーホリで戻（もど）ってくるつもり。1年（いちねん）いられる。</span></div>
+<div class="item"><span class="jp">時差（じさ）があるけど</span><span class="romaji">jisa ga aru kedo</span><span class="reg reg-casual">○ casual</span><span class="meaning">malgré le décalage horaire (7-8h avec la France)</span><span class="poli">poli : 時差がありますが</span><span class="dial">A: 時差（じさ）あると大変（たいへん）じゃない？
+B: 朝（あさ）と夜（よる）が入（い）れ替（か）わるだけ（笑）</span></div>
+<div class="item"><span class="jp">両方（りょうほう）の言葉（ことば）で育（そだ)てたい</span><span class="romaji">ryouhou no kotoba de sodatetai</span><span class="reg reg-casual">○ casual</span><span class="meaning">élever (des enfants) dans les deux langues (le sujet grand futur)</span><span class="poli">poli : 両方の言葉で育てたいです</span><span class="dial">A: 子供（こども）できたらどうするんだろうね。
+B: 両方（りょうほう）の言葉（ことば）で育（そだ）てたいな。</span></div>
+<div class="item"><span class="jp">通訳（つうやく）させないで（笑）</span><span class="romaji">tsuuyaku sasenaide</span><span class="reg reg-casual">○ casual</span><span class="meaning">me transforme pas en interprète (limite posée avec humour : dates de groupe)</span><span class="poli">poli : 通訳をさせないでください</span><span class="dial">A: 友達（ともだち）に会（あ）わせたいけど…
+B: 一晩中（ひとばんじゅう）通訳（つうやく）させないでね（笑）</span></div>
+<div class="item"><span class="jp">君（きみ）の国（くに）も見（み）てみたい</span><span class="romaji">kimi no kuni mo mite mitai</span><span class="reg reg-casual">○ casual</span><span class="meaning">je veux voir ton pays (l'invitation symétrique : la France comme promesse)</span><span class="poli">poli : あなたの国も見てみたいです</span><span class="dial">A: いつかフランス見（み）てみたい。
+B: 案内（あんない）するよ。今度（こんど）は僕（ぼく）の番（ばん）。</span></div>
+<div class="item"><span class="jp">ハーフの子（こ）って言（い）われるの、どう思（おも）う？</span><span class="romaji">haafu no ko tte iwareru no, dou omou?</span><span class="reg reg-casual">○ casual</span><span class="meaning">le mot ハーフ (métis) : courant et souvent positif au Japon, mais discuté ; à connaître <span class="note">sensibilité culturelle</span></span><span class="poli">poli : ハーフのお子さんと言われることについて、どう思いますか</span><span class="dial">A: ハーフって言葉（ことば）、フランスだとどう？
+B: いい質問（しつもん）。ゆっくり話（はな）そう。</span></div>
+<div class="item"><span class="jp">変（か）わってるって言（い）われる</span><span class="romaji">kawatteru tte iwareru</span><span class="reg reg-casual">○ casual</span><span class="meaning">on me dit que je suis « original » (= compliment ambigu fait aux étrangers : le prendre avec humour)</span><span class="poli">poli : 変わっていると言われます</span><span class="dial">A: マチューって変（か）わってるね（笑）
+B: よく言（い）われる。褒（ほ）め言葉（ことば）として受（う）け取（と）る（笑）</span></div>
+<div class="item"><span class="jp">日本語（にほんご）で喧嘩（けんか）できるようになりたい</span><span class="romaji">nihongo de kenka dekiru you ni naritai</span><span class="reg reg-casual">○ casual</span><span class="meaning">je veux savoir me disputer en japonais (le vrai niveau ultime d'une langue)</span><span class="poli">poli : 日本語で喧嘩ができるようになりたいです</span><span class="dial">A: 喧嘩（けんか）になると英語（えいご）になるでしょ（笑）
+B: 悔（くや）しい。日本語（にほんご）で喧嘩（けんか）できるようになりたい。</span></div>
+<div class="item"><span class="jp">どっちの国（くに）に住（す）む問題（もんだい）</span><span class="romaji">docchi no kuni ni sumu mondai</span><span class="reg reg-casual">○ casual</span><span class="meaning">LE dilemme final des couples internationaux : quel pays ?</span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: 最終的（さいしゅうてき）にどっちに住（す）むの？
+B: それが国際（こくさい）カップル最大（さいだい）の問題（もんだい）（笑）</span></div></div></details>
+<details class="group" open><summary>B3 G12 — Respect, consentement, classe <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">ナンパ</span><span class="romaji">nanpa</span><span class="reg reg-casual">○ casual</span><span class="meaning">la drague de rue (image NÉGATIVE au Japon : à éviter, préférer les contextes sociaux) <span class="note">⚠️ street nanpa = mal vu ; bars sociaux/événements = ok</span></span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: 渋谷（しぶや）でナンパって、あり？
+B: 正直（しょうじき）、印象（いんしょう）悪（わる）いよ。</span></div>
+<div class="item"><span class="jp">逆（ぎゃく）ナン</span><span class="romaji">gyakunan</span><span class="reg reg-casual">○ casual</span><span class="meaning">quand c'est elle qui aborde (ça existe, surtout envers les étrangers : rester lucide)</span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: バーで声（こえ）かけられた。
+B: 逆（ぎゃく）ナンじゃん。でも財布（さいふ）には気（き）をつけて（笑）</span></div>
+<div class="item"><span class="jp">嫌（いや）だったら言（い）ってね</span><span class="romaji">iya dattara itte ne</span><span class="reg reg-casual">○ casual</span><span class="meaning">dis-moi si quelque chose te gêne (le consentement en une phrase simple)</span><span class="poli">poli : 嫌でしたら言ってください</span><span class="dial">A: 手（て）、つないでいい？嫌（いや）だったら言（い）ってね。
+B: …いいよ（笑）</span></div>
+<div class="item"><span class="jp">手（て）、つないでいい？</span><span class="romaji">te, tsunaide ii?</span><span class="reg reg-casual">○ casual</span><span class="meaning">je peux te prendre la main ? (demander est charmant, pas maladroit)</span><span class="poli">poli : 手をつないでもいいですか</span><span class="dial">A: 手（て）、つないでいい？
+B: 聞（き）くんだ（笑）どうぞ。</span></div>
+<div class="item"><span class="jp">酔（よ）った勢（いきお）いはなし</span><span class="romaji">yotta ikioi wa nashi</span><span class="reg reg-casual">○ casual</span><span class="meaning">rien sur un coup d'alcool (règle de classe et de respect absolue) <span class="note">⚠️ règle absolue</span></span><span class="poli">poli : identique (règle de conduite)</span><span class="dial">A: 酔（よ）ってるね、今日（きょう）はもう帰（かえ）ろう。
+B: …ありがとう。そういうとこ、いいと思（おも）う。</span></div>
+<div class="item"><span class="jp">既婚者（きこんしゃ）じゃないよね？（笑）</span><span class="romaji">kikonsha ja nai yo ne?</span><span class="reg reg-casual">○ casual</span><span class="meaning">t'es pas marié(e), hein ? (le check mi-blague mi-sérieux : fréquent sur les apps)</span><span class="poli">poli : 既婚者ではありませんよね</span><span class="dial">A: 一応（いちおう）聞（き）くけど、既婚者（きこんしゃ）じゃないよね？（笑）
+B: 独身（どくしん）です、証明（しょうめい)します（笑）</span></div>
+<div class="item"><span class="jp">急（いそ）がせたくない</span><span class="romaji">isogasetakunai</span><span class="reg reg-casual">○ casual</span><span class="meaning">je ne veux pas te presser</span><span class="poli">poli : 急がせたくありません</span><span class="dial">A: 返事（へんじ）、まだ出（で）せなくて…
+B: 急（いそ）がせたくないから、大丈夫（だいじょうぶ）。</span></div>
+<div class="item"><span class="jp">嫌（いや）なら断（ことわ）っていいからね</span><span class="romaji">iya nara kotowatte ii kara ne</span><span class="reg reg-casual">○ casual</span><span class="meaning">tu as le droit de dire non (offrir la sortie = enlever la peur)</span><span class="poli">poli : 嫌でしたら断っていただいて構いません</span><span class="dial">A: 家（うち）でご飯（はん）作（つく）るけど、嫌（いや）なら断（ことわ）っていいからね。
+B: 行（い）きたい。ありがとう、そう言（い）ってくれて。</span></div>
+<div class="item"><span class="jp">二人（ふたり）きりは緊張（きんちょう）する？</span><span class="romaji">futarikiri wa kinchou suru?</span><span class="reg reg-casual">○ casual</span><span class="meaning">être juste tous les deux, ça t'intimide ? (vérifier le confort de l'autre)</span><span class="poli">poli : 二人きりは緊張しますか</span><span class="dial">A: 二人（ふたり）きりは緊張（きんちょう）する？
+B: ちょっとだけ（笑）でも嫌（いや）じゃない。</span></div>
+<div class="item"><span class="jp">無理（むり）してない？</span><span class="romaji">muri shitenai?</span><span class="reg reg-casual">○ casual</span><span class="meaning">tu ne te forces pas, là ? (l'attention qui compte)</span><span class="poli">poli : 無理していませんか</span><span class="dial">A: 辛（から）いの平気（へいき）って言（い）ったけど、無理（むり）してない？
+B: …水（みず）ください（笑）</span></div>
+<div class="item"><span class="jp">紳士（しんし）だね</span><span class="romaji">shinshi da ne</span><span class="reg reg-casual">○ casual</span><span class="meaning">t'es un gentleman (le compliment que ce module te fera gagner)</span><span class="poli">poli : 紳士ですね</span><span class="dial">A: ドア押（お）さえてくれるんだ。紳士（しんし）だね。
+B: フランス仕込（じこ）みです（笑）</span></div>
+<div class="item"><span class="jp">下心（したごころ）なし</span><span class="romaji">shitagokoro nashi</span><span class="reg reg-casual">○ casual</span><span class="meaning">sans arrière-pensée (下心 = l'agenda caché)</span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: 家（うち）おいでって、下心（したごころ）？
+B: なし！映画（えいが）見（み）るだけ（笑）</span></div>
+<div class="item"><span class="jp">体目当（からだめあ）て</span><span class="romaji">karada meate</span><span class="reg reg-casual">○ casual</span><span class="meaning">qui ne cherche que le physique (l'accusation à ne JAMAIS mériter) <span class="note">⚠️ vocabulaire de tri, comme 遊び目的</span></span><span class="poli">poli : identique (nom, pas d'axe de politesse)</span><span class="dial">A: あの人（ひと）、体目当（からだめあ）てっぽかった。
+B: 見抜（みぬ）けてえらい。</span></div>
+<div class="item"><span class="jp">誠実（せいじつ）さが一番（いちばん）</span><span class="romaji">seijitsusa ga ichiban</span><span class="reg reg-casual">○ casual</span><span class="meaning">la sincérité avant tout (誠実 = LE mot que les Japonaises citent en critère n°1)</span><span class="poli">poli : 誠実さが一番です</span><span class="dial">A: モテるコツって何（なに）？
+B: 小手先（こてさき）より誠実（せいじつ）さが一番（いちばん）。</span></div>
+<div class="item"><span class="jp">断（ことわ）られても恨（うら）まない</span><span class="romaji">kotowararetemo uramanai</span><span class="reg reg-casual">○ casual</span><span class="meaning">accepter un non sans rancune (la classe finale)</span><span class="poli">poli : identique (règle de conduite)</span><span class="dial">A: 振（ふ）られたのに普通（ふつう）に接（せっ）してて偉（えら）い。
+B: 断（ことわ）られても恨（うら）まない。当（あ）たり前（まえ）だよ。</span></div>
+<div class="item"><span class="jp">いい人（ひと）に見（み）られたいんじゃなくて、いい人（ひと）でいたい</span><span class="romaji">ii hito ni miraretai n ja nakute, ii hito de itai</span><span class="reg reg-casual">○ casual</span><span class="meaning">pas paraître quelqu'un de bien : l'être (la phrase qui résume ce module)</span><span class="poli">poli : いい人に見られたいのではなく、いい人でありたいです</span><span class="dial">A: なんでそんなに丁寧（ていねい）なの？
+B: いい人（ひと）に見（み）られたいんじゃなくて、いい人（ひと）でいたいから。</span></div></div></details>
+<details class="group"><summary>TEST M5 — 10 phrases FR → JP (réponses cachées, tape pour ouvrir) <span style="color:#999;font-weight:400">10</span></summary><div class="group-body"><div class="item"><span class="jp">① Quel genre de personne est ton type ?</span><span class="meaning">réponse : どんな人（ひと）がタイプ？</span></div>
+<div class="item"><span class="jp">② On va manger un truc, un de ces jours ?</span><span class="meaning">réponse : 今度（こんど）ご飯（はん）行（い）かない？</span></div>
+<div class="item"><span class="jp">③ C'est facile de parler avec toi.</span><span class="meaning">réponse : 話（はな）しやすいね。</span></div>
+<div class="item"><span class="jp">④ Je t'accompagne à la gare.</span><span class="meaning">réponse : 駅（えき）まで送（おく）るよ。</span></div>
+<div class="item"><span class="jp">⑤ « J'y réfléchirai » : ça veut dire quoi en vrai ?</span><span class="meaning">réponse : 考（かんが）えとくね = 90% non（le oui japonais est immédiat）</span></div>
+<div class="item"><span class="jp">⑥ Je t'aime bien. Sors avec moi. (déclaration officielle)</span><span class="meaning">réponse : 好（す）きです。付（つ）き合（あ）ってください。</span></div>
+<div class="item"><span class="jp">⑦ Dis-moi si quelque chose te gêne.</span><span class="meaning">réponse : 嫌（いや）だったら言（い）ってね。</span></div>
+<div class="item"><span class="jp">⑧ On prend notre temps, à ton rythme.</span><span class="meaning">réponse : ゆっくりでいい。君（きみ）のペースで。</span></div>
+<div class="item"><span class="jp">⑨ Il y a de l'espoir / aucune chance (les deux mots).</span><span class="meaning">réponse : 脈（みゃく）あり／脈（みゃく）なし</span></div>
+<div class="item"><span class="jp">⑩ Le destin n'a pas voulu, passons à la suite.</span><span class="meaning">réponse : 縁（えん）がなかったってこと。次（つぎ）行（い）こう。</span></div></div></details>
+<footer>Généré via lesson-card-html + kanji-stroke-order-html — Memory/Japanese</footer>
+</body></html>

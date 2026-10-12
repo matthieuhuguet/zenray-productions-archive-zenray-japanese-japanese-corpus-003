@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>STREET 6 — Survie et débrouille niveau 2</title>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;max-width:720px;margin:0 auto;padding:0 1.1rem 3rem;color:#1a1a1a;line-height:1.5;background:#fff}
+header{border-bottom:2px solid #1a1a1a;padding:1.4rem 0 .9rem;margin-bottom:1.1rem;position:sticky;top:0;background:#fff}
+h1{margin:0;font-size:1.5rem;font-weight:700;line-height:1.25}
+.subtitle{color:#555;font-size:.92rem;margin-top:.35rem}
+.legend{display:flex;gap:.9rem;flex-wrap:wrap;margin-top:.6rem;font-size:.82rem;color:#555}
+.legend span{white-space:nowrap}
+
+.roots{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.6rem;margin-bottom:1.6rem}
+.root{background:#fff8e6;border-left:3px solid #d4a017;border-radius:6px;padding:.55rem .7rem}
+.root .kanji{font-size:1.5rem;font-weight:700;line-height:1.1}
+.root .reading{font-size:.78rem;color:#7a6212;margin-top:.1rem}
+.root .meaning{font-size:.85rem;margin-top:.2rem}
+.root .unlocks{font-size:.76rem;color:#8a6d00;margin-top:.35rem}
+.root a{color:#4a6fa5;text-decoration:none}
+.root a:hover{text-decoration:underline}
+
+details.group{background:#fafafa;border:1px solid #e8e8e8;border-radius:8px;margin-bottom:.7rem;overflow:hidden}
+details.group summary{list-style:none;cursor:pointer;padding:.75rem .9rem;font-weight:700;font-size:.98rem;background:#f0f0f0;border-bottom:1px solid #e8e8e8;display:flex;justify-content:space-between;align-items:center}
+details.group summary::-webkit-details-marker{display:none}
+details.group summary::after{content:"▸";font-weight:400;color:#888;transition:transform .15s}
+details.group[open] summary::after{transform:rotate(90deg)}
+.group-body{padding:.2rem .9rem .5rem}
+
+.item{display:flex;flex-wrap:wrap;align-items:baseline;gap:.35rem .55rem;padding:.55rem 0;border-bottom:1px solid #eee}
+.item:last-child{border-bottom:none}
+.item .jp{font-size:1.05rem;font-weight:600;white-space:normal}
+.item .kana{font-size:.85rem;color:#666}
+.item .meaning{flex-basis:100%;font-size:.92rem;color:#333;margin-top:.05rem}
+.item .romaji{font-size:.78rem;color:#999;font-style:italic}
+.item .lit{flex-basis:100%;font-size:.78rem;color:#888}
+.item .dial{flex-basis:100%;font-size:.84rem;color:#444;background:#f5f7fa;border-left:2px solid #c5d3e8;border-radius:4px;padding:.3rem .55rem;margin-top:.15rem;white-space:pre-line}
+.item .manual{flex-basis:100%;font-size:.78rem;color:#1a4d8a}
+.item .poli{flex-basis:100%;font-size:.84rem;color:#0a6b4a;background:#eafaf3;border-left:2px solid #2f9e52;border-radius:4px;padding:.3rem .55rem;margin-top:.15rem}
+.item .reg{font-size:.72rem;padding:.05rem .4rem;border-radius:999px;background:#eee;color:#555;font-weight:600}
+.reg-casual{background:#ffe9d6;color:#8a4b00}
+.reg-neutre{background:#e6f0ff;color:#1a4d8a}
+.reg-formel{background:#eee6ff;color:#4a1a8a}
+.note{font-size:.78rem;color:#888;font-style:italic}
+
+.protocol{background:#eaf6ec;border-left:3px solid #2f9e52;border-radius:6px;padding:.75rem .9rem;margin-bottom:1.1rem;font-size:.88rem}
+.protocol strong{display:block;margin-bottom:.35rem;font-size:.92rem}
+.protocol ol{margin:0;padding-left:1.15rem}
+.protocol li{margin-bottom:.3rem}
+
+footer{margin-top:1.8rem;padding-top:1rem;border-top:1px solid #eee;font-size:.78rem;color:#999;text-align:center}
+
+/* Fusion kanji-stroke-order-html : cartes kanji avec tracé KanjiVG inliné */
+details.kcard{background:#fff;border:1px solid #e8e8e8;border-radius:8px;margin-bottom:.6rem;overflow:hidden}
+details.kcard summary{list-style:none;cursor:pointer;padding:.6rem .8rem;display:flex;align-items:baseline;gap:.5rem;flex-wrap:wrap}
+details.kcard summary::-webkit-details-marker{display:none}
+details.kcard summary .kanji{font-size:1.4rem;font-weight:700;line-height:1}
+details.kcard summary .vocab{font-size:.95rem;color:#333}
+details.kcard summary .vocab .kana{color:#666;font-size:.85rem}
+details.kcard summary .meaning{flex-basis:100%;font-size:.85rem;color:#555}
+details.kcard summary::after{content:"▸";margin-left:auto;color:#888;transition:transform .15s}
+details.kcard[open] summary::after{transform:rotate(90deg)}
+.kcard-body{padding:.2rem .8rem .9rem}
+.kcard-meta{color:#555;font-size:.88rem;margin-bottom:.5rem}
+.kcard-meta span{margin-right:1rem}
+.kcard-strokes{background:#fafafa;border:1px solid #e8e8e8;padding:.6rem;border-radius:6px;text-align:center;margin-bottom:.7rem}
+.kcard-strokes svg{max-width:100%;height:auto}
+.kcard-mnemo{background:#fff8e6;padding:.6rem .75rem;border-left:3px solid #d4a017;border-radius:4px;font-size:.9rem}
+
+@media print{
+  header{position:static}
+  details.group,details.kcard{border:none;background:none}
+  details.group summary::after,details.kcard summary::after{content:""}
+  .item{break-inside:avoid}
+}
+</style></head>
+<body>
+<header><h1>STREET 6 — Survie et débrouille niveau 2</h1><div class="subtitle">Konbini, réclamations, objets perdus, téléphone/admin, transports, santé, météo, logement, gym, secours conversationnel · 192 expressions · exposition consignée, pas acquis</div><div class="legend"><span>○ casual · ◇ neutre · ◆ formel · ♂/♀ genré · ⚠️ attention registre</span></div></header>
+
+
+<details class="group" open><summary>B1 G1 — Konbini niveau 2 (au-delà de l'acquis) <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">温（あたた）めますか？ → お願（ねが）いします／そのままで</span><span class="romaji">atatamemasu ka? → onegai shimasu / sonomama de</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">« je vous le réchauffe ? » → oui svp / non, tel quel (LA question konbini n°1)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: お弁当（べんとう）温（あたた）めますか？
+B: お願（ねが）いします。</span></div>
+<div class="item"><span class="jp">袋（ふくろ）いりますか？ → 大丈夫（だいじょうぶ）です</span><span class="romaji">fukuro irimasu ka? → daijoubu desu</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">« un sac ? » → non merci (sacs payants partout)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 袋（ふくろ）ご利用（りよう）ですか？
+B: 大丈夫（だいじょうぶ）です、このままで。</span></div>
+<div class="item"><span class="jp">箸（はし）おつけしますか？</span><span class="romaji">hashi otsuke shimasu ka?</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">« je vous mets des baguettes ? » (スプーン = cuillère, フォーク = fourchette)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: お箸（はし）おつけしますか？
+B: はい、1膳（いちぜん）で。</span></div>
+<div class="item"><span class="jp">ポイントカードはお持（も）ちですか？ → ないです</span><span class="romaji">pointo kaado wa omochi desu ka? → nai desu</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">« vous avez la carte de points ? » → non (question automatique, réponse automatique)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: ポイントカードはお持（も）ちですか？
+B: ないです。</span></div>
+<div class="item"><span class="jp">そのままでいいです</span><span class="romaji">sonomama de ii desu</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">c'est bon comme ça (pas de sac, pas de réchauffe, rien)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: シールでよろしいですか？
+B: そのままでいいです。</span></div>
+<div class="item"><span class="jp">別々（べつべつ）の袋（ふくろ）に入（い）れてください</span><span class="romaji">betsubetsu no fukuro ni irete kudasai</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">dans des sacs séparés svp (chaud/froid)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 温（あたた）かいものと冷（つめ）たいもの、別々（べつべつ）の袋（ふくろ）に入（い）れてください。
+B: かしこまりました。</span></div>
+<div class="item"><span class="jp">これ、揚（あ）げたてですか？</span><span class="romaji">kore, agetate desu ka?</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">il vient d'être frit ? (le poulet du comptoir : ファミチキ etc.)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: ファミチキ、揚（あ）げたてですか？
+B: 今（いま）揚（あ）がったばかりです。</span></div>
+<div class="item"><span class="jp">セブンイレブンのATMは海外（かいがい）カード対応（たいおう）</span><span class="romaji">sebun no ATM wa kaigai kaado taiou</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">les ATM 7-Eleven acceptent les cartes étrangères (info de survie n°1) <span class="note">aussi : bureau de poste ゆうちょ</span></span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 現金（げんきん）下（お）ろしたいんだけど…
+B: セブンのATM行（い）きな、海外（かいがい）カードいけるよ。</span></div>
+<div class="item"><span class="jp">チャージお願（ねが）いします</span><span class="romaji">chaaji onegai shimasu</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">rechargez ma Suica svp (au konbini : donner la carte + le montant)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: Suica（スイカ）に3000円（さんぜんえん）チャージお願（ねが）いします。
+B: お預（あず）かりします。</span></div>
+<div class="item"><span class="jp">公共料金（こうきょうりょうきん）の支払（しはら）い</span><span class="romaji">koukyou ryoukin no shiharai</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">payer ses factures au konbini (courant : donner le papier code-barres, payer, fini)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: これ、支払（しはら）いできますか？
+B: はい、バーコードお預（あず）かりします。</span></div>
+<div class="item"><span class="jp">コピー機（き）、使（つか）えますか？</span><span class="romaji">kopiiki, tsukaemasu ka?</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">je peux utiliser la photocopieuse ? (imprime aussi les PDF depuis le téléphone)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: コピー機（き）でPDF印刷（いんさつ）できますか？
+B: ネットプリントでできますよ。</span></div>
+<div class="item"><span class="jp">宅急便（たっきゅうびん）出（だ）せますか？</span><span class="romaji">takkyuubin dasemasu ka?</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">je peux envoyer un colis d'ici ? (Yamato au konbini)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 宅急便（たっきゅうびん）出（だ）せますか？
+B: はい、伝票（でんぴょう）書（か）いてください。</span></div>
+<div class="item"><span class="jp">トイレお借（か）りできますか？</span><span class="romaji">toire okari dekimasu ka?</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">je peux utiliser les toilettes ? (demander = poli, la plupart disent oui)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: トイレお借（か）りできますか？
+B: どうぞ、奥（おく）です。</span></div>
+<div class="item"><span class="jp">イートインありますか？</span><span class="romaji">iitoin arimasu ka?</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">il y a un coin pour manger sur place ?</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: イートインありますか？
+B: 2階（にかい）にございます。</span></div>
+<div class="item"><span class="jp">新発売（しんはつばい）</span><span class="romaji">shinhatsubai</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">nouveauté (l'étiquette à repérer : le konbini renouvelle chaque semaine) <span class="note">reconnaissance rue</span></span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: これ、新発売（しんはつばい）だって。
+B: じゃあ試（ため）すしかない。</span></div>
+<div class="item"><span class="jp">在庫（ざいこ）ありますか？</span><span class="romaji">zaiko arimasu ka?</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">vous en avez encore en stock ? (rayon vide)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: この麦茶（むぎちゃ）、在庫（ざいこ）ありますか？
+B: 確認（かくにん）してきますね。</span></div></div></details>
+<details class="group" open><summary>B1 G2 — Problèmes de commande et de caisse <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">注文（ちゅうもん）と違（ちが）うみたいです</span><span class="romaji">chuumon to chigau mitai desu</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">ce n'est pas ce que j'ai commandé (le みたい adoucit : « il semble que »)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: すみません、注文（ちゅうもん）と違（ちが）うみたいです。
+B: 申（もう）し訳（わけ）ございません、お取（と）り替（か）えします。</span></div>
+<div class="item"><span class="jp">これ、頼（たの）んでないです</span><span class="romaji">kore, tanondenai desu</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">je n'ai pas commandé ça</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: あの、これ頼（たの）んでないです。
+B: 失礼（しつれい）しました！</span></div>
+<div class="item"><span class="jp">まだ来（き）てないんですけど</span><span class="romaji">mada kitenain desu kedo</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">ma commande n'est toujours pas arrivée…</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: すみません、ラーメンまだ来（き）てないんですけど…
+B: 確認（かくにん）します、少々（しょうしょう）お待（ま）ちを。</span></div>
+<div class="item"><span class="jp">会計（かいけい）、間違（まちが）ってるかも</span><span class="romaji">kaikei, machigatteru kamo</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">il y a peut-être une erreur dans l'addition (かも = doute poli, pas d'accusation)</span><span class="poli">poli : 会計が間違っているかもしれません</span><span class="dial">A: すみません、会計（かいけい）間違（まちが）ってるかもしれません。
+B: 確認（かくにん）いたします。…失礼（しつれい）しました！</span></div>
+<div class="item"><span class="jp">二重（にじゅう）に引（ひ）き落（お）とされてる</span><span class="romaji">nijuu ni hikiotosareteru</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">j'ai été débité deux fois</span><span class="poli">poli : 二重に引き落とされています</span><span class="dial">A: カード、二重（にじゅう）に引（ひ）き落（お）とされてるみたいで…
+B: 調（しら）べますので、レシートお願（ねが）いします。</span></div>
+<div class="item"><span class="jp">お釣（つ）り、多（おお）い／少（すく）ないみたいです</span><span class="romaji">otsuri, ooi / sukunai mitai desu</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">la monnaie ne correspond pas (dans les deux sens : l'honnêteté paie)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: お釣（つ）り、多（おお）いみたいです。
+B: ご丁寧（ていねい）にありがとうございます！</span></div>
+<div class="item"><span class="jp">返品（へんぴん）できますか？</span><span class="romaji">henpin dekimasu ka?</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">je peux le rendre ?</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: これ、返品（へんぴん）できますか？
+B: レシートがあれば大丈夫（だいじょうぶ）です。</span></div>
+<div class="item"><span class="jp">交換（こうかん）してもらえますか？</span><span class="romaji">koukan shite moraemasu ka?</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">je peux l'échanger ?</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: サイズ違（ちが）いで…交換（こうかん）してもらえますか？
+B: はい、タグが付（つ）いていれば。</span></div>
+<div class="item"><span class="jp">壊（こわ）れてました</span><span class="romaji">kowaretemashita</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">il était cassé (à l'ouverture)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 開（あ）けたら壊（こわ）れてました。
+B: 大変（たいへん）失礼（しつれい）しました。新品（しんぴん）とお取（と）り替（か）えします。</span></div>
+<div class="item"><span class="jp">賞味期限（しょうみきげん）が切（き）れてる</span><span class="romaji">shoumikigen ga kireteru</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">la date de péremption est dépassée <span class="note">賞味期限 = à consommer de préférence ; 消費期限 = limite stricte</span></span><span class="poli">poli : 賞味期限が切れています</span><span class="dial">A: これ、賞味期限（しょうみきげん）切（き）れてます…
+B: 申（もう）し訳（わけ）ありません、返金（へんきん）します。</span></div>
+<div class="item"><span class="jp">返金（へんきん）お願（ねが）いできますか</span><span class="romaji">henkin onegai dekimasu ka</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">un remboursement, c'est possible ?</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 返金（へんきん）お願（ねが）いできますか。
+B: はい、こちらで手続（てつづ）きします。</span></div>
+<div class="item"><span class="jp">領収書（りょうしゅうしょ）もらえますか</span><span class="romaji">ryoushuusho moraemasu ka</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">une facture svp (≠ レシート : la version officielle avec nom)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 領収書（りょうしゅうしょ）もらえますか。
+B: お宛名（あてな）はどうしますか？</span></div>
+<div class="item"><span class="jp">袋（ふくろ）が破（やぶ）れてた</span><span class="romaji">fukuro ga yabureteta</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">le sac était déchiré</span><span class="poli">poli : 袋が破れていました</span><span class="dial">A: 袋（ふくろ）破（やぶ）れてたんで、新（あたら）しいのもらえますか。
+B: どうぞどうぞ。</span></div>
+<div class="item"><span class="jp">写真（しゃしん）と全然（ぜんぜん）違（ちが）う（笑）</span><span class="romaji">shashin to zenzen chigau</span><span class="reg reg-casual">○ casual</span><span class="meaning">rien à voir avec la photo (le burger tout plat : à dire en riant, pas en réclamant)</span><span class="poli">poli : 写真とだいぶ違いますね（笑を外して和らげる）</span><span class="dial">A: 広告（こうこく）と全然（ぜんぜん）違（ちが）うね（笑）
+B: あるあるだね（笑）</span></div>
+<div class="item"><span class="jp">セルフレジがエラーになった</span><span class="romaji">serufu reji ga eraa ni natta</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">la caisse automatique a planté (lever la main, quelqu'un vient)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: すみません、セルフレジがエラーで…
+B: ただいま伺（うかが）います。</span></div>
+<div class="item"><span class="jp">店員（てんいん）さん呼（よ）んで</span><span class="romaji">ten'in-san yonde</span><span class="reg reg-casual">○ casual</span><span class="meaning">appelle le serveur (souvent un BOUTON sur la table : 呼び出しボタン)</span><span class="poli">poli : 店員さんを呼んでください</span><span class="dial">A: 注文（ちゅうもん）どうするの？
+B: このボタンで店員（てんいん）さん呼（よ）ぶんだよ。</span></div></div></details>
+<details class="group" open><summary>B1 G3 — Objets perdus (le Japon te les rendra) <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">財布（さいふ）をなくしました</span><span class="romaji">saifu wo nakushimashita</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">j'ai perdu mon portefeuille <span class="note">revu (L49)</span></span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: どうしました？
+B: 財布（さいふ）をなくしました…</span></div>
+<div class="item"><span class="jp">落（お）とし物（もの）</span><span class="romaji">otoshimono</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">objet perdu/trouvé (le mot-clé des guichets)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 落（お）とし物（もの）はどこで聞（き）けばいいですか？
+B: あちらの窓口（まどぐち）です。</span></div>
+<div class="item"><span class="jp">忘（わす）れ物（もの）センター</span><span class="romaji">wasuremono sentaa</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">le centre des objets trouvés (chaque compagnie de métro en a un)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 電車（でんしゃ）に傘（かさ）忘（わす）れた…
+B: 忘（わす）れ物（もの）センターに電話（でんわ）してみな。</span></div>
+<div class="item"><span class="jp">電車（でんしゃ）に置（お）き忘（わす）れました</span><span class="romaji">densha ni okiwasuremashita</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">je l'ai oublié dans le train</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: スマホを電車（でんしゃ）に置（お）き忘（わす）れました。
+B: 何線（なにせん）の何時（なんじ）ごろですか？</span></div>
+<div class="item"><span class="jp">山手線（やまのてせん）です、30分（さんじゅっぷん）くらい前（まえ）</span><span class="romaji">yamanotesen desu, sanjuppun kurai mae</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">ligne Yamanote, il y a environ 30 min (les 2 infos qu'on te demandera : ligne + heure)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 何線（なにせん）ですか？
+B: 山手線（やまのてせん）です、30分（さんじゅっぷん）くらい前（まえ）。</span></div>
+<div class="item"><span class="jp">何号車（なんごうしゃ）か覚（おぼ）えてますか？</span><span class="romaji">nangousha ka oboetemasu ka?</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">« vous vous souvenez du numéro de voiture ? » (la question suivante : regarder en montant)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 何号車（なんごうしゃ）か覚（おぼ）えてますか？
+B: 前（まえ）の方（ほう）でした、たぶん2両目（にりょうめ）。</span></div>
+<div class="item"><span class="jp">黒（くろ）い長財布（ながざいふ）です</span><span class="romaji">kuroi nagazaifu desu</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">un portefeuille noir, format long (savoir DÉCRIRE l'objet : couleur + type)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: どんなお財布（さいふ）ですか？
+B: 黒（くろ）い長財布（ながざいふ）です。中（なか）にフランスの免許証（めんきょしょう）が入（はい）ってます。</span></div>
+<div class="item"><span class="jp">交番（こうばん）に届（とど）いてるかも</span><span class="romaji">kouban ni todoiteru kamo</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">il est peut-être au poste de police de quartier (le réflexe japonais : tout finit au kôban) <span class="note">kôban = mini-poste de police, partout</span></span><span class="poli">poli : 交番に届いているかもしれません</span><span class="dial">A: 見（み）つからない…
+B: 近（ちか）くの交番（こうばん）に届（とど）いてるかもよ。</span></div>
+<div class="item"><span class="jp">遺失物届（いしつぶつとどけ）を出（だ）す</span><span class="romaji">ishitsubutsu todoke wo dasu</span><span class="reg reg-formel">◆ formel</span><span class="meaning">déposer une déclaration de perte (au kôban : nécessaire pour l'assurance)</span><span class="poli">poli : identique (déjà la forme la plus formelle)</span><span class="dial">A: 保険（ほけん）のために書類（しょるい）が要（い）るんですが…
+B: 遺失物届（いしつぶつとどけ）を出（だ）しましょう。</span></div>
+<div class="item"><span class="jp">見（み）つかったら連絡（れんらく）もらえますか</span><span class="romaji">mitsukattara renraku moraemasu ka</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">vous pouvez me prévenir si on le retrouve ?</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 見（み）つかったら連絡（れんらく）もらえますか。
+B: はい、こちらの番号（ばんごう）にご連絡（れんらく）します。</span></div>
+<div class="item"><span class="jp">届（とど）いてました！</span><span class="romaji">todoitemashita!</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">quelqu'un l'a rapporté ! (le miracle japonais standard : 80%+ des portefeuilles reviennent)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 財布（さいふ）、届（とど）いてました！現金（げんきん）もそのまま！
+B: 日本（にほん）だね〜。</span></div>
+<div class="item"><span class="jp">拾（ひろ）ってくれた方（かた）にお礼（れい）を</span><span class="romaji">hirotte kureta kata ni orei wo</span><span class="reg reg-formel">◆ formel</span><span class="meaning">remercier celui qui l'a trouvé (culture : l'inventeur peut légalement demander 5-20%, souvent refusé)</span><span class="poli">poli : identique (déjà la forme la plus formelle)</span><span class="dial">A: 拾（ひろ）ってくれた方（かた）にお礼（れい）を伝（つた）えたいです。
+B: お気持（きも）ちだけで十分（じゅうぶん）だそうです。</span></div>
+<div class="item"><span class="jp">スマホを探（さが）す機能（きのう）</span><span class="romaji">sumaho wo sagasu kinou</span><span class="reg reg-casual">○ casual</span><span class="meaning">la fonction « localiser mon téléphone » (le réflexe AVANT de paniquer)</span><span class="poli">poli : identique (déjà neutre)</span><span class="dial">A: スマホない！
+B: 落（お）ち着（つ）いて、「探（さが）す」機能（きのう）で位置（いち）見（み）よ。</span></div>
+<div class="item"><span class="jp">カードを止（と）める</span><span class="romaji">kaado wo tomeru</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">faire opposition sur la carte (appeler la banque AVANT tout le reste)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 財布（さいふ）盗（と）られたかも。
+B: まずカード止（と）めて。話（はなし）はそれから。</span></div>
+<div class="item"><span class="jp">パスポートの再発行（さいはっこう）</span><span class="romaji">pasupooto no saihakkou</span><span class="reg reg-formel">◆ formel</span><span class="meaning">refaire son passeport (ambassade de France à Hiroo, Tokyo)</span><span class="poli">poli : identique (déjà la forme la plus formelle)</span><span class="dial">A: パスポートなくしたら？
+B: 大使館（たいしかん）で再発行（さいはっこう）。警察（けいさつ）の証明（しょうめい）も要（い）るよ。</span></div>
+<div class="item"><span class="jp">これ、落（お）としましたよ</span><span class="romaji">kore, otoshimashita yo</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">vous avez fait tomber ça (SOIS le héros du système à ton tour)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: これ、落（お）としましたよ。
+B: あっ！ありがとうございます！</span></div></div></details>
+<details class="group" open><summary>B1 G4 — Téléphone et admin de base <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">もしもし</span><span class="romaji">moshimoshi</span><span class="reg reg-casual">○ casual</span><span class="meaning">allô (uniquement au téléphone, uniquement avec proches/égaux) <span class="note">pro : はい、〇〇です</span></span><span class="poli">poli : はい、〇〇です（en pro, on ne dit jamais もしもし）</span><span class="dial">A: もしもし？
+B: もしもし、マチューだけど今（いま）大丈夫（だいじょうぶ）？</span></div>
+<div class="item"><span class="jp">お電話（でんわ）ありがとうございます</span><span class="romaji">odenwa arigatou gozaimasu</span><span class="reg reg-formel">◆ formel</span><span class="meaning">« merci de votre appel » (ce que TU entendras : le début du script d'accueil)</span><span class="poli">poli : identique (déjà la forme la plus formelle)</span><span class="dial">A: お電話（でんわ）ありがとうございます、〇〇サポートです。
+B: すみません、予約（よやく）の件（けん）でお電話（でんわ）しました。</span></div>
+<div class="item"><span class="jp">〜の件（けん）でお電話（でんわ）しました</span><span class="romaji">~ no ken de odenwa shimashita</span><span class="reg reg-formel">◆ formel</span><span class="meaning">j'appelle au sujet de… (la phrase d'ouverture qui structure tout)</span><span class="poli">poli : identique (déjà la forme la plus formelle)</span><span class="dial">A: 予約（よやく）変更（へんこう）の件（けん）でお電話（でんわ）しました。
+B: かしこまりました、お名前（なまえ）を伺（うかが）えますか。</span></div>
+<div class="item"><span class="jp">日本語（にほんご）がまだ下手（へた）なので、ゆっくりお願（ねが）いします</span><span class="romaji">nihongo ga mada heta nano de, yukkuri onegai shimasu</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">mon japonais est limité, parlez lentement svp (à dire DÈS LE DÉBUT de l'appel)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 日本語（にほんご）がまだ下手（へた）なので、ゆっくりお願（ねが）いします。
+B: かしこまりました、ゆっくりお話（はな）ししますね。</span></div>
+<div class="item"><span class="jp">予約（よやく）したいんですが</span><span class="romaji">yoyaku shitain desu ga</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">je voudrais réserver (restaurant, coiffeur, clinique) <span class="note">revu (L47)</span></span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 今夜（こんや）7時（しちじ）、2名（にめい）で予約（よやく）したいんですが。
+B: お取（と）りできます。</span></div>
+<div class="item"><span class="jp">予約（よやく）の変更（へんこう）／キャンセルをお願（ねが）いします</span><span class="romaji">yoyaku no henkou / kyanseru wo onegai shimasu</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">modifier / annuler ma réservation</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 明日（あした）の予約（よやく）の変更（へんこう）をお願（ねが）いします。
+B: ご希望（きぼう）の日時（にちじ）は？</span></div>
+<div class="item"><span class="jp">本人確認（ほんにんかくにん）</span><span class="romaji">honnin kakunin</span><span class="reg reg-formel">◆ formel</span><span class="meaning">vérification d'identité (on te demandera nom + naissance + téléphone)</span><span class="poli">poli : identique (déjà la forme la plus formelle)</span><span class="dial">A: 本人確認（ほんにんかくにん）のため、生年月日（せいねんがっぴ）をお願（ねが）いします。
+B: 1996年（ねん）…</span></div>
+<div class="item"><span class="jp">在留（ざいりゅう）カード</span><span class="romaji">zairyuu kaado</span><span class="reg reg-formel">◆ formel</span><span class="meaning">carte de résident (ta pièce d'identité si tu passes en PVT) <span class="note">en touriste : passeport</span></span><span class="poli">poli : identique (déjà la forme la plus formelle)</span><span class="dial">A: 身分証（みぶんしょう）はありますか？
+B: 今（いま）はパスポートです。</span></div>
+<div class="item"><span class="jp">住所（じゅうしょ）はこちらです</span><span class="romaji">juusho wa kochira desu</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">voici mon adresse (l'ÉCRIRE et la montrer : les adresses japonaises se disent mal) <span class="note">astuce : capture d'écran toujours prête</span></span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: ご住所（じゅうしょ）をお願（ねが）いします。
+B: 書（か）いたものがあります。こちらです。</span></div>
+<div class="item"><span class="jp">SIMカードを契約（けいやく）したい</span><span class="romaji">shimu kaado wo keiyaku shitai</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">je veux prendre une SIM (契約 = contrat : le mot de toute souscription)</span><span class="poli">poli : SIMカードを契約したいのですが</span><span class="dial">A: SIMカードを契約（けいやく）したいんですが。
+B: ご滞在（たいざい）は何（なん）か月（げつ）ですか？</span></div>
+<div class="item"><span class="jp">手続（てつづ）き</span><span class="romaji">tetsuzuki</span><span class="reg reg-formel">◆ formel</span><span class="meaning">démarche administrative (LE mot de l'admin : 手続きが必要 = il faut une démarche)</span><span class="poli">poli : identique (déjà la forme la plus formelle)</span><span class="dial">A: 何（なに）か手続（てつづ）きが必要（ひつよう）ですか？
+B: この書類（しょるい）にご記入（きにゅう）ください。</span></div>
+<div class="item"><span class="jp">書類（しょるい）に記入（きにゅう）する</span><span class="romaji">shorui ni kinyuu suru</span><span class="reg reg-formel">◆ formel</span><span class="meaning">remplir un formulaire (ふりがな = on te demandera ton nom en katakana)</span><span class="poli">poli : identique (déjà la forme la plus formelle)</span><span class="dial">A: こちらにご記入（きにゅう）ください。
+B: 名前（なまえ）はカタカナでいいですか？</span></div>
+<div class="item"><span class="jp">ハンコは要（い）りますか？</span><span class="romaji">hanko wa irimasu ka?</span><span class="reg reg-formel">◆ formel</span><span class="meaning">il faut un sceau ? (l'étranger peut presque toujours signer : サインでいいです)</span><span class="poli">poli : identique (déjà la forme la plus formelle)</span><span class="dial">A: ハンコは要（い）りますか？
+B: サインで大丈夫（だいじょうぶ）です。</span></div>
+<div class="item"><span class="jp">窓口（まどぐち）は何時（なんじ）までですか</span><span class="romaji">madoguchi wa nanji made desu ka</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">le guichet ferme à quelle heure ? (admin : souvent 17h, banques 15h !)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 窓口（まどぐち）は何時（なんじ）までですか？
+B: 15時（じゅうごじ）までです。
+A: 早（はや）っ。</span></div>
+<div class="item"><span class="jp">整理券（せいりけん）を取（と）る</span><span class="romaji">seiriken wo toru</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">prendre un ticket de file d'attente (machine à l'entrée, numéro appelé)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 並（なら）ぶんですか？
+B: 整理券（せいりけん）取（と）って待（ま）つ方式（ほうしき）だよ。</span></div>
+<div class="item"><span class="jp">また来（き）ます</span><span class="romaji">mata kimasu</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">je repasserai (quand c'est trop long, trop compliqué, ou qu'il manque un papier)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: この書類（しょるい）が足（た）りませんね…
+B: わかりました、また来（き）ます。</span></div></div></details>
+<details class="group" open><summary>B2 G5 — Métro et taxi niveau 2 (imprévus inclus) <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">人身事故（じんしんじこ）</span><span class="romaji">jinshin jiko</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">« accident de personne » (l'annonce qui explique un train figé : prévoir un autre itinéraire) <span class="note">reconnaissance oreille : mot d'annonce fréquent</span></span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 電車（でんしゃ）止（と）まってる…
+B: 人身事故（じんしんじこ）だって。バスにしよ。</span></div>
+<div class="item"><span class="jp">運転見合（うんてんみあ）わせ</span><span class="romaji">unten miawase</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">trafic suspendu (l'expression exacte des panneaux)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 「運転見合（うんてんみあ）わせ」って何（なに）？
+B: 止（と）まってるってこと。振替輸送（ふりかえゆそう）使（つか)おう。</span></div>
+<div class="item"><span class="jp">振替輸送（ふりかえゆそう）</span><span class="romaji">furikae yusou</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">report gratuit sur une autre ligne (montrer son ticket au guichet)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 止（と）まってたらどうするの？
+B: 振替輸送（ふりかえゆそう）で他（ほか）の線（せん）に乗（の）れるよ。</span></div>
+<div class="item"><span class="jp">遅延証明書（ちえんしょうめいしょ）</span><span class="romaji">chien shoumeisho</span><span class="reg reg-formel">◆ formel</span><span class="meaning">attestation de retard (délivrée en gare : excuse officielle au Japon)</span><span class="poli">poli : identique (déjà la forme la plus formelle)</span><span class="dial">A: 遅刻（ちこく）だ…
+B: 遅延証明書（ちえんしょうめいしょ）もらっときな。</span></div>
+<div class="item"><span class="jp">各駅停車（かくえきていしゃ）／急行（きゅうこう）</span><span class="romaji">kakueki teisha / kyuukou</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">omnibus / express (se tromper = 10 stations sautées)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: これ、急行（きゅうこう）？
+B: やば、目的地（もくてきち）に止（と）まらないやつだ。次（つぎ）で降（お）りよ。</span></div>
+<div class="item"><span class="jp">逆方向（ぎゃくほうこう）に乗（の）っちゃった</span><span class="romaji">gyakuhoukou ni nocchatta</span><span class="reg reg-casual">○ casual</span><span class="meaning">j'ai pris le mauvais sens</span><span class="poli">poli : 逆方向に乗ってしまいました</span><span class="dial">A: 渋谷（しぶや）遠（とお）ざかってない？
+B: 逆方向（ぎゃくほうこう）に乗（の）っちゃった…降（お）りよ。</span></div>
+<div class="item"><span class="jp">乗（の）り換（か）えはどこですか</span><span class="romaji">norikae wa doko desu ka</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">où est la correspondance ?</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 銀座線（ぎんざせん）への乗（の）り換（か）えはどこですか？
+B: この階段（かいだん）を上（あ）がってすぐです。</span></div>
+<div class="item"><span class="jp">終電（しゅうでん）を逃（のが）した</span><span class="romaji">shuuden wo nogashita</span><span class="reg reg-casual">○ casual</span><span class="meaning">j'ai raté le dernier train (options : taxi, manga café, premier train)</span><span class="poli">poli : 終電を逃してしまいました</span><span class="dial">A: 終電（しゅうでん）逃（のが）した…
+B: ネカフェで始発（しはつ）待（ま）つ？</span></div>
+<div class="item"><span class="jp">始発（しはつ）まで待（ま）つ</span><span class="romaji">shihatsu made matsu</span><span class="reg reg-casual">○ casual</span><span class="meaning">attendre le premier train (vers 5h : le plan B officiel des noctambules)</span><span class="poli">poli : 始発を待ちます</span><span class="dial">A: タクシー高（たか）すぎ。
+B: じゃあカラオケで始発（しはつ）まで待（ま）とう。</span></div>
+<div class="item"><span class="jp">ネットカフェ（ネカフェ）</span><span class="romaji">netto kafe (nekafe)</span><span class="reg reg-casual">○ casual</span><span class="meaning">manga café (cabine + douche ~2000¥ la nuit : le plan B du terminé-le-train)</span><span class="poli">poli : identique (nom commun, neutre)</span><span class="dial">A: ホテル満室（まんしつ）…
+B: ネカフェあるじゃん。シャワーもあるし。</span></div>
+<div class="item"><span class="jp">（タクシー）〜までお願（ねが）いします</span><span class="romaji">~ made onegai shimasu</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">jusqu'à … svp (montrer l'adresse écrite reste le plus fiable) <span class="note">revu (L49)</span></span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: この住所（じゅうしょ）までお願（ねが）いします。
+B: かしこまりました。</span></div>
+<div class="item"><span class="jp">そこの角（かど）で降（お）ろしてください</span><span class="romaji">soko no kado de oroshite kudasai</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">déposez-moi à ce coin de rue</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: そこの角（かど）で降（お）ろしてください。
+B: はい、ここでよろしいですか。</span></div>
+<div class="item"><span class="jp">ドアは自動（じどう）で開（あ）きます</span><span class="romaji">doa wa jidou de akimasu</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">la porte du taxi s'ouvre TOUTE SEULE (ne pas la toucher : le chauffeur gère) <span class="note">culture taxi japonais</span></span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: （ドアを開（あ）けようとする）
+B: 自動（じどう）だから触（さわ）らなくていいよ（笑）</span></div>
+<div class="item"><span class="jp">領収書（りょうしゅうしょ）ください（タクシー）</span><span class="romaji">ryoushuusho kudasai</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">un reçu svp (objet oublié dans le taxi : ce reçu = numéro du véhicule = tout retrouver) <span class="note">réflexe de sécurité</span></span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 領収書（りょうしゅうしょ）ください。
+B: どうぞ。忘（わす）れ物（もの）の時（とき）はこの番号（ばんごう）に。</span></div>
+<div class="item"><span class="jp">Suica（スイカ）の残高（ざんだか）が足（た）りない</span><span class="romaji">suica no zandaka ga tarinai</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">plus assez sur ma Suica (machine de recharge de l'autre côté des portiques : 精算機)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: ピンポーンって鳴（な）った…
+B: 残高（ざんだか）不足（ぶそく）。あそこの精算機（せいさんき）でチャージして。</span></div>
+<div class="item"><span class="jp">優先席（ゆうせんせき）</span><span class="romaji">yuusenseki</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">sièges prioritaires (s'y asseoir = ok si vide, se lever vite si besoin) <span class="note">reconnaissance rue</span></span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: ここ座（すわ）っていいの？
+B: 優先席（ゆうせんせき）だから、必要（ひつよう）な人（ひと）が来（き）たら譲（ゆず）ってね。</span></div></div></details>
+<details class="group" open><summary>B2 G6 — Santé : pharmacie, clinique, urgences <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">薬局（やっきょく）／ドラッグストア</span><span class="romaji">yakkyoku / doraggu sutoa</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">pharmacie / drugstore (le 2e vend de tout, le 1er délivre les ordonnances)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 頭痛薬（ずつうやく）どこで買（か）える？
+B: そこのドラッグストアで買（か）えるよ。</span></div>
+<div class="item"><span class="jp">頭痛（ずつう）に効（き）く薬（くすり）ありますか</span><span class="romaji">zutsuu ni kiku kusuri arimasu ka</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">un médicament contre le mal de tête ? (〜に効く = efficace contre)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 頭痛（ずつう）に効（き）く薬（くすり）ありますか？
+B: こちらのロキソニンが定番（ていばん）です。</span></div>
+<div class="item"><span class="jp">熱（ねつ）があります</span><span class="romaji">netsu ga arimasu</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">j'ai de la fièvre</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: どうされました？
+B: 昨日（きのう）から熱（ねつ）があります。38度（さんじゅうはちど）です。</span></div>
+<div class="item"><span class="jp">喉（のど）が痛（いた）い／咳（せき）が出（で）る</span><span class="romaji">nodo ga itai / seki ga deru</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">j'ai mal à la gorge / je tousse</span><span class="poli">poli : 喉が痛くて、咳も出ます</span><span class="dial">A: 症状（しょうじょう）は？
+B: 喉（のど）が痛（いた）くて、咳（せき）も出（で）ます。</span></div>
+<div class="item"><span class="jp">お腹（なか）を壊（こわ）した</span><span class="romaji">onaka wo kowashita</span><span class="reg reg-casual">○ casual</span><span class="meaning">j'ai l'estomac détraqué (intoxication, digestion)</span><span class="poli">poli : お腹を壊しました</span><span class="dial">A: 顔色（かおいろ）悪（わる）いよ。
+B: 昨日（きのう）の生（なま）ガキでお腹（なか）壊（こわ）した…</span></div>
+<div class="item"><span class="jp">アレルギーがあります</span><span class="romaji">arerugii ga arimasu</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">j'ai une allergie (＋そば・ピーナッツ・えび…) <span class="note">vital au resto aussi</span></span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: アレルギーはありますか？
+B: そばアレルギーがあります。</span></div>
+<div class="item"><span class="jp">病院（びょういん）に行（い）った方（ほう）がいい？</span><span class="romaji">byouin ni itta hou ga ii?</span><span class="reg reg-casual">○ casual</span><span class="meaning">je devrais voir un médecin ? (病院 = aussi les petites cliniques)</span><span class="poli">poli : 病院に行った方がいいですか</span><span class="dial">A: 3日（みっか）熱（ねつ）下（さ）がらない。
+B: それは病院（びょういん）行（い）った方（ほう）がいいよ。</span></div>
+<div class="item"><span class="jp">保険証（ほけんしょう）はありますか？ → 海外（かいがい）保険（ほけん）です</span><span class="romaji">hokenshou wa arimasu ka? → kaigai hoken desu</span><span class="reg reg-formel">◆ formel</span><span class="meaning">« carte d'assurance ? » → j'ai une assurance voyage (payer plein tarif, se faire rembourser)</span><span class="poli">poli : identique (déjà la forme la plus formelle)</span><span class="dial">A: 保険証（ほけんしょう）はお持（も）ちですか？
+B: 海外（かいがい）保険（ほけん）です。書類（しょるい）をもらえますか。</span></div>
+<div class="item"><span class="jp">診察（しんさつ）を受（う）けたい</span><span class="romaji">shinsatsu wo uketai</span><span class="reg reg-formel">◆ formel</span><span class="meaning">je voudrais une consultation</span><span class="poli">poli : 診察を受けたいのですが</span><span class="dial">A: 予約（よやく）なしですが、診察（しんさつ）を受（う）けたいです。
+B: 少（すこ）し待（ま）ちますが大丈夫（だいじょうぶ）です。</span></div>
+<div class="item"><span class="jp">処方箋（しょほうせん）</span><span class="romaji">shohousen</span><span class="reg reg-formel">◆ formel</span><span class="meaning">ordonnance (à porter à la pharmacie d'à côté de la clinique)</span><span class="poli">poli : identique (déjà la forme la plus formelle)</span><span class="dial">A: こちら処方箋（しょほうせん）です。
+B: 隣（となり）の薬局（やっきょく）に出（だ）せばいいですか？</span></div>
+<div class="item"><span class="jp">痛（いた）み止（ど）め</span><span class="romaji">itamidome</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">antidouleur</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 痛（いた）み止（ど）め、もらえますか。
+B: 食後（しょくご）に1錠（いちじょう）ずつどうぞ。</span></div>
+<div class="item"><span class="jp">絆創膏（ばんそうこう）</span><span class="romaji">bansoukou</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">pansement</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 絆創膏（ばんそうこう）ありますか？
+B: レジ横（よこ）にあります。</span></div>
+<div class="item"><span class="jp">救急車（きゅうきゅうしゃ）を呼（よ）んでください！</span><span class="romaji">kyuukyuusha wo yonde kudasai!</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">appelez une ambulance ! (numéro : 119, gratuit) <span class="note">⚠️ urgence : 119 pompiers/ambulance, 110 police</span></span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 人（ひと）が倒（たお）れてます！救急車（きゅうきゅうしゃ）を呼（よ）んでください！
+B: 119番（ばん）します！</span></div>
+<div class="item"><span class="jp">意識（いしき）があります／ありません</span><span class="romaji">ishiki ga arimasu / arimasen</span><span class="reg reg-formel">◆ formel</span><span class="meaning">il est conscient / inconscient (l'info clé au téléphone du 119)</span><span class="poli">poli : identique (déjà la forme la plus formelle)</span><span class="dial">A: 意識（いしき）はありますか？
+B: あります。でも動（うご）けないみたいです。</span></div>
+<div class="item"><span class="jp">＃7119</span><span class="kana">（シャープななひゃくじゅうきゅう）</span><span class="romaji">shaapu nana ichi ichi kyuu</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">le numéro de CONSEIL médical (pas sûr que ce soit grave ? appelle-le avant le 119) <span class="note">Tokyo : conseil infirmier 24h/24</span></span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 救急車（きゅうきゅうしゃ）呼（よ）ぶほどかわからない…
+B: ＃7119に電話（でんわ）して相談（そうだん）できるよ。</span></div>
+<div class="item"><span class="jp">お大事（だいじ）に</span><span class="romaji">odaiji ni</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">soignez-vous bien (dit par le pharmacien, le médecin, les amis : à rendre aussi)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: お大事（だいじ）に。
+B: ありがとうございます。</span></div></div></details>
+<details class="group" open><summary>B2 G7 — Météo extrême et imprévus japonais <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">台風（たいふう）が来（く）る</span><span class="romaji">taifuu ga kuru</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">un typhon arrive (l'événement météo n°1 : trains coupés, tout fermé)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 週末（しゅうまつ）、台風（たいふう）来（く）るって。
+B: じゃあ買（か）い出（だ）ししとこ。</span></div>
+<div class="item"><span class="jp">計画運休（けいかくうんきゅう）</span><span class="romaji">keikaku unkyuu</span><span class="reg reg-formel">◆ formel</span><span class="meaning">arrêt PLANIFIÉ des trains (annoncé la veille d'un typhon : ne pas sortir ce jour-là)</span><span class="poli">poli : identique (déjà la forme la plus formelle)</span><span class="dial">A: 明日（あした）、計画運休（けいかくうんきゅう）だって。
+B: 完全（かんぜん）に家（いえ）の日（ひ）だね。</span></div>
+<div class="item"><span class="jp">地震（じしん）だ！</span><span class="romaji">jishin da!</span><span class="reg reg-casual">○ casual</span><span class="meaning">tremblement de terre ! (réflexe : s'éloigner de ce qui tombe, ne PAS courir dehors) <span class="note">⚠️ règle : rester calme, se protéger la tête</span></span><span class="poli">poli : 地震です（cri de réflexe, mais la forme neutre reste 地震です）</span><span class="dial">A: 揺（ゆ）れてる…地震（じしん）だ！
+B: 落（お）ち着（つ）いて。机（つくえ）の下（した）へ。</span></div>
+<div class="item"><span class="jp">緊急地震速報（きんきゅうじしんそくほう）</span><span class="romaji">kinkyuu jishin sokuhou</span><span class="reg reg-formel">◆ formel</span><span class="meaning">l'alerte séisme des téléphones (le son terrifiant : quelques secondes AVANT la secousse) <span class="note">à reconnaître pour ne pas paniquer</span></span><span class="poli">poli : identique (déjà la forme la plus formelle)</span><span class="dial">A: （携帯（けいたい）が一斉（いっせい）に鳴（な）る）
+B: 速報（そくほう）だ。座（すわ）って頭（あたま）守（まも）って。</span></div>
+<div class="item"><span class="jp">震度（しんど）3くらいかな</span><span class="romaji">shindo san kurai kana</span><span class="reg reg-casual">○ casual</span><span class="meaning">« magnitude ressentie 3, je dirais » (échelle 震度 0-7 : les Japonais devinent au feeling)</span><span class="poli">poli : 震度3くらいでしょうか</span><span class="dial">A: 今（いま）の、震度（しんど）いくつだろう。
+B: 3くらいかな。慣（な）れてるね、みんな（笑）</span></div>
+<div class="item"><span class="jp">避難所（ひなんじょ）</span><span class="romaji">hinanjo</span><span class="reg reg-formel">◆ formel</span><span class="meaning">centre d'évacuation (écoles publiques : repérer le plus proche de chez toi)</span><span class="poli">poli : identique (déjà la forme la plus formelle)</span><span class="dial">A: 避難所（ひなんじょ）ってどこ？
+B: だいたい近（ちか）くの小学校（しょうがっこう）だよ。</span></div>
+<div class="item"><span class="jp">梅雨（つゆ）</span><span class="romaji">tsuyu</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">la saison des pluies (juin-juillet : ton quotidien actuel) <span class="note">revu (M2)</span></span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: また雨（あめ）…
+B: 梅雨（つゆ）だからね。あと2週間（にしゅうかん）の辛抱（しんぼう）。</span></div>
+<div class="item"><span class="jp">ゲリラ豪雨（ごうう）</span><span class="romaji">gerira gouu</span><span class="reg reg-casual">○ casual</span><span class="meaning">averse-guérilla (déluge soudain de 20 min : se réfugier au konbini)</span><span class="poli">poli : identique (nom commun, neutre)</span><span class="dial">A: 空（そら）真（ま）っ黒（くろ）…
+B: ゲリラ豪雨（ごうう）来（く）るぞ、コンビニ入（はい）ろ。</span></div>
+<div class="item"><span class="jp">ビニール傘（がさ）</span><span class="romaji">biniiru gasa</span><span class="reg reg-casual">○ casual</span><span class="meaning">le parapluie transparent à 500¥ (s'achète partout, s'oublie partout)</span><span class="poli">poli : identique (nom commun, neutre)</span><span class="dial">A: 傘（かさ）ない！
+B: コンビニでビニール傘（がさ）買（か）えばいいじゃん。</span></div>
+<div class="item"><span class="jp">傘（かさ）立（た）てに置（お）く</span><span class="romaji">kasatate ni oku</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">laisser son parapluie au porte-parapluies à l'entrée (règle des magasins)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 傘（かさ）、持（も）って入（はい）っていい？
+B: 入口（いりぐち）の傘（かさ）立（た）てに置（お）いてって。</span></div>
+<div class="item"><span class="jp">熱中症（ねっちゅうしょう）</span><span class="romaji">necchuushou</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">coup de chaleur (l'été japonais tue : boire AVANT d'avoir soif) <span class="note">⚠️ été 35°+ humide</span></span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 頭（あたま）くらくらする…
+B: 熱中症（ねっちゅうしょう）かも。日陰（ひかげ）で水分（すいぶん）と塩分（えんぶん）！</span></div>
+<div class="item"><span class="jp">ポカリスエット買（か）ってきて</span><span class="romaji">pokari suetto katte kite</span><span class="reg reg-casual">○ casual</span><span class="meaning">ramène un Pocari (l'électrolyte national anti-chaleur)</span><span class="poli">poli : ポカリスエットを買ってきていただけますか</span><span class="dial">A: 大丈夫（だいじょうぶ）？
+B: ポカリ買（か）ってきて…</span></div>
+<div class="item"><span class="jp">冷房（れいぼう）効（き）きすぎ</span><span class="romaji">reibou kikisugi</span><span class="reg reg-casual">○ casual</span><span class="meaning">la clim est trop forte (le paradoxe japonais : dehors 35°, dedans 18°)</span><span class="poli">poli : 冷房が効きすぎですね</span><span class="dial">A: この店（みせ）、寒（さむ）くない？
+B: 冷房（れいぼう）効（き）きすぎだね。上着（うわぎ）持（も）ってきてよかった。</span></div>
+<div class="item"><span class="jp">花火大会（はなびたいかい）、中止（ちゅうし）だって</span><span class="romaji">hanabi taikai, chuushi datte</span><span class="reg reg-casual">○ casual</span><span class="meaning">le feu d'artifice est annulé (中止 = annulé, 延期 = reporté : mots d'événements)</span><span class="poli">poli : 花火大会は中止だそうです</span><span class="dial">A: 花火大会（はなびたいかい）、中止（ちゅうし）だって。
+B: 台風（たいふう）だからしゃーない…</span></div>
+<div class="item"><span class="jp">順延（じゅんえん）／延期（えんき）</span><span class="romaji">jun'en / enki</span><span class="reg reg-formel">◆ formel</span><span class="meaning">reporté (au lendemain / à plus tard)</span><span class="poli">poli : identique (déjà la forme la plus formelle)</span><span class="dial">A: 中止（ちゅうし）？
+B: いや、明日（あした）に順延（じゅんえん）だって。よかった。</span></div>
+<div class="item"><span class="jp">念（ねん）のため</span><span class="romaji">nen no tame</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">au cas où (LE réflexe japonais : 念のため傘 = le parapluie au cas où)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 晴（は）れてるのに傘（かさ）？
+B: 念（ねん）のため。夕方（ゆうがた）怪（あや）しいから。</span></div></div></details>
+<details class="group" open><summary>B2 G8 — Logement et voisinage (partagé, Airbnb, share house) <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">鍵（かぎ）をなくした／閉（し）め出（だ）された</span><span class="romaji">kagi wo nakushita / shimedasareta</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">j'ai perdu la clé / je suis enfermé dehors</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 鍵（かぎ）忘（わす）れて閉（し）め出（だ）された…
+B: 管理会社（かんりがいしゃ）に電話（でんわ）だね。</span></div>
+<div class="item"><span class="jp">管理会社（かんりがいしゃ）</span><span class="romaji">kanri gaisha</span><span class="reg reg-formel">◆ formel</span><span class="meaning">la société de gestion de l'immeuble (ton interlocuteur pour tout problème)</span><span class="poli">poli : identique (déjà la forme la plus formelle)</span><span class="dial">A: お湯（ゆ）が出（で）ない…誰（だれ）に言（い）えば？
+B: 管理会社（かんりがいしゃ）の番号（ばんごう）、契約書（けいやくしょ）にあるよ。</span></div>
+<div class="item"><span class="jp">お湯（ゆ）が出（で）ません</span><span class="romaji">oyu ga demasen</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">il n'y a pas d'eau chaude</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: すみません、お湯（ゆ）が出（で）ないんですが。
+B: 給湯器（きゅうとうき）を確認（かくにん）しに伺（うかが）います。</span></div>
+<div class="item"><span class="jp">エアコンが効（き）かない</span><span class="romaji">eakon ga kikanai</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">la clim ne marche pas</span><span class="poli">poli : エアコンが効きません</span><span class="dial">A: エアコンが効（き）かなくて…
+B: リモコンの電池（でんち）は確認（かくにん）しました？</span></div>
+<div class="item"><span class="jp">水漏（みずも）れしています</span><span class="romaji">mizumore shiteimasu</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">il y a une fuite d'eau (urgence logement n°1 : prévenir vite, dégâts = responsabilité)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 天井（てんじょう）から水漏（みずも）れしています！
+B: すぐ業者（ぎょうしゃ）を手配（てはい）します。</span></div>
+<div class="item"><span class="jp">ゴミの分別（ぶんべつ）</span><span class="romaji">gomi no bunbetsu</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">le tri des déchets (burnable/non-burnable/recyclable : ta première guerre au Japon) <span class="note">燃えるゴミ・燃えないゴミ・資源（しげん）</span></span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: これ、何（なに）ゴミ？
+B: ペットボトルは資源（しげん）。ラベルは剥（は）がしてね。</span></div>
+<div class="item"><span class="jp">ゴミ出（だ）しは何曜日（なんようび）ですか</span><span class="romaji">gomidashi wa nan'youbi desu ka</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">les poubelles, c'est quel jour ? (chaque type a SON jour, le matin seulement)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 燃（も）えるゴミは何曜日（なんようび）ですか？
+B: 月（げつ）・木（もく）の朝（あさ）8時（はちじ）までです。</span></div>
+<div class="item"><span class="jp">騒音（そうおん）</span><span class="romaji">souon</span><span class="reg reg-formel">◆ formel</span><span class="meaning">le bruit (murs de papier + tolérance zéro = pas de bruit après 22h) <span class="note">règle sociale forte</span></span><span class="poli">poli : identique (déjà la forme la plus formelle)</span><span class="dial">A: 隣（となり）から苦情（くじょう）が来（き）まして…
+B: すみません、以後（いご）気（き）をつけます。</span></div>
+<div class="item"><span class="jp">静（しず）かにしてもらえますか</span><span class="romaji">shizuka ni shite moraemasu ka</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">vous pouvez faire moins de bruit ? (dans l'autre sens)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 夜分（やぶん）にすみません、少（すこ）し静（しず）かにしてもらえますか。
+B: あ、ごめんなさい！</span></div>
+<div class="item"><span class="jp">隣人（りんじん）に挨拶（あいさつ）</span><span class="romaji">rinjin ni aisatsu</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">saluer ses voisins (un こんにちは dans l'ascenseur suffit, mais il compte)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 隣（となり）の人（ひと）に会（あ）ったら？
+B: 軽（かる）く会釈（えしゃく）してこんにちはでOK。</span></div>
+<div class="item"><span class="jp">宅配（たくはい）ボックス</span><span class="romaji">takuhai bokkusu</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">casier à colis de l'immeuble (le code arrive sur l'avis de passage)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 荷物（にもつ）どこ？
+B: 宅配（たくはい）ボックスの3番（さんばん）。暗証番号（あんしょうばんごう）は不在票（ふざいひょう）に。</span></div>
+<div class="item"><span class="jp">不在票（ふざいひょう）</span><span class="romaji">fuzaihyou</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">avis de passage (qr code dessus = re-livraison en 2 taps, le soir même)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: ポストにこれ入（はい）ってた。
+B: 不在票（ふざいひょう）だね。QRで再配達（さいはいたつ）頼（たの）める。</span></div>
+<div class="item"><span class="jp">再配達（さいはいたつ）をお願（ねが）いします</span><span class="romaji">saihaitatsu wo onegai shimasu</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">re-livraison svp (au téléphone : numéro de l'avis + créneau)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 再配達（さいはいたつ）をお願（ねが）いします。今日（きょう）の夜（よる）は可能（かのう）ですか？
+B: 19時（じゅうくじ）から21時（にじゅういちじ）でお伺（うかが）いします。</span></div>
+<div class="item"><span class="jp">退去（たいきょ）の連絡（れんらく）</span><span class="romaji">taikyo no renraku</span><span class="reg reg-formel">◆ formel</span><span class="meaning">prévenir de son départ (share house : souvent 1 mois avant)</span><span class="poli">poli : identique (déjà la forme la plus formelle)</span><span class="dial">A: 来月末（らいげつまつ）に退去（たいきょ）したいのですが。
+B: では書類（しょるい）をお送（おく）りします。</span></div>
+<div class="item"><span class="jp">共用（きょうよう）スペース</span><span class="romaji">kyouyou supeesu</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">les espaces communs de la share house (cuisine, salon : nettoyer derrière soi)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 共用（きょうよう）スペースのルールある？
+B: 使（つか）ったら片（かた）づける、それだけ。</span></div>
+<div class="item"><span class="jp">Wi-Fi（ワイファイ）のパスワード教（おし）えてください</span><span class="romaji">waifai no pasuwaado oshiete kudasai</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">le mot de passe wifi svp (partout : café, hôtel, share house)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: Wi-Fi（ワイファイ）のパスワード教（おし）えてください。
+B: レシートに書（か）いてありますよ。</span></div></div></details>
+<details class="group" open><summary>B3 G9 — Salle de sport (ton terrain quotidien) <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">見学（けんがく）できますか？</span><span class="romaji">kengaku dekimasu ka?</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">je peux visiter avant de m'inscrire ?</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 見学（けんがく）できますか？
+B: はい、ご案内（あんない）します。</span></div>
+<div class="item"><span class="jp">ビジター利用（りよう）はできますか</span><span class="romaji">bijitaa riyou wa dekimasu ka</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">accès à la séance sans abonnement ?</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: ビジター利用（りよう）はできますか？
+B: 1回（いっかい）2200円（にせんにひゃくえん）です。</span></div>
+<div class="item"><span class="jp">入会（にゅうかい）したいんですが</span><span class="romaji">nyuukai shitain desu ga</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">je voudrais m'inscrire</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 入会（にゅうかい）したいんですが。
+B: 身分証（みぶんしょう）はお持（も）ちですか？</span></div>
+<div class="item"><span class="jp">月会費（げつかいひ）はいくらですか</span><span class="romaji">getsukaihi wa ikura desu ka</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">l'abonnement mensuel coûte combien ?</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 月会費（げつかいひ）はいくらですか？
+B: 7980円（ななせんきゅうひゃくはちじゅうえん）です。</span></div>
+<div class="item"><span class="jp">これ、使（つか）ってますか？</span><span class="romaji">kore, tsukattemasu ka?</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">vous utilisez cette machine ? (LA phrase sociale de la salle)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: これ、使（つか）ってますか？
+B: あ、どうぞどうぞ。</span></div>
+<div class="item"><span class="jp">あと何（なん）セットですか？</span><span class="romaji">ato nan setto desu ka?</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">il vous reste combien de séries ?</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: あと何（なん）セットですか？
+B: ラスト1セットです。</span></div>
+<div class="item"><span class="jp">交互（こうご）に使（つか）いませんか</span><span class="romaji">kougo ni tsukaimasen ka</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">on alterne ? (partage de machine entre les séries)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 交互（こうご）に使（つか）いませんか？
+B: いいですね、そうしましょう。</span></div>
+<div class="item"><span class="jp">補助（ほじょ）お願（ねが）いできますか</span><span class="romaji">hojo onegai dekimasu ka</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">vous pouvez m'assurer ? (spot au développé couché)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: すみません、補助（ほじょ）お願（ねが）いできますか。
+B: いいですよ。何（なん）キロですか？</span></div>
+<div class="item"><span class="jp">フォーム、変（へん）じゃないですか？</span><span class="romaji">foomu, hen ja nai desu ka?</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">ma forme est correcte ? (demander = créer du lien avec les habitués)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: このフォーム、変（へん）じゃないですか？
+B: 腰（こし）が反（そ）りすぎかも。</span></div>
+<div class="item"><span class="jp">何（なに）鍛（きた）えてるんですか？</span><span class="romaji">nani kitaeterun desu ka?</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">vous travaillez quoi aujourd'hui ? (small talk de salle)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 今日（きょう）は何（なに）鍛（きた）えてるんですか？
+B: 脚（あし）の日（ひ）です。
+A: 一番（いちばん）きついやつだ（笑）</span></div>
+<div class="item"><span class="jp">器具（きぐ）を拭（ふ）く</span><span class="romaji">kigu wo fuku</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">essuyer la machine après usage (règle absolue au Japon : lingette fournie) <span class="note">hygiène = religion de salle</span></span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: タオル忘（わす）れた…
+B: 備（そな）え付（つ）けのペーパーで拭（ふ）けばOK。</span></div>
+<div class="item"><span class="jp">ダンベルを元（もと）に戻（もど）す</span><span class="romaji">danberu wo moto ni modosu</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">ranger les haltères à leur place (l'étranger qui range = respecté d'office)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 置（お）きっぱなしの人（ひと）いるね…
+B: マナー違反（いはん）だね。俺（おれ）らはちゃんと戻（もど）そ。</span></div>
+<div class="item"><span class="jp">ロッカーの使（つか）い方（かた）、教（おし）えてください</span><span class="romaji">rokkaa no tsukaikata, oshiete kudasai</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">comment marche le casier ? (souvent pièce de 100¥ rendue)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: ロッカーの使（つか）い方（かた）、教（おし）えてください。
+B: 100円（ひゃくえん）入（い）れて、あとで戻（もど）ります。</span></div>
+<div class="item"><span class="jp">プロテイン飲（の）んでますか？</span><span class="romaji">purotein nondemasu ka?</span><span class="reg reg-casual">○ casual</span><span class="meaning">vous prenez des protéines ? (sujet de vestiaire garanti)</span><span class="poli">poli : プロテインは飲んでいますか</span><span class="dial">A: プロテイン何（なに）飲（の）んでますか？
+B: ザバスのココア味（あじ）。定番（ていばん）です。</span></div>
+<div class="item"><span class="jp">筋肉痛（きんにくつう）やばい</span><span class="romaji">kinnikutsuu yabai</span><span class="reg reg-casual">○ casual</span><span class="meaning">j'ai des courbatures de fou</span><span class="poli">poli : 筋肉痛がひどいです</span><span class="dial">A: 昨日（きのう）脚（あし）の日（ひ）だったから筋肉痛（きんにくつう）やばい。
+B: 階段（かいだん）地獄（じごく）だ（笑）</span></div>
+<div class="item"><span class="jp">追（お）い込（こ）む</span><span class="romaji">oikomu</span><span class="reg reg-casual">○ casual</span><span class="meaning">se pousser à fond (dernière rep : 追い込み = le finish)</span><span class="poli">poli : 追い込みます</span><span class="dial">A: ラスト1回（いっかい）！追（お）い込（こ）め！
+B: うおおお！</span></div></div></details>
+<details class="group" open><summary>B3 G10 — Coiffeur, onsen, services du corps <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">予約（よやく）なしで大丈夫（だいじょうぶ）ですか</span><span class="romaji">yoyaku nashi de daijoubu desu ka</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">sans rendez-vous, c'est possible ? (coiffeur : souvent oui en semaine)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 予約（よやく）なしで大丈夫（だいじょうぶ）ですか？
+B: 20分（にじゅっぷん）ほどお待（ま）ちいただければ。</span></div>
+<div class="item"><span class="jp">カットだけお願（ねが）いします</span><span class="romaji">katto dake onegai shimasu</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">juste une coupe svp</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 今日（きょう）はどうされますか？
+B: カットだけお願（ねが）いします。</span></div>
+<div class="item"><span class="jp">この写真（しゃしん）みたいにしてください</span><span class="romaji">kono shashin mitai ni shite kudasai</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">comme sur cette photo svp (l'arme universelle du coiffeur)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: どんな感（かん）じにします？
+B: この写真（しゃしん）みたいにしてください。</span></div>
+<div class="item"><span class="jp">短（みじか）くしすぎないでください</span><span class="romaji">mijikaku shisuginaide kudasai</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">pas trop court svp</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 横（よこ）はどうします？
+B: 短（みじか）くしすぎないでください。</span></div>
+<div class="item"><span class="jp">すいてください</span><span class="romaji">suite kudasai</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">désépaissir svp (すく = enlever de la masse)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 量（りょう）はどうします？
+B: ちょっとすいてください。</span></div>
+<div class="item"><span class="jp">襟足（えりあし）は自然（しぜん）に</span><span class="romaji">eriashi wa shizen ni</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">la nuque, au naturel</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 襟足（えりあし）はどうします？
+B: 自然（しぜん）な感（かん）じで。</span></div>
+<div class="item"><span class="jp">かゆいところないですか？ → 大丈夫（だいじょうぶ）です</span><span class="romaji">kayui tokoro nai desu ka?</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">« ça gratte quelque part ? » (question rituelle du shampoing) → non c'est parfait</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: かゆいところないですか？
+B: 大丈夫（だいじょうぶ）です、気持（きも）ちいいです。</span></div>
+<div class="item"><span class="jp">タトゥーがあるんですが、入（はい）れますか</span><span class="romaji">tatuu ga arun desu ga, hairemasu ka</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">j'ai un tatouage, je peux entrer ? (onsen/sento : demander AVANT, éviter le malaise) <span class="note">⚠️ beaucoup d'onsen refusent ; chercher タトゥーOK</span></span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: タトゥーがあるんですが、入（はい）れますか？
+B: シールで隠（かく）せば大丈夫（だいじょうぶ）です。</span></div>
+<div class="item"><span class="jp">かけ湯（ゆ）をしてから入（はい）る</span><span class="romaji">kakeyu wo shite kara hairu</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">se rincer AVANT d'entrer dans le bain (la règle n°1 de l'onsen) <span class="note">+ jamais la serviette dans l'eau</span></span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 順番（じゅんばん）あるの？
+B: かけ湯（ゆ）してから入（はい）る。タオルはお湯（ゆ）に入（い）れない。</span></div>
+<div class="item"><span class="jp">サウナ→水風呂（みずぶろ）→外気浴（がいきよく）</span><span class="romaji">sauna → mizuburo → gaikiyoku</span><span class="reg reg-casual">○ casual</span><span class="meaning">le cycle sacré : sauna, bain froid, repos dehors (=ととのう, atteindre le nirvana) <span class="note">ととのう = argot sauna national</span></span><span class="poli">poli : identique (nom neutre)</span><span class="dial">A: 「ととのう」って何（なに）？
+B: サウナ→水風呂（みずぶろ）→外気浴（がいきよく）でキマる感覚（かんかく）（笑）</span></div>
+<div class="item"><span class="jp">背中（せなか）流（なが）しましょうか（冗談）</span><span class="romaji">senaka nagashimashou ka</span><span class="reg reg-casual">○ casual</span><span class="meaning">« je vous frotte le dos ? » (vieille coutume, aujourd'hui une blague de sento)</span><span class="poli">poli : pas d'équivalent — c'est une plaisanterie nostalgique, on ne la fait simplement pas à un inconnu</span><span class="dial">A: 背中（せなか）流（なが）しましょうか（笑）
+B: 昭和（しょうわ）か（笑）</span></div>
+<div class="item"><span class="jp">湯上（ゆあ）がりのコーヒー牛乳（ぎゅうにゅう）</span><span class="romaji">yuagari no koohii gyuunyuu</span><span class="reg reg-casual">○ casual</span><span class="meaning">le lait-café d'après-bain (rituel : bouteille en verre, main sur la hanche)</span><span class="poli">poli : identique (nom neutre)</span><span class="dial">A: 風呂上（ふろあ）がりは？
+B: コーヒー牛乳（ぎゅうにゅう）一択（いったく）。腰（こし）に手（て）当（あ）てて（笑）</span></div>
+<div class="item"><span class="jp">マッサージ、30分（さんじゅっぷん）コースで</span><span class="romaji">massaaji, sanjuppun koosu de</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">un massage, formule 30 minutes</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: コースはどうされますか？
+B: 30分（さんじゅっぷん）コースで。</span></div>
+<div class="item"><span class="jp">力（ちから）、ちょうどいいです／もう少（すこ）し弱（よわ）く</span><span class="romaji">chikara, choudo ii desu / mou sukoshi yowaku</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">la pression est parfaite / un peu moins fort svp</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: お力（ちから）加減（かげん）いかがですか？
+B: もう少（すこ）し弱（よわ）くお願（ねが）いします。</span></div>
+<div class="item"><span class="jp">整体（せいたい）</span><span class="romaji">seitai</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">manipulation corporelle type ostéo (pas médical : pour le dos d'ordinateur)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 肩（かた）ガチガチ…
+B: 整体（せいたい）行（い）ってみたら？</span></div>
+<div class="item"><span class="jp">コインランドリー</span><span class="romaji">koin randorii</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">laverie automatique (sèche-linge géants : 30 min tout sec)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 布団（ふとん）も洗（あら）える？
+B: コインランドリーの大型（おおがた）ならいけるよ。</span></div></div></details>
+<details class="group" open><summary>B3 G11 — Le troc verbal du quotidien (demander, prêter, aider) <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">ちょっと手（て）伝（つだ）ってもらえますか</span><span class="romaji">chotto tetsudatte moraemasu ka</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">vous pouvez m'aider deux secondes ?</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: ちょっと手伝（てつだ）ってもらえますか？
+B: いいですよ、何（なに)をすれば？</span></div>
+<div class="item"><span class="jp">貸（か）してもらえますか</span><span class="romaji">kashite moraemasu ka</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">vous pouvez me prêter… ?</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 充電器（じゅうでんき）、貸（か）してもらえますか？
+B: どうぞ。</span></div>
+<div class="item"><span class="jp">ペン、ありますか</span><span class="romaji">pen, arimasu ka</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">vous auriez un stylo ? (formulaires : toujours utile)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: ペン、ありますか？
+B: こちらをお使（つか）いください。</span></div>
+<div class="item"><span class="jp">充電（じゅうでん）させてもらえますか</span><span class="romaji">juuden sasete moraemasu ka</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">je peux recharger mon téléphone ? (café : souvent prises au comptoir)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: ここで充電（じゅうでん）させてもらえますか？
+B: コンセント、足元（あしもと）にありますよ。</span></div>
+<div class="item"><span class="jp">両替（りょうがえ）できますか</span><span class="romaji">ryougae dekimasu ka</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">vous pouvez me faire de la monnaie ? (pièces de 100 pour la laverie, casiers)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 千円（せんえん）、両替（りょうがえ）できますか？
+B: 100円（ひゃくえん）玉（だま）で10枚（じゅうまい）ですね。</span></div>
+<div class="item"><span class="jp">少々（しょうしょう）お待（ま）ちください → はい、待（ま）ちます</span><span class="romaji">shoushou omachi kudasai</span><span class="reg reg-formel">◆ formel</span><span class="meaning">« un instant svp » (tu l'entendras 50 fois par jour) → pas de souci</span><span class="poli">poli : identique (déjà la forme la plus formelle)</span><span class="dial">A: 少々（しょうしょう）お待（ま）ちください。
+B: はい、大丈夫（だいじょうぶ）です。</span></div>
+<div class="item"><span class="jp">お先（さき）にどうぞ</span><span class="romaji">osaki ni douzo</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">après vous (céder le passage : ascenseur, caisse, porte)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: お先（さき）にどうぞ。
+B: すみません、ありがとうございます。</span></div>
+<div class="item"><span class="jp">席（せき）、詰（つ）めましょうか</span><span class="romaji">seki, tsumemashou ka</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">je me décale pour vous faire de la place ?</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 席（せき）、詰（つ）めましょうか？
+B: 助（たす）かります！</span></div>
+<div class="item"><span class="jp">荷物（にもつ）、見（み)ててもらえますか</span><span class="romaji">nimotsu, mitete moraemasu ka</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">vous pouvez surveiller mes affaires ? (café : partir aux toilettes) <span class="note">au Japon on laisse souvent tout sur la table sans demander</span></span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: すみません、荷物（にもつ）見（み）ててもらえますか？
+B: いいですよ、行（い）ってらっしゃい。</span></div>
+<div class="item"><span class="jp">写真（しゃしん）撮（と）ってもらえますか</span><span class="romaji">shashin totte moraemasu ka</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">vous pouvez nous prendre en photo ?</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: すみません、写真（しゃしん）撮（と）ってもらえますか？
+B: いいですよ。はい、チーズ！</span></div>
+<div class="item"><span class="jp">道（みち）、聞（き）いてもいいですか</span><span class="romaji">michi, kiite mo ii desu ka</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">je peux vous demander mon chemin ?</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 道（みち）聞（き）いてもいいですか？代々木公園（よよぎこうえん）は…
+B: この道（みち）まっすぐですよ。</span></div>
+<div class="item"><span class="jp">一緒（いっしょ）に行（い）きましょうか</span><span class="romaji">issho ni ikimashou ka</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">« je vous y emmène » (les Japonais t'ESCORTERONT au lieu d'expliquer : accepter avec grâce)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: ちょっと分（わ）かりにくいので、一緒（いっしょ）に行（い）きましょうか。
+B: え、いいんですか？ありがとうございます！</span></div>
+<div class="item"><span class="jp">これ、どうやって使（つか）うんですか</span><span class="romaji">kore, dou yatte tsukaun desu ka</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">comment ça s'utilise ? (machine à tickets, borne inconnue)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: これ、どうやって使（つか）うんですか？
+B: 先（さき）にお金（かね）を入（い）れて、ボタンを押（お）します。</span></div>
+<div class="item"><span class="jp">おすそ分（わ）け</span><span class="romaji">osusowake</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">partager ce qu'on a reçu (des fruits en trop, des omiyage : le troc social japonais)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 実家（じっか）からみかん来（き）たから、おすそ分（わ）け。
+B: え、嬉（うれ）しい！ありがとう！</span></div>
+<div class="item"><span class="jp">お返（かえ）しに、これどうぞ</span><span class="romaji">okaeshi ni, kore douzo</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">en retour, tenez (la règle d'or : un cadeau appelle un contre-cadeau) <span class="note">culture お返し : rendre ~la moitié de la valeur</span></span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: この間（あいだ）のお礼（れい）に、フランスのチョコどうぞ。
+B: わざわざありがとう！</span></div>
+<div class="item"><span class="jp">遠慮（えんりょ）しないで</span><span class="romaji">enryo shinaide</span><span class="reg reg-casual">○ casual</span><span class="meaning">ne fais pas de manières (l'invitation à accepter ; refuser 1 fois puis accepter = la danse standard)</span><span class="poli">poli : ご遠慮なさらないでください</span><span class="dial">A: いやいや、悪（わる）いよ…
+B: 遠慮（えんりょ）しないで。持（も）ってって。</span></div></div></details>
+<details class="group" open><summary>B3 G12 — Kit de secours conversationnel (quand tout déraille) <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">すみません、聞（き）き取（と）れませんでした</span><span class="romaji">sumimasen, kikitoremasen deshita</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">pardon, je n'ai pas saisi (plus précis que わかりません : le son est passé trop vite)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: ×××ですか？
+B: すみません、聞（き）き取（と）れませんでした。</span></div>
+<div class="item"><span class="jp">もう少（すこ）しゆっくりお願（ねが）いします</span><span class="romaji">mou sukoshi yukkuri onegai shimasu</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">un peu plus lentement svp <span class="note">revu (kit survie)</span></span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: もう少（すこ）しゆっくりお願（ねが）いします。
+B: あ、ごめんなさい。ゆっくり言（い）いますね。</span></div>
+<div class="item"><span class="jp">簡単（かんたん）な言葉（ことば）で言（い）うと？</span><span class="romaji">kantan na kotoba de iu to?</span><span class="reg reg-casual">○ casual</span><span class="meaning">en mots simples, ça donne quoi ? (force l'autre à reformuler : outil d'apprentissage)</span><span class="poli">poli : 簡単な言葉で言うとどうなりますか</span><span class="dial">A: 「善処（ぜんしょ）します」って…
+B: 簡単（かんたん）な言葉（ことば）で言（い）うと？
+A: 「頑張（がんば）るけど約束（やくそく）はしない」（笑）</span></div>
+<div class="item"><span class="jp">漢字（かんじ）で書（か）いてもらえますか</span><span class="romaji">kanji de kaite moraemasu ka</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">vous pouvez me l'écrire ? (tu lis mieux que tu n'entends : utilise-le)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 地名（ちめい）が聞（き）き取（と）れなくて…漢字（かんじ）で書（か）いてもらえますか？
+B: いいですよ。「恵比寿（えびす）」です。</span></div>
+<div class="item"><span class="jp">これで合（あ）ってますか？</span><span class="romaji">kore de attemasu ka?</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">c'est bien ça ? (vérifier sa compréhension AVANT d'agir)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 明日（あした）の10時（じゅうじ）、こちらに来（く）る。これで合（あ）ってますか？
+B: 完璧（かんぺき）です。</span></div>
+<div class="item"><span class="jp">つまり、〜ということですか？</span><span class="romaji">tsumari, ~ to iu koto desu ka?</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">donc en gros, vous dites que… ? (reformulation active : l'arme des pros)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: つまり、今日（きょう）はもう無理（むり）ということですか？
+B: そういうことです、すみません。</span></div>
+<div class="item"><span class="jp">翻訳（ほんやく）アプリを使（つか）ってもいいですか</span><span class="romaji">hon'yaku apuri wo tsukatte mo ii desu ka</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">je peux utiliser l'appli de traduction ? (l'assumer = fluidifier, personne ne juge)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 複雑（ふくざつ）なので、翻訳（ほんやく）アプリを使（つか）ってもいいですか？
+B: もちろん、その方（ほう）が確実（かくじつ）ですね。</span></div>
+<div class="item"><span class="jp">ここに書（か）いてもらえますか</span><span class="romaji">koko ni kaite moraemasu ka</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">écrivez-le ici svp (tendre le téléphone en mode note)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 店（みせ）の名前（なまえ）、ここに書（か）いてもらえますか？
+B: はい、どうぞ。</span></div>
+<div class="item"><span class="jp">英語（えいご）ができる方（かた）はいますか</span><span class="romaji">eigo ga dekiru kata wa imasu ka</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">quelqu'un parle anglais ? (le joker final, sans honte) <span class="note">revu (kit survie)</span></span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: すみません、英語（えいご）ができる方（かた）はいますか？
+B: 少々（しょうしょう）お待（ま）ちください、呼（よ）んできます。</span></div>
+<div class="item"><span class="jp">半分（はんぶん）だけわかりました（笑）</span><span class="romaji">hanbun dake wakarimashita</span><span class="reg reg-casual">○ casual</span><span class="meaning">j'ai compris la moitié (l'honnêteté qui fait sourire et re-expliquer)</span><span class="poli">poli : 半分だけわかりました（笑を外せば十分丁寧）</span><span class="dial">A: …という流（なが）れです。
+B: 半分（はんぶん）だけわかりました（笑）もう一回（いっかい）いいですか？</span></div>
+<div class="item"><span class="jp">今（いま）の、もう一回（いっかい)言（い）ってください。覚（おぼ）えたいので</span><span class="romaji">ima no, mou ikkai itte kudasai. oboetai node</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">redites-le, je veux le retenir (transforme l'interlocuteur en prof, flatté à tous les coups)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 今（いま）の言葉（ことば）、もう一回（いっかい）言（い）ってください。覚（おぼ）えたいので。
+B: いいですね〜。「お疲（つか）れ様（さま）」です。</span></div>
+<div class="item"><span class="jp">日本語（にほんご）でなんて言（い）うんですか？</span><span class="romaji">nihongo de nante iun desu ka?</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">comment ça se dit en japonais ? (en pointant : la question qui nourrit ton vocabulaire)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: これ、日本語（にほんご）でなんて言（い）うんですか？
+B: 「しゃもじ」です。
+A: しゃもじ！覚（おぼ）えた。</span></div>
+<div class="item"><span class="jp">話（はなし）が見（み）えなくなりました</span><span class="romaji">hanashi ga mienaku narimashita</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">je suis perdu dans la conversation (élégant : « je ne vois plus le fil »)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: …だから逆（ぎゃく）にそれが良（よ）くて。
+B: すみません、話（はなし）が見（み）えなくなりました（笑）</span></div>
+<div class="item"><span class="jp">とにかく、ありがとうございます</span><span class="romaji">tonikaku, arigatou gozaimasu</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">en tout cas, merci (clôt n'importe quel échange confus avec chaleur)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 結局（けっきょく）解決（かいけつ）しなかったけど…
+B: とにかく、ありがとうございます。助（たす）かりました。</span></div>
+<div class="item"><span class="jp">また来（き）ます、その時（とき）はよろしく</span><span class="romaji">mata kimasu, sono toki wa yoroshiku</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">je reviendrai, à bientôt (transforme un échec en 2e chance)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: 今日（きょう）は予約（よやく）でいっぱいで…
+B: また来（き）ます、その時（とき）はよろしくお願（ねが）いします。</span></div>
+<div class="item"><span class="jp">日本（にほん）、優（やさ）しい人（ひと）ばかりですね</span><span class="romaji">nihon, yasashii hito bakari desu ne</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">les gens sont adorables au Japon (le mot de la fin qui fait fondre tout le monde)</span><span class="poli">poli : identique (déjà poli)</span><span class="dial">A: わざわざ案内（あんない）までしてもらって…日本（にほん）、優（やさ）しい人（ひと）ばかりですね。
+B: そんなことないですよ（照）</span></div></div></details>
+<details class="group"><summary>TEST M6 — 10 phrases FR → JP (réponses cachées, tape pour ouvrir) <span style="color:#999;font-weight:400">10</span></summary><div class="group-body"><div class="item"><span class="jp">① Réchauffez-le svp. / Non, tel quel.</span><span class="meaning">réponse : 温（あたた）めてください／そのままでいいです。</span></div>
+<div class="item"><span class="jp">② Ce n'est pas ce que j'ai commandé, il me semble.</span><span class="meaning">réponse : 注文（ちゅうもん）と違（ちが）うみたいです。</span></div>
+<div class="item"><span class="jp">③ J'ai oublié mon téléphone dans le train (ligne Yamanote, il y a 30 min).</span><span class="meaning">réponse : 山手線（やまのてせん）にスマホを置（お）き忘（わす）れました。30分（さんじゅっぷん）くらい前（まえ）です。</span></div>
+<div class="item"><span class="jp">④ J'appelle au sujet d'une réservation. Parlez lentement svp.</span><span class="meaning">réponse : 予約（よやく）の件（けん）でお電話（でんわ）しました。ゆっくりお願（ねが）いします。</span></div>
+<div class="item"><span class="jp">⑤ Rechargez ma Suica de 3000 yens svp.</span><span class="meaning">réponse : Suica（スイカ）に3000円（さんぜんえん）チャージお願（ねが）いします。</span></div>
+<div class="item"><span class="jp">⑥ Vous avez un médicament contre le mal de tête ?</span><span class="meaning">réponse : 頭痛（ずつう）に効（き）く薬（くすり）ありますか？</span></div>
+<div class="item"><span class="jp">⑦ Vous utilisez cette machine ? (salle de sport)</span><span class="meaning">réponse : これ、使（つか）ってますか？</span></div>
+<div class="item"><span class="jp">⑧ Re-livraison svp, ce soir si possible.</span><span class="meaning">réponse : 再配達（さいはいたつ）をお願（ねが）いします。今日（きょう）の夜（よる）は可能（かのう）ですか？</span></div>
+<div class="item"><span class="jp">⑨ Vous pouvez me l'écrire en kanji ?</span><span class="meaning">réponse : 漢字（かんじ）で書（か）いてもらえますか？</span></div>
+<div class="item"><span class="jp">⑩ Redites-le moi, je veux le retenir.</span><span class="meaning">réponse : もう一回（いっかい）言（い）ってください。覚（おぼ）えたいので。</span></div></div></details>
+<footer>Généré via lesson-card-html + kanji-stroke-order-html — Memory/Japanese</footer>
+</body></html>

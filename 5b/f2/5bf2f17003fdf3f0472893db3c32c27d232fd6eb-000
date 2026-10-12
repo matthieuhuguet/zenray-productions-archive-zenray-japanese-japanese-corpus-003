@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>STREET 1 — Contractions de l'oral</title>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;max-width:720px;margin:0 auto;padding:0 1.1rem 3rem;color:#1a1a1a;line-height:1.5;background:#fff}
+header{border-bottom:2px solid #1a1a1a;padding:1.4rem 0 .9rem;margin-bottom:1.1rem;position:sticky;top:0;background:#fff}
+h1{margin:0;font-size:1.5rem;font-weight:700;line-height:1.25}
+.subtitle{color:#555;font-size:.92rem;margin-top:.35rem}
+.legend{display:flex;gap:.9rem;flex-wrap:wrap;margin-top:.6rem;font-size:.82rem;color:#555}
+.legend span{white-space:nowrap}
+
+.roots{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.6rem;margin-bottom:1.6rem}
+.root{background:#fff8e6;border-left:3px solid #d4a017;border-radius:6px;padding:.55rem .7rem}
+.root .kanji{font-size:1.5rem;font-weight:700;line-height:1.1}
+.root .reading{font-size:.78rem;color:#7a6212;margin-top:.1rem}
+.root .meaning{font-size:.85rem;margin-top:.2rem}
+.root .unlocks{font-size:.76rem;color:#8a6d00;margin-top:.35rem}
+.root a{color:#4a6fa5;text-decoration:none}
+.root a:hover{text-decoration:underline}
+
+details.group{background:#fafafa;border:1px solid #e8e8e8;border-radius:8px;margin-bottom:.7rem;overflow:hidden}
+details.group summary{list-style:none;cursor:pointer;padding:.75rem .9rem;font-weight:700;font-size:.98rem;background:#f0f0f0;border-bottom:1px solid #e8e8e8;display:flex;justify-content:space-between;align-items:center}
+details.group summary::-webkit-details-marker{display:none}
+details.group summary::after{content:"▸";font-weight:400;color:#888;transition:transform .15s}
+details.group[open] summary::after{transform:rotate(90deg)}
+.group-body{padding:.2rem .9rem .5rem}
+
+.item{display:flex;flex-wrap:wrap;align-items:baseline;gap:.35rem .55rem;padding:.55rem 0;border-bottom:1px solid #eee}
+.item:last-child{border-bottom:none}
+.item .jp{font-size:1.05rem;font-weight:600;white-space:normal}
+.item .kana{font-size:.85rem;color:#666}
+.item .meaning{flex-basis:100%;font-size:.92rem;color:#333;margin-top:.05rem}
+.item .romaji{font-size:.78rem;color:#999;font-style:italic}
+.item .lit{flex-basis:100%;font-size:.78rem;color:#888}
+.item .dial{flex-basis:100%;font-size:.84rem;color:#444;background:#f5f7fa;border-left:2px solid #c5d3e8;border-radius:4px;padding:.3rem .55rem;margin-top:.15rem;white-space:pre-line}
+.item .manual{flex-basis:100%;font-size:.78rem;color:#1a4d8a}
+.item .poli{flex-basis:100%;font-size:.84rem;color:#0a6b4a;background:#eafaf3;border-left:2px solid #2f9e52;border-radius:4px;padding:.3rem .55rem;margin-top:.15rem}
+.item .reg{font-size:.72rem;padding:.05rem .4rem;border-radius:999px;background:#eee;color:#555;font-weight:600}
+.reg-casual{background:#ffe9d6;color:#8a4b00}
+.reg-neutre{background:#e6f0ff;color:#1a4d8a}
+.reg-formel{background:#eee6ff;color:#4a1a8a}
+.note{font-size:.78rem;color:#888;font-style:italic}
+
+.protocol{background:#eaf6ec;border-left:3px solid #2f9e52;border-radius:6px;padding:.75rem .9rem;margin-bottom:1.1rem;font-size:.88rem}
+.protocol strong{display:block;margin-bottom:.35rem;font-size:.92rem}
+.protocol ol{margin:0;padding-left:1.15rem}
+.protocol li{margin-bottom:.3rem}
+
+footer{margin-top:1.8rem;padding-top:1rem;border-top:1px solid #eee;font-size:.78rem;color:#999;text-align:center}
+
+/* Fusion kanji-stroke-order-html : cartes kanji avec tracé KanjiVG inliné */
+details.kcard{background:#fff;border:1px solid #e8e8e8;border-radius:8px;margin-bottom:.6rem;overflow:hidden}
+details.kcard summary{list-style:none;cursor:pointer;padding:.6rem .8rem;display:flex;align-items:baseline;gap:.5rem;flex-wrap:wrap}
+details.kcard summary::-webkit-details-marker{display:none}
+details.kcard summary .kanji{font-size:1.4rem;font-weight:700;line-height:1}
+details.kcard summary .vocab{font-size:.95rem;color:#333}
+details.kcard summary .vocab .kana{color:#666;font-size:.85rem}
+details.kcard summary .meaning{flex-basis:100%;font-size:.85rem;color:#555}
+details.kcard summary::after{content:"▸";margin-left:auto;color:#888;transition:transform .15s}
+details.kcard[open] summary::after{transform:rotate(90deg)}
+.kcard-body{padding:.2rem .8rem .9rem}
+.kcard-meta{color:#555;font-size:.88rem;margin-bottom:.5rem}
+.kcard-meta span{margin-right:1rem}
+.kcard-strokes{background:#fafafa;border:1px solid #e8e8e8;padding:.6rem;border-radius:6px;text-align:center;margin-bottom:.7rem}
+.kcard-strokes svg{max-width:100%;height:auto}
+.kcard-mnemo{background:#fff8e6;padding:.6rem .75rem;border-left:3px solid #d4a017;border-radius:4px;font-size:.9rem}
+
+@media print{
+  header{position:static}
+  details.group,details.kcard{border:none;background:none}
+  details.group summary::after,details.kcard summary::after{content:""}
+  .item{break-inside:avoid}
+}
+</style></head>
+<body>
+<header><h1>STREET 1 — Contractions de l'oral</h1><div class="subtitle">Le module clé : sans lui, zéro compréhension du parlé réel · 128 expressions · exposition consignée, pas acquis</div><div class="legend"><span>○ casual · ◇ neutre · ◆ formel · ♂/♀ genré · ⚠️ attention registre</span></div></header>
+
+
+<details class="group" open><summary>B1 G1 — Les 3 moteurs : てる・とく・ちゃう <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">〜てる</span><span class="romaji">-teru</span><span class="reg reg-casual">○ casual</span><span class="meaning">être en train de / état actuel</span><span class="lit">litt. : réduction de 〜ている (le い saute presque toujours à l'oral)</span><span class="manual">forme manuel : 〜ている</span><span class="poli">poli : 〜ています</span><span class="dial">A: 今（いま）何（なに）してる？
+B: ゲームしてる。</span></div>
+<div class="item"><span class="jp">〜てた</span><span class="romaji">-teta</span><span class="reg reg-casual">○ casual</span><span class="meaning">j'étais en train de / je faisais</span><span class="lit">litt. : 〜ていた sans le い</span><span class="manual">forme manuel : 〜ていた</span><span class="poli">poli : 〜ていました</span><span class="dial">A: 昨日（きのう）何（なに）してた？
+B: ずっと寝（ね）てた。</span></div>
+<div class="item"><span class="jp">〜てない</span><span class="romaji">-tenai</span><span class="reg reg-casual">○ casual</span><span class="meaning">pas encore fait / pas en cours</span><span class="lit">litt. : 〜ていない sans le い</span><span class="manual">forme manuel : 〜ていない</span><span class="poli">poli : 〜ていません</span><span class="dial">A: 宿題（しゅくだい）やった？
+B: まだやってない。</span></div>
+<div class="item"><span class="jp">〜とく</span><span class="romaji">-toku</span><span class="reg reg-casual">○ casual</span><span class="meaning">faire d'avance, préparer</span><span class="lit">litt. : 〜ておく contracté</span><span class="manual">forme manuel : 〜ておく</span><span class="poli">poli : 〜ておきます</span><span class="dial">A: 店（みせ）、混（こ)むかな。
+B: 予約（よやく）しとくよ。</span></div>
+<div class="item"><span class="jp">〜といた</span><span class="romaji">-toita</span><span class="reg reg-casual">○ casual</span><span class="meaning">je l'ai fait d'avance</span><span class="lit">litt. : 〜ておいた contracté</span><span class="manual">forme manuel : 〜ておいた</span><span class="poli">poli : 〜ておきました</span><span class="dial">A: チケットは？
+B: もう買（か）っといた。</span></div>
+<div class="item"><span class="jp">〜とけば</span><span class="romaji">-tokeba</span><span class="reg reg-casual">○ casual</span><span class="meaning">t'aurais dû / si tu l'avais fait avant</span><span class="lit">litt. : 〜ておけば contracté</span><span class="manual">forme manuel : 〜ておけば</span><span class="poli">poli : 〜ておけば（forme conditionnelle, invariable en poli）</span><span class="dial">A: 傘（かさ）ない…
+B: 持（も）っとけばよかったのに。</span></div>
+<div class="item"><span class="jp">〜ちゃう</span><span class="romaji">-chau</span><span class="reg reg-casual">○ casual</span><span class="meaning">faire complètement / faire sans le vouloir (zut)</span><span class="lit">litt. : 〜てしまう contracté</span><span class="manual">forme manuel : 〜てしまう</span><span class="poli">poli : 〜てしまいます</span><span class="dial">A: ケーキは？
+B: 全部（ぜんぶ）食（た）べちゃう？</span></div>
+<div class="item"><span class="jp">〜じゃう</span><span class="romaji">-jau</span><span class="reg reg-casual">○ casual</span><span class="meaning">pareil que ちゃう, pour les verbes en で</span><span class="lit">litt. : 〜でしまう contracté (飲む→飲んじゃう)</span><span class="manual">forme manuel : 〜でしまう</span><span class="poli">poli : 〜でしまいます</span><span class="dial">A: ビールまだある？
+B: ごめん、飲（の）んじゃう。</span></div>
+<div class="item"><span class="jp">〜ちゃった</span><span class="romaji">-chatta</span><span class="reg reg-casual">○ casual</span><span class="meaning">zut, c'est fait / je l'ai fait sans le vouloir</span><span class="lit">litt. : 〜てしまった contracté</span><span class="manual">forme manuel : 〜てしまった</span><span class="poli">poli : 〜てしまいました</span><span class="dial">A: どうしたの？
+B: 財布（さいふ）忘（わす）れちゃった。</span></div>
+<div class="item"><span class="jp">〜じゃった</span><span class="romaji">-jatta</span><span class="reg reg-casual">○ casual</span><span class="meaning">version で de ちゃった</span><span class="lit">litt. : 〜でしまった contracté</span><span class="manual">forme manuel : 〜でしまった</span><span class="poli">poli : 〜でしまいました</span><span class="dial">A: 自転車（じてんしゃ）で — 転（ころ）んじゃった。</span></div>
+<div class="item"><span class="jp">〜なきゃ</span><span class="romaji">-nakya</span><span class="reg reg-casual">○ casual</span><span class="meaning">il faut que je… (obligation, à soi-même)</span><span class="lit">litt. : 〜なければ（ならない） contracté, le ならない saute</span><span class="manual">forme manuel : 〜なければならない</span><span class="poli">poli : 〜なければなりません</span><span class="dial">A: もうこんな時間（じかん）！
+B: やば、行（い）かなきゃ。</span></div>
+<div class="item"><span class="jp">〜なくちゃ</span><span class="romaji">-nakucha</span><span class="reg reg-casual">○ casual</span><span class="meaning">faut que… (même sens que なきゃ, un peu plus doux)</span><span class="lit">litt. : 〜なくては（いけない） contracté</span><span class="manual">forme manuel : 〜なくてはいけない</span><span class="poli">poli : 〜なくてはいけません</span><span class="dial">A: 明日（あした）テストでしょ？
+B: 勉強（べんきょう）しなくちゃ。</span></div>
+<div class="item"><span class="jp">〜ちゃだめ</span><span class="romaji">-cha dame</span><span class="reg reg-casual">○ casual</span><span class="meaning">interdit de / faut pas</span><span class="lit">litt. : 〜てはだめ contracté</span><span class="manual">forme manuel : 〜てはいけません</span><span class="poli">poli : 〜てはいけません</span><span class="dial">A: ここで写真（しゃしん）いい？
+B: 撮（と）っちゃだめだよ。</span></div>
+<div class="item"><span class="jp">〜んだ</span><span class="romaji">-nda</span><span class="reg reg-casual">○ casual</span><span class="meaning">moule explicatif : c'est que…</span><span class="lit">litt. : 〜のだ, le の devient ん</span><span class="manual">forme manuel : 〜のです</span><span class="poli">poli : 〜んです（déjà poli tel quel）</span><span class="dial">A: 元気（げんき）ないね。
+B: 昨日（きのう）寝（ね）てないんだ。</span></div>
+<div class="item"><span class="jp">〜んです</span><span class="romaji">-ndesu</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">version polie du moule explicatif (déjà acquis, ici en révision) <span class="note">revu (L48)</span></span><span class="lit">litt. : 〜のです contracté, naturel même en poli</span><span class="manual">forme manuel : 〜のです</span><span class="poli">poli : 〜んです（déjà la forme polie）</span><span class="dial">A: どうしました？
+B: 道（みち）に迷（まよ）ったんです。</span></div>
+<div class="item"><span class="jp">〜てく</span><span class="romaji">-teku</span><span class="reg reg-casual">○ casual</span><span class="meaning">faire en partant / emporter</span><span class="lit">litt. : 〜ていく contracté</span><span class="manual">forme manuel : 〜ていく</span><span class="poli">poli : 〜ていきます</span><span class="dial">A: 傘（かさ）は？
+B: 持（も）ってく。</span></div></div></details>
+<details class="group" open><summary>B1 G2 — って : la particule qui remplace tout <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">って（＝という）</span><span class="romaji">tte</span><span class="reg reg-casual">○ casual</span><span class="meaning">qui s'appelle / ce qu'on appelle</span><span class="lit">litt. : という contracté</span><span class="manual">forme manuel : 〜という</span><span class="poli">poli : 〜という</span><span class="dial">A: 「銀（ぎん）だこ」って店（みせ）、知（し）ってる？
+B: たこ焼（や）きの？</span></div>
+<div class="item"><span class="jp">って（citation）</span><span class="romaji">tte</span><span class="reg reg-casual">○ casual</span><span class="meaning">il/elle a dit que…</span><span class="lit">litt. : と（言った） contracté, le verbe dire peut sauter</span><span class="manual">forme manuel : 〜と言いました</span><span class="poli">poli : 〜と言っていました</span><span class="dial">A: 田中（たなか）は？
+B: 遅（おく）れるって。</span></div>
+<div class="item"><span class="jp">〜って何（なに）？</span><span class="romaji">tte nani?</span><span class="reg reg-casual">○ casual</span><span class="meaning">c'est quoi, … ?</span><span class="lit">litt. : 〜とは何ですか contracté</span><span class="manual">forme manuel : 〜とは何ですか</span><span class="poli">poli : 〜とは何ですか</span><span class="dial">A: 「エモい」って何（なに）？
+B: いい感（かん）じで感動（かんどう）するってこと。</span></div>
+<div class="item"><span class="jp">〜っていうか／てか</span><span class="romaji">tte iu ka / teka</span><span class="reg reg-casual">○ casual</span><span class="meaning">enfin plutôt / non mais en fait <span class="note">てか = très casual, jeune</span></span><span class="lit">litt. : というか contracté, corrige ce qu'on vient de dire</span><span class="manual">forme manuel : 〜というか</span><span class="poli">poli : 〜というか</span><span class="dial">A: 疲（つか）れた？
+B: てか、眠（ねむ）い。</span></div>
+<div class="item"><span class="jp">〜ってこと</span><span class="romaji">tte koto</span><span class="reg reg-casual">○ casual</span><span class="meaning">ça veut dire que…</span><span class="lit">litt. : ということ contracté</span><span class="manual">forme manuel : 〜ということ</span><span class="poli">poli : 〜ということです</span><span class="dial">A: 電話（でんわ）出（で）ない。
+B: 寝（ね）てるってことね。</span></div>
+<div class="item"><span class="jp">〜って感（かん）じ</span><span class="romaji">tte kanji</span><span class="reg reg-casual">○ casual</span><span class="meaning">genre… / c'est le style…</span><span class="lit">litt. : という感じ contracté, vague volontaire</span><span class="manual">forme manuel : 〜という感じ</span><span class="poli">poli : 〜という感じです</span><span class="dial">A: 新（あたら）しいバイトどう？
+B: まあ、悪（わる）くないって感（かん）じ。</span></div>
+<div class="item"><span class="jp">〜だって</span><span class="romaji">datte</span><span class="reg reg-casual">○ casual</span><span class="meaning">il paraît que… (rapporte une info)</span><span class="lit">litt. : だ + って citation</span><span class="manual">forme manuel : 〜だそうです</span><span class="poli">poli : 〜だそうです</span><span class="dial">A: 明日（あした）雨（あめ）だって。
+B: まじか。</span></div>
+<div class="item"><span class="jp">だって（défense）</span><span class="romaji">datte</span><span class="reg reg-casual">○ casual</span><span class="meaning">oui mais… (se justifie) <span class="note">revu (L49)</span></span><span class="lit">litt. : en début de phrase = excuse</span><span class="manual">forme manuel : でも／なぜなら</span><span class="poli">poli : でも／なぜなら</span><span class="dial">A: なんで遅（おく）れたの？
+B: だって電車（でんしゃ）が止（と）まってたんだもん。</span></div>
+<div class="item"><span class="jp">〜ってば</span><span class="romaji">tteba</span><span class="reg reg-casual">○ casual</span><span class="meaning">j'te dis ! (insiste, agacé)</span><span class="lit">litt. : って + ば d'insistance</span><span class="poli">poli : registre uniquement familier, pas de version polie naturelle — en poli on reformule sans insister</span><span class="dial">A: ほんとに大丈夫（だいじょうぶ）？
+B: 大丈夫（だいじょうぶ）だってば。</span></div>
+<div class="item"><span class="jp">〜って言（い）ってた</span><span class="romaji">tte itteta</span><span class="reg reg-casual">○ casual</span><span class="meaning">il/elle disait que… (combo citation + てた)</span><span class="lit">litt. : と言っていた doublement contracté</span><span class="manual">forme manuel : 〜と言っていました</span><span class="poli">poli : 〜とおっしゃっていました（très poli, keigo）</span><span class="dial">A: 店長（てんちょう）なんて？
+B: 今日（きょう）は早（はや）く帰（かえ）っていいって言（い）ってた。</span></div>
+<div class="item"><span class="jp">〜とか</span><span class="romaji">toka</span><span class="reg reg-casual">○ casual</span><span class="meaning">genre… / ou un truc comme ça (adoucit, liste ouverte)</span><span class="lit">litt. : や + など fusionnés à l'oral</span><span class="manual">forme manuel : 〜など</span><span class="poli">poli : 〜など</span><span class="dial">A: 週末（しゅうまつ）何（なに）する？
+B: 映画（えいが）とか？</span></div>
+<div class="item"><span class="jp">〜みたいな</span><span class="romaji">mitai na</span><span class="reg reg-casual">○ casual</span><span class="meaning">genre « … » (cite une pensée, vague) <span class="note">jeune</span></span><span class="lit">litt. : 終わりに置いて引用をぼかす</span><span class="poli">poli : 〜みたいな感じです（adouci mais reste casual）</span><span class="dial">A: 断（ことわ）ったの？
+B: うん、「今日（きょう）は無理（むり）」みたいな。</span></div>
+<div class="item"><span class="jp">なんか</span><span class="romaji">nanka</span><span class="reg reg-casual">○ casual</span><span class="meaning">genre / chais pas / euh (LE filler n°1)</span><span class="lit">litt. : 何か réduit, sert de bouche-trou</span><span class="manual">forme manuel : 何か</span><span class="poli">poli : 何か</span><span class="dial">A: どうした？
+B: なんか、疲（つか）れた。</span></div>
+<div class="item"><span class="jp">なんて</span><span class="romaji">nante</span><span class="reg reg-casual">○ casual</span><span class="meaning">un truc comme… / quoi ?! (selon position)</span><span class="lit">litt. : 何と＋て</span><span class="poli">poli : 何と</span><span class="dial">A: 犬（いぬ）が喋（しゃべ）った！
+B: なんて？</span></div>
+<div class="item"><span class="jp">なんだっけ</span><span class="romaji">nan dakke</span><span class="reg reg-casual">○ casual</span><span class="meaning">c'était quoi déjà ?</span><span class="lit">litt. : 何だ + っけ (mémoire qui cherche)</span><span class="manual">forme manuel : 何でしたか</span><span class="poli">poli : 何でしたか</span><span class="dial">A: あの店（みせ）の名前（なまえ）、なんだっけ？
+B: サイゼでしょ。</span></div>
+<div class="item"><span class="jp">〜っけ</span><span class="romaji">-kke</span><span class="reg reg-casual">○ casual</span><span class="meaning">…déjà ? (vérifie un souvenir)</span><span class="lit">litt. : particule finale de rappel</span><span class="poli">poli : 〜でしたっけ</span><span class="dial">A: 集合（しゅうごう）って何時（なんじ）だっけ？
+B: 7時（しちじ）。</span></div></div></details>
+<details class="group" open><summary>B1 G3 — Mots raccourcis du quotidien <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">わかんない</span><span class="romaji">wakannai</span><span class="reg reg-casual">○ casual</span><span class="meaning">je sais pas / j'y comprends rien</span><span class="lit">litt. : わからない, le ら devient ん</span><span class="manual">forme manuel : わかりません</span><span class="poli">poli : わかりません</span><span class="dial">A: これどういう意味（いみ）？
+B: わかんない。</span></div>
+<div class="item"><span class="jp">つまんない</span><span class="romaji">tsumannai</span><span class="reg reg-casual">○ casual</span><span class="meaning">c'est nul / ça me saoule</span><span class="lit">litt. : つまらない contracté</span><span class="manual">forme manuel : つまらないです</span><span class="poli">poli : つまらないです</span><span class="dial">A: この動画（どうが）どう？
+B: つまんない。</span></div>
+<div class="item"><span class="jp">やっぱ</span><span class="romaji">yappa</span><span class="reg reg-casual">○ casual</span><span class="meaning">finalement / comme je pensais</span><span class="lit">litt. : やっぱり tronqué</span><span class="manual">forme manuel : やはり</span><span class="poli">poli : やはり</span><span class="dial">A: ラーメンでいい？
+B: やっぱ寿司（すし）がいい。</span></div>
+<div class="item"><span class="jp">ほんと</span><span class="romaji">honto</span><span class="reg reg-casual">○ casual</span><span class="meaning">vraiment / sérieux</span><span class="lit">litt. : 本当（ほんとう） raccourci</span><span class="manual">forme manuel : 本当に</span><span class="poli">poli : 本当に</span><span class="dial">A: 優勝（ゆうしょう）したって。
+B: ほんと？！</span></div>
+<div class="item"><span class="jp">マジ／マジで</span><span class="romaji">maji / maji de</span><span class="reg reg-casual">○ casual</span><span class="meaning">sérieux / grave (intensif n°1 des 20-30 ans) <span class="note">revu, très fréquent</span></span><span class="lit">litt. : de 真面目（まじめ）, sérieux</span><span class="poli">poli : 本当に（マジ n'a pas de version polie, on change de mot）</span><span class="dial">A: 財布（さいふ）落（お）とした。
+B: マジで？</span></div>
+<div class="item"><span class="jp">めんどい</span><span class="romaji">mendoi</span><span class="reg reg-casual">○ casual</span><span class="meaning">relou / la flemme <span class="note">jeune</span></span><span class="lit">litt. : 面倒（めんどう）くさい raccourci</span><span class="manual">forme manuel : 面倒です</span><span class="poli">poli : 面倒です</span><span class="dial">A: 役所（やくしょ）行（い）かなきゃ。
+B: めんどいね〜。</span></div>
+<div class="item"><span class="jp">きもい</span><span class="romaji">kimoi</span><span class="reg reg-casual">○ casual</span><span class="meaning">dégueu / flippant / creepy <span class="note">⚠️ blessant si dit d'une personne</span></span><span class="lit">litt. : 気持（きも）ち悪（わる）い raccourci</span><span class="manual">forme manuel : 気持ちが悪いです</span><span class="poli">poli : 気持ちが悪いです</span><span class="dial">A: 虫（むし）！
+B: きもっ！</span></div>
+<div class="item"><span class="jp">うざい／うざ</span><span class="romaji">uzai / uza</span><span class="reg reg-casual">○ casual</span><span class="meaning">relou, saoulant (personne ou chose) <span class="note">⚠️ blessant, entre amis seulement</span></span><span class="lit">litt. : de うっとうしい</span><span class="poli">poli : うっとうしいです（reste direct même poli — mot à éviter face à un inconnu）</span><span class="dial">A: また広告（こうこく）？
+B: うざ。</span></div>
+<div class="item"><span class="jp">はずい</span><span class="romaji">hazui</span><span class="reg reg-casual">○ casual</span><span class="meaning">la honte <span class="note">jeune</span></span><span class="lit">litt. : 恥（は）ずかしい raccourci</span><span class="manual">forme manuel : 恥ずかしいです</span><span class="poli">poli : 恥ずかしいです</span><span class="dial">A: 転（ころ）んだの見（み）てたよ。
+B: はずっ。</span></div>
+<div class="item"><span class="jp">むずい</span><span class="romaji">muzui</span><span class="reg reg-casual">○ casual</span><span class="meaning">chaud / difficile <span class="note">jeune</span></span><span class="lit">litt. : 難（むずか）しい raccourci</span><span class="manual">forme manuel : 難しいです</span><span class="poli">poli : 難しいです</span><span class="dial">A: 漢字（かんじ）のテストどうだった？
+B: むずかった。</span></div>
+<div class="item"><span class="jp">なつい</span><span class="romaji">natsui</span><span class="reg reg-casual">○ casual</span><span class="meaning">ça me rappelle des souvenirs / old school <span class="note">jeune</span></span><span class="lit">litt. : 懐（なつ）かしい raccourci</span><span class="manual">forme manuel : 懐かしいです</span><span class="poli">poli : 懐かしいです</span><span class="dial">A: この曲（きょく）、中学（ちゅうがく）の時（とき）のやつ。
+B: なつ！</span></div>
+<div class="item"><span class="jp">どっか</span><span class="romaji">dokka</span><span class="reg reg-casual">○ casual</span><span class="meaning">quelque part</span><span class="lit">litt. : どこか contracté</span><span class="manual">forme manuel : どこかへ</span><span class="poli">poli : どこかへ</span><span class="dial">A: 週末（しゅうまつ）どっか行（い）く？
+B: 海（うみ）とか？</span></div>
+<div class="item"><span class="jp">こっち／そっち／あっち</span><span class="romaji">kocchi / socchi / acchi</span><span class="reg reg-casual">○ casual</span><span class="meaning">par ici / par là / là-bas (et : moi / toi au tél.)</span><span class="lit">litt. : こちら・そちら・あちら contractés</span><span class="manual">forme manuel : こちら・そちら・あちら</span><span class="poli">poli : こちら・そちら・あちら</span><span class="dial">A: そっちは雨（あめ）？
+B: こっちは晴（は）れてるよ。</span></div>
+<div class="item"><span class="jp">あたし</span><span class="romaji">atashi</span><span class="reg reg-casual">○ casual</span><span class="meaning">je (femme, casual) <span class="note">♀ uniquement</span></span><span class="lit">litt. : わたし adouci</span><span class="manual">forme manuel : わたし</span><span class="poli">poli : わたし</span><span class="dial">A: 誰（だれ）が払（はら）ったの？
+B: あたし。</span></div>
+<div class="item"><span class="jp">おれ</span><span class="romaji">ore</span><span class="reg reg-casual">○ casual</span><span class="meaning">je (homme, casual, ton défaut entre amis) <span class="note">♂ uniquement, jamais en contexte formel</span></span><span class="lit">litt. : 俺（おれ）, plus direct que ぼく</span><span class="manual">forme manuel : わたし</span><span class="poli">poli : わたし</span><span class="dial">A: 次（つぎ）誰（だれ）？
+B: おれ行（い）くわ。</span></div>
+<div class="item"><span class="jp">うち</span><span class="romaji">uchi</span><span class="reg reg-casual">○ casual</span><span class="meaning">je (femme jeune, Kansai à l'origine) / chez moi <span class="note">♀ jeune ; « chez moi » = tout le monde</span></span><span class="lit">litt. : 家（うち） = la maison → soi</span><span class="poli">poli : わたし／わたくし（sens « chez moi » reste うち même poli）</span><span class="dial">A: 今日（きょう）どこで飲（の）む？
+B: うち来（く）る？</span></div></div></details>
+<details class="group" open><summary>B1 G4 — Fins de phrase du parlé <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">〜じゃん</span><span class="romaji">-jan</span><span class="reg reg-casual">○ casual</span><span class="meaning">hein / quoi, c'est évident (cherche l'accord) <span class="note">Tokyo/Kanto à l'origine, national aujourd'hui</span></span><span class="lit">litt. : じゃないか contracté</span><span class="manual">forme manuel : 〜ではないですか</span><span class="poli">poli : 〜ではないですか</span><span class="dial">A: この店（みせ）高（たか）くない？
+B: 安（やす）いじゃん。</span></div>
+<div class="item"><span class="jp">〜でしょ</span><span class="romaji">-desho</span><span class="reg reg-casual">○ casual</span><span class="meaning">pas vrai ? / je te l'avais dit</span><span class="lit">litt. : でしょう raccourci</span><span class="manual">forme manuel : 〜でしょう</span><span class="poli">poli : 〜でしょう</span><span class="dial">A: うまい！
+B: でしょ？</span></div>
+<div class="item"><span class="jp">〜だろ</span><span class="romaji">-daro</span><span class="reg reg-casual">○ casual</span><span class="meaning">hein / évidemment (version ♂ brute) <span class="note">♂, brusque</span></span><span class="lit">litt. : だろう raccourci</span><span class="manual">forme manuel : 〜でしょう</span><span class="poli">poli : 〜でしょう</span><span class="dial">A: 勝（か）てるかな。
+B: 無理（むり）だろ。</span></div>
+<div class="item"><span class="jp">〜っしょ</span><span class="romaji">-ssho</span><span class="reg reg-casual">○ casual</span><span class="meaning">hein / clairement (jeune) <span class="note">très casual, jeune</span></span><span class="lit">litt. : でしょう ultra-contracté</span><span class="manual">forme manuel : 〜でしょう</span><span class="poli">poli : 〜でしょう</span><span class="dial">A: 行（い）くの？
+B: 行（い）くっしょ。</span></div>
+<div class="item"><span class="jp">〜かな</span><span class="romaji">-kana</span><span class="reg reg-casual">○ casual</span><span class="meaning">je me demande si… (doute doux)</span><span class="lit">litt. : question à soi-même</span><span class="poli">poli : 〜かなと思います</span><span class="dial">A: 間（ま）に合（あ）うかな。
+B: 走（はし）れば大丈夫（だいじょうぶ）。</span></div>
+<div class="item"><span class="jp">〜かも</span><span class="romaji">-kamo</span><span class="reg reg-casual">○ casual</span><span class="meaning">peut-être bien</span><span class="lit">litt. : かもしれない tronqué</span><span class="manual">forme manuel : 〜かもしれません</span><span class="poli">poli : 〜かもしれません</span><span class="dial">A: 雨（あめ）降（ふ）る？
+B: 降（ふ）るかも。</span></div>
+<div class="item"><span class="jp">〜し</span><span class="romaji">-shi</span><span class="reg reg-casual">○ casual</span><span class="meaning">…et puis / en plus (raison laissée ouverte)</span><span class="lit">litt. : liste de raisons, souvent une seule à l'oral</span><span class="poli">poli : 〜ですし／ますし</span><span class="dial">A: なんで帰（かえ）るの？
+B: 明日（あした）早（はや）いし。</span></div>
+<div class="item"><span class="jp">〜けど…</span><span class="romaji">-kedo...</span><span class="reg reg-casual">○ casual</span><span class="meaning">…mais bon (phrase laissée en suspens, poli à la japonaise) <span class="note">revu (L48 : 〜んですが)</span></span><span class="lit">litt. : le contraste reste implicite</span><span class="poli">poli : 〜んですが（déjà la forme polie, cf. L48）</span><span class="dial">A: 予約（よやく）してないんだけど…
+B: 大丈夫（だいじょうぶ）ですよ、どうぞ。</span></div>
+<div class="item"><span class="jp">〜のに</span><span class="romaji">-noni</span><span class="reg reg-casual">○ casual</span><span class="meaning">alors que… / dommage (reproche ou regret)</span><span class="lit">litt. : contraste + frustration</span><span class="poli">poli : 〜のに（invariable, le reproche reste tel quel）</span><span class="dial">A: 来（こ）なかったね。
+B: 誘（さそ）ったのに。</span></div>
+<div class="item"><span class="jp">〜んじゃない？</span><span class="romaji">-n janai?</span><span class="reg reg-casual">○ casual</span><span class="meaning">c'est pas que… ? / je pense que si</span><span class="lit">litt. : のではないか contracté</span><span class="manual">forme manuel : 〜のではないでしょうか</span><span class="poli">poli : 〜のではないでしょうか</span><span class="dial">A: これで足（た）りる？
+B: 足（た）りるんじゃない？</span></div>
+<div class="item"><span class="jp">〜よね</span><span class="romaji">-yone</span><span class="reg reg-casual">○ casual</span><span class="meaning">hein, on est d'accord</span><span class="lit">litt. : よ (info) + ね (accord)</span><span class="poli">poli : 〜ですよね／ますよね</span><span class="dial">A: 今日（きょう）暑（あつ）いよね。
+B: ほんとに。</span></div>
+<div class="item"><span class="jp">〜わけ</span><span class="romaji">-wake</span><span class="reg reg-casual">○ casual</span><span class="meaning">en fait… / donc voilà pourquoi</span><span class="lit">litt. : わけ = la logique de la chose</span><span class="poli">poli : 〜わけです</span><span class="dial">A: で、遅（おく）れたわけ。
+B: またかよ。</span></div>
+<div class="item"><span class="jp">〜っす</span><span class="romaji">-ssu</span><span class="reg reg-casual">○ casual</span><span class="meaning">poli-casual des jeunes hommes (sport, kouhai) <span class="note">♂ surtout ; à un aîné proche, pas en entretien</span></span><span class="lit">litt. : です écrasé</span><span class="manual">forme manuel : 〜です</span><span class="poli">poli : 〜です（っす EST déjà une version relâchée de です, jamais devant un inconnu/supérieur）</span><span class="dial">A: 新人（しんじん）？
+B: そうっす。よろしくっす。</span></div>
+<div class="item"><span class="jp">食（た）べれる</span><span class="romaji">tabereru</span><span class="reg reg-casual">○ casual</span><span class="meaning">pouvoir manger (ら qui saute) <span class="note">« ら抜き » : officiellement incorrect, universel à l'oral</span></span><span class="lit">litt. : 食べられる sans ら, standard à l'oral</span><span class="manual">forme manuel : 食べられます</span><span class="poli">poli : 食べられます</span><span class="dial">A: 納豆（なっとう）食（た）べれる？
+B: 無理（むり）。</span></div>
+<div class="item"><span class="jp">見（み）れる</span><span class="romaji">mireru</span><span class="reg reg-casual">○ casual</span><span class="meaning">pouvoir voir</span><span class="lit">litt. : 見られる sans ら</span><span class="manual">forme manuel : 見られます</span><span class="poli">poli : 見られます</span><span class="dial">A: そこから花火（はなび）見（み）れる？
+B: ばっちり見（み）れるよ。</span></div>
+<div class="item"><span class="jp">来（こ）れる</span><span class="romaji">koreru</span><span class="reg reg-casual">○ casual</span><span class="meaning">pouvoir venir</span><span class="lit">litt. : 来られる sans ら</span><span class="manual">forme manuel : 来られます</span><span class="poli">poli : 来られます</span><span class="dial">A: 明日（あした）来（こ）れる？
+B: 行（い）けたら行（い）く。</span></div></div></details>
+<details class="group" open><summary>B2 G5 — Le い qui devient ー (parler relâché) <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">すげー</span><span class="romaji">sugee</span><span class="reg reg-casual">○ casual</span><span class="meaning">trop fort / énorme <span class="note">♂ surtout, relâché</span></span><span class="lit">litt. : すごい, le oi s'écrase en ee</span><span class="manual">forme manuel : すごいです</span><span class="poli">poli : すごいです</span><span class="dial">A: 見（み）て、満点（まんてん）。
+B: すげー。</span></div>
+<div class="item"><span class="jp">やべー／やば</span><span class="romaji">yabee / yaba</span><span class="reg reg-casual">○ casual</span><span class="meaning">la cata OU trop bien (contexte décide) <span class="note">unisexe en やば, ♂ en やべー</span></span><span class="lit">litt. : やばい écrasé</span><span class="poli">poli : 大変です（sens négatif）／すごいです（sens positif）</span><span class="dial">A: 終電（しゅうでん）出（で)た。
+B: やば。</span></div>
+<div class="item"><span class="jp">うめー</span><span class="romaji">umee</span><span class="reg reg-casual">○ casual</span><span class="meaning">trop bon <span class="note">♂ ; ♀ dit plutôt おいしい/うまっ</span></span><span class="lit">litt. : うまい écrasé</span><span class="manual">forme manuel : おいしいです</span><span class="poli">poli : おいしいです</span><span class="dial">A: この唐揚（からあ）げどう？
+B: うめー。</span></div>
+<div class="item"><span class="jp">ねー</span><span class="romaji">nee</span><span class="reg reg-casual">○ casual</span><span class="meaning">y'a pas / pas de… <span class="note">♂, très relâché</span></span><span class="lit">litt. : ない écrasé</span><span class="manual">forme manuel : ありません</span><span class="poli">poli : ありません</span><span class="dial">A: 金（かね）ある？
+B: ねーよ。</span></div>
+<div class="item"><span class="jp">たけー</span><span class="romaji">takee</span><span class="reg reg-casual">○ casual</span><span class="meaning">trop cher <span class="note">♂</span></span><span class="lit">litt. : 高（たか）い écrasé</span><span class="manual">forme manuel : 高いです</span><span class="poli">poli : 高いです</span><span class="dial">A: この時計（とけい）、30万（さんじゅうまん）。
+B: たけー。</span></div>
+<div class="item"><span class="jp">さみー</span><span class="romaji">samii</span><span class="reg reg-casual">○ casual</span><span class="meaning">ça caille <span class="note">♂</span></span><span class="lit">litt. : 寒（さむ）い écrasé</span><span class="manual">forme manuel : 寒いです</span><span class="poli">poli : 寒いです</span><span class="dial">A: 外（そと）どう？
+B: さみー。</span></div>
+<div class="item"><span class="jp">あちー</span><span class="romaji">achii</span><span class="reg reg-casual">○ casual</span><span class="meaning">il fait une chaleur <span class="note">♂</span></span><span class="lit">litt. : 暑（あつ）い écrasé</span><span class="manual">forme manuel : 暑いです</span><span class="poli">poli : 暑いです</span><span class="dial">A: 今日（きょう）35度（ど）だって。
+B: あちー。</span></div>
+<div class="item"><span class="jp">いてっ／いてー</span><span class="romaji">ite / itee</span><span class="reg reg-casual">○ casual</span><span class="meaning">aïe !</span><span class="lit">litt. : 痛（いた）い écrasé</span><span class="manual">forme manuel : 痛いです</span><span class="poli">poli : 痛いです（cri de douleur, rarement « poli » en pratique）</span><span class="dial">A: 大丈夫（だいじょうぶ）？
+B: いてて…足（あし）ぶつけた。</span></div>
+<div class="item"><span class="jp">こえー</span><span class="romaji">koee</span><span class="reg reg-casual">○ casual</span><span class="meaning">flippant <span class="note">♂</span></span><span class="lit">litt. : 怖（こわ）い écrasé</span><span class="manual">forme manuel : 怖いです</span><span class="poli">poli : 怖いです</span><span class="dial">A: このホラー観（み）る？
+B: こえーから無理（むり）。</span></div>
+<div class="item"><span class="jp">だりー</span><span class="romaji">darii</span><span class="reg reg-casual">○ casual</span><span class="meaning">la flemme / je suis mort <span class="note">♂, très relâché</span></span><span class="lit">litt. : だるい écrasé</span><span class="poli">poli : 疲れました（だるい lui-même reste familier même conjugué）</span><span class="dial">A: 月曜（げつよう）だ。
+B: だりー。</span></div>
+<div class="item"><span class="jp">でけー</span><span class="romaji">dekee</span><span class="reg reg-casual">○ casual</span><span class="meaning">énorme <span class="note">♂</span></span><span class="lit">litt. : でかい écrasé</span><span class="manual">forme manuel : 大きいです</span><span class="poli">poli : 大きいです</span><span class="dial">A: あのビル見（み）て。
+B: でけー。</span></div>
+<div class="item"><span class="jp">ちげーよ</span><span class="romaji">chigee yo</span><span class="reg reg-casual">○ casual</span><span class="meaning">mais non ! / c'est pas ça <span class="note">♂, très relâché, ⚠️ brusque</span></span><span class="lit">litt. : 違（ちが）う écrasé</span><span class="manual">forme manuel : 違います</span><span class="poli">poli : 違います</span><span class="dial">A: 彼女（かのじょ）？
+B: ちげーよ、ただの友達（ともだち）。</span></div>
+<div class="item"><span class="jp">つれー</span><span class="romaji">tsuree</span><span class="reg reg-casual">○ casual</span><span class="meaning">c'est dur (moralement/physiquement) <span class="note">♂</span></span><span class="lit">litt. : つらい écrasé</span><span class="manual">forme manuel : つらいです</span><span class="poli">poli : つらいです</span><span class="dial">A: 残業（ざんぎょう）また？
+B: つれーわ。</span></div>
+<div class="item"><span class="jp">〜ばっか</span><span class="romaji">-bakka</span><span class="reg reg-casual">○ casual</span><span class="meaning">que ça / tout le temps</span><span class="lit">litt. : ばかり contracté</span><span class="manual">forme manuel : 〜ばかり</span><span class="poli">poli : 〜ばかりです</span><span class="dial">A: またラーメン？
+B: 最近（さいきん）ラーメンばっか。</span></div>
+<div class="item"><span class="jp">ったく</span><span class="romaji">ttaku</span><span class="reg reg-casual">○ casual</span><span class="meaning">pff, franchement… <span class="note">agacement, ♂ surtout</span></span><span class="lit">litt. : まったく tronqué</span><span class="poli">poli : pas d'équivalent poli — interjection d'agacement, on la tait devant un inconnu</span><span class="dial">A: また遅刻（ちこく）？
+B: ったく、電車（でんしゃ）のせいだって。</span></div>
+<div class="item"><span class="jp">やってらんねー</span><span class="romaji">yatterannee</span><span class="reg reg-casual">○ casual</span><span class="meaning">j'en peux plus de ce truc / c'est plus possible <span class="note">♂, très relâché</span></span><span class="lit">litt. : やっていられない triple contraction</span><span class="manual">forme manuel : やっていられません</span><span class="poli">poli : やっていられません</span><span class="dial">A: 時給（じきゅう）900円（きゅうひゃくえん）だって。
+B: やってらんねーよ。</span></div></div></details>
+<details class="group" open><summary>B2 G6 — Les particules qui sautent <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">これ、おいしい</span><span class="romaji">kore, oishii</span><span class="reg reg-casual">○ casual</span><span class="meaning">c'est bon, ça (は saute)</span><span class="lit">litt. : これはおいしい sans は : la pause fait le travail</span><span class="manual">forme manuel : これはおいしいです</span><span class="poli">poli : これはおいしいです</span><span class="dial">A: これ、おいしいね。
+B: でしょ。</span></div>
+<div class="item"><span class="jp">ごはん食（た）べた？</span><span class="romaji">gohan tabeta?</span><span class="reg reg-casual">○ casual</span><span class="meaning">t'as mangé ? (を saute)</span><span class="lit">litt. : ごはんを食べた sans を</span><span class="manual">forme manuel : ごはんを食べましたか</span><span class="poli">poli : ごはんを食べましたか</span><span class="dial">A: ごはん食（た）べた？
+B: まだ。</span></div>
+<div class="item"><span class="jp">雨（あめ）、降（ふ）ってる</span><span class="romaji">ame, futteru</span><span class="reg reg-casual">○ casual</span><span class="meaning">il pleut (が saute)</span><span class="lit">litt. : 雨が降っている sans が ni い</span><span class="manual">forme manuel : 雨が降っています</span><span class="poli">poli : 雨が降っています</span><span class="dial">A: 外（そと）どう？
+B: 雨（あめ）、降（ふ）ってる。</span></div>
+<div class="item"><span class="jp">もう行（い）く？</span><span class="romaji">mou iku?</span><span class="reg reg-casual">○ casual</span><span class="meaning">on y va ? (le の de la question saute)</span><span class="lit">litt. : もう行くの？ sans の, l'intonation monte</span><span class="manual">forme manuel : もう行きますか</span><span class="poli">poli : もう行きますか</span><span class="dial">A: もう行（い）く？
+B: あと5分（ごふん）。</span></div>
+<div class="item"><span class="jp">だ抜（ぬ）き ♀ : きれいね</span><span class="kana">（きれいね）</span><span class="romaji">kirei ne</span><span class="reg reg-casual">○ casual</span><span class="meaning">c'est joli, hein (sans だ = féminin doux) <span class="note">♀ ; ♂ garde だね</span></span><span class="lit">litt. : きれいだね sans だ</span><span class="poli">poli : きれいですね</span><span class="dial">A: この着物（きもの）、きれいね。
+B: ほんとだ。</span></div>
+<div class="item"><span class="jp">〜ってさ</span><span class="romaji">-tte sa</span><span class="reg reg-casual">○ casual</span><span class="meaning">tu vois, … (relance l'attention) <span class="note">Kanto/Tokyo typique</span></span><span class="lit">litt. : さ = ponctuation orale de Tokyo</span><span class="poli">poli : pas d'équivalent — さ tombe en registre poli, on reformule sans</span><span class="dial">A: 昨日（きのう）さ、渋谷（しぶや）でさ…
+B: うん。</span></div>
+<div class="item"><span class="jp">あのさ</span><span class="romaji">ano sa</span><span class="reg reg-casual">○ casual</span><span class="meaning">dis / au fait (ouvre un sujet, casual)</span><span class="lit">litt. : あの + さ</span><span class="manual">forme manuel : あの、すみません</span><span class="poli">poli : あの、すみません</span><span class="dial">A: あのさ、ちょっといい？
+B: なに？</span></div>
+<div class="item"><span class="jp">ねえねえ</span><span class="romaji">nee nee</span><span class="reg reg-casual">○ casual</span><span class="meaning">hé hé, écoute (attire l'attention, proche) <span class="note">plutôt ♀/enfants ; ♂ dit なあ</span></span><span class="poli">poli : すみません（pour interpeller poliment)</span><span class="dial">A: ねえねえ、これ見（み）て。
+B: どれどれ。</span></div>
+<div class="item"><span class="jp">ほら</span><span class="romaji">hora</span><span class="reg reg-casual">○ casual</span><span class="meaning">regarde / tiens / tu vois</span><span class="poli">poli : ご覧ください（très formel）／見てください</span><span class="dial">A: ほら、言（い）った通（とお）りじゃん。
+B: はいはい。</span></div>
+<div class="item"><span class="jp">ちょっと！</span><span class="romaji">chotto!</span><span class="reg reg-casual">○ casual</span><span class="meaning">hé ! / oh ! (protestation)</span><span class="lit">litt. : le « un peu » qui devient une interpellation</span><span class="poli">poli : 少々お待ちください／ちょっと待ってください</span><span class="dial">A: 先（さき）食（た）べていい？
+B: ちょっと！待（ま）ってよ。</span></div>
+<div class="item"><span class="jp">で？</span><span class="romaji">de?</span><span class="reg reg-casual">○ casual</span><span class="meaning">et ? / et ensuite ?</span><span class="lit">litt. : それで tronqué à une syllabe</span><span class="manual">forme manuel : それでどうなりましたか</span><span class="poli">poli : それでどうなりましたか</span><span class="dial">A: 彼（かれ）に会（あ）ったんだけど。
+B: で？</span></div>
+<div class="item"><span class="jp">〜は？</span><span class="romaji">-wa?</span><span class="reg reg-casual">○ casual</span><span class="meaning">et… ? (retourne la question)</span><span class="lit">litt. : sujet + は, le reste saute</span><span class="manual">forme manuel : 〜はどうですか</span><span class="poli">poli : 〜はどうですか</span><span class="dial">A: おれはビール。お前（まえ）は？
+B: ハイボール。</span></div>
+<div class="item"><span class="jp">なんで？</span><span class="romaji">nande?</span><span class="reg reg-casual">○ casual</span><span class="meaning">pourquoi ? (version orale par défaut)</span><span class="lit">litt. : どうして plus formel, なぜ écrit</span><span class="manual">forme manuel : どうしてですか</span><span class="poli">poli : どうしてですか</span><span class="dial">A: 明日（あした）休（やす）み。
+B: なんで？</span></div>
+<div class="item"><span class="jp">こう／そう／ああ＋やって</span><span class="kana">（こうやって）</span><span class="romaji">kou yatte</span><span class="reg reg-casual">○ casual</span><span class="meaning">comme ça (en montrant)</span><span class="lit">litt. : このようにして contracté</span><span class="manual">forme manuel : このように</span><span class="poli">poli : このように</span><span class="dial">A: 箸（はし）どう持（も）つの？
+B: こうやって。</span></div>
+<div class="item"><span class="jp">〜んとこ</span><span class="romaji">-n toko</span><span class="reg reg-casual">○ casual</span><span class="meaning">chez… / du côté de…</span><span class="lit">litt. : 〜のところ contracté</span><span class="manual">forme manuel : 〜のところ</span><span class="poli">poli : 〜のところです</span><span class="dial">A: 今（いま）どこ？
+B: 駅（えき）んとこ。</span></div>
+<div class="item"><span class="jp">〜んち</span><span class="romaji">-nchi</span><span class="reg reg-casual">○ casual</span><span class="meaning">chez (quelqu'un)</span><span class="lit">litt. : 〜の家（うち） contracté</span><span class="manual">forme manuel : 〜の家</span><span class="poli">poli : 〜のお宅（さらに丁寧）</span><span class="dial">A: 今夜（こんや）どこ集合（しゅうごう）？
+B: たけしんち。</span></div></div></details>
+<details class="group" open><summary>B2 G7 — Tournures casual à moteur <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">〜すぎ</span><span class="romaji">-sugi</span><span class="reg reg-casual">○ casual</span><span class="meaning">trop… (le る saute)</span><span class="lit">litt. : 〜すぎる nominalisé</span><span class="manual">forme manuel : 〜すぎます</span><span class="poli">poli : 〜すぎます</span><span class="dial">A: 昨日（きのう）3杯（さんばい）食（た）べた。
+B: 食（た）べすぎ。</span></div>
+<div class="item"><span class="jp">〜っぽい</span><span class="romaji">-ppoi</span><span class="reg reg-casual">○ casual</span><span class="meaning">ça fait… / on dirait</span><span class="lit">litt. : suffixe d'apparence</span><span class="manual">forme manuel : 〜のようです</span><span class="poli">poli : 〜のようです</span><span class="dial">A: あの人（ひと）、学生（がくせい）っぽいね。
+B: たしかに。</span></div>
+<div class="item"><span class="jp">〜がち</span><span class="romaji">-gachi</span><span class="reg reg-casual">○ casual</span><span class="meaning">avoir tendance à…</span><span class="lit">litt. : suffixe de fréquence fâcheuse</span><span class="poli">poli : 〜がちです</span><span class="dial">A: また遅刻（ちこく）？
+B: 最近（さいきん）寝坊（ねぼう）しがちで…</span></div>
+<div class="item"><span class="jp">〜げ</span><span class="romaji">-ge</span><span class="reg reg-casual">○ casual</span><span class="meaning">l'air de… (mine, apparence) <span class="note">jeune : 自信（じしん）なげ</span></span><span class="lit">litt. : 〜そうな雰囲気</span><span class="poli">poli : 〜そうな様子です</span><span class="dial">A: 彼（かれ）、大丈夫（だいじょうぶ）？
+B: なんか言（い）いたげだったよ。</span></div>
+<div class="item"><span class="jp">〜まくる</span><span class="romaji">-makuru</span><span class="reg reg-casual">○ casual</span><span class="meaning">faire à fond / non-stop</span><span class="lit">litt. : suffixe d'excès enthousiaste</span><span class="poli">poli : 〜ました（+ intensité par le contexte, まくる lui-même reste familier）</span><span class="dial">A: 連休（れんきゅう）何（なに）した？
+B: ゲームしまくった。</span></div>
+<div class="item"><span class="jp">〜ばよかった</span><span class="romaji">-ba yokatta</span><span class="reg reg-casual">○ casual</span><span class="meaning">j'aurais dû…</span><span class="lit">litt. : si j'avais fait, c'était bien</span><span class="manual">forme manuel : 〜ばよかったです</span><span class="poli">poli : 〜ばよかったです</span><span class="dial">A: 傘（かさ）は？
+B: 持（も）ってくればよかった…</span></div>
+<div class="item"><span class="jp">〜たら？</span><span class="romaji">-tara?</span><span class="reg reg-casual">○ casual</span><span class="meaning">et si tu… ? (conseil rapide)</span><span class="lit">litt. : 〜たらどうですか tronqué</span><span class="manual">forme manuel : 〜たらどうですか</span><span class="poli">poli : 〜たらどうですか</span><span class="dial">A: 頭（あたま）いたい。
+B: 帰（かえ）ったら？</span></div>
+<div class="item"><span class="jp">〜くない？</span><span class="romaji">-kunai?</span><span class="reg reg-casual">○ casual</span><span class="meaning">tu trouves pas que… ? <span class="note">jeune, très fréquent</span></span><span class="lit">litt. : négation + intonation montante = tag question</span><span class="manual">forme manuel : 〜と思いませんか</span><span class="poli">poli : 〜と思いませんか</span><span class="dial">A: この店（みせ）、よくない？
+B: いいね。</span></div>
+<div class="item"><span class="jp">〜なくない？</span><span class="romaji">-nakunai?</span><span class="reg reg-casual">○ casual</span><span class="meaning">c'est pas… si ? (double négation jeune) <span class="note">très jeune</span></span><span class="lit">litt. : négation de la négation, cherche l'accord</span><span class="poli">poli : 〜ではないでしょうか（reformulation, la double négation ne se polit pas telle quelle）</span><span class="dial">A: これ高（たか）くなくない？
+B: 言（い）われてみれば。</span></div>
+<div class="item"><span class="jp">〜そう</span><span class="romaji">-sou</span><span class="reg reg-casual">○ casual</span><span class="meaning">ça a l'air…</span><span class="lit">litt. : apparence immédiate</span><span class="manual">forme manuel : 〜そうです</span><span class="poli">poli : 〜そうです</span><span class="dial">A: このケーキ、おいしそう。
+B: 食（た）べてみよ。</span></div>
+<div class="item"><span class="jp">〜ちゃおうかな</span><span class="romaji">-chaou kana</span><span class="reg reg-casual">○ casual</span><span class="meaning">allez, je vais peut-être me laisser tenter</span><span class="lit">litt. : ちゃう volitif + かな</span><span class="poli">poli : 〜てしまおうかと思います</span><span class="dial">A: もう一杯（いっぱい）どう？
+B: 飲（の）んじゃおうかな。</span></div>
+<div class="item"><span class="jp">しよっかな</span><span class="romaji">shiyokkana</span><span class="reg reg-casual">○ casual</span><span class="meaning">hmm, je vais peut-être faire ça</span><span class="lit">litt. : しようかな écrasé</span><span class="manual">forme manuel : しようかと思います</span><span class="poli">poli : しようかと思います</span><span class="dial">A: 髪（かみ）切（き）るの？
+B: 切（き）ろっかな〜。</span></div>
+<div class="item"><span class="jp">〜てみ</span><span class="romaji">-temi</span><span class="reg reg-casual">○ casual</span><span class="meaning">essaie voir <span class="note">jeune</span></span><span class="lit">litt. : 〜てみて tronqué</span><span class="manual">forme manuel : 〜てみてください</span><span class="poli">poli : 〜てみてください</span><span class="dial">A: これ食（た）べてみ。
+B: どれ？…うまっ。</span></div>
+<div class="item"><span class="jp">〜な（interdiction）</span><span class="romaji">-na</span><span class="reg reg-casual">○ casual</span><span class="meaning">fais pas ça ! (interdiction brute) <span class="note">♂, brusque, entre proches</span></span><span class="lit">litt. : verbe dictionnaire + な</span><span class="manual">forme manuel : 〜ないでください</span><span class="poli">poli : 〜ないでください</span><span class="dial">A: それ触（さわ）るな。
+B: ごめんごめん。</span></div>
+<div class="item"><span class="jp">〜な（impératif doux）</span><span class="kana">（たべな）</span><span class="romaji">-na</span><span class="reg reg-casual">○ casual</span><span class="meaning">vas-y, … (invitation douce)</span><span class="lit">litt. : 〜なさい tronqué</span><span class="manual">forme manuel : 〜てください</span><span class="poli">poli : 〜てください</span><span class="dial">A: 遠慮（えんりょ）しないで食（た）べな。
+B: ありがと。</span></div>
+<div class="item"><span class="jp">〜とけ</span><span class="romaji">-toke</span><span class="reg reg-casual">○ casual</span><span class="meaning">fais-le d'avance (ordre casual) <span class="note">♂, brusque</span></span><span class="lit">litt. : 〜ておけ contracté</span><span class="manual">forme manuel : 〜ておいてください</span><span class="poli">poli : 〜ておいてください</span><span class="dial">A: 明日（あした）までにやっとけよ。
+B: はいはい。</span></div></div></details>
+<details class="group" open><summary>B2 G8 — Réactions et fillers contractés <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">そうなんだ</span><span class="romaji">sou nanda</span><span class="reg reg-casual">○ casual</span><span class="meaning">ah bon / ah ouais (LA réaction passe-partout) <span class="note">revu (L49)</span></span><span class="lit">litt. : そうなのだ contracté</span><span class="manual">forme manuel : そうですか</span><span class="poli">poli : そうですか</span><span class="dial">A: 引（ひ）っ越（こ）すんだ。
+B: そうなんだ、どこに？</span></div>
+<div class="item"><span class="jp">だよね</span><span class="romaji">da yone</span><span class="reg reg-casual">○ casual</span><span class="meaning">hein, c'est ça / je confirme</span><span class="lit">litt. : だ + よね d'accord mutuel</span><span class="poli">poli : そうですよね</span><span class="dial">A: あの店（みせ）閉（し）まった？
+B: だよね、残念（ざんねん）。</span></div>
+<div class="item"><span class="jp">それな</span><span class="romaji">sore na</span><span class="reg reg-casual">○ casual</span><span class="meaning">tellement / grave (accord total) <span class="note">jeune, réseaux sociaux → oral</span></span><span class="lit">litt. : それ + な : « c'est ça »</span><span class="poli">poli : 本当にそうですね（それな est trop jeune/réseaux sociaux pour se polir tel quel）</span><span class="dial">A: 月曜（げつよう）なくなればいいのに。
+B: それな。</span></div>
+<div class="item"><span class="jp">わかる〜</span><span class="romaji">wakaru~</span><span class="reg reg-casual">○ casual</span><span class="meaning">je te comprends trop / tellement vrai</span><span class="lit">litt. : le allongement porte l'empathie</span><span class="manual">forme manuel : わかります</span><span class="poli">poli : わかります</span><span class="dial">A: 雨（あめ）の日（ひ）は何（なに）もしたくない。
+B: わかる〜。</span></div>
+<div class="item"><span class="jp">たしかに</span><span class="romaji">tashika ni</span><span class="reg reg-casual">○ casual</span><span class="meaning">ah oui, pas faux <span class="note">revu (L49)</span></span><span class="poli">poli : 確かにそうですね</span><span class="dial">A: 先（さき）に食（た）べた方（ほう）が早（はや）くない？
+B: たしかに。</span></div>
+<div class="item"><span class="jp">なるほどね</span><span class="romaji">naruhodo ne</span><span class="reg reg-casual">○ casual</span><span class="meaning">ah je vois, d'accord</span><span class="poli">poli : なるほどですね／そうなんですね</span><span class="dial">A: だから遅（おく）れたんだ。
+B: なるほどね。</span></div>
+<div class="item"><span class="jp">うそでしょ</span><span class="romaji">uso desho</span><span class="reg reg-casual">○ casual</span><span class="meaning">non, tu rigoles ?!</span><span class="lit">litt. : « c'est un mensonge, non ? »</span><span class="poli">poli : 本当ですか？</span><span class="dial">A: 財布（さいふ）また忘（わす）れた。
+B: うそでしょ。</span></div>
+<div class="item"><span class="jp">まじで？</span><span class="romaji">maji de?</span><span class="reg reg-casual">○ casual</span><span class="meaning">sérieux ?!</span><span class="poli">poli : 本当ですか？</span><span class="dial">A: あの二人（ふたり）、付（つ）き合（あ）ってるって。
+B: まじで？</span></div>
+<div class="item"><span class="jp">えっと…</span><span class="romaji">etto...</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">euh… (cherche ses mots, standard)</span><span class="poli">poli : えっと（déjà utilisable tel quel en poli）</span><span class="dial">A: 何名（なんめい）さまですか？
+B: えっと、二人（ふたり）です。</span></div>
+<div class="item"><span class="jp">あのー</span><span class="romaji">anoo</span><span class="reg reg-neutre">◇ neutre</span><span class="meaning">euh… / excusez-moi (ouvre vers un inconnu)</span><span class="poli">poli : あのー（déjà poli-compatible）</span><span class="dial">A: あのー、すみません。
+B: はい？</span></div>
+<div class="item"><span class="jp">なんだろう</span><span class="romaji">nan darou</span><span class="reg reg-casual">○ casual</span><span class="meaning">comment dire… (réfléchit tout haut)</span><span class="lit">litt. : « qu'est-ce que c'est »</span><span class="poli">poli : そうですね、何でしょう</span><span class="dial">A: どんな味（あじ）？
+B: なんだろう…甘（あま）じょっぱい？</span></div>
+<div class="item"><span class="jp">どうだろう</span><span class="romaji">dou darou</span><span class="reg reg-casual">○ casual</span><span class="meaning">hmm, pas sûr</span><span class="lit">litt. : doute poli sans dire non</span><span class="poli">poli : どうでしょうか</span><span class="dial">A: 彼（かれ）来（く）るかな？
+B: どうだろう。</span></div>
+<div class="item"><span class="jp">とりま</span><span class="romaji">torima</span><span class="reg reg-casual">○ casual</span><span class="meaning">bon, pour commencer / en attendant <span class="note">⚠️ très jeune, peut dater vite</span></span><span class="lit">litt. : とりあえず、まあ fusionnés</span><span class="manual">forme manuel : とりあえず</span><span class="poli">poli : とりあえず</span><span class="dial">A: 何（なに）頼（たの）む？
+B: とりまビールで。</span></div>
+<div class="item"><span class="jp">ま、いっか</span><span class="romaji">ma, ikka</span><span class="reg reg-casual">○ casual</span><span class="meaning">bon, tant pis / on fait avec</span><span class="lit">litt. : まあ、いいか contracté</span><span class="poli">poli : まあ、いいです</span><span class="dial">A: 傘（かさ）忘（わす）れた。
+B: ま、いっか、走（はし）ろ。</span></div>
+<div class="item"><span class="jp">てことで</span><span class="romaji">te koto de</span><span class="reg reg-casual">○ casual</span><span class="meaning">bref, du coup… (conclut et enchaîne)</span><span class="lit">litt. : ということで contracté</span><span class="manual">forme manuel : ということで</span><span class="poli">poli : ということで</span><span class="dial">A: てことで、乾杯（かんぱい）！
+B: かんぱーい。</span></div>
+<div class="item"><span class="jp">いや、それより</span><span class="romaji">iya, sore yori</span><span class="reg reg-casual">○ casual</span><span class="meaning">non mais attends, plus important…</span><span class="lit">litt. : balaye le sujet, en ouvre un autre</span><span class="poli">poli : いえ、それより</span><span class="dial">A: 昨日（きのう）のドラマがさ…
+B: いや、それより聞（き）いてよ。</span></div></div></details>
+<details class="group"><summary>TEST M1 — 10 phrases FR → JP (réponses cachées, tape pour ouvrir) <span style="color:#999;font-weight:400">10</span></summary><div class="group-body"><div class="item"><span class="jp">① Je sais pas.</span><span class="meaning">réponse : わかんない。</span></div>
+<div class="item"><span class="jp">② Zut, j'ai oublié mon portefeuille.</span><span class="meaning">réponse : 財布（さいふ）忘（わす）れちゃった。</span></div>
+<div class="item"><span class="jp">③ Faut que j'y aille.</span><span class="meaning">réponse : もう行（い）かなきゃ。</span></div>
+<div class="item"><span class="jp">④ Il a dit qu'il serait en retard.</span><span class="meaning">réponse : 遅（おく）れるって（言（い）ってた）。</span></div>
+<div class="item"><span class="jp">⑤ Je réserve d'avance, ok ?</span><span class="meaning">réponse : 予約（よやく）しとくね。</span></div>
+<div class="item"><span class="jp">⑥ C'est quoi, « emoi » ?</span><span class="meaning">réponse : 「エモい」って何（なに）？</span></div>
+<div class="item"><span class="jp">⑦ T'es en train de faire quoi, là ?</span><span class="meaning">réponse : 今（いま）何（なに）してる？</span></div>
+<div class="item"><span class="jp">⑧ C'est pas cher, quoi !</span><span class="meaning">réponse : 安（やす）いじゃん。</span></div>
+<div class="item"><span class="jp">⑨ Tu peux manger du natto ?</span><span class="meaning">réponse : 納豆（なっとう）食（た）べれる？</span></div>
+<div class="item"><span class="jp">⑩ Bon, tant pis. On y va.</span><span class="meaning">réponse : ま、いっか。行（い）こ。</span></div></div></details>
+<footer>Généré via lesson-card-html + kanji-stroke-order-html — Memory/Japanese</footer>
+</body></html>

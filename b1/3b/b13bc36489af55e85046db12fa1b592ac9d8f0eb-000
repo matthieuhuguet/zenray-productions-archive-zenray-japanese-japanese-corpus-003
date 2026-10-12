@@ -1,0 +1,265 @@
+#!/usr/bin/env python3
+# Closed-loop oral trainer: a voice speaks, Matthieu answers out loud, the machine
+# transcribes and scores him. Comparison is PHONETIC, never orthographic, because
+# 今日 and きょう are the same sound and must score identically.
+# FR : boucle orale fermee. Une voix parle, Matthieu repond a voix haute, la machine
+# transcrit et note. La comparaison porte sur le SON, jamais sur la graphie.
+#
+# 2026-09-12
+#
+# Usage:
+#   python3 oral_loop.py check                       verify the whole chain, both ways
+#   python3 oral_loop.py say "こんにちは" [--voice Kyoko] [--rate 160]
+#   python3 oral_loop.py score "target" "heard"      phonetic score of two strings
+#   python3 oral_loop.py drill drills/n5-core.json   run a drill set, mic required
+#   python3 oral_loop.py listen 5                    record 5s and transcribe
+
+from __future__ import annotations  # module loads under system python before re-exec
+
+import argparse
+import difflib
+import json
+import os
+import random
+import re
+import subprocess
+import sys
+import tempfile
+from pathlib import Path
+
+# ---- Parameters (HDA interface: every tunable value lives here, nowhere else) ----
+# FR : interface de parametres, aucune valeur en dur ailleurs dans le fichier.
+PARAMS = {
+    "venv": Path.home() / ".venvs" / "asr-ja",
+    "asr_model": "mlx-community/parakeet-tdt_ctc-0.6b-ja",
+    "voices": ["Kyoko", "Otoya", "Eddy", "Flo", "Grandma", "Grandpa", "Reed", "Rocko", "Sandy", "Shelley"],
+    "default_voice": "Kyoko",
+    "rate_slow": 130,
+    "rate_normal": 175,
+    "rate_fast": 230,
+    "sample_rate": 16000,
+    "mic_device": ":0",  # [0] MacBook Pro Microphone; [1] AirPods Pro (ffmpeg -f avfoundation -list_devices true -i "")
+    "record_seconds": 6,
+    "score_pass": 0.92,
+    "score_partial": 0.75,
+}
+
+SCRIPT_DIR = Path(__file__).resolve().parent
+STRIP_RE = re.compile(r"[、。！？…・「」『』\s,.!?~〜ー－\-]")
+
+
+def venv_python() -> str:
+    """Python interpreter of the ASR venv, required for fugashi and parakeet."""
+    return str(PARAMS["venv"] / "bin" / "python3")
+
+
+def in_asr_venv() -> bool:
+    return Path(sys.prefix).resolve() == PARAMS["venv"].resolve()
+
+
+def reexec_in_venv() -> None:
+    """Re-run this script inside the ASR venv when launched from system python.
+    FR : relance le script dans le venv ASR quand il est lance depuis le python systeme."""
+    if in_asr_venv():
+        return
+    py = venv_python()
+    if not Path(py).exists():
+        sys.exit(f"ASR venv missing: {PARAMS['venv']}")
+    os.execv(py, [py, str(Path(__file__).resolve()), *sys.argv[1:]])
+
+
+# ---- Phonetic normalisation ----
+
+def to_kana(text: str) -> str:
+    """Reduce any Japanese string to its bare hiragana reading, punctuation removed."""
+    from fugashi import Tagger
+    import jaconv
+
+    tagger = to_kana._tagger  # type: ignore[attr-defined]
+    if tagger is None:
+        tagger = Tagger()
+        to_kana._tagger = tagger  # type: ignore[attr-defined]
+    reading = "".join((w.feature.kana or w.surface) for w in tagger(text))
+    return STRIP_RE.sub("", jaconv.kata2hira(reading))
+
+
+to_kana._tagger = None  # type: ignore[attr-defined]
+
+
+def score(target: str, heard: str) -> dict:
+    """Phonetic similarity between what was asked and what was actually said."""
+    t, h = to_kana(target), to_kana(heard)
+    ratio = difflib.SequenceMatcher(None, t, h).ratio()
+    verdict = "OK" if ratio >= PARAMS["score_pass"] else (
+        "APPROXIMATIF" if ratio >= PARAMS["score_partial"] else "RATE"
+    )
+    return {"ratio": round(ratio, 3), "verdict": verdict, "target_kana": t, "heard_kana": h}
+
+
+# ---- Voice ----
+
+def speak(text: str, voice: str | None = None, rate: int | None = None, out: Path | None = None) -> Path | None:
+    """Say a Japanese sentence, to the speakers or to a file."""
+    cmd = ["say", "-v", voice or PARAMS["default_voice"], "-r", str(rate or PARAMS["rate_normal"])]
+    if out:
+        cmd += ["-o", str(out)]
+    cmd.append(text)
+    subprocess.run(cmd, check=True)
+    return out
+
+
+# ---- Ear ----
+
+def to_wav(src: Path, dst: Path) -> Path:
+    subprocess.run(
+        ["ffmpeg", "-nostdin", "-loglevel", "error", "-y", "-i", str(src),
+         "-ar", str(PARAMS["sample_rate"]), "-ac", "1", str(dst)],
+        check=True,
+    )
+    return dst
+
+
+def transcribe(wav: Path) -> str:
+    """Local Japanese speech recognition. No network, no account, no quota."""
+    with tempfile.TemporaryDirectory() as tmp:
+        asr_bin = str(PARAMS["venv"] / "bin" / "parakeet-mlx")  # venv/bin is not on PATH
+        subprocess.run(
+            [asr_bin, str(wav), "--model", PARAMS["asr_model"],
+             "--output-format", "txt", "--output-dir", tmp],
+            check=True, capture_output=True,
+        )
+        produced = list(Path(tmp).glob("*.txt"))
+        return produced[0].read_text(encoding="utf-8").strip() if produced else ""
+
+
+def record(seconds: int, dst: Path) -> Path:
+    """Capture the microphone. Requires macOS microphone permission for the terminal."""
+    subprocess.run(
+        ["ffmpeg", "-nostdin", "-loglevel", "error", "-y",
+         "-f", "avfoundation", "-i", PARAMS["mic_device"],
+         "-t", str(seconds), "-ar", str(PARAMS["sample_rate"]), "-ac", "1", str(dst)],
+        check=True,
+    )
+    return dst
+
+
+# ---- Commands ----
+
+def cmd_check(_args) -> int:
+    """Verify the chain BOTH ways: a right answer must pass, a wrong one must fail.
+    FR : verifie la chaine dans les deux sens, un vrai doit passer, un faux doit echouer."""
+    print("1. voix + transcription")
+    with tempfile.TemporaryDirectory() as tmp:
+        aiff, wav = Path(tmp) / "p.aiff", Path(tmp) / "p.wav"
+        target = "日本語が少し話せます"
+        speak(target, out=aiff)
+        heard = transcribe(to_wav(aiff, wav))
+    print(f"   dit    : {target}\n   entendu: {heard}")
+
+    print("2. le vrai doit passer")
+    good = score(target, heard)
+    print(f"   {good['ratio']} {good['verdict']}")
+
+    print("3. le faux doit echouer")
+    bad = score(target, "ビールを三つください")
+    print(f"   {bad['ratio']} {bad['verdict']}")
+
+    print("4. graphies differentes, meme son")
+    same = score("今日はいい天気ですね", "きょうはいい天気ですね")
+    print(f"   {same['ratio']} {same['verdict']}")
+
+    ok = good["verdict"] == "OK" and bad["verdict"] == "RATE" and same["verdict"] == "OK"
+    print("\nVERIFICATEUR VALIDE" if ok else "\nVERIFICATEUR INVALIDE")
+    return 0 if ok else 1
+
+
+def cmd_say(args) -> int:
+    speak(args.text, voice=args.voice, rate=args.rate)
+    return 0
+
+
+def cmd_score(args) -> int:
+    print(json.dumps(score(args.target, args.heard), ensure_ascii=False, indent=2))
+    return 0
+
+
+def cmd_listen(args) -> int:
+    with tempfile.TemporaryDirectory() as tmp:
+        wav = Path(tmp) / "in.wav"
+        print(f"parle maintenant, {args.seconds}s")
+        record(args.seconds, wav)
+        print(transcribe(wav))
+    return 0
+
+
+def cmd_drill(args) -> int:
+    """Run a drill set: prompt in French, answer out loud, machine scores it."""
+    if args.mic:
+        PARAMS["mic_device"] = args.mic
+    items = json.loads(Path(args.file).read_text(encoding="utf-8"))["items"]
+    if args.shuffle:
+        random.shuffle(items)
+    results, passed = [], 0
+    for i, item in enumerate(items[: args.count], 1):
+        voice = random.choice(PARAMS["voices"]) if args.voices else PARAMS["default_voice"]
+        print(f"\n[{i}/{min(args.count, len(items))}] {item['fr']}")
+        input("   entree pour parler...")
+        with tempfile.TemporaryDirectory() as tmp:
+            wav = Path(tmp) / "a.wav"
+            record(args.seconds, wav)
+            heard = transcribe(wav)
+        res = score(item["ja"], heard)
+        passed += res["verdict"] == "OK"
+        print(f"   toi    : {heard}\n   cible  : {item['ja']}\n   {res['ratio']} {res['verdict']}")
+        speak(item["ja"], voice=voice)
+        results.append({**item, **res, "heard": heard})
+
+    total = len(results)
+    print(f"\nSCORE {passed}/{total}")
+    if args.out:
+        Path(args.out).write_text(
+            json.dumps({"passed": passed, "total": total, "results": results},
+                       ensure_ascii=False, indent=2), encoding="utf-8")
+        print(f"ecrit: {args.out}")
+    return 0
+
+
+def main() -> int:
+    reexec_in_venv()
+    p = argparse.ArgumentParser(description="Boucle orale fermee japonaise")
+    sub = p.add_subparsers(dest="cmd", required=True)
+
+    sub.add_parser("check").set_defaults(fn=cmd_check)
+
+    s = sub.add_parser("say")
+    s.add_argument("text")
+    s.add_argument("--voice", default=None)
+    s.add_argument("--rate", type=int, default=None)
+    s.set_defaults(fn=cmd_say)
+
+    s = sub.add_parser("score")
+    s.add_argument("target")
+    s.add_argument("heard")
+    s.set_defaults(fn=cmd_score)
+
+    s = sub.add_parser("listen")
+    s.add_argument("seconds", type=int, nargs="?", default=PARAMS["record_seconds"])
+    s.set_defaults(fn=cmd_listen)
+
+    s = sub.add_parser("drill")
+    s.add_argument("file")
+    s.add_argument("--count", type=int, default=10)
+    s.add_argument("--seconds", type=int, default=PARAMS["record_seconds"])
+    s.add_argument("--shuffle", action="store_true", default=True)
+    s.add_argument("--voices", action="store_true", default=True,
+                   help="vary the speaker, to train the ear on several voices")
+    s.add_argument("--out", default=None)
+    s.add_argument("--mic", default=None, help="override the audio device, e.g. :1 for AirPods")
+    s.set_defaults(fn=cmd_drill)
+
+    args = p.parse_args()
+    return args.fn(args)
+
+
+if __name__ == "__main__":
+    sys.exit(main())

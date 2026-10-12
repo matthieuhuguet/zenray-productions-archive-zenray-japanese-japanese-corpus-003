@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L60 — Restos du Japon</title>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;max-width:720px;margin:0 auto;padding:0 1.1rem 3rem;color:#1a1a1a;line-height:1.5;background:#fff}
+header{border-bottom:2px solid #1a1a1a;padding:1.4rem 0 .9rem;margin-bottom:1.1rem;position:sticky;top:0;background:#fff}
+h1{margin:0;font-size:1.5rem;font-weight:700;line-height:1.25}
+.subtitle{color:#555;font-size:.92rem;margin-top:.35rem}
+.legend{display:flex;gap:.9rem;flex-wrap:wrap;margin-top:.6rem;font-size:.82rem;color:#555}
+.legend span{white-space:nowrap}
+
+.roots{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.6rem;margin-bottom:1.6rem}
+.root{background:#fff8e6;border-left:3px solid #d4a017;border-radius:6px;padding:.55rem .7rem}
+.root .kanji{font-size:1.5rem;font-weight:700;line-height:1.1}
+.root .reading{font-size:.78rem;color:#7a6212;margin-top:.1rem}
+.root .meaning{font-size:.85rem;margin-top:.2rem}
+.root .unlocks{font-size:.76rem;color:#8a6d00;margin-top:.35rem}
+.root a{color:#4a6fa5;text-decoration:none}
+.root a:hover{text-decoration:underline}
+
+details.group{background:#fafafa;border:1px solid #e8e8e8;border-radius:8px;margin-bottom:.7rem;overflow:hidden}
+details.group summary{list-style:none;cursor:pointer;padding:.75rem .9rem;font-weight:700;font-size:.98rem;background:#f0f0f0;border-bottom:1px solid #e8e8e8;display:flex;justify-content:space-between;align-items:center}
+details.group summary::-webkit-details-marker{display:none}
+details.group summary::after{content:"▸";font-weight:400;color:#888;transition:transform .15s}
+details.group[open] summary::after{transform:rotate(90deg)}
+.group-body{padding:.2rem .9rem .5rem}
+
+.item{display:flex;flex-wrap:wrap;align-items:baseline;gap:.35rem .55rem;padding:.55rem 0;border-bottom:1px solid #eee}
+.item:last-child{border-bottom:none}
+.item .jp{font-size:1.05rem;font-weight:600;white-space:normal}
+.item .kana{font-size:.85rem;color:#666}
+.item .meaning{flex-basis:100%;font-size:.92rem;color:#333;margin-top:.05rem}
+.item .reg{font-size:.72rem;padding:.05rem .4rem;border-radius:999px;background:#eee;color:#555;font-weight:600}
+.reg-casual{background:#ffe9d6;color:#8a4b00}
+.reg-neutre{background:#e6f0ff;color:#1a4d8a}
+.reg-formel{background:#eee6ff;color:#4a1a8a}
+.note{font-size:.78rem;color:#888;font-style:italic}
+
+footer{margin-top:1.8rem;padding-top:1rem;border-top:1px solid #eee;font-size:.78rem;color:#999;text-align:center}
+
+@media print{
+  header{position:static}
+  details.group{border:none;background:none}
+  details.group summary::after{content:""}
+  .item{break-inside:avoid}
+}
+</style></head>
+<body>
+<header><h1>L60 — Restos du Japon</h1><div class="subtitle">7 kanji-racines à effet de levier + 64 plats/mots, 4 groupes de 16</div></header>
+<div class="roots"><div class="root"><div class="kanji"><a href="../KanjiProgress/101-200%20N4/131%20牛%20Ushi%20Gyuu.html">牛</a></div><div class="reading">うし · ギュウ</div><div class="meaning">bœuf</div><div class="unlocks">→ 牛丼 · 牛肉 · 牛乳</div></div><div class="root"><div class="kanji"><a href="../KanjiProgress/101-200%20N4/132%20豚%20Buta%20Ton.html">豚</a></div><div class="reading">ぶた · トン</div><div class="meaning">porc</div><div class="unlocks">→ 豚骨（su） · 豚肉 · とんかつ</div></div><div class="root"><div class="kanji"><a href="../KanjiProgress/101-200%20N4/133%20鶏%20Niwatori%20Kei.html">鶏</a></div><div class="reading">にわとり · ケイ</div><div class="meaning">poulet</div><div class="unlocks">→ 焼き鳥 · 鶏肉 · 親子丼</div></div><div class="root"><div class="kanji"><a href="../KanjiProgress/101-200%20N4/134%20魚%20Sakana%20Gyo.html">魚</a></div><div class="reading">さかな · ギョ</div><div class="meaning">poisson</div><div class="unlocks">→ 刺身 · 魚市場 · 魚介類</div></div><div class="root"><div class="kanji"><a href="../KanjiProgress/101-200%20N4/135%20鍋%20Nabe.html">鍋</a></div><div class="reading">なべ · —</div><div class="meaning">marmite</div><div class="unlocks">→ もつ鍋 · 鍋料理</div></div><div class="root"><div class="kanji"><a href="../KanjiProgress/101-200%20N4/136%20巻%20Maku%20Kan.html">巻</a></div><div class="reading">ま(く) · カン</div><div class="meaning">rouler</div><div class="unlocks">→ 巻き寿司 · 春巻き</div></div><div class="root"><div class="kanji"><a href="../KanjiProgress/101-200%20N4/137%20刺%20Sasu%20Shi.html">刺</a></div><div class="reading">さ(す) · シ</div><div class="meaning">piquer/cru</div><div class="unlocks">→ 刺身 · 名刺</div></div></div>
+<details class="group" open><summary>G1 — Bols & sets (定食・丼もの) <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">定食</span><span class="kana">（ていしょく）</span><span class="meaning">menu fixe <span class="note">revu</span></span></div>
+<div class="item"><span class="jp">丼</span><span class="kana">（どんぶり）</span><span class="meaning">bol de riz garni <span class="note">revu</span></span></div>
+<div class="item"><span class="jp">かつ丼</span><span class="kana">（かつどん）</span><span class="meaning">bol porc pané + œuf</span></div>
+<div class="item"><span class="jp">牛丼</span><span class="kana">（ぎゅうどん）</span><span class="meaning">bol bœuf</span></div>
+<div class="item"><span class="jp">親子丼</span><span class="kana">（おやこどん）</span><span class="meaning">bol poulet + œuf (parent-enfant)</span></div>
+<div class="item"><span class="jp">天丼</span><span class="kana">（てんどん）</span><span class="meaning">bol tempura</span></div>
+<div class="item"><span class="jp">うな丼</span><span class="kana">（うなどん）</span><span class="meaning">bol anguille</span></div>
+<div class="item"><span class="jp">海鮮丼</span><span class="kana">（かいせんどん）</span><span class="meaning">bol fruits de mer <span class="note">revu</span></span></div>
+<div class="item"><span class="jp">カレーライス</span><span class="meaning">curry-riz</span></div>
+<div class="item"><span class="jp">オムライス</span><span class="meaning">riz à l'omelette</span></div>
+<div class="item"><span class="jp">お弁当</span><span class="kana">（おべんとう）</span><span class="meaning">bento</span></div>
+<div class="item"><span class="jp">幕の内弁当</span><span class="kana">（まくのうちべんとう）</span><span class="meaning">bento assortiment classique</span></div>
+<div class="item"><span class="jp">のり弁</span><span class="kana">（のりべん）</span><span class="meaning">bento à l'algue</span></div>
+<div class="item"><span class="jp">から揚げ弁当</span><span class="kana">（からあげべんとう）</span><span class="meaning">bento poulet frit</span></div>
+<div class="item"><span class="jp">日替わり定食</span><span class="kana">（ひがわりていしょく）</span><span class="meaning">menu du jour (qui change)</span></div>
+<div class="item"><span class="jp">お子様ランチ</span><span class="kana">（おこさまランチ）</span><span class="meaning">menu enfant</span></div></div></details>
+<details class="group" open><summary>G2 — Nouilles (hors ramen) <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">うどん</span><span class="meaning">nouilles udon</span></div>
+<div class="item"><span class="jp">そば</span><span class="meaning">nouilles soba (sarrasin)</span></div>
+<div class="item"><span class="jp">ざるそば</span><span class="meaning">soba froide sur plateau</span></div>
+<div class="item"><span class="jp">かけそば</span><span class="meaning">soba en bouillon chaud simple</span></div>
+<div class="item"><span class="jp">天ぷらそば</span><span class="kana">（てんぷらそば）</span><span class="meaning">soba + tempura</span></div>
+<div class="item"><span class="jp">焼きそば</span><span class="kana">（やきそば）</span><span class="meaning">nouilles sautées</span></div>
+<div class="item"><span class="jp">焼きうどん</span><span class="kana">（やきうどん）</span><span class="meaning">udon sautée</span></div>
+<div class="item"><span class="jp">冷やし中華</span><span class="kana">（ひやしちゅうか）</span><span class="meaning">nouilles froides chinoises (été)</span></div>
+<div class="item"><span class="jp">つけ麺</span><span class="kana">（つけめん）</span><span class="meaning">nouilles à tremper</span></div>
+<div class="item"><span class="jp">月見うどん</span><span class="kana">（つきみうどん）</span><span class="meaning">udon « lune » (œuf cru dessus)</span></div>
+<div class="item"><span class="jp">きつねうどん</span><span class="meaning">udon au tofu frit sucré</span></div>
+<div class="item"><span class="jp">たぬきそば</span><span class="meaning">soba + tempura émiettée</span></div>
+<div class="item"><span class="jp">カレーうどん</span><span class="meaning">udon au curry</span></div>
+<div class="item"><span class="jp">五目そば</span><span class="kana">（ごもくそば）</span><span class="meaning">soba garnie variée</span></div>
+<div class="item"><span class="jp">ちゃんぽん</span><span class="meaning">nouilles façon Nagasaki (mix)</span></div>
+<div class="item"><span class="jp">皿うどん</span><span class="kana">（さらうどん）</span><span class="meaning">nouilles croustillantes Nagasaki</span></div></div></details>
+<details class="group" open><summary>G3 — Grillades, frit, mijoté <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">焼き鳥</span><span class="kana">（やきとり）</span><span class="meaning">brochettes de poulet grillées</span></div>
+<div class="item"><span class="jp">串焼き</span><span class="kana">（くしやき）</span><span class="meaning">brochettes grillées</span></div>
+<div class="item"><span class="jp">お好み焼き</span><span class="kana">（おこのみやき）</span><span class="meaning">galette « comme on aime »</span></div>
+<div class="item"><span class="jp">たこ焼き</span><span class="kana">（たこやき）</span><span class="meaning">boulettes de poulpe</span></div>
+<div class="item"><span class="jp">もんじゃ焼き</span><span class="kana">（もんじゃやき）</span><span class="meaning">variante liquide d'okonomiyaki (Tokyo)</span></div>
+<div class="item"><span class="jp">とんかつ</span><span class="meaning">porc pané frit</span></div>
+<div class="item"><span class="jp">から揚げ</span><span class="kana">（からあげ）</span><span class="meaning">poulet frit japonais</span></div>
+<div class="item"><span class="jp">天ぷら</span><span class="kana">（てんぷら）</span><span class="meaning">beignets tempura</span></div>
+<div class="item"><span class="jp">串カツ</span><span class="kana">（くしかつ）</span><span class="meaning">brochettes panées frites</span></div>
+<div class="item"><span class="jp">すき焼き</span><span class="kana">（すきやき）</span><span class="meaning">bœuf mijoté sucré-salé</span></div>
+<div class="item"><span class="jp">しゃぶしゃぶ</span><span class="meaning">bœuf/légumes trempés en bouillon bouillant</span></div>
+<div class="item"><span class="jp">もつ鍋</span><span class="kana">（もつなべ）</span><span class="meaning">marmite d'abats</span></div>
+<div class="item"><span class="jp">おでん</span><span class="meaning">pot-au-feu japonais d'hiver</span></div>
+<div class="item"><span class="jp">餃子</span><span class="kana">（ぎょうざ）</span><span class="meaning">raviolis grillés</span></div>
+<div class="item"><span class="jp">春巻き</span><span class="kana">（はるまき）</span><span class="meaning">rouleaux de printemps</span></div>
+<div class="item"><span class="jp">肉じゃが</span><span class="kana">（にくじゃが）</span><span class="meaning">ragoût viande-pommes de terre</span></div></div></details>
+<details class="group" open><summary>G4 — Sushi/cru + mots de menu <span style="color:#999;font-weight:400">16</span></summary><div class="group-body"><div class="item"><span class="jp">寿司</span><span class="kana">（すし）</span><span class="meaning">sushi</span></div>
+<div class="item"><span class="jp">刺身</span><span class="kana">（さしみ）</span><span class="meaning">sashimi (poisson cru)</span></div>
+<div class="item"><span class="jp">握り</span><span class="kana">（にぎり）</span><span class="meaning">sushi pressé main</span></div>
+<div class="item"><span class="jp">巻き寿司</span><span class="kana">（まきずし）</span><span class="meaning">maki</span></div>
+<div class="item"><span class="jp">軍艦</span><span class="kana">（ぐんかん）</span><span class="meaning">sushi « cuirassé » (garni dessus)</span></div>
+<div class="item"><span class="jp">お通し</span><span class="kana">（おとおし）</span><span class="meaning">amuse-bouche imposé (izakaya)</span></div>
+<div class="item"><span class="jp">一品</span><span class="kana">（いっぴん）</span><span class="meaning">un plat à la carte</span></div>
+<div class="item"><span class="jp">飲み放題</span><span class="kana">（のみほうだい）</span><span class="meaning">boissons à volonté</span></div>
+<div class="item"><span class="jp">食べ放題</span><span class="kana">（たべほうだい）</span><span class="meaning">à volonté (nourriture)</span></div>
+<div class="item"><span class="jp">セットメニュー</span><span class="meaning">menu set</span></div>
+<div class="item"><span class="jp">ランチセット</span><span class="meaning">set déjeuner</span></div>
+<div class="item"><span class="jp">本日のおすすめ</span><span class="kana">（ほんじつのおすすめ）</span><span class="meaning">recommandation du jour</span></div>
+<div class="item"><span class="jp">売り切れ</span><span class="kana">（うりきれ）</span><span class="meaning">épuisé</span></div>
+<div class="item"><span class="jp">ラストオーダー</span><span class="meaning">dernière commande</span></div>
+<div class="item"><span class="jp">お会計</span><span class="kana">（おかいけい）</span><span class="meaning">l'addition <span class="note">revu, kissaten</span></span></div>
+<div class="item"><span class="jp">お持ち帰り</span><span class="kana">（おもちかえり）</span><span class="meaning">à emporter</span></div></div></details>
+<footer>Généré via le skill lesson-card-html — Memory/Japanese</footer>
+</body></html>

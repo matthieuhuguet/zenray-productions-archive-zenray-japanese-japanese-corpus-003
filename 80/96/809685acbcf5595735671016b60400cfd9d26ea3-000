@@ -1,0 +1,393 @@
+#!/usr/bin/env python3
+"""Construit l'index que ZenRayJapanese lit, à partir de ce qui existe déjà.
+
+POURQUOI UN INDEX ET PAS UNE RECOPIE. Japanese1.md fait 473 Ko et reste la source unique : le récit
+des leçons, les scores, les corrections, tout y est et rien n'en sort. Mais un navigateur ne peut pas
+compter des kanji dans de la prose, et une page ne peut pas afficher une jauge sans nombres. L'index
+est donc un ARTEFACT DÉRIVÉ, au même titre que l'index de recherche du site : il ne contient aucune
+vérité qui ne soit déjà dans le corpus, et se régénère d'une commande quand le corpus bouge.
+
+  python3 Scripts/build-japanese-index.py            # écrit Site/japanese.json
+  python3 Scripts/build-japanese-index.py --verify   # échoue si l'index diverge du corpus
+
+CE QU'IL NE FAIT PAS, et c'est délibéré : il n'invente aucun compteur. Les pourcentages de la jauge
+viennent de la seule mesure écrite dans le corpus (L104, « État mesuré au 2026-08-16 ») ; le jour où
+une nouvelle mesure y sera écrite, elle sera relue ici. Estimer à la place serait un chiffre inventé.
+"""
+import json, re, sys, unicodedata
+from pathlib import Path
+
+RACINE = Path(__file__).resolve().parent.parent          # Memory/Japanese
+CORPUS = RACINE / 'Japanese1.md'
+FICHES = RACINE / 'Lessons' / 'KanjiCards'
+SORTIE = RACINE / 'Site' / 'japanese.json'
+# Chemin tel que le SITE le voit : le dépôt Memory est monté sous `Memory/` sur le drive.
+PREFIXE_SITE = 'Memory/Japanese'
+
+# ── PARAMÈTRES (loi HDA : tout ce qui se règle vit ici) ───────────────────────────────────────────
+P = {
+    # Un tableau est du vocabulaire si son en-tête porte l'une de ces colonnes de gauche ET une
+    # colonne de sens. Les tableaux d'exercice portent « Réponse » ou « Verdict » : ils sont exclus.
+    # Le recensement des en-têtes réels (150 tableaux dans le corpus) donne ces variantes ; les deviner
+    # aurait laissé de côté « japonais | sens », « jp | fr » et « expr | romaji | sens | reg », soit un
+    # tiers du vocabulaire réellement tabulé.
+    'colonnes_mot': {'mot', 'verbe', 'expression', 'expr', 'mots', 'terme', 'onomatopée', 'kana',
+                     'katakana', 'japonais', 'jp', 'panneau', 'chiffre'},
+    'colonnes_sens': {'sens', 'traduction', 'français', 'signification', 'fr', 'usage'},
+    'colonnes_exclues': {'réponse matthieu', 'verdict', 'réponse', 'score', 'attendu', 'correction',
+                         'phrase matthieu', 'question'},
+    # Tableaux de GRAMMAIRE : un point par ligne, reconnaissable à sa colonne de formation ou de structure.
+    'colonnes_point': {'point', 'structure', 'forme', 'particule', 'usage'},
+    'colonnes_formation': {'formation', 'sens', 'rôle', 'exemple'},
+    # Un titre de section est un point de grammaire s'il porte l'un de ces mots-clés.
+    'motifs_grammaire': r'(grammaire|forme |particule|conditionnel|potentiel|passif|causatif|keigo|conjugaison)',
+    # …ou s'il contient un motif japonais de grammaire (un tilde suivi de kana).
+    'motif_tilde': r'[~〜][ぁ-んァ-ヶ一-龯]',
+    'niveaux_ordre': ['N5', 'N4', 'N3', 'N2', 'N1'],
+}
+
+def kana(txt):
+    """Vrai si la chaîne contient au moins un caractère japonais. Sert à écarter les lignes de
+    tableau qui ne sont pas du vocabulaire (une note, un score, une remarque)."""
+    return any(0x3040 <= ord(c) <= 0x30FF or 0x4E00 <= ord(c) <= 0x9FFF for c in txt)
+
+def slug(txt, n=48):
+    s = unicodedata.normalize('NFKD', txt)
+    s = re.sub(r'[^a-zA-Z0-9\u3040-\u30FF\u4E00-\u9FFF]+', '-', s).strip('-').lower()
+    return s[:n] or 'x'
+
+# ── LES LEÇONS ───────────────────────────────────────────────────────────────────────────────────
+# Une leçon = un titre de niveau 2 qui commence par un identifiant de leçon. Le corpus en compte deux
+# formes historiques, « ### Leçon 7 — … » au début puis « ## L36 — … » ensuite : les deux sont lues,
+# sinon les quarante premières leçons disparaîtraient de la liste sans que rien ne le signale.
+RE_LECON = re.compile(r'^#{2,3}\s+(?:Leçon\s+(\d+)|L(\d+)(?:-bis|\s+part\s*\d+)?)\b\s*(?:—|-|:)?\s*(.*)$', re.I)
+RE_DATE  = re.compile(r'(20\d{2}-\d{2}-\d{2})')
+
+def lire_lecons(lignes):
+    """CHAQUE OCCURRENCE EST UNE ENTRÉE, et l'ordre est celui du FICHIER, pas celui des numéros.
+
+    J'avais d'abord dédoublonné par numéro, en gardant la première occurrence et en comptant les
+    autres comme des « reprises ». Vérifié dans le navigateur : la méga-leçon du vol était amputée de
+    sa totalité. Le corpus annonce en effet L38, puis annonce L39, PUIS consigne le texte intégral de
+    L38, puis celui de L39 — l'entrée L38 s'arrêtait donc au titre de L39, douze lignes plus bas, et
+    les quatre-vingts pages du vol n'étaient jamais atteintes.
+
+    La tranche d'une entrée va de son titre au titre suivant, quel qu'il soit. Aucun texte ne peut
+    alors être perdu, puisque les tranches pavent le corpus sans trou ni recouvrement."""
+    out = []
+    for i, l in enumerate(lignes):
+        m = RE_LECON.match(l)
+        if not m:
+            continue
+        num = int(m.group(1) or m.group(2))
+        reste = (m.group(3) or '').strip()
+        d = RE_DATE.search(reste)
+        cle = f'L{num}'
+        out.append({
+            'id': cle, 'numero': num,
+            # Le titre ne répète pas la date : le corpus écrit « L104 — 2026-08-16 — RELECTURE… », donc
+            # la date se retire du libellé après avoir été relevée, sinon chaque carte l'affiche deux fois.
+            'titre': (re.sub(r'^20\d{2}-\d{2}-\d{2}\s*(?:\d{1,2}h\d{0,2})?\s*[—:-]?\s*', '',
+                             re.sub(r'\s*\(.*?\)\s*$', '', reste)).strip() or cle),
+            'date': d.group(1) if d else None,
+            'ligne': i + 1, 'ancre': l.strip(),
+        })
+    out.sort(key=lambda x: x['ligne'])
+    # La FIN de chaque tranche est calculée ici, une fois, plutôt que devinée par le navigateur à
+    # chaque ouverture : c'est le genre de calcul qui doit avoir une seule implémentation.
+    for k, e in enumerate(out):
+        e['fin'] = out[k + 1]['ligne'] - 1 if k + 1 < len(out) else len(lignes)
+    return out
+
+# ── LE VOCABULAIRE ───────────────────────────────────────────────────────────────────────────────
+def lire_vocabulaire(lignes, lecons):
+    """Extrait les tableaux de vocabulaire. Le corpus suit la règle de L105-bis : deux colonnes
+    homogènes, mot à gauche, sens à droite. Les tableaux d'exercice et de score sont écartés par
+    leur en-tête, jamais par leur contenu : un filtre sur le contenu laisserait passer un score."""
+    bornes = [(l['ligne'], l['id']) for l in lecons]
+    def lecon_de(n):
+        c = None
+        for ln, lid in bornes:
+            if ln <= n: c = lid
+            else: break
+        return c
+
+    out, i, vus = [], 0, set()
+    while i < len(lignes):
+        l = lignes[i].strip()
+        if l.startswith('|') and i + 1 < len(lignes) and re.match(r'^\|[\s:\-|]+\|$', lignes[i + 1].strip()):
+            entete = [c.strip().lower() for c in l.strip('|').split('|')]
+            if (entete and entete[0] in P['colonnes_mot']
+                    and any(c in P['colonnes_sens'] for c in entete)
+                    and not any(c in P['colonnes_exclues'] for c in entete)):
+                i_sens = next(k for k, c in enumerate(entete) if c in P['colonnes_sens'])
+                j = i + 2
+                while j < len(lignes) and lignes[j].strip().startswith('|'):
+                    cells = [c.strip() for c in lignes[j].strip().strip('|').split('|')]
+                    if len(cells) > i_sens and cells[0] and kana(cells[0]):
+                        mot = re.sub(r'\*+', '', cells[0]).strip()
+                        sens = re.sub(r'\*+', '', cells[i_sens]).strip()
+                        cle = (mot, sens)
+                        if mot and sens and cle not in vus:
+                            vus.add(cle)
+                            out.append({'mot': mot, 'sens': sens, 'lecon': lecon_de(j + 1), 'ligne': j + 1})
+                    j += 1
+                i = j
+                continue
+        i += 1
+    return out
+
+# ── LA GRAMMAIRE ─────────────────────────────────────────────────────────────────────────────────
+RE_TITRE = re.compile(r'^(#{2,4})\s+(.*)$')
+# « は (wa) » et « は » sont le MÊME point, écrit à deux leçons d'écart. Sans normalisation, la liste
+# affichait les quatre particules de base en double, ce qui donnait à croire à quatre points de plus.
+def cle_point(p):
+    return re.sub(r'\s*\(.*?\)', '', p).strip().lower().lstrip('~〜')
+# ── CE QUI EST UN POINT DE GRAMMAIRE, ET CE QUI N'EN EST PAS ─────────────────────────────────────
+# Audit du 2026-08-27 : sur 37 entrées affichées, HUIT n'étaient pas des points mais des titres de
+# section qui contenaient le mot « grammaire » — « Q&A grammaire L26 », « MILESTONE — Grammaire N5
+# 38/38 COMPLÈTE », « 3 vraies questions de grammaire posées par Matthieu ». Le compte était donc
+# gonflé de près d'un quart, et un compte gonflé est un mensonge quand on l'affiche à côté d'une jauge.
+#
+# Le critère qui tient : un point de grammaire s'ÉCRIT en japonais, ou porte le nom d'une notion
+# grammaticale connue. Un titre de section, lui, parle de la leçon plutôt que de la langue.
+REJET = ('question', 'milestone', 'q&a', 'complète', 'complet', 'livré', 'posée', 'récap',
+         'sommaire', 'bilan', 'plan ', 'drill', 'score', 'feedback', 'clarification',
+         # Ajoutés au second tour de l'audit : « Production écrite 3 phrases ~なる » et
+         # « Piège 3 — forme ta avant あとで » décrivent un EXERCICE sur un point déjà listé, pas un
+         # point de plus. Les garder revenait à compter deux fois ~なる et ~あとで.
+         'production', 'piège', 'exercice', 'retest')
+NOTIONS = ('potentiel', 'passif', 'causatif', 'keigo', 'conditionnel', 'volitif', 'impératif',
+           'comparatif', 'superlatif', 'honorifique', 'humble', 'transitif', 'intransitif')
+JAPONAIS = re.compile(r'[ぁ-んァ-ヶ一-龯]')
+
+def nettoyer_point(p):
+    """Ramène un titre de section au point qu'il annonce, quand il en annonce un."""
+    p = p.strip()
+    p = re.sub(r'^Bloc\s*[\d/]+\s*(livré)?\s*[—:-]\s*', '', p, flags=re.I)
+    p = re.sub(r'^Premier point\s*N[1-5]\s*réellement enseigné\s*:\s*', '', p, flags=re.I)
+    p = re.sub(r'^\d{1,2}h\d{0,2}\s*[—-]\s*', '', p)
+    # « B1 G2 : って, la particule qui remplace tout » → on garde ce qui suit le deux-points quand
+    # c'est court et écrit en japonais : c'est là qu'est le point, le reste est un numéro de bloc.
+    # Les scories de rédaction : le gras du markdown, l'heure de la séance, le score du drill, la coche.
+    # « ~たら (conditionnel) — 2/2 ✅ » nomme bien un point, mais son libellé raconte la séance.
+    p = p.replace('**', '')
+    p = re.sub(r'\s+enseignée?\s*\d{1,2}h\d{0,2}\s*$', '', p, flags=re.I)
+    p = re.sub(r'\s*[—-]\s*\d+\s*/\s*\d+\s*[✅✓❌]?\s*$', '', p)
+    p = re.sub(r'\s*[✅✓❌⚠️]\s*$', '', p)
+    if ' : ' in p:
+        queue = p.split(' : ', 1)[1].strip()
+        if len(queue) <= 34 and JAPONAIS.search(queue):
+            p = queue
+    return p.strip(' ,;')
+
+def utile(p):
+    p = p.strip()
+    if len(p) < 2 or len(p) > 40: return False
+    bas = p.lower()
+    if bas in {'question', 'réponse', 'exemple', 'usage', 'structure', 'forme', 'sens', 'note', 'total'}:
+        return False
+    if any(m in bas for m in REJET): return False
+    # Le point doit être écrit en japonais, ou nommer une notion grammaticale. Sans cette exigence,
+    # n'importe quel titre contenant « grammaire » repassait pour un point enseigné.
+    return bool(JAPONAIS.search(p)) or p.startswith(('~', '〜', '[')) or any(n in bas for n in NOTIONS)
+def lire_grammaire(lignes, lecons):
+    bornes = [(l['ligne'], l['id']) for l in lecons]
+    def lecon_de(n):
+        c = None
+        for ln, lid in bornes:
+            if ln <= n: c = lid
+            else: break
+        return c
+    out, vus = [], set()
+    rg = re.compile(P['motifs_grammaire'], re.I)
+    rt = re.compile(P['motif_tilde'])
+    # 1) Les TABLEAUX de grammaire, où chaque ligne est un point. Ils portent l'essentiel des
+    #    particules et des structures, que les titres seuls ne nomment jamais.
+    i = 0
+    while i < len(lignes):
+        l = lignes[i].strip()
+        if l.startswith('|') and i + 1 < len(lignes) and re.match(r'^\|[\s:\-|]+\|$', lignes[i + 1].strip()):
+            entete = [c.strip().lower() for c in l.strip('|').split('|')]
+            if (entete and entete[0] in P['colonnes_point']
+                    and any(c in P['colonnes_formation'] for c in entete[1:])
+                    and not any(c in P['colonnes_exclues'] for c in entete)):
+                i_sens = next(k for k, c in enumerate(entete) if k and c in P['colonnes_formation'])
+                j = i + 2
+                while j < len(lignes) and lignes[j].strip().startswith('|'):
+                    cells = [re.sub(r'\*+', '', c).strip() for c in lignes[j].strip().strip('|').split('|')]
+                    pt = nettoyer_point(cells[0]) if cells else ''
+                    if len(cells) > i_sens and pt and cle_point(pt) not in vus and utile(pt):
+                        vus.add(cle_point(pt))
+                        out.append({'point': pt, 'sens': cells[i_sens], 'lecon': lecon_de(j + 1),
+                                    'ligne': j + 1, 'niveau': None})
+                    j += 1
+                i = j
+                continue
+        i += 1
+
+    # 2) Les TITRES de section qui annoncent un point.
+    for i, l in enumerate(lignes):
+        m = RE_TITRE.match(l)
+        if not m or RE_LECON.match(l):
+            continue
+        titre = m.group(2).strip()
+        if 'exercice' in titre.lower() or 'drill' in titre.lower() or 'score' in titre.lower():
+            continue
+        if not (rg.search(titre) or rt.search(titre)):
+            continue
+        # Le nom du point est la partie japonaise quand elle existe, le titre nettoyé sinon.
+        point = re.sub(r'^(grammaire|nouvelle leçon|récap|système complet)\s*[—:-]?\s*', '', titre, flags=re.I)
+        point = re.sub(r'\s*\((.*?)\)\s*$', '', point).strip()
+        point = re.sub(r'^\d{1,2}h\d{0,2}\s*[—-]\s*', '', point).strip()
+        point = nettoyer_point(re.sub(r'^N[1-5]\s*[—:-]\s*', '', point))
+        if not point or cle_point(point) in vus or not utile(point):
+            continue
+        vus.add(cle_point(point))
+        out.append({'point': point, 'sens': None, 'lecon': lecon_de(i + 1), 'ligne': i + 1,
+                    'niveau': 'N5' if 'n5' in titre.lower() else ('N4' if 'n4' in titre.lower() else None)})
+    out.sort(key=lambda g: g['ligne'])
+    return out
+
+# ── LES KANJI ────────────────────────────────────────────────────────────────────────────────────
+# Convention de nom posée en L35 : `NNN 漢 Kun On.html`. Elle est stricte, donc lisible sans erreur —
+# c'est la seule des quatre sections dont l'extraction ne repose sur aucune heuristique.
+RE_FICHE = re.compile(r'^(\d{3})\s+(\S)\s+(.*?)\.html$')
+def lire_kanji():
+    out = []
+    if not FICHES.exists():
+        return out
+    for dossier in sorted(p for p in FICHES.iterdir() if p.is_dir()):
+        niveau = 'N4' if 'N4' in dossier.name else 'N5'
+        for f in sorted(dossier.glob('*.html')):
+            m = RE_FICHE.match(f.name)
+            if not m:
+                continue
+            lectures = m.group(3).split()
+            out.append({
+                'numero': int(m.group(1)), 'kanji': m.group(2),
+                'kun': lectures[0] if lectures else '', 'on': lectures[1] if len(lectures) > 1 else '',
+                'niveau': niveau,
+                'fiche': f'{PREFIXE_SITE}/Lessons/KanjiCards/{dossier.name}/{f.name}',
+            })
+    out.sort(key=lambda k: (k['niveau'] != 'N5', k['numero']))
+    return out
+
+# ── LA JAUGE ─────────────────────────────────────────────────────────────────────────────────────
+# Relue dans le corpus, JAMAIS calculée ici. Le corpus distingue « enseigné » (vu une fois) et
+# « consolidé » (restitué en drill), et c'est le second qui compte : recalculer le premier depuis le
+# nombre de fiches présentes reviendrait à appeler « su » ce qui n'a été que montré.
+# LE TILDE DU CORPUS EST UNE INFORMATION, PAS UN CARACTÈRE DE PONCTUATION. Matthieu écrit « ~55%
+# consolidé », « grammaire ~9/42 », « vocab ~700/1500 », « N3 : ~2% » : ce sont des ESTIMATIONS, et les
+# afficher sans leur tilde revient à présenter une estimation comme une mesure, ce que les règles
+# interdisent explicitement. Chaque groupe de tilde est donc capturé et voyage jusqu'à l'écran.
+RE_ETAT = re.compile(
+    r'N5\s*:\s*(~?)(\d+)%\s*enseigné,\s*(~?)(\d+)%\s*consolidé\.\s*'
+    r'N4\s*:\s*(~?)(\d+)%\s*\(kanji\s*(~?)(\d+)/(\d+),\s*grammaire\s*(~?)(\d+)/(\d+),\s*vocab\s*(~?)(\d+)/(\d+)\)\.\s*'
+    r'N3\s*:\s*(~?)(\d+)%\.\s*N2\s*:\s*(~?)(\d+)%')
+RE_N5_DETAIL = re.compile(r'grammaire\s+\*\*(~?)(\d+)/(\d+)[^*]*\*\*,\s*kanji\s+\*\*(~?)(\d+)/(\d+)\*\*.*?vocab\s+(~?)(\d+)/(\d+)')
+
+def lire_jauge(texte):
+    m = RE_ETAT.search(texte)
+    d = RE_N5_DETAIL.search(texte)
+    if not m:
+        raise SystemExit("ÉCHEC : « État mesuré » introuvable dans Japanese1.md. L'index ne fabrique "
+                         "pas de chiffres — ajoutez la mesure au corpus, puis relancez.")
+    date = None
+    mm = re.search(r'### État mesuré au (20\d{2}-\d{2}-\d{2})', texte)
+    if mm: date = mm.group(1)
+    g = m.groups()
+    approx = lambda i: g[i] == '~'          # le groupe qui précède porte le tilde, ou la chaîne vide
+    n = lambda i: int(g[i])
+    n5 = {'code': 'N5', 'enseigne': n(1), 'enseigneApprox': approx(0),
+          'consolide': n(3), 'consolideApprox': approx(2), 'compteurs': []}
+    if d:
+        dg = d.groups()
+        n5['compteurs'] = [
+            {'cle': 'kanji', 'fait': int(dg[4]), 'cible': int(dg[5]), 'approx': dg[3] == '~'},
+            {'cle': 'grammaire', 'fait': int(dg[1]), 'cible': int(dg[2]), 'approx': dg[0] == '~'},
+            {'cle': 'vocabulaire', 'fait': int(dg[7]), 'cible': int(dg[8]), 'approx': dg[6] == '~'},
+        ]
+    n4 = {'code': 'N4', 'enseigne': n(5), 'enseigneApprox': approx(4), 'consolide': None, 'compteurs': [
+        {'cle': 'kanji', 'fait': n(7), 'cible': n(8), 'approx': approx(6)},
+        {'cle': 'grammaire', 'fait': n(10), 'cible': n(11), 'approx': approx(9)},
+        {'cle': 'vocabulaire', 'fait': n(13), 'cible': n(14), 'approx': approx(12)},
+    ]}
+    niveaux = [n5, n4,
+               {'code': 'N3', 'enseigne': n(16), 'enseigneApprox': approx(15), 'consolide': None, 'compteurs': []},
+               {'code': 'N2', 'enseigne': n(18), 'enseigneApprox': approx(17), 'consolide': None, 'compteurs': []}]
+
+    # N1 N'EST PAS MESURÉ PAR LE CORPUS, mais il se DÉDUIT sans risque : on n'apprend pas du N1 avant
+    # d'avoir touché au N2, et le N2 est à zéro. La déduction est donc marquée comme telle, pour que
+    # personne ne la relise un jour comme une mesure. C'est la différence entre un chiffre déduit,
+    # légitime tant qu'il porte son étiquette, et un chiffre inventé, qui n'en porte aucune.
+    if niveaux[-1]['enseigne'] == 0:
+        niveaux.append({'code': 'N1', 'enseigne': 0, 'enseigneApprox': False, 'consolide': None,
+                        'compteurs': [], 'deduit': True})
+
+    # TOUS LES NIVEAUX PORTENT LES MÊMES TROIS COMPTEURS, dans le même ordre, même quand la valeur est
+    # inconnue. Une cellule absente casse l'alignement d'une grille ; une cellule à `null` s'affiche
+    # « N/A » et garde la colonne en place. C'est la convention informatique habituelle : on écrit ce
+    # qu'on ne sait pas, on ne le laisse pas vide, faute de quoi rien ne distingue « zéro » de « inconnu ».
+    for n in niveaux:
+        presents = {c['cle']: c for c in n['compteurs']}
+        n['compteurs'] = [presents.get(cle, {'cle': cle, 'fait': None, 'cible': None, 'approx': False})
+                          for cle in ('kanji', 'grammaire', 'vocabulaire')]
+
+    return {'mesureLe': date, 'niveaux': niveaux}
+
+def construire():
+    texte = CORPUS.read_text(encoding='utf-8')
+    lignes = texte.split('\n')
+    lecons = lire_lecons(lignes)
+    jauge = lire_jauge(texte)
+    grammaire = lire_grammaire(lignes, lecons)
+    vocabulaire = lire_vocabulaire(lignes, lecons)
+    kanji = lire_kanji()
+    # ── LES COMPTES DISTINCTS, PARCE QU'UN COMPTE DE LIGNES N'EST PAS UN COMPTE DE CHOSES ─────────
+    # Audit du 2026-08-27 : la page annonçait « 125 leçons » là où le corpus n'en contient que 107.
+    # Une leçon revient parfois en plusieurs blocs (L32 en compte cinq, entre ses trois sessions et
+    # ses pauses), et chaque bloc est une tranche à lire, donc une carte. Compter les cartes est juste,
+    # les appeler des leçons ne l'est pas. Les deux nombres sont donc calculés ici, une fois, et
+    # l'affichage dit lequel il montre.
+    resume = {
+        'tranches': len(lecons),
+        'leconsDistinctes': len({l['id'] for l in lecons}),
+        'lignesVocabulaire': len(vocabulaire),
+        'motsDistincts': len({v['mot'] for v in vocabulaire}),
+        'pointsGrammaire': len(grammaire),
+        'fichesKanji': len(kanji),
+    }
+    return {
+        'version': 2,
+        'source': f'{PREFIXE_SITE}/Japanese1.md',
+        'corpusLignes': len(lignes),
+        'resume': resume,
+        'jauge': jauge,
+        'lecons': lecons,
+        'grammaire': grammaire,
+        'vocabulaire': vocabulaire,
+        'kanji': kanji,
+    }
+
+if __name__ == '__main__':
+    idx = construire()
+    r = idx['resume']
+    resume = (f"{r['leconsDistinctes']} leçons en {r['tranches']} tranches · "
+              f"{r['pointsGrammaire']} points de grammaire · "
+              f"{r['lignesVocabulaire']} lignes de vocabulaire ({r['motsDistincts']} mots distincts) · "
+              f"{r['fichesKanji']} fiches kanji")
+    if '--verify' in sys.argv:
+        if not SORTIE.exists():
+            print('✗ index absent'); sys.exit(1)
+        ancien = json.loads(SORTIE.read_text(encoding='utf-8'))
+        for cle in ('lecons', 'grammaire', 'vocabulaire', 'kanji'):
+            if len(ancien.get(cle, [])) != len(idx[cle]):
+                print(f"✗ {cle} : index {len(ancien.get(cle, []))} vs corpus {len(idx[cle])} — relancer sans --verify")
+                sys.exit(1)
+        print(f'✓ index à jour — {resume}'); sys.exit(0)
+    SORTIE.parent.mkdir(parents=True, exist_ok=True)
+    SORTIE.write_text(json.dumps(idx, ensure_ascii=False, indent=1), encoding='utf-8')
+    print(f'✓ {SORTIE.relative_to(RACINE)} — {resume}')
+    print(f"  jauge relue au {idx['jauge']['mesureLe']} : " +
+          ' · '.join(f"{n['code']} {n['enseigne']}%" for n in idx['jauge']['niveaux']))

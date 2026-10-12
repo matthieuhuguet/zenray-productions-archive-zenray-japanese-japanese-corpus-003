@@ -1,0 +1,4 @@
+#!/usr/bin/env python3
+# 12 October 2026: route to the single editable corpus definition registered in Assets.
+import runpy
+runpy.run_path('/Users/zenray/.claude/tmp/tmp-zenray-japanese/Scripts/Corpus.py',run_name='__main__')
